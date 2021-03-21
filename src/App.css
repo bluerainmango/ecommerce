@@ -1,4 +1,33 @@
-.App {
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+} */
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +64,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
