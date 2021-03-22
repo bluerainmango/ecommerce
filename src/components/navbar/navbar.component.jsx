@@ -4,11 +4,17 @@ import "./navbar.styles.scss";
 const NavBar = () => {
   return (
     <div className="navbar">
-      <div>SPACE Y</div>
+      <div className="navbar__logo"> SPACE Y</div>
       <ul className="navbar__links">
-        <li className="link--moon">MOON</li>
-        <li className="link--mars">MARS</li>
-        <li className="link--vinus">VINUS</li>
+        <li className="link--moon">
+          <a href="/moon">MOON</a>
+        </li>
+        <li className="link--mars">
+          <a href="/mars">MARS</a>
+        </li>
+        <li className="link--vinus">
+          <a href="/vinus">VINUS</a>
+        </li>
       </ul>
       <ul className="navbar__user">
         <li className="link--login">LOGIN</li>

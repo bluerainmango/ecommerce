@@ -1,0 +1,35 @@
+.header {
+  height: calc(100vh - 3rem);
+  width: 100vw;
+  //   background-color: black;
+  //   background-image: url(../../assets/header.jpeg);
+  //   background-size: cover;
+  //   background-image: linear-gradient(rgba(0, 0, 0, 0.5)),
+  //     url(../../assets/header.jpeg);
+
+  // display: grid;
+  // grid-template-columns: 1fr minmax(min-content, 75rem) 1fr;
+
+  &__video {
+    position: relative;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  &__content {
+    // grid-column: 1/2;
+
+    position: absolute;
+    bottom: 20vh;
+    color: #fff;
+    max-width: 30rem;
+    padding-left: 15vw;
+
+    h1 {
+      font-weight: 400;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+  }
+}
