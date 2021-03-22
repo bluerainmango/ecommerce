@@ -12,7 +12,7 @@ const Header = () => {
     <div className="header">
       <video
         className="header__video"
-        autoplay="autoplay"
+        autoPlay="autoplay"
         muted
         loop
         // playsinline

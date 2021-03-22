@@ -1,0 +1,30 @@
+.planet {
+  &__text {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  &__content {
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
+    // clip-path: circle(50% at 50% 50%);
+    // height: 20rem;
+
+    img {
+      width: 100%;
+      //   height: 100%;
+
+      &:hover {
+        transform: scale(1.1, 1.1);
+        transition: all 0.5s;
+        cursor: pointer;
+      }
+    }
+  }
+}
