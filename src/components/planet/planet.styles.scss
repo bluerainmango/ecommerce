@@ -7,14 +7,17 @@
 
     color: #fff;
     font-size: 1.5rem;
+    font-weight: 200;
   }
 
   &__content {
     position: relative;
     overflow: hidden;
     object-fit: cover;
+    // backface-visibility: hidden;
     // clip-path: circle(50% at 50% 50%);
     // height: 20rem;
+    cursor: pointer;
 
     img {
       width: 100%;
@@ -23,7 +26,6 @@
       &:hover {
         transform: scale(1.1, 1.1);
         transition: all 0.5s;
-        cursor: pointer;
       }
     }
   }
