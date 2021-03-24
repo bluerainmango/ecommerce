@@ -7,10 +7,10 @@ import Slide from "../../components/slide/slide.component";
 const Homepage = () => {
   return (
     <div>
-      <NavBar />
+      {/* <NavBar />
       <Header />
       <Collection />
-      <Discover />
+      <Discover /> */}
       <Slide />
     </div>
   );

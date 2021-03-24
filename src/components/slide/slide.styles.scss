@@ -6,17 +6,23 @@
   //   justify-content: center;
   position: relative;
   //   margin: 0 auto;
-
+  margin-top: 2rem;
   display: grid;
   justify-content: center;
+  font-size: 1.2rem;
 
   .slide {
     grid-area: 1/-1;
     width: 20rem;
     height: 10rem;
-    transition: all 0.5s ease-in-out;
-    object-fit: cover;
+
     // position: absolute;
+    border: 1px solid black;
+    transform: translateX(calc(100% * var(--slideOrder)));
+    transition: all 0.5s ease-in-out;
+
+    background-size: cover;
+    background-position: center center;
 
     &--active {
       border: red 1px solid;
