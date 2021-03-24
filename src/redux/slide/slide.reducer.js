@@ -1,0 +1,52 @@
+const INITIAL_STATE = {
+  slides: [
+    {
+      title: "Machu Picchu",
+      subtitle: "Peru",
+      description: "Adventure is never far away",
+      image:
+        "https://images.unsplash.com/photo-1571771019784-3ff35f4f4277?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
+    },
+    {
+      title: "Chamonix",
+      subtitle: "France",
+      description: "Let your dreams come true",
+      image:
+        "https://images.unsplash.com/photo-1581836499506-4a660b39478a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
+    },
+    {
+      title: "Mimisa Rocks",
+      subtitle: "Australia",
+      description: "A piece of heaven",
+      image:
+        "https://images.unsplash.com/photo-1566522650166-bd8b3e3a2b4b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
+    },
+  ],
+  slideIndex: 0,
+};
+
+const slideReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case "NEXT_SLIDE":
+      console.log("next");
+      return {
+        ...state,
+        slideIndex: (state.slideIndex + 1) % state.slides.length,
+      };
+
+    case "PREVIOUS_SLIDE":
+      console.log("prev");
+      return {
+        ...state,
+        slideIndex:
+          state.slideIndex === 0
+            ? state.slides.length - 1
+            : state.slideIndex - 1,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default slideReducer;

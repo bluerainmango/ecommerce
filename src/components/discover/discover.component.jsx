@@ -8,7 +8,7 @@ import "./discover.styles.scss";
 const Discover = () => {
   return (
     <div className="discover">
-      <h3 className="discover__title">DISCOVER</h3>
+      <h3 className="discover__title">WHY SPACE Y</h3>
       <div className="discover__content">
         <div className="discover__content--left">
           <img
