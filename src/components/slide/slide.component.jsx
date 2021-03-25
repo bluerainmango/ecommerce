@@ -17,27 +17,26 @@ const Slide = (props) => {
   return (
     <div className="slider">
       {slides.map((slide, i, arr) => {
+        //! 1. slide order # that each slide will have
         let slideOrder = i - slideIndex;
+        //! 2. max slide order: max and standard # to keep slides in center
         const maxSlideOrder = Math.ceil(arr.length / 2);
 
-        console.log("index", slideIndex);
-        console.log("before", slideOrder);
-
-        {
-          /* slideOrder =
-          slideOrder >= maxSlideOrder ? slideOrder - arr.length : slideOrder; */
-        }
-
+        //! 3. whenever each slide's slideOrder # is over maxSlideOrder #, move the slide to the opposite side so the slides locate in center at all times.
         const calSlideOrder = (slideOrder, maxSlideOrder, arr) => {
+          //* a. less than max => no change to slideOrder
           if (Math.abs(slideOrder) < maxSlideOrder) {
             console.log("🍌 no problem: ", slideOrder);
             return slideOrder;
           }
 
+          //* b. more than max(+num) => move the slide to leftside
           if (slideOrder > 0) {
             console.log("🍎 over 3 so become:", slideOrder - arr.length);
             return slideOrder - arr.length;
           }
+
+          //* c. more than max(-num) => move the slide to rightside
           if (slideOrder < 0) {
             console.log("🍏 less 3 so become:", slideOrder + arr.length);
             return slideOrder + arr.length;
@@ -50,7 +49,6 @@ const Slide = (props) => {
             className={slideIndex === i ? "slide slide--active" : "slide"}
             style={{
               "--slideOrder": calSlideOrder(slideOrder, maxSlideOrder, arr),
-              "--maxSliderOrder": maxSlideOrder,
               backgroundImage: `url(${slide.image})`,
             }}
           >
