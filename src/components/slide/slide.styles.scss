@@ -1,7 +1,7 @@
 .slide {
   grid-area: 1/-1;
   width: 20rem;
-  height: 10rem;
+  height: 30rem;
 
   // position: absolute;
   border: 1px solid black;
@@ -14,17 +14,21 @@
   background-position: center center;
 
   &--active {
-    --x: calc(var(--px) - 0.5);
-    --y: calc(var(--py) - 0.5);
+    //! - 0.5: to tilt both sides
+    --x: calc(var(--tiltX) - 0.5);
+    --y: calc(var(--tiltY) - 0.5);
 
     border: red 1px solid;
-    opacity: 1;
+    // opacity: 1;
 
-    // transform: perspective(1000px);
+    //! lower value, more tilting to me. Set to high so prevent from too much tilting
+    transform: perspective(1000px);
 
     &:hover {
-      // transition: none;
-      transform: rotateY(calc(var(--x) * 45deg));
+      //! tilting effect
+      transition: none;
+      transform: rotateY(calc(var(--x) * 45deg))
+        rotateX(calc(var(--y) * -45deg));
     }
   }
 }

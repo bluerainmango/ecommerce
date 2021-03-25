@@ -12,19 +12,16 @@ const Slider = (props) => {
     slides,
     moveToNextSlide,
     moveToPreviousSlide,
-    SelectedSlideIndex,
+    selectedSlideIndex,
   } = props;
 
   // const activeSlideRef = useRef();
-
-  //! Attach event listner to ACTIVE slide
-  useEffect(() => {}, []);
 
   return (
     <div className="slider">
       {slides.map((slide, i, arr) => {
         //! 1. Slide order # that each slide will have
-        let slideOrder = i - SelectedSlideIndex;
+        let slideOrder = i - selectedSlideIndex;
 
         //! 2. Max slide order: max and standard # to keep slides in center
         const maxSlideOrder = Math.ceil(arr.length / 2);
@@ -58,13 +55,11 @@ const Slider = (props) => {
             key={`slide-${i}`}
             slide={slide}
             currentIndex={i}
-            selectedSlideIndex={SelectedSlideIndex}
+            selectedSlideIndex={selectedSlideIndex}
             updatedSlideOrder={updatedSlideOrder}
             // ref={activeSlideRef}
           >
             {/* <img alt="slide.title" src={slide.image} /> */}
-            <p>{slide.title}</p>
-            <p>{slideOrder}</p>
           </Slide>
         );
       })}
@@ -80,7 +75,7 @@ const Slider = (props) => {
 
 const mapStateToProps = (state) => ({
   slides: state.slides.slides,
-  SelectedSlideIndex: state.slides.slideIndex,
+  selectedSlideIndex: state.slides.slideIndex,
 });
 
 const mapDispatchToProps = (dispatch) => ({
