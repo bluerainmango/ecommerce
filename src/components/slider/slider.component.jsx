@@ -56,6 +56,7 @@ const Slider = (props) => {
             slide={slide}
             currentIndex={i}
             selectedSlideIndex={selectedSlideIndex}
+            originalSlideOrder={slideOrder}
             updatedSlideOrder={updatedSlideOrder}
             // ref={activeSlideRef}
           >
