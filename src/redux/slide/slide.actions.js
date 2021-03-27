@@ -16,3 +16,7 @@ export const updateActiveSlideInfo = (info) => ({
   type: slideTypes.UPDATE_ACTIVE_SLIDE_INFO,
   payload: info,
 });
+
+export const toggleSlideInfo = () => ({
+  type: slideTypes.TOGGLE_SLIDE_INFO,
+});

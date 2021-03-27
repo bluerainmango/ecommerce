@@ -1,35 +1,46 @@
+import city1 from "../../assets/city4.jpeg";
+import city2 from "../../assets/city5.jpeg";
+import city3 from "../../assets/city3.jpeg";
+import city1bg from "../../assets/city1-bg.jpeg";
+import city2bg from "../../assets/city2-bg.jpeg";
+import city3bg from "../../assets/city3-bg.jpeg";
+
 const INITIAL_STATE = {
+  slideIndex: 0,
+  activeSlideInfo: null,
+  toggleSlideInfo: false,
   slides: [
     {
-      title: "Machu Picchu",
-      subtitle: "Peru",
-      description: "Adventure is never far away",
-      image:
+      title: "Meteo City",
+      subtitle: "Kepler-1649c",
+      description:
+        "Lorem nulla do cillum irure aliquip id pariatur enim Lorem est incididunt ipsum cillum. Veniam qui aute ut enim do nostrud labore officia ut mollit labore Lorem esse. Sunt est duis consectetur sit ut est ea est cillum ea aliquip aliqua id labore. Pariatur excepteur sit voluptate commodo quis proident ad et duis ullamco id. Dolore quis cupidatat elit aliqua ad sint sunt do occaecat labore laborum nisi. Consequat voluptate reprehenderit ullamco id nostrud cillum dolore nisi eiusmod fugiat eiusmod reprehenderit. Duis qui proident sit id deserunt commodo labore cillum do adipisicing eiusmod incididunt sunt culpa.",
+      image: city1,
+      bgimage: city1bg,
+      iamge2:
         "https://images.unsplash.com/photo-1571771019784-3ff35f4f4277?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
     },
     {
-      title: "Chamonix",
-      subtitle: "France",
-      description: "Let your dreams come true",
-      image:
+      title: "Beyond Heaven",
+      subtitle: "Luyten B",
+      description:
+        "Nisi eu nulla ea nisi laboris anim exercitation elit. Aliqua eiusmod do Lorem eiusmod cupidatat Lorem dolor excepteur est excepteur duis deserunt reprehenderit. Sunt dolore do laborum irure excepteur occaecat aliquip eiusmod sunt dolore minim do in. Enim sunt elit elit aliqua veniam incididunt velit et. Aute irure est ea eu pariatur eu est.",
+      image: city2,
+      bgimage: city2bg,
+      image2:
         "https://images.unsplash.com/photo-1581836499506-4a660b39478a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
     },
     {
-      title: "Mimisa Rocks",
-      subtitle: "Australia",
-      description: "A piece of heaven",
-      image:
+      title: "Sky Rocks",
+      subtitle: "K2-72e",
+      description:
+        "Veniam consequat duis est est id eiusmod non eiusmod incididunt. Ea eu quis incididunt enim deserunt sint et duis cillum adipisicing. Tempor velit dolore dolor exercitation minim elit incididunt et consequat deserunt id. Minim elit quis ex voluptate cillum ad cupidatat aliqua quis ut. Veniam pariatur duis sunt velit elit nisi consectetur.",
+      image: city3,
+      bgimage: city3bg,
+      image2:
         "https://images.unsplash.com/photo-1566522650166-bd8b3e3a2b4b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
     },
   ],
-  slideIndex: 0,
-  activeSlideInfo: {
-    title: "Machu Picchu",
-    subtitle: "Peru",
-    description: "Adventure is never far away",
-    image:
-      "https://images.unsplash.com/photo-1571771019784-3ff35f4f4277?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
-  },
 };
 
 const slideReducer = (state = INITIAL_STATE, action) => {
@@ -54,6 +65,12 @@ const slideReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         activeSlideInfo: action.payload,
+      };
+
+    case "TOGGLE_SLIDE_INFO":
+      return {
+        ...state,
+        toggleSlideInfo: !state.toggleSlideInfo,
       };
 
     default:

@@ -1,13 +1,18 @@
 .slide {
-  grid-area: 1/-1;
+  // grid-area: 1/-1;
+  // grid-area: 2 / -1;
+  grid-row: 2 / -1;
+  grid-column: 1 / -1;
+  justify-self: center;
   width: 20rem;
   height: 30rem;
   opacity: 0.2;
   margin-top: 5rem;
   background-size: cover;
   background-position: center center;
-
+  border-radius: 2%;
   transition: all 800ms ease-in-out;
+
   z-index: var(--zIndex);
   // z-index: auto;
   // z-index: var(--slideOrder);
@@ -21,6 +26,7 @@
 
   &--active {
     opacity: 1;
+    cursor: pointer;
     //* Variables define
     // -0.5 => Touching effect. Adjusting tilting degree.
     --x: calc(var(--tiltX) - 0.5);
@@ -36,7 +42,7 @@
     &:hover {
       transition: none;
       transform: rotateY(calc(var(--x) * 30deg))
-        rotateX(calc(var(--y) * -30deg)) scale(1);
+        rotateX(calc(var(--y) * -30deg)) scale(1) translateY(-1rem);
     }
   }
 }
@@ -46,20 +52,27 @@
   color: #fff;
   font-size: 2rem;
   text-transform: uppercase;
-  text-shadow: 0 0.6rem 0.3rem #000;
+  text-shadow: 0 0.3rem 0.3rem #000;
 
   //* 3D effect(Z)
   // transform-style: preserve-3d;
   // perspective: 1000px;
 
   transform: translateY(30rem) translateZ(8rem);
-  // transition: all 1s cubic-bezier(0, 1.29, 0.6, 1.38);
+  transition: all 1s cubic-bezier(0, 1.29, 0.6, 1.38);
 }
 
 .slide--active {
   .slide__content {
     transform: translateY(15rem) translateZ(1rem) translateX(-1rem);
-    transition: all 1s cubic-bezier(0, 1.29, 0.6, 1.38);
+    // transition: all 1s cubic-bezier(0, 1.29, 0.6, 1.38);
     // transition: all 1s ease-in-out;
+  }
+
+  .slide__subtitle::before {
+    content: "";
+    border-top: #fff 3px solid;
+    width: 50%;
+    display: block;
   }
 }

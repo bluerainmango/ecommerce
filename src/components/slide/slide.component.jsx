@@ -1,7 +1,10 @@
 import React, { useEffect, useRef } from "react";
 
 import { connect } from "react-redux";
-import { updateActiveSlideInfo } from "../../redux/slide/slide.actions";
+import {
+  updateActiveSlideInfo,
+  toggleSlideInfo,
+} from "../../redux/slide/slide.actions";
 
 import "./slide.styles.scss";
 
@@ -12,6 +15,7 @@ const Slide = (props) => {
     updatedSlideOrder,
     slide,
     updateActiveSlideInfo,
+    toggleSlideInfo,
   } = props;
 
   const activeSlideRef = useRef();
@@ -75,6 +79,7 @@ const Slide = (props) => {
         "--zIndex": (updatedSlideOrder + 10) * 10,
         backgroundImage: `url(${slide.image})`,
       }}
+      onClick={selectedSlideIndex === currentIndex ? toggleSlideInfo : ""}
     >
       <div ref={activeSlideTextRef} className="slide__content">
         <h5 className="slide__title">{slide.title}</h5>
@@ -91,6 +96,9 @@ const Slide = (props) => {
 const mapDispatchToProps = (dispatch) => ({
   updateActiveSlideInfo: (info) => {
     dispatch(updateActiveSlideInfo(info));
+  },
+  toggleSlideInfo: () => {
+    dispatch(toggleSlideInfo());
   },
 });
 

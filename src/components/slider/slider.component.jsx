@@ -21,6 +21,7 @@ const Slider = (props) => {
 
   return (
     <div className="slider">
+      <h2 className="slider__title">Explore your dream place</h2>
       {slides.map((slide, i, arr) => {
         //! 1. Slide order # that each slide will have
         let slideOrder = i - selectedSlideIndex;
@@ -64,10 +65,10 @@ const Slider = (props) => {
       })}
 
       <button className="slider__btn--prev" onClick={moveToPreviousSlide}>
-        Previous
+        &lang;
       </button>
       <button className="slider__btn--next" onClick={moveToNextSlide}>
-        Next
+        &rang;
       </button>
     </div>
   );

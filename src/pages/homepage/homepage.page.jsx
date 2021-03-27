@@ -8,12 +8,12 @@ import SlideInfo from "../../components/slideInfo/slideInfo.component";
 const Homepage = () => {
   return (
     <div>
-      {/* <NavBar />
+      <NavBar />
       <Header />
-      <Collection />
-      <Discover /> */}
       <Slider />
-      {/* <SlideInfo /> */}
+      <SlideInfo />
+      <Collection />
+      <Discover />
     </div>
   );
 };

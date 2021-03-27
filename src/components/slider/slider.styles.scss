@@ -1,33 +1,54 @@
-.slider {
-  display: grid;
-  justify-content: center;
+@import "../../global.style.scss";
 
-  height: 50rem;
+.slider {
+  height: 100vh;
+
+  display: grid;
+  grid-template-rows: min-content min-content;
+  justify-content: center;
+  align-content: center;
+
   background-color: rgb(0, 0, 0);
+  // background-color: rgb(255, 255, 255);
   position: relative;
-  margin-top: 2rem;
+  // padding-bottom: 1rem;
   font-size: 1.2rem;
+  color: #fff;
+  text-transform: uppercase;
 
   transform-style: preserve-3d;
   perspective: 1000px;
 
   mix-blend-mode: overlay;
 
+  &__title {
+    // @include subTitle;
+    margin-bottom: 5rem;
+  }
+
   &__btn--prev,
   &__btn--next {
     position: absolute;
-    top: 50%;
+    top: 55%;
     padding: 1rem;
-    z-index: 10;
+    z-index: 200;
+    font-size: 5rem;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    color: #fff;
   }
 
   &__btn--prev {
     left: 0;
-    margin-left: 10rem;
+    margin-left: 20%;
   }
 
   &__btn--next {
     right: 0;
-    margin-right: 10rem;
+    margin-right: 20%;
   }
 }
