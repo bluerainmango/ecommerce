@@ -3,8 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { updateActiveSlideInfo } from "../../redux/slide/slide.actions";
 
-import SlideInfo from "../slideInfo/slideInfo.component";
-
 import "./slide.styles.scss";
 
 const Slide = (props) => {
@@ -16,10 +14,10 @@ const Slide = (props) => {
     updateActiveSlideInfo,
   } = props;
 
-  const activeSlideRef = useRef(null);
-  const activeSlideTextRef = useRef(null);
+  const activeSlideRef = useRef();
+  const activeSlideTextRef = useRef();
 
-  //!🛸 Attach event listner to ACTIVE slide for tilting effect when hovering
+  //! 🛸 Attach event listner to ACTIVE slide for tilting effect when hovering
   useEffect(() => {
     if (selectedSlideIndex !== currentIndex) return;
 
@@ -57,31 +55,12 @@ const Slide = (props) => {
     };
   }, [selectedSlideIndex, currentIndex]);
 
+  //! 📄 Store current active slide into Redux
   useEffect(() => {
     if (currentIndex !== selectedSlideIndex) return;
 
     updateActiveSlideInfo(slide);
-  }, [selectedSlideIndex, slide]);
-
-  // useEffect(() => {
-  //   console.log("useEffect of update active");
-  //   if (selectedSlideIndex !== currentIndex) return;
-
-  //   updateActiveSlideInfo(slide);
-  // }, [slide, updateActiveSlideInfo, slideInfo]);
-
-  // useEffect(() => {
-  //   if (selectedSlideIndex !== currentIndex) return;
-
-  //   const textDOM = activeSlideTextRef.current;
-  //   console.log(textDOM);
-
-  //   const html = `<h5 className="text__title">${selectedSlideIndex}</h5>
-  //   <h6 className="text__subtitle">${slide.subtitle}</h6>
-  //   `;
-
-  //   textDOM.insertAdjacentHTML("afterbegin", html);
-  // }, [selectedSlideIndex, currentIndex]);
+  }, [selectedSlideIndex, slide, currentIndex, updateActiveSlideInfo]);
 
   return (
     <div
@@ -95,19 +74,12 @@ const Slide = (props) => {
           updatedSlideOrder === 0 ? 0 : updatedSlideOrder > 0 ? 1 : -1,
         "--zIndex": (updatedSlideOrder + 10) * 10,
         backgroundImage: `url(${slide.image})`,
-        "--textAnimation": 2,
       }}
     >
-      {console.log("🍅 slide reredner")}
       <div ref={activeSlideTextRef} className="slide__content">
         <h5 className="slide__title">{slide.title}</h5>
         <h6 className="slide__subtitle">{slide.subtitle}</h6>
       </div>
-      {/* <SlideInfo
-        selectedSlideIndex={selectedSlideIndex}
-        currentIndex={currentIndex}
-        updatedSlideOrder={updatedSlideOrder}
-      /> */}
     </div>
   );
 };

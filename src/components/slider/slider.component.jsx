@@ -8,7 +8,6 @@ import {
 } from "../../redux/slide/slide.actions";
 
 import Slide from "../slide/slide.component";
-import SlideInfo from "../slideInfo/slideInfo.component";
 
 import "./slider.styles.scss";
 
@@ -18,7 +17,6 @@ const Slider = (props) => {
     moveToNextSlide,
     moveToPreviousSlide,
     selectedSlideIndex,
-    activeSlideInfo,
   } = props;
 
   return (
@@ -65,20 +63,10 @@ const Slider = (props) => {
         );
       })}
 
-      {/* {slides.map((slide, i, arr) => {
-        return <SlideInfo slide={slide} />;
-      })} */}
-      {/* 
-      <SlideInfo /> */}
       <button className="slider__btn--prev" onClick={moveToPreviousSlide}>
         Previous
       </button>
-      {console.log("🍉 actvie slide info: ", slides[selectedSlideIndex])}
-      <button
-        className="slider__btn--next"
-        // onClick={moveToNextSlide(slides[selectedSlideIndex])}
-        onClick={moveToNextSlide}
-      >
+      <button className="slider__btn--next" onClick={moveToNextSlide}>
         Next
       </button>
     </div>
@@ -88,23 +76,14 @@ const Slider = (props) => {
 const mapStateToProps = (state) => ({
   slides: state.slides.slides,
   selectedSlideIndex: state.slides.slideIndex,
-  activeSlideInfo: state.slides.activeSlideInfo,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   moveToNextSlide: () => {
     dispatch(nextSlide());
-
-    // return () => {
-    //   dispatch(nextSlide());
-    //   dispatch(updateActiveSlideInfo(info));
-    // };
   },
   moveToPreviousSlide: (info) => {
     dispatch(previousSlide());
-    dispatch(updateActiveSlideInfo(info));
-  },
-  updateActiveSlideInfo: (info) => {
     dispatch(updateActiveSlideInfo(info));
   },
 });
