@@ -11,3 +11,8 @@ export const nextSlide = () => ({
 export const previousSlide = () => ({
   type: slideTypes.PREVIOUS_SLIDE,
 });
+
+export const updateActiveSlideInfo = (info) => ({
+  type: slideTypes.UPDATE_ACTIVE_SLIDE_INFO,
+  payload: info,
+});

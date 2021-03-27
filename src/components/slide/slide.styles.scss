@@ -2,14 +2,14 @@
   grid-area: 1/-1;
   width: 20rem;
   height: 30rem;
-  opacity: 0.9;
+  opacity: 0.3;
   margin: 5rem;
   // border: 1px solid black;
   transition: all 800ms ease-in-out;
   background-size: cover;
   background-position: center center;
   // backface-visibility: hidden;
-  z-index: var(--zIndex);
+  // z-index: var(--zIndex);
   // z-index: auto;
   // z-index: var(--slideOrder);
 
@@ -17,64 +17,51 @@
   transform: translateX(calc(100% * var(--slideOrder)))
     rotateY(calc(-30deg * var(--tiltDirection))) scale(0.95);
 
+  // transform-style: preserve-3d;
+  // perspective: 1000px;
+
   &--active {
     // border: red 1px solid;
-
-    //! Variables define: - 0.5 => Touching effect. Adjusting tilting degree.
+    opacity: 1;
+    //* Variables define: - 0.5 => Touching effect. Adjusting tilting degree.
     --x: calc(var(--tiltX) - 0.5);
     --y: calc(var(--tiltY) - 0.5);
 
     pointer-events: auto;
 
-    //! Set to give 3D effect to its children(text)
+    //* Set to give 3D effect to its children(text)
     transform-style: preserve-3d;
 
-    //! Lower value, more tilting effect(3D).
+    //* Lower value, more tilting effect(3D).
     // Set to high so prevent from too much tilting.
-    // perspective: 800px;
+    perspective: 800px;
 
-    .slide__content {
-      opacity: 1;
-
-      //! 3D effect(Z)
-      // perspective: 1000px;
-
-      transform: perspective(800px) translateZ(5rem);
-      text-shadow: 0 1rem 1rem #000;
-    }
-
+    //! Tilting Effect
     &:hover {
-      //! tilting effect
       transition: none;
       transform: rotateY(calc(var(--x) * 30deg))
         rotateX(calc(var(--y) * -30deg)) scale(1);
     }
   }
+}
 
-  &__content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 10rem;
-    transition: opacity 0.3s linear;
+//! Text Animation
+.slide__content {
+  color: #fff;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-shadow: 0 0.6rem 0.3rem #000;
 
-    opacity: 0;
+  //* 3D effect(Z)
+  transform-style: preserve-3d;
+  perspective: 1000px;
 
-    // //! 3D effect(Z)
-    // perspective: 800px;
-    // transform: translateZ(3rem);
-    // text-shadow: 0 0.5rem 1rem #000;
-  }
+  transform: translateY(30rem) translateZ(8rem);
+  transition: all 1s cubic-bezier(0, 1.29, 0.6, 1.38);
+}
 
-  &__title {
-    font-size: 2rem;
-    color: #fff;
-    text-transform: uppercase;
-  }
-
-  &__subtitle {
-    font-size: 1.5rem;
-    color: #fff;
+.slide--active {
+  .slide__content {
+    transform: translateY(15rem) translateZ(1rem) translateX(-1rem);
   }
 }

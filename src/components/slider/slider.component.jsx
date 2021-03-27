@@ -1,9 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 
 import { connect } from "react-redux";
-import { nextSlide, previousSlide } from "../../redux/slide/slide.actions";
+import {
+  nextSlide,
+  previousSlide,
+  updateActiveSlideInfo,
+} from "../../redux/slide/slide.actions";
 
 import Slide from "../slide/slide.component";
+import SlideInfo from "../slideInfo/slideInfo.component";
 
 import "./slider.styles.scss";
 
@@ -13,9 +18,8 @@ const Slider = (props) => {
     moveToNextSlide,
     moveToPreviousSlide,
     selectedSlideIndex,
+    activeSlideInfo,
   } = props;
-
-  // const activeSlideRef = useRef();
 
   return (
     <div className="slider">
@@ -56,18 +60,25 @@ const Slider = (props) => {
             slide={slide}
             currentIndex={i}
             selectedSlideIndex={selectedSlideIndex}
-            originalSlideOrder={slideOrder}
             updatedSlideOrder={updatedSlideOrder}
-            // ref={activeSlideRef}
-          >
-            {/* <img alt="slide.title" src={slide.image} /> */}
-          </Slide>
+          />
         );
       })}
+
+      {/* {slides.map((slide, i, arr) => {
+        return <SlideInfo slide={slide} />;
+      })} */}
+      {/* 
+      <SlideInfo /> */}
       <button className="slider__btn--prev" onClick={moveToPreviousSlide}>
         Previous
       </button>
-      <button className="slider__btn--next" onClick={moveToNextSlide}>
+      {console.log("🍉 actvie slide info: ", slides[selectedSlideIndex])}
+      <button
+        className="slider__btn--next"
+        // onClick={moveToNextSlide(slides[selectedSlideIndex])}
+        onClick={moveToNextSlide}
+      >
         Next
       </button>
     </div>
@@ -77,14 +88,24 @@ const Slider = (props) => {
 const mapStateToProps = (state) => ({
   slides: state.slides.slides,
   selectedSlideIndex: state.slides.slideIndex,
+  activeSlideInfo: state.slides.activeSlideInfo,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   moveToNextSlide: () => {
     dispatch(nextSlide());
+
+    // return () => {
+    //   dispatch(nextSlide());
+    //   dispatch(updateActiveSlideInfo(info));
+    // };
   },
-  moveToPreviousSlide: () => {
+  moveToPreviousSlide: (info) => {
     dispatch(previousSlide());
+    dispatch(updateActiveSlideInfo(info));
+  },
+  updateActiveSlideInfo: (info) => {
+    dispatch(updateActiveSlideInfo(info));
   },
 });
 

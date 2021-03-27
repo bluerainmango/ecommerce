@@ -23,6 +23,13 @@ const INITIAL_STATE = {
     },
   ],
   slideIndex: 0,
+  activeSlideInfo: {
+    title: "Machu Picchu",
+    subtitle: "Peru",
+    description: "Adventure is never far away",
+    image:
+      "https://images.unsplash.com/photo-1571771019784-3ff35f4f4277?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
+  },
 };
 
 const slideReducer = (state = INITIAL_STATE, action) => {
@@ -35,13 +42,18 @@ const slideReducer = (state = INITIAL_STATE, action) => {
       };
 
     case "PREVIOUS_SLIDE":
-      console.log("prev");
       return {
         ...state,
         slideIndex:
           state.slideIndex === 0
             ? state.slides.length - 1
             : state.slideIndex - 1,
+      };
+
+    case "UPDATE_ACTIVE_SLIDE_INFO":
+      return {
+        ...state,
+        activeSlideInfo: action.payload,
       };
 
     default:

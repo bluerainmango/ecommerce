@@ -1,5 +1,10 @@
 import React, { useEffect, useRef } from "react";
 
+import { connect } from "react-redux";
+import { updateActiveSlideInfo } from "../../redux/slide/slide.actions";
+
+import SlideInfo from "../slideInfo/slideInfo.component";
+
 import "./slide.styles.scss";
 
 const Slide = (props) => {
@@ -7,11 +12,12 @@ const Slide = (props) => {
     selectedSlideIndex,
     currentIndex,
     updatedSlideOrder,
-    originalSlideOrder,
     slide,
+    updateActiveSlideInfo,
   } = props;
 
-  const activeSlideRef = useRef();
+  const activeSlideRef = useRef(null);
+  const activeSlideTextRef = useRef(null);
 
   //!🛸 Attach event listner to ACTIVE slide for tilting effect when hovering
   useEffect(() => {
@@ -51,6 +57,32 @@ const Slide = (props) => {
     };
   }, [selectedSlideIndex, currentIndex]);
 
+  useEffect(() => {
+    if (currentIndex !== selectedSlideIndex) return;
+
+    updateActiveSlideInfo(slide);
+  }, [selectedSlideIndex, slide]);
+
+  // useEffect(() => {
+  //   console.log("useEffect of update active");
+  //   if (selectedSlideIndex !== currentIndex) return;
+
+  //   updateActiveSlideInfo(slide);
+  // }, [slide, updateActiveSlideInfo, slideInfo]);
+
+  // useEffect(() => {
+  //   if (selectedSlideIndex !== currentIndex) return;
+
+  //   const textDOM = activeSlideTextRef.current;
+  //   console.log(textDOM);
+
+  //   const html = `<h5 className="text__title">${selectedSlideIndex}</h5>
+  //   <h6 className="text__subtitle">${slide.subtitle}</h6>
+  //   `;
+
+  //   textDOM.insertAdjacentHTML("afterbegin", html);
+  // }, [selectedSlideIndex, currentIndex]);
+
   return (
     <div
       ref={activeSlideRef}
@@ -63,15 +95,31 @@ const Slide = (props) => {
           updatedSlideOrder === 0 ? 0 : updatedSlideOrder > 0 ? 1 : -1,
         "--zIndex": (updatedSlideOrder + 10) * 10,
         backgroundImage: `url(${slide.image})`,
+        "--textAnimation": 2,
       }}
     >
-      <div className="slide__content">
+      {console.log("🍅 slide reredner")}
+      <div ref={activeSlideTextRef} className="slide__content">
         <h5 className="slide__title">{slide.title}</h5>
         <h6 className="slide__subtitle">{slide.subtitle}</h6>
-        <p>{updatedSlideOrder}</p>
       </div>
+      {/* <SlideInfo
+        selectedSlideIndex={selectedSlideIndex}
+        currentIndex={currentIndex}
+        updatedSlideOrder={updatedSlideOrder}
+      /> */}
     </div>
   );
 };
 
-export default Slide;
+// const mapStateToProps = (state) => ({
+//   slideInfo: state.slides.activeSlideInfo,
+// });
+
+const mapDispatchToProps = (dispatch) => ({
+  updateActiveSlideInfo: (info) => {
+    dispatch(updateActiveSlideInfo(info));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(Slide);
