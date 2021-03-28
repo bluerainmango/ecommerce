@@ -4,13 +4,7 @@ import { connect } from "react-redux";
 import "./slideInfo.styles.scss";
 
 const SlideInfo = (props) => {
-  const {
-    activeSlideInfo,
-    selectedSlideIndex,
-    currentIndex,
-    updatedSlideOrder,
-    toggleSlideInfo,
-  } = props;
+  const { activeSlideInfo, toggleSlideInfo } = props;
 
   return (
     <div

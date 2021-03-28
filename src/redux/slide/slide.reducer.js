@@ -46,7 +46,6 @@ const INITIAL_STATE = {
 const slideReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "NEXT_SLIDE":
-      console.log("next");
       return {
         ...state,
         slideIndex: (state.slideIndex + 1) % state.slides.length,

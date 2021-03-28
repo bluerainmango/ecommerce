@@ -34,19 +34,16 @@ const Slider = (props) => {
         const calSlideOrder = (slideOrder, maxSlideOrder, arr) => {
           //* a. less than max => no change to slideOrder
           if (Math.abs(slideOrder) < maxSlideOrder) {
-            console.log("🍌 no problem: ", slideOrder);
             return slideOrder;
           }
 
           //* b. more than max(+num) => move the slide to leftside
           if (slideOrder > 0) {
-            console.log("🍎 over 3 so become:", slideOrder - arr.length);
             return slideOrder - arr.length;
           }
 
           //* c. more than max(-num) => move the slide to rightside
           if (slideOrder < 0) {
-            console.log("🍏 less 3 so become:", slideOrder + arr.length);
             return slideOrder + arr.length;
           }
         };
@@ -57,8 +54,6 @@ const Slider = (props) => {
           <Slide
             key={`slide-${i}`}
             slide={slide}
-            currentIndex={i}
-            selectedSlideIndex={selectedSlideIndex}
             updatedSlideOrder={updatedSlideOrder}
           />
         );

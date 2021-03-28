@@ -10,20 +10,20 @@ import "./slide.styles.scss";
 
 const Slide = (props) => {
   const {
-    selectedSlideIndex,
-    currentIndex,
     updatedSlideOrder,
     slide,
     updateActiveSlideInfo,
-    toggleSlideInfo,
+    toggleSlideInfoAndScroll,
+    stateToggleSlideInfo,
   } = props;
 
   const activeSlideRef = useRef();
   const activeSlideTextRef = useRef();
+  const scrollToSliderRef = useRef();
 
   //! 🛸 Attach event listner to ACTIVE slide for tilting effect when hovering
   useEffect(() => {
-    if (selectedSlideIndex !== currentIndex) return;
+    if (updatedSlideOrder) return;
 
     const activeSlideDOM = activeSlideRef.current;
 
@@ -43,10 +43,9 @@ const Slide = (props) => {
       state.clientX = e.clientX;
       state.clientY = e.clientY;
 
+      // 0 - 1 value
       const tiltX = (state.clientX - state.rect.left) / state.rect.width;
       const tiltY = (state.clientY - state.rect.top) / state.rect.height;
-
-      console.log("🍊 DOMElstate:", tiltX, tiltY); // 0 - 1 value
 
       activeSlideDOM.style.setProperty("--tiltX", tiltX);
       activeSlideDOM.style.setProperty("--tiltY", tiltY);
@@ -57,21 +56,19 @@ const Slide = (props) => {
     return () => {
       activeSlideDOM.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [selectedSlideIndex, currentIndex]);
+  }, [updatedSlideOrder]);
 
   //! 📄 Store current active slide into Redux
   useEffect(() => {
-    if (currentIndex !== selectedSlideIndex) return;
+    if (updatedSlideOrder) return;
 
     updateActiveSlideInfo(slide);
-  }, [selectedSlideIndex, slide, currentIndex, updateActiveSlideInfo]);
+  }, [updatedSlideOrder, slide, updateActiveSlideInfo]);
 
   return (
     <div
       ref={activeSlideRef}
-      className={
-        selectedSlideIndex === currentIndex ? "slide slide--active" : "slide"
-      }
+      className={!updatedSlideOrder ? "slide slide--active" : "slide"}
       style={{
         "--slideOrder": updatedSlideOrder,
         "--tiltDirection":
@@ -79,8 +76,13 @@ const Slide = (props) => {
         "--zIndex": (updatedSlideOrder + 10) * 10,
         backgroundImage: `url(${slide.image})`,
       }}
-      onClick={selectedSlideIndex === currentIndex ? toggleSlideInfo : ""}
+      onClick={toggleSlideInfoAndScroll(
+        updatedSlideOrder,
+        scrollToSliderRef,
+        stateToggleSlideInfo
+      )}
     >
+      <div className="scrollTo--slider" ref={scrollToSliderRef} />
       <div ref={activeSlideTextRef} className="slide__content">
         <h5 className="slide__title">{slide.title}</h5>
         <h6 className="slide__subtitle">{slide.subtitle}</h6>
@@ -89,17 +91,28 @@ const Slide = (props) => {
   );
 };
 
-// const mapStateToProps = (state) => ({
-//   slideInfo: state.slides.activeSlideInfo,
-// });
+const mapStateToProps = (state) => ({
+  stateToggleSlideInfo: state.slides.toggleSlideInfo,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   updateActiveSlideInfo: (info) => {
     dispatch(updateActiveSlideInfo(info));
   },
-  toggleSlideInfo: () => {
-    dispatch(toggleSlideInfo());
+  toggleSlideInfoAndScroll: (order, ref, toggle) => {
+    //* If current slide is not an active one(not 0), return.
+    if (order) return;
+
+    return () => {
+      //* Dispatch Action(toggle slide info - true/false)
+      dispatch(toggleSlideInfo());
+
+      //* Smooth Scroll to slider top(when only opening)
+      if (toggle) return;
+      const scrollToSliderDOM = ref.current;
+      scrollToSliderDOM?.scrollIntoView({ behavior: "smooth" });
+    };
   },
 });
 
-export default connect(null, mapDispatchToProps)(Slide);
+export default connect(mapStateToProps, mapDispatchToProps)(Slide);

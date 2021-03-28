@@ -7,8 +7,6 @@ import { connect } from "react-redux";
 import "./collection.styles.scss";
 
 const Collection = ({ planets }) => {
-  console.log(planets);
-
   return (
     <div className="collection">
       <h2 className="collection__title">Planets</h2>
