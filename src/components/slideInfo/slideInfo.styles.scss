@@ -1,4 +1,6 @@
 .slideInfo {
+  position: relative;
+  background-color: black;
   color: #fff;
   width: 100vw;
   height: 70vh;
@@ -9,17 +11,82 @@
   //     url("https://images.unsplash.com/photo-1571771019784-3ff35f4f4277?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ");
 
   display: grid;
-  grid-template-columns: 1fr 45rem 45rem 1fr;
+  grid-template-columns: 1fr minmax(20rem, 65rem) 1fr;
+  grid-template-rows: min-content min-content;
   justify-content: center;
-  align-content: center;
+  align-content: start;
+  justify-items: center;
+  gap: 1rem;
 
   &__img {
     // width: 5rem;
     grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    // width: 65rem;
+    height: 20rem;
     width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 2px;
+    opacity: 0;
+
+    transition: all 2s ease-in-out;
   }
 
   &__content {
-    grid-column: 3 / span 1;
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+    font-size: 1.3rem;
+    // width: 65rem;
+  }
+
+  &__img,
+  &__content {
+    animation: fadeIn 2s;
+  }
+}
+
+//! Line Drop Animation
+.line {
+  position: absolute;
+  // height: 20rem;
+  // width: 100vw;
+  // top: -30%;
+  left: 50%;
+  z-index: -100;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 100px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      #ffffff 80%,
+      #ffffff 100%
+    );
+  }
+  animation: drop 3s 0.1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.19, 0.81, 0.31, 1.1);
+}
+
+@keyframes drop {
+  0% {
+    top: -23%;
+  }
+
+  100% {
+    top: 0%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

@@ -14,7 +14,7 @@ const INITIAL_STATE = {
       title: "Meteo City",
       subtitle: "Kepler-1649c",
       description:
-        "Lorem nulla do cillum irure aliquip id pariatur enim Lorem est incididunt ipsum cillum. Veniam qui aute ut enim do nostrud labore officia ut mollit labore Lorem esse. Sunt est duis consectetur sit ut est ea est cillum ea aliquip aliqua id labore. Pariatur excepteur sit voluptate commodo quis proident ad et duis ullamco id. Dolore quis cupidatat elit aliqua ad sint sunt do occaecat labore laborum nisi. Consequat voluptate reprehenderit ullamco id nostrud cillum dolore nisi eiusmod fugiat eiusmod reprehenderit. Duis qui proident sit id deserunt commodo labore cillum do adipisicing eiusmod incididunt sunt culpa.",
+        "Lorem nulla do cillum irure aliquip id pariatur enim Lorem est incididunt ipsum cillum. Veniam qui aute ut enim do nostrud labore officia ut mollit labore Lorem esse. ",
       image: city1,
       bgimage: city1bg,
       iamge2:
@@ -24,7 +24,7 @@ const INITIAL_STATE = {
       title: "Beyond Heaven",
       subtitle: "Luyten B",
       description:
-        "Nisi eu nulla ea nisi laboris anim exercitation elit. Aliqua eiusmod do Lorem eiusmod cupidatat Lorem dolor excepteur est excepteur duis deserunt reprehenderit. Sunt dolore do laborum irure excepteur occaecat aliquip eiusmod sunt dolore minim do in. Enim sunt elit elit aliqua veniam incididunt velit et. Aute irure est ea eu pariatur eu est.",
+        "Nisi eu nulla ea nisi laboris anim exercitation elit. Aliqua eiusmod do Lorem eiusmod cupidatat Lorem dolor excepteur est excepteur duis deserunt reprehenderit.",
       image: city2,
       bgimage: city2bg,
       image2:
@@ -34,7 +34,7 @@ const INITIAL_STATE = {
       title: "Sky Rocks",
       subtitle: "K2-72e",
       description:
-        "Veniam consequat duis est est id eiusmod non eiusmod incididunt. Ea eu quis incididunt enim deserunt sint et duis cillum adipisicing. Tempor velit dolore dolor exercitation minim elit incididunt et consequat deserunt id. Minim elit quis ex voluptate cillum ad cupidatat aliqua quis ut. Veniam pariatur duis sunt velit elit nisi consectetur.",
+        "Veniam consequat duis est est id eiusmod non eiusmod incididunt. Ea eu quis incididunt enim deserunt sint et duis cillum adipisicing. Tempor velit dolore dolor exercitation minim elit incididunt et consequat deserunt id.",
       image: city3,
       bgimage: city3bg,
       image2:
