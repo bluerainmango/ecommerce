@@ -28,6 +28,8 @@ const SlideInfo = (props) => {
         {/* <h5 className="slideInfo__title">{activeSlideInfo?.title}</h5>
         <h6 className="slideInfo__subtitle">{activeSlideInfo?.subtitle}</h6> */}
         <p className="slideInfo__description">{activeSlideInfo?.description}</p>
+        <button>Add to cart</button>
+        <button>Explore detail</button>
       </div>
     </div>
   );

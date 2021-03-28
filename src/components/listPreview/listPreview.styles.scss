@@ -1,0 +1,9 @@
+.list__preview {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 1;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}

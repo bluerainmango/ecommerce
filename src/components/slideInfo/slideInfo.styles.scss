@@ -3,7 +3,8 @@
   background-color: black;
   color: #fff;
   width: 100vw;
-  height: 70vh;
+  padding-bottom: 10rem;
+  // height: 70vh;
   font-size: 1.7rem;
   background-position: top;
   background-size: cover;
@@ -38,6 +39,10 @@
     grid-row: 2 / span 1;
     font-size: 1.3rem;
     // width: 65rem;
+
+    button {
+      padding: 0.5rem 1rem;
+    }
   }
 
   &__img,
