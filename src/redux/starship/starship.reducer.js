@@ -5,13 +5,42 @@ import starship4 from "../../assets/starship4.png";
 import starship5 from "../../assets/starship5.png";
 
 const INITIAL_STATE = {
-  activeStarship: { name: "AE-23", image: starship1 },
+  activeStarship: {
+    name: "AE-23",
+    image: starship1,
+    description: "Qui duis ut amet aliqua in ut incididunt velit elit in duis.",
+  },
   starships: [
-    { name: "AE-23", image: starship1 },
-    { name: "Gost19", image: starship2 },
-    { name: "Star Cruise", image: starship3 },
-    { name: "BT-7", image: starship4 },
-    { name: "X-wing", image: starship5 },
+    {
+      name: "AE-23",
+      image: starship1,
+      description:
+        "Qui duis ut amet aliqua in ut incididunt velit elit in duis.",
+    },
+    {
+      name: "Ghost19",
+      image: starship2,
+      description: "Magna laboris et sit sit.",
+    },
+
+    {
+      name: "BT-7",
+      image: starship4,
+      description:
+        "Sit est reprehenderit consequat minim aliquip deserunt id aliqua nisi adipisicing quis amet anim.",
+    },
+    {
+      name: "X-wing",
+      image: starship5,
+      description:
+        "Sunt quis ea aute ullamco veniam proident eu qui do fugiat qui.",
+    },
+    {
+      name: "Star Cruise",
+      image: starship3,
+      description:
+        "Sint tempor nisi ad dolore eu fugiat enim nulla enim quis amet.",
+    },
   ],
 };
 

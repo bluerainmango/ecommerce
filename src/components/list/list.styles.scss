@@ -2,9 +2,10 @@
   background-color: rgb(0, 0, 0);
 
   display: grid;
-  grid-template-columns: 1fr minmax(10rem, 50rem) minmax(10rem, 25rem) 1fr;
-  grid-template-rows: min-content min-content;
+  grid-template-columns: 1fr minmax(10rem, 40rem) minmax(10rem, 35rem) 1fr;
+  grid-template-rows: min-content minmax(10rem, 40rem);
   justify-items: center;
+
   padding: 0 auto;
 
   &__title {
@@ -14,6 +15,7 @@
     color: #fff;
     font-size: 1.8rem;
     text-transform: uppercase;
+    margin-bottom: 7rem;
   }
 
   &__group {
@@ -21,9 +23,12 @@
     grid-column: 3 / span 1;
     //! Neutralize parent's {justfy-item: center}
     justify-self: normal;
+    align-self: start;
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    justify-items: center;
+    // grid-template-rows: repeat(auto-fit, min-content);
+    // justify-items: center;
+    gap: 2rem;
   }
 }

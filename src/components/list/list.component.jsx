@@ -10,10 +10,9 @@ import "./list.styles.scss";
 const List = (props) => {
   const { starships } = props;
 
-  //   console.log(starships);
   return (
     <div className="list">
-      <h2 className="list__title">Select your starship</h2>
+      <h2 className="list__title">Discover your starship</h2>
       <ListPreview />
       <div className="list__group">
         {starships.map((starship) => (
