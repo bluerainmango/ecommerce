@@ -1,13 +1,21 @@
 import React from "react";
 
+import { connect } from "react-redux";
+
 import "./listPreview.styles.scss";
 
-const ListPreview = ({ starship }) => {
+const ListPreview = (props) => {
+  const { activeStarship } = props;
+
   return (
     <div className="list__preview">
-      <img src={starship.image} alt={starship.name}></img>
+      <img src={activeStarship?.image} alt={activeStarship?.name}></img>
     </div>
   );
 };
 
-export default ListPreview;
+const mapStateToProps = (state) => ({
+  activeStarship: state.starships.activeStarship,
+});
+
+export default connect(mapStateToProps)(ListPreview);

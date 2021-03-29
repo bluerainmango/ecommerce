@@ -14,7 +14,7 @@ const List = (props) => {
   return (
     <div className="list">
       <h2 className="list__title">Select your starship</h2>
-      <ListPreview starship={starships[0]} />
+      <ListPreview />
       <div className="list__group">
         {starships.map((starship) => (
           <ListElement key={starship.name} starship={starship} />

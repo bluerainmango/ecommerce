@@ -5,6 +5,7 @@ import starship4 from "../../assets/starship4.png";
 import starship5 from "../../assets/starship5.png";
 
 const INITIAL_STATE = {
+  activeStarship: { name: "AE-23", image: starship1 },
   starships: [
     { name: "AE-23", image: starship1 },
     { name: "Gost19", image: starship2 },
@@ -15,9 +16,12 @@ const INITIAL_STATE = {
 };
 
 const starshipReducer = (state = INITIAL_STATE, action) => {
-  switch (state.type) {
+  switch (action.type) {
     case "GET_STARSHIPS":
       return state;
+
+    case "UPDATE_ACTIVE_STARSHIP":
+      return { ...state, activeStarship: action.payload };
 
     default:
       return state;
