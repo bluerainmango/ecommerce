@@ -1,9 +1,11 @@
 .list {
+  height: 100vh;
   background-color: rgb(0, 0, 0);
 
   display: grid;
   grid-template-columns: 1fr minmax(10rem, 40rem) minmax(10rem, 35rem) 1fr;
   grid-template-rows: min-content minmax(10rem, 40rem);
+  align-content: center;
   justify-items: center;
 
   padding: 0 auto;

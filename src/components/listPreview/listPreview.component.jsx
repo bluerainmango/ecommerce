@@ -18,6 +18,8 @@ const ListPreview = (props) => {
       <div className="preview__info">
         <h4 className="preview__title">{activeStarship?.name}</h4>
         <h5 className="preview__description">{activeStarship?.description}</h5>
+        <button>Add to journey</button>
+        <button>Learn More</button>
       </div>
     </div>
   );
