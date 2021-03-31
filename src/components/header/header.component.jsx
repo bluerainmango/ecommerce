@@ -20,7 +20,7 @@ const Header = () => {
         <source src="./media/2.mp4" type="video/mp4" />
       </video>
       <div className="header__content">
-        <h1>Welcome to your dream home in userverse</h1>
+        <h1>Welcome To Your Dreamy Journey</h1>
       </div>
     </div>
   );

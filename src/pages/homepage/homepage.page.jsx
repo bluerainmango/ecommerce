@@ -5,12 +5,14 @@ import Discover from "../../components/discover/discover.component";
 import Slider from "../../components/slider/slider.component";
 import SlideInfo from "../../components/slideInfo/slideInfo.component";
 import List from "../../components/list/list.component";
+import Banner from "../../components/banner/banner.component";
 
 const Homepage = () => {
   return (
     <div>
       <NavBar />
       <Header />
+      <Banner />
       <Slider />
       <SlideInfo />
       <List />

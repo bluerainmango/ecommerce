@@ -1,0 +1,63 @@
+.banner {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  //   flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+
+  &__img {
+    display: flex;
+    flex-direction: column;
+
+    transition: all 1s cubic-bezier(0.27, -0.49, 0, 2.02);
+
+    .banner__photo {
+      &--planets {
+        width: 20rem;
+      }
+
+      &--astronaut {
+        width: 40rem;
+        z-index: 10;
+        transform: scaleX(-1);
+        position: absolute;
+      }
+    }
+  }
+
+  &__context {
+    margin: 0 3rem;
+  }
+
+  &__pretitle {
+    font-size: 3rem;
+    font-weight: 200;
+  }
+
+  &__title {
+    font-size: 4rem;
+    font-weight: 200;
+  }
+
+  &__paragraph {
+    font-size: 2rem;
+    font-weight: 200;
+  }
+}
+
+//! Second banner
+.banner--second {
+  flex-direction: row-reverse;
+
+  .banner__context {
+    margin-top: 5rem;
+  }
+}
+
+.banner--hidden {
+  opacity: 0;
+  transform: translateY(10rem);
+}
