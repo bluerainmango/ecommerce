@@ -14,7 +14,7 @@ const Banner = () => {
   useEffect(() => {
     const revealBanner = (entries, observer) => {
       const [entry] = entries;
-      console.log("🍔 entries", entry);
+      // console.log("🍔 entries", entry);
 
       if (!entry.isIntersecting) return;
 
@@ -24,12 +24,12 @@ const Banner = () => {
 
     const bannerObserver = new IntersectionObserver(revealBanner, {
       root: null,
-      rootMargin: "0px 0px 0px 0px",
       threshold: 0.5,
     });
 
-    bannerObserver.observe(bannerImg1.current);
-    bannerObserver.observe(bannerImg2.current);
+    [bannerImg1, bannerImg2].forEach((img) => {
+      bannerObserver.observe(img.current);
+    });
   }, []);
 
   return (

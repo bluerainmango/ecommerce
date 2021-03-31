@@ -16,8 +16,8 @@ const Homepage = () => {
       <Slider />
       <SlideInfo />
       <List />
-      <Collection />
-      <Discover />
+      {/* <Collection />
+      <Discover /> */}
     </div>
   );
 };

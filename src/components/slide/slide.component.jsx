@@ -20,8 +20,9 @@ const Slide = (props) => {
   const activeSlideRef = useRef();
   const activeSlideTextRef = useRef();
   const scrollToSliderRef = useRef();
+  // const slideRef = useRef();
 
-  //! 🛸 Attach event listner to ACTIVE slide for tilting effect when hovering
+  //! Attach event listner to ACTIVE slide for tilting effect when hovering
   useEffect(() => {
     if (updatedSlideOrder) return;
 
@@ -58,17 +59,43 @@ const Slide = (props) => {
     };
   }, [updatedSlideOrder]);
 
-  //! 📄 Store current active slide into Redux
+  //! Store current active slide into Redux
   useEffect(() => {
     if (updatedSlideOrder) return;
 
     updateActiveSlideInfo(slide);
   }, [updatedSlideOrder, slide, updateActiveSlideInfo]);
 
+  //! Scroll animation
+  useEffect(() => {
+    const revealSlide = (entries, observer) => {
+      const [entry] = entries;
+
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.remove("slide--hidden");
+      observer.unobserve(entry.target);
+    };
+
+    const option = {
+      root: null,
+      rootmargin: "0px 0px 0px 0px",
+      threshold: 0.5,
+    };
+
+    const slideObserver = new IntersectionObserver(revealSlide, option);
+
+    slideObserver.observe(activeSlideRef.current);
+  }, [updatedSlideOrder]);
+
   return (
     <div
       ref={activeSlideRef}
-      className={!updatedSlideOrder ? "slide slide--active" : "slide"}
+      className={
+        !updatedSlideOrder
+          ? "slide slide--hidden slide--active"
+          : "slide slide--hidden"
+      }
       style={{
         "--slideOrder": updatedSlideOrder,
         "--tiltDirection":

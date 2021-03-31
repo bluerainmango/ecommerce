@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
 import { connect } from "react-redux";
 import {
@@ -21,79 +21,52 @@ const Slider = (props) => {
 
   const sliderRef = useRef();
 
-  useEffect(() => {
-    const revealSlider = (entries, observer) => {
-      const [entry] = entries;
-
-      if (entry.isIntersecting) return;
-
-      entry.target.classList.remove("slider--hidden");
-      observer.unobserve(entry.target);
-    };
-
-    const option = {
-      root: null,
-      rootmargin: "0px 0px 0px 0px",
-      threshold: 0.5,
-    };
-
-    const sliderObserver = new IntersectionObserver(revealSlider, option);
-
-    sliderObserver.observe(sliderRef.current);
-  }, []);
-
   return (
-    <div className="slider-wrapper">
-      <div ref={sliderRef} className="slider slider--hidden">
-        <h2 className="slider__title">Explore your next destination</h2>
-        {slides.map((slide, i, arr) => {
-          //! 1. Slide order # that each slide will have
-          let slideOrder = i - selectedSlideIndex;
+    <div ref={sliderRef} className="slider">
+      <h2 className="slider__title">Explore your next destination</h2>
+      {slides.map((slide, i, arr) => {
+        //! 1. Slide order # that each slide will have
+        let slideOrder = i - selectedSlideIndex;
 
-          //! 2. Max slide order: max and standard # to keep slides in center
-          const maxSlideOrder = Math.ceil(arr.length / 2);
+        //! 2. Max slide order: max and standard # to keep slides in center
+        const maxSlideOrder = Math.ceil(arr.length / 2);
 
-          //! 3. Whenever each slide's slideOrder # > maxSlideOrder #,
-          //! => move the slide to the opposite side so the slides locate in center at all times.
-          const calSlideOrder = (slideOrder, maxSlideOrder, arr) => {
-            //* a. less than max => no change to slideOrder
-            if (Math.abs(slideOrder) < maxSlideOrder) {
-              return slideOrder;
-            }
+        //! 3. Whenever each slide's slideOrder # > maxSlideOrder #,
+        //! => move the slide to the opposite side so the slides locate in center at all times.
+        const calSlideOrder = (slideOrder, maxSlideOrder, arr) => {
+          //* a. less than max => no change to slideOrder
+          if (Math.abs(slideOrder) < maxSlideOrder) {
+            return slideOrder;
+          }
 
-            //* b. more than max(+num) => move the slide to leftside
-            if (slideOrder > 0) {
-              return slideOrder - arr.length;
-            }
+          //* b. more than max(+num) => move the slide to leftside
+          if (slideOrder > 0) {
+            return slideOrder - arr.length;
+          }
 
-            //* c. more than max(-num) => move the slide to rightside
-            if (slideOrder < 0) {
-              return slideOrder + arr.length;
-            }
-          };
+          //* c. more than max(-num) => move the slide to rightside
+          if (slideOrder < 0) {
+            return slideOrder + arr.length;
+          }
+        };
 
-          const updatedSlideOrder = calSlideOrder(
-            slideOrder,
-            maxSlideOrder,
-            arr
-          );
+        const updatedSlideOrder = calSlideOrder(slideOrder, maxSlideOrder, arr);
 
-          return (
-            <Slide
-              key={`slide-${i}`}
-              slide={slide}
-              updatedSlideOrder={updatedSlideOrder}
-            />
-          );
-        })}
+        return (
+          <Slide
+            key={`slide-${i}`}
+            slide={slide}
+            updatedSlideOrder={updatedSlideOrder}
+          />
+        );
+      })}
 
-        <button className="slider__btn--prev" onClick={moveToPreviousSlide}>
-          &lang;
-        </button>
-        <button className="slider__btn--next" onClick={moveToNextSlide}>
-          &rang;
-        </button>
-      </div>
+      <button className="slider__btn--prev" onClick={moveToPreviousSlide}>
+        &lang;
+      </button>
+      <button className="slider__btn--next" onClick={moveToNextSlide}>
+        &rang;
+      </button>
     </div>
   );
 };
