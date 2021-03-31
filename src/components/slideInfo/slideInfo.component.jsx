@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import Button from "../../components/button/button.component";
+
 import "./slideInfo.styles.scss";
 
 const SlideInfo = (props) => {
@@ -28,8 +30,8 @@ const SlideInfo = (props) => {
         {/* <h5 className="slideInfo__title">{activeSlideInfo?.title}</h5>
         <h6 className="slideInfo__subtitle">{activeSlideInfo?.subtitle}</h6> */}
         <p className="slideInfo__description">{activeSlideInfo?.description}</p>
-        <button>Add to cart</button>
-        <button>Explore detail</button>
+        <Button text={["Add To Cart", "Learn More"]} />
+        {/* <Button text="Learn More" /> */}
       </div>
     </div>
   );

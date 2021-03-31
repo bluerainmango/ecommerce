@@ -1,5 +1,7 @@
 import React from "react";
 
+import Button from "../../components/button/button.component";
+
 import { connect } from "react-redux";
 
 import "./listPreview.styles.scss";
@@ -18,8 +20,9 @@ const ListPreview = (props) => {
       <div className="preview__info">
         <h4 className="preview__title">{activeStarship?.name}</h4>
         <h5 className="preview__description">{activeStarship?.description}</h5>
-        <button>Add to journey</button>
-        <button>Learn More</button>
+        <Button text={["Add to journey", "Learn more"]} />
+        {/* <button>Add to journey</button>
+        <button>Learn More</button> */}
       </div>
     </div>
   );
