@@ -5,12 +5,19 @@ import planets from "../../assets/planets.png";
 // import starship1 from "../../assets/starship2.png";
 import starship6 from "../../assets/starship6.png";
 
+import { connect } from "react-redux";
+import { updateIsPassedHomeBanner } from "../../redux/page/page.action";
+
 import "./banner.styles.scss";
 
-const Banner = () => {
+const Banner = (props) => {
+  const { updateIsPassedHomeBanner } = props;
+
   const bannerImg1 = useRef();
   const bannerImg2 = useRef();
+  const sectionBanner = useRef();
 
+  //! Banner images reveal animation
   useEffect(() => {
     const revealBanner = (entries, observer) => {
       const [entry] = entries;
@@ -24,7 +31,7 @@ const Banner = () => {
 
     const bannerObserver = new IntersectionObserver(revealBanner, {
       root: null,
-      threshold: 0.5,
+      threshold: 0,
     });
 
     [bannerImg1, bannerImg2].forEach((img) => {
@@ -32,8 +39,29 @@ const Banner = () => {
     });
   }, []);
 
+  //! Detect section and update redux state for Nav bar reveal
+  useEffect(() => {
+    const sectionDOM = sectionBanner.current;
+
+    const detectSection = (entries, observer) => {
+      const [entry] = entries;
+
+      if (!entry.isIntersecting) return;
+      updateIsPassedHomeBanner();
+      observer.unobserve(sectionDOM);
+    };
+
+    const isPassedObserver = new IntersectionObserver(detectSection, {
+      root: null,
+      threshold: 0.5,
+      // rootMargin: "-90%",
+    });
+
+    isPassedObserver.observe(sectionDOM);
+  }, [updateIsPassedHomeBanner]);
+
   return (
-    <div>
+    <section ref={sectionBanner}>
       <div className="banner banner--first ">
         <div ref={bannerImg1} className="banner__img banner--hidden">
           <img
@@ -72,8 +100,18 @@ const Banner = () => {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Banner;
+// const mapStateToProps = (state) => ({
+//   isPassedHomeBanner: state.pages.isPassedHomeBanner,
+// });
+
+const mapDispatchToProps = (dispatch) => ({
+  updateIsPassedHomeBanner: () => {
+    dispatch(updateIsPassedHomeBanner());
+  },
+});
+
+export default connect(null, mapDispatchToProps)(Banner);

@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./header.styles.scss";
 
 const Header = () => {
@@ -9,7 +10,7 @@ const Header = () => {
   //   }, [videoRef]);
 
   return (
-    <div className="header">
+    <section className="header">
       <div className="header__wrapper" />
       <video
         className="header__video"
@@ -23,7 +24,7 @@ const Header = () => {
       <div className="header__content">
         <h1>Welcome To Your Dreamy Journey</h1>
       </div>
-    </div>
+    </section>
   );
 };
 

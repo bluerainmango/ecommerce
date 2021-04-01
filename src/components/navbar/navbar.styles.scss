@@ -5,17 +5,31 @@
   height: 5rem;
   width: 100vw;
   font-size: 2em;
+  // filter: blur(0.5rem);
+  display: none;
 
-  display: grid;
-  grid-template-columns: minmax(max-content, 1fr) minmax(min-content, 75rem) 1fr;
-  align-content: center;
-  // justify-items: center;
-  padding: 1.5rem;
+  &--fixed {
+    display: block;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.575);
+    backdrop-filter: saturate(180%) blur(20px);
+    z-index: 100;
+  }
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
+  &__wrapper {
+    width: 100%;
+    // position: fixed;
+
+    display: grid;
+    grid-template-columns: minmax(max-content, 1fr) minmax(min-content, 75rem) 1fr;
+    align-content: center;
+    // justify-items: center;
+
+    background-color: rgba(0, 0, 0, 0);
+    padding: 1.5rem;
+    top: 0;
+    left: 0;
+  }
 }
 
 .navbar__logo {
