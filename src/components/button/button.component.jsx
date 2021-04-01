@@ -6,9 +6,9 @@ const Button = (props) => {
   const { text } = props;
   //   console.log(text);
   return (
-    <div class="btn-container">
+    <div className="btn-container">
       {text.map((el) => (
-        <div class="btn" key={el}>
+        <div className="btn" key={el}>
           <span>{el}</span>
         </div>
       ))}

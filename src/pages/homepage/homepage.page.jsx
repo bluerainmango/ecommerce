@@ -6,6 +6,7 @@ import Slider from "../../components/slider/slider.component";
 import SlideInfo from "../../components/slideInfo/slideInfo.component";
 import List from "../../components/list/list.component";
 import Banner from "../../components/banner/banner.component";
+import Outro from "../../components/outro/outro.component";
 
 const Homepage = () => {
   return (
@@ -16,6 +17,7 @@ const Homepage = () => {
       <Slider />
       <SlideInfo />
       <List />
+      <Outro />
       {/* <Collection />
       <Discover /> */}
       {/* <Button /> */}
