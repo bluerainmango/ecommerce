@@ -16,15 +16,18 @@
     transition: all 1s cubic-bezier(0.27, -0.49, 0, 2.02);
 
     .banner__photo {
-      &--planets {
+      &--planets,
+      &--starship--1 {
         width: 20rem;
+        // z-index: 105;
       }
 
-      &--astronaut {
+      &--astronaut,
+      &--starship--2 {
         width: 40rem;
-        z-index: 10;
         transform: scaleX(-1);
         position: absolute;
+        // z-index: 110;
       }
     }
   }

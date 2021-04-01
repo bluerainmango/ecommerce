@@ -67,9 +67,13 @@ const Banner = (props) => {
           <img
             src={astronaut}
             alt="astronaut"
-            className="banner__photo--astronaut"
+            className="banner__photo banner__photo--astronaut"
           />
-          <img src={planets} alt="planets" className="banner__photo--planets" />
+          <img
+            src={planets}
+            alt="planets"
+            className="banner__photo banner__photo--planets"
+          />
         </div>
         <div className="banner__context">
           <h2 className="banner__pretitle">Your first ever</h2>
@@ -84,12 +88,12 @@ const Banner = (props) => {
           <img
             src={starship6}
             alt="astronaut"
-            className="banner__photo--astronaut"
+            className="banner__photo banner__photo--starship--1"
           />
           <img
             src={starship6}
             alt="planets"
-            className="banner__photo--planets"
+            className="banner__photo banner__photo--starship--2"
           />
         </div>
         <div className="banner__context">
