@@ -1,15 +1,6 @@
 .header {
-  // height: calc(100vh - 3rem);
   height: 100vh;
   width: 100vw;
-  //   background-color: black;
-  //   background-image: url(../../assets/header.jpeg);
-  //   background-size: cover;
-  //   background-image: linear-gradient(rgba(0, 0, 0, 0.5)),
-  //     url(../../assets/header.jpeg);
-
-  // display: grid;
-  // grid-template-columns: 1fr minmax(min-content, 75rem) 1fr;
 
   position: relative;
 
@@ -42,3 +33,103 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80%, rgb(0, 0, 0));
   }
 }
+
+.scroll-indicator {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 5rem;
+  height: 6rem;
+  text-align: center;
+
+  a span:last-child {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: rgb(255, 255, 255);
+    transform: translateY(200%);
+    // text-transform: uppercase;
+  }
+
+  .scroll-icon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 30px;
+    height: 50px;
+    margin-left: -15px;
+    border: 2px solid #fff;
+    border-radius: 50px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      margin-left: -3px;
+      background-color: #fff;
+      border-radius: 100%;
+      animation: sdb10 2s infinite;
+    }
+  }
+}
+
+// .scrollTo {
+//   top: 100%;
+// }
+
+@keyframes sdb10 {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+// .arrow {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
+// .arrow span {
+//   display: block;
+//   width: 30px;
+//   height: 30px;
+//   border-bottom: 5px solid #ffffff;
+//   border-right: 5px solid #ffffff;
+//   transform: rotate(45deg);
+//   margin: -10px;
+//   animation: animate 2s infinite;
+// }
+// .arrow span:nth-child(2) {
+//   animation-delay: -0.2s;
+// }
+// .arrow span:nth-child(3) {
+//   animation-delay: -0.4s;
+// }
+// @keyframes animate {
+//   0% {
+//     opacity: 0;
+//     transform: rotate(45deg) translate(-20px, -20px);
+//   }
+//   50% {
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: 0;
+//     transform: rotate(45deg) translate(20px, 20px);
+//   }
+// }

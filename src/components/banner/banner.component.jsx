@@ -61,7 +61,7 @@ const Banner = (props) => {
   }, [updateIsPassedHomeBanner]);
 
   return (
-    <section ref={sectionBanner}>
+    <section ref={sectionBanner} id="section-banner">
       <div className="banner banner--first ">
         <div ref={bannerImg1} className="banner__img banner--hidden">
           <img
