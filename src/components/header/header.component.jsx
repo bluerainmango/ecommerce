@@ -44,11 +44,6 @@ const Header = () => {
         </a>
       </div>
       <div ref={scrollToRef} className="scrollTo"></div>
-      {/* <div class="arrow">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div> */}
     </section>
   );
 };

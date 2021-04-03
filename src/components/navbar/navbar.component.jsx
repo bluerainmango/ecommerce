@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from "react";
 import "./navbar.styles.scss";
 
 import { connect } from "react-redux";
-import { updateActiveStarship } from "../../redux/starship/starship.actions";
+
+import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
   const { isPassedHomeBanner } = props;
@@ -24,10 +25,10 @@ const NavBar = (props) => {
         <div className="navbar__logo"> SPACE Y</div>
         <ul className="navbar__links">
           <li className="link--moon">
-            <a href="/moon">MOON</a>
+            <Link to="/planets">planets</Link>
           </li>
           <li className="link--mars">
-            <a href="/mars">MARS</a>
+            <Link to="/starships">starships</Link>
           </li>
           <li className="link--vinus">
             <a href="/vinus">VINUS</a>
