@@ -8,6 +8,7 @@ const INITIAL_STATE = {
     {
       id: 1,
       name: "Kepler-1649c",
+      slug: "kepler",
       image: moon,
       pricePerSqft: 350,
       bedroom: 2,
@@ -20,6 +21,7 @@ const INITIAL_STATE = {
     {
       id: 2,
       name: "K2-72e",
+      slug: "k2",
       image: mars,
       pricePerSqft: 430,
       bedroom: 4,
@@ -32,6 +34,7 @@ const INITIAL_STATE = {
     {
       id: 3,
       name: "Luyten b",
+      slug: "luyten",
       image: neptune,
       pricePerSqft: 540,
       bedroom: 5,
