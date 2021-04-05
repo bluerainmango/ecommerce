@@ -1,5 +1,5 @@
 import React from "react";
-import ProductThumbnail from "../productThumbnail/productThumbnail.component";
+import CollectionThumbnail from "../collectionThumbnail/collectionThumbnail.component";
 // import data from "./planets.data.js";
 
 import "./collection.styles.scss";
@@ -10,7 +10,7 @@ const Collection = ({ props, title }) => {
       <h2 className="collection__title">{title}</h2>
       <div className="collection__content">
         {props.map((product) => (
-          <ProductThumbnail key={product.id} props={product} />
+          <CollectionThumbnail key={product.id} props={product} />
         ))}
       </div>
     </div>

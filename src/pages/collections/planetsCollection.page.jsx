@@ -14,9 +14,11 @@ const PlanetsCollection = ({ planets }) => {
   return (
     <div>
       <Switch>
-        <Route path={`${match.path}/:planetID`}>
+        {/* nested pages: /planets/id 페이지 */}
+        <Route path={`${match.path}/:planetSlug`}>
           <Planet />
         </Route>
+        {/* index page: /planets */}
         <Route path={match.path}>
           <h1>here is planet index page</h1>
           <Collection props={planets} title={"Planet"} />
