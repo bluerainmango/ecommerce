@@ -14,7 +14,8 @@ const ProductOrder = ({ planet }) => {
       <div className="product__info">
         <h1>{planet.subtitle}</h1>
         <h2>{planet.title}</h2>
-        <h3>{planet.price}</h3>
+        <h3>${planet.price}</h3>
+        <p>{planet.description}</p>
         <Button
           text={["add to cart"]}
           style={{
