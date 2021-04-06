@@ -24,7 +24,7 @@
 
       &--astronaut,
       &--starship--2 {
-        width: 40rem;
+        width: 47rem;
         transform: scaleX(-1);
         position: absolute;
         // z-index: 110;
@@ -33,21 +33,21 @@
   }
 
   &__context {
-    margin: 0 3rem;
+    margin: 0 2rem;
   }
 
   &__pretitle {
-    font-size: 3rem;
-    font-weight: 200;
-  }
-
-  &__title {
     font-size: 4rem;
     font-weight: 200;
   }
 
+  &__title {
+    font-size: 5rem;
+    font-weight: 200;
+  }
+
   &__paragraph {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 200;
   }
 }

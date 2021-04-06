@@ -1,17 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;1,100&display=swap");
 
-*,
-*::after,
-*::before {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-}
-
 .app {
-  box-sizing: border-box;
-  font-size: 62.5%;
+  /* font-size: 62.5%; */
   overflow: hidden;
+  /* box-sizing: border-box; */
 }
 
 a:link,

@@ -1,0 +1,22 @@
+.productOrder {
+  border: 1px solid black;
+
+  display: flex;
+  max-width: 120rem;
+  //   font-size: 1rem;
+
+  .product__thumbnail {
+    width: 50%;
+    border: 1px solid black;
+
+    img {
+      width: 80%;
+    }
+  }
+
+  .product__info {
+    h1 {
+      font-size: 1rem;
+    }
+  }
+}

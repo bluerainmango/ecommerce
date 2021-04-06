@@ -71,10 +71,14 @@
     // transition: all 1s ease-in-out;
   }
 
-  .slide__subtitle::before {
+  .slide__title {
+    display: inline-block;
+  }
+
+  .slide__title::after {
     content: "";
-    border-top: #fff 3px solid;
-    width: 50%;
+    border-top: #fff 1px solid;
+    width: 100%;
     display: block;
   }
 }

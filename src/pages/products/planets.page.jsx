@@ -19,9 +19,9 @@ const Planet = ({ planets }) => {
 
   console.log(planet);
   return (
-    <section>
-      <ProductOrder />
-    </section>
+    <div>
+      <ProductOrder planet={planet} />
+    </div>
   );
 };
 

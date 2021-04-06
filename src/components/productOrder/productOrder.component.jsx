@@ -2,15 +2,18 @@ import React from "react";
 
 import "./productOrder.styles.scss";
 
-const ProductOrder = () => {
+const ProductOrder = ({ planet }) => {
   return (
     <section className="productOrder">
       <div className="product__thumbnail">
-        <img alt="product thumbnail" />
         <div className="thumbnail-slider" />
+        <img alt="product thumbnail" src={planet.image_800} />
       </div>
-      <div className="productOrder__info">
-        <h1></h1>
+      <div className="product__info">
+        <h1>{planet.subtitle}</h1>
+        <h2>subtitle</h2>
+        <h3>price</h3>
+        <button>add to your journey</button>
       </div>
     </section>
   );
