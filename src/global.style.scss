@@ -8,3 +8,10 @@
   padding: 7rem 0 5rem 0;
   text-transform: uppercase;
 }
+
+@mixin abCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

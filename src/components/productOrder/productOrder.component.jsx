@@ -1,5 +1,7 @@
 import React from "react";
 
+import Button from "../../components/button/button.component";
+
 import "./productOrder.styles.scss";
 
 const ProductOrder = ({ planet }) => {
@@ -11,9 +13,15 @@ const ProductOrder = ({ planet }) => {
       </div>
       <div className="product__info">
         <h1>{planet.subtitle}</h1>
-        <h2>subtitle</h2>
-        <h3>price</h3>
-        <button>add to your journey</button>
+        <h2>{planet.title}</h2>
+        <h3>{planet.price}</h3>
+        <Button
+          text={["add to cart"]}
+          style={{
+            "--bg-color": "rgb(12, 12, 12)",
+            "--font-color-hover": "black",
+          }}
+        />
       </div>
     </section>
   );
