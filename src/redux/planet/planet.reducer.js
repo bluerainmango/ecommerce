@@ -24,6 +24,7 @@ const INITIAL_STATE = {
       image_800: planet1_800,
       image2: city1,
       bgimage: city1bg,
+      thumbnails: [planet1, city1, city1bg, city1bg, city1bg],
       price: 350,
       bedroom: 2,
       livingArea: 900,
