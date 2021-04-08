@@ -6,12 +6,12 @@ import planets from "../../assets/planets.png";
 import starship6 from "../../assets/starship6.png";
 
 import { connect } from "react-redux";
-import { updateIsPassedHomeBanner } from "../../redux/page/page.action";
+import { updateHideNavbar } from "../../redux/page/page.action";
 
 import "./banner.styles.scss";
 
 const Banner = (props) => {
-  const { updateIsPassedHomeBanner } = props;
+  const { updateHideNavbar } = props;
 
   const bannerImg1 = useRef();
   const bannerImg2 = useRef();
@@ -47,7 +47,7 @@ const Banner = (props) => {
       const [entry] = entries;
 
       if (!entry.isIntersecting) return;
-      updateIsPassedHomeBanner();
+      updateHideNavbar();
       observer.unobserve(sectionDOM);
     };
 
@@ -58,7 +58,7 @@ const Banner = (props) => {
     });
 
     isPassedObserver.observe(sectionDOM);
-  }, [updateIsPassedHomeBanner]);
+  }, [updateHideNavbar]);
 
   return (
     <section ref={sectionBanner} id="section-banner">
@@ -109,12 +109,12 @@ const Banner = (props) => {
 };
 
 // const mapStateToProps = (state) => ({
-//   isPassedHomeBanner: state.pages.isPassedHomeBanner,
+//  hideNavbar: state.pages.hideNavbar,
 // });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateIsPassedHomeBanner: () => {
-    dispatch(updateIsPassedHomeBanner());
+  updateHideNavbar: () => {
+    dispatch(updateHideNavbar());
   },
 });
 

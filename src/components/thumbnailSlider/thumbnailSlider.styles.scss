@@ -1,32 +1,46 @@
 .thumbnailSlider {
   width: 100%;
   height: 10rem;
-  border: 1px solid black;
+  // border: 1px solid black;
   display: flex;
+  margin-bottom: 2rem;
 
   .thumbnails {
     display: inline-block;
+    height: 0px;
   }
 
   .thumbnail {
-    display: inline-block;
-    margin-right: 1rem;
+    position: relative;
 
     &__img {
       width: 10rem;
       height: 10rem;
       object-fit: cover;
+      position: absolute;
+
+      transition: all 0.5s cubic-bezier(0.27, -0.49, 0, 1.02);
+      transform: translateX(calc(var(--x) * 110%));
+      opacity: var(--opacity);
+      z-index: var(--zIndex);
     }
 
     &__btn {
-      width: 3rem;
+      width: 5rem;
       height: 100%;
-      //   background-color: blue;
       color: rgb(0, 0, 0);
       font-size: 3rem;
-      text-align: center;
-
-      //   font-weight: 600;
+      // display: flex;
+      // justify-content: flex-start;
+      // align-items: center;
+      // margin-right: 1rem;
+      // padding: 0 auto;
+      text-align: left;
     }
+
+    // &__btn::after {
+    //   content: "&lang;";
+    //   // position: inherit;
+    // }
   }
 }

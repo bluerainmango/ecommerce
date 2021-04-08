@@ -78,18 +78,3 @@ const slideReducer = (state = INITIAL_STATE, action) => {
 };
 
 export default slideReducer;
-
-// {
-//   title: "Four",
-//   subtitle: "Australia",
-//   description: "A piece of heaven",
-//   image:
-//     "https://images.unsplash.com/flagged/photo-1564918031455-72f4e35ba7a6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
-// },
-// {
-//   title: "Five",
-//   subtitle: "Australia",
-//   description: "A piece of heaven",
-//   image:
-//     "https://images.unsplash.com/photo-1579130781921-76e18892b57b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
-// },

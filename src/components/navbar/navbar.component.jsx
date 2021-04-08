@@ -1,23 +1,30 @@
 import React, { useEffect, useRef } from "react";
-import "./navbar.styles.scss";
 
 import { connect } from "react-redux";
 
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
+
+import "./navbar.styles.scss";
 
 const NavBar = (props) => {
-  const { isPassedHomeBanner } = props;
+  const { hideNavbar } = props;
+  const match = useRouteMatch();
 
   const navRef = useRef();
 
   useEffect(() => {
-    if (!isPassedHomeBanner) return;
+    console.log("match", match.url);
+
+    // Homepage
+    if (match.url === "/" && !hideNavbar) return;
+
+    // if (hideNavbar) return;
 
     const navDOM = navRef.current;
-
-    console.log("🥝 isPassedHomeBanner: ", isPassedHomeBanner, navDOM);
     navDOM.classList.add("navbar--fixed");
-  }, [isPassedHomeBanner]);
+
+    console.log("🥝 hideNavbar: ", hideNavbar, navDOM);
+  }, [hideNavbar, match.url]);
 
   return (
     <div ref={navRef} className="navbar">
@@ -44,7 +51,7 @@ const NavBar = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  isPassedHomeBanner: state.pages.isPassedHomeBanner,
+  hideNavbar: state.pages.hideNavbar,
 });
 
 export default connect(mapStateToProps)(NavBar);

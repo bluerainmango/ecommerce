@@ -21,12 +21,12 @@ button {
   cursor: pointer;
 }
 
-/* input:focus,
+input:focus,
 select:focus,
 textarea:focus,
 button:focus {
   outline: none;
-} */
+}
 
 /* .App {
   text-align: center;

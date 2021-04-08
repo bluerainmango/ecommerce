@@ -1,4 +1,4 @@
-import NavBar from "../../components/navbar/navbar.component";
+// import NavBar from "../../components/navbar/navbar.component";
 import Header from "../../components/header/header.component";
 // import Collection from "../../components/collection/collection.component";
 // import Discover from "../../components/discover/discover.component";
@@ -11,7 +11,7 @@ import Outro from "../../components/outro/outro.component";
 const Homepage = () => {
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <Header />
       <Banner />
       <Slider />

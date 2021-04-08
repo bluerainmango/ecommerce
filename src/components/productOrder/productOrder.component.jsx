@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import Button from "../../components/button/button.component";
 
 import ThumbnailSlider from "../../components/thumbnailSlider/thumbnailSlider.component";
 
+import { connect } from "react-redux";
+
 import "./productOrder.styles.scss";
 
-const ProductOrder = ({ planet }) => {
+const ProductOrder = ({ planet, thumbnailIndex }) => {
+  console.log(thumbnailIndex);
+
+  const imageRef = useRef();
+
+  useEffect(() => {
+    const imageDOM = imageRef.current;
+    imageDOM.src = planet.thumbnails[thumbnailIndex];
+  }, [thumbnailIndex, planet.thumbnails]);
+
   return (
     <section className="productOrder">
       <div className="product__thumbnail">
         <div className="square">
-          <img alt="product thumbnail" src={planet.image} />
+          <img
+            ref={imageRef}
+            alt="product thumbnail"
+            src={planet.thumbnails[0]}
+          />
         </div>
       </div>
       <div className="product__info">
@@ -19,6 +34,7 @@ const ProductOrder = ({ planet }) => {
         <h2>{planet.title}</h2>
         <h3>${planet.price}</h3>
         <p>{planet.description}</p>
+        <ThumbnailSlider planet={planet} />
         <Button
           text={["add to cart"]}
           style={{
@@ -26,11 +42,15 @@ const ProductOrder = ({ planet }) => {
             "--font-color-hover": "black",
           }}
         />
-        <ThumbnailSlider planet={planet} />
+
         {/* <div className="thumbnail-slider" /> */}
       </div>
     </section>
   );
 };
 
-export default ProductOrder;
+const mapStateToProps = (state) => ({
+  thumbnailIndex: state.pages.thumbnailIndex,
+});
+
+export default connect(mapStateToProps)(ProductOrder);

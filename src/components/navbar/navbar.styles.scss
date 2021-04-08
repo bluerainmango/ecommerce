@@ -3,7 +3,8 @@
   height: 5rem;
   width: 100vw;
   font-size: 1.5rem;
-  display: none;
+  // display: none;
+  position: absolute;
 
   &--fixed {
     display: block;
