@@ -2,29 +2,36 @@ import React, { useEffect, useRef } from "react";
 
 import { connect } from "react-redux";
 
-import { Link, useRouteMatch } from "react-router-dom";
+import {
+  Link,
+  useRouteMatch,
+  useLocation,
+  useHistory,
+  useParams,
+} from "react-router-dom";
 
 import "./navbar.styles.scss";
 
 const NavBar = (props) => {
   const { hideNavbar } = props;
-  const match = useRouteMatch();
 
+  const match = useRouteMatch();
+  const location = useLocation();
   const navRef = useRef();
 
   useEffect(() => {
-    console.log("match", match.url);
+    // console.log("🌭 match:", match, "🍔 location:", location);
 
-    // Homepage
-    if (match.url === "/" && !hideNavbar) return;
-
-    // if (hideNavbar) return;
+    // Homepage header
+    if (location.pathname === "/" && !hideNavbar) return;
 
     const navDOM = navRef.current;
     navDOM.classList.add("navbar--fixed");
 
-    console.log("🥝 hideNavbar: ", hideNavbar, navDOM);
-  }, [hideNavbar, match.url]);
+    // All pages except Homepage
+    if (location.pathname !== "/")
+      navDOM.style.setProperty("position", "static");
+  }, [hideNavbar, location]);
 
   return (
     <div ref={navRef} className="navbar">
