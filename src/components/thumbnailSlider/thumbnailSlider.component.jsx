@@ -8,14 +8,16 @@ import "./thumbnailSlider.styles.scss";
 const ThumbnailSlider = (props) => {
   const { planet, nextThumbnail, defaultThumbnail, thumbnailIndex } = props;
 
-  // Default thumbnail index
+  //* Default thumbnail index
   useEffect(() => {
     defaultThumbnail();
   }, [defaultThumbnail]);
 
+  //* Next button event handler
   const handleClick = (e) => {
     e.preventDefault();
 
+    // Set thumbnail number to next one
     nextThumbnail(planet.thumbnails.length);
   };
 
@@ -46,6 +48,11 @@ const ThumbnailSlider = (props) => {
 
           if (i > thumbnailIndex) {
             transformX = i - thumbnailIndex - 1;
+          }
+
+          //* Set number of thumbnails appearing
+          if (transformX > 3) {
+            opacity = 0;
           }
 
           return (
