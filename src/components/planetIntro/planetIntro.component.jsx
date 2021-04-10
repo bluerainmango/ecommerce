@@ -14,6 +14,7 @@ const PlanetIntro = ({ planet }) => {
         <h1 className="">{planet.title}</h1>
         {/* <h2>The most technically advanced city in universe</h2> */}
       </div>
+      <div className="gradient" />
     </section>
   );
 };

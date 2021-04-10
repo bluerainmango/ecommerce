@@ -1,0 +1,32 @@
+@import "../../global.style.scss";
+
+.headline {
+  width: 100vw;
+  height: 20rem;
+  background-color: black;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(0, 0, 0),
+    rgba(255, 166, 0, 0.021)
+  );
+  //   opacity: 0.5;
+
+  //   background-image: linear-gradient(
+  //     to bottom,
+  //     rgb(0, 0, 0),
+  //     rgb(56, 0, 146),
+  //     rgb(85, 0, 0)
+  //   );
+  position: relative;
+
+  &__content {
+    @include abCenter;
+    color: #fff;
+    text-align: center;
+
+    h2 {
+      font-size: 4rem;
+      font-weight: 200;
+    }
+  }
+}

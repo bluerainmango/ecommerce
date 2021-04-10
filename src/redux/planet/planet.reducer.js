@@ -5,6 +5,9 @@ import planet3 from "../../assets/planet-3.jpeg";
 import planet1_800 from "../../assets/planet-1_800.jpg";
 import planet2_800 from "../../assets/planet-2_800.jpg";
 import planet3_800 from "../../assets/planet-3_800.jpg";
+import planet1_pt1 from "../../assets/planet1-presentation1.jpeg";
+import planet1_pt2 from "../../assets/planet1-presentation2.jpeg";
+import planet1_pt3 from "../../assets/planet1-presentation3.jpeg";
 
 import city1 from "../../assets/city4.jpeg";
 import city2 from "../../assets/city5.jpeg";
@@ -25,6 +28,8 @@ const INITIAL_STATE = {
       image2: city1,
       bgimage: city1bg,
       thumbnails: [planet1, city1, city2, city3, city3bg],
+      presentation: [planet1_pt1, planet1_pt2, planet1_pt3],
+      headline: "The most technically advanced city in universe",
       price: 350,
       bedroom: 2,
       livingArea: 900,
