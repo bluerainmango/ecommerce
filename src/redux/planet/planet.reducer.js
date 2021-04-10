@@ -30,6 +30,27 @@ const INITIAL_STATE = {
       thumbnails: [planet1, city1, city2, city3, city3bg],
       presentation: [planet1_pt1, planet1_pt2, planet1_pt3],
       headline: "The most technically advanced city in universe",
+      feature: [
+        {
+          subject: "Neon City",
+          content: "Do consequat eu laboris sit sint culpa.",
+        },
+        {
+          subject: "Meet human-like AI",
+          content:
+            "Anim ut consectetur commodo deserunt occaecat cillum enim excepteur duis do.",
+        },
+        {
+          subject: "Experience new future",
+          content:
+            "Ullamco mollit esse consectetur elit esse incididunt laborum commodo deserunt nostrud et eu.",
+        },
+        {
+          subject: "Most earth-like enviorment",
+          content:
+            "Id reprehenderit amet quis proident veniam occaecat adipisicing ea occaecat et cupidatat veniam proident fugiat.",
+        },
+      ],
       price: 350,
       bedroom: 2,
       livingArea: 900,

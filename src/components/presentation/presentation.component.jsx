@@ -5,7 +5,7 @@ import "./presentation.styles.scss";
 const Presentation = ({ planet }) => {
   console.log(planet);
   return (
-    <div className="presentation">
+    <section className="presentation">
       {planet?.presentation.map((img, i) => {
         return (
           <div
@@ -17,7 +17,7 @@ const Presentation = ({ planet }) => {
           />
         );
       })}
-    </div>
+    </section>
   );
 };
 

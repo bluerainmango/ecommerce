@@ -3,6 +3,7 @@ import React from "react";
 import ProductOrder from "../../components/productOrder/productOrder.component";
 import PlanetIntro from "../../components/planetIntro/planetIntro.component";
 import Headline from "../../components/headline/headline.component";
+import Feature from "../../components/feature/feature.component";
 
 import { connect } from "react-redux";
 
@@ -27,6 +28,7 @@ const Planet = ({ planets }) => {
       <PlanetIntro planet={planet} />
       <Headline planet={planet} />
       <Presentation planet={planet} />
+      <Feature planet={planet} />
       <ProductOrder planet={planet} />
     </div>
   );
