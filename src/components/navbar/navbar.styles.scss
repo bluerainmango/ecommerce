@@ -1,6 +1,6 @@
 .navbar {
   color: #fff;
-  height: 5rem;
+  height: 6rem;
   width: 100vw;
   font-size: 1.5rem;
   display: none;
@@ -9,13 +9,19 @@
   &--fixed {
     display: block;
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.575);
+    // background-color: rgba(0, 0, 0, 0.575);
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.438) 50%,
+      rgba(0, 0, 0, 0)
+    );
     backdrop-filter: saturate(180%) blur(20px);
     z-index: 100;
   }
 
   &__wrapper {
     width: 100%;
+    height: 100%;
     // position: fixed;
 
     display: grid;
@@ -24,6 +30,11 @@
     // justify-items: center;
 
     background-color: rgba(0, 0, 0, 0);
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.438) 40%,
+      rgba(0, 0, 0, 0)
+    );
     padding: 1.5rem;
     top: 0;
     left: 0;

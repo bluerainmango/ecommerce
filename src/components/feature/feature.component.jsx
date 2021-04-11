@@ -22,7 +22,13 @@ const Feature = ({ planet }) => {
     const featureAnim = (entries, observer) => {
       const [entry] = entries;
 
-      if (!entry.isIntersecting) return;
+      if (
+        !entry.isIntersecting ||
+        entry.target.classList.contains("feature-anim")
+      )
+        return;
+
+      //   if (entry.target.classList.contains("feature-anim")) return;
 
       console.log("🍝", entry.target.querySelector("h3"));
       entry.target.classList.add("feature-anim");
@@ -54,7 +60,7 @@ const Feature = ({ planet }) => {
                 <use xlink:href="../../assets/point-right.svg" />
               </svg> */}
               <div>
-                <h3>{el.subject}</h3>
+                <h3 className="feature__title">{el.subject}</h3>
                 <p>{el.content}</p>
               </div>
             </div>

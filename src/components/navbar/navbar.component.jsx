@@ -47,6 +47,7 @@ const NavBar = (props) => {
           {/* <svg className="icon--shopping"><use xlink:href="#"></use></svg> */}
         </ul>
       </div>
+      {/* <div className="gradient" /> */}
     </div>
   );
 };
