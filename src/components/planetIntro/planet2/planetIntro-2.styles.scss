@@ -1,0 +1,31 @@
+.parallel {
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("../../../assets/cloud.png"),
+    url("../../../assets/planet2-intro.jpeg");
+  background-size: cover;
+  background-position: 0 50%, center center;
+  animation: 50s para infinite linear;
+
+  &__star {
+    transform: scaleX(-1) translate(0, 0);
+    animation: 10s falling infinite linear;
+  }
+}
+
+@keyframes falling {
+  100% {
+    transform: scaleX(-1) translate(-400%, 200%);
+  }
+}
+
+@keyframes para {
+  100% {
+    background-position: 500px 50%, center center;
+  }
+}
+
+.cloud {
+  color: rgba(0, 0, 0, 0.521);
+}

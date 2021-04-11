@@ -14,7 +14,8 @@ import planet1_pt4 from "../../assets/planet1-presentation4.jpeg";
 import planet2_pt1 from "../../assets/planet2-presentation1.jpeg";
 import planet2_pt2 from "../../assets/planet2-presentation2.jpeg";
 import planet2_pt3 from "../../assets/planet2-presentation3.jpeg";
-import planet2_pt4 from "../../assets/planet2-presentation4.jpeg";
+import planet2_intro from "../../assets/planet2-intro.jpeg";
+// import planet2_pt4 from "../../assets/planet2-presentation4.jpeg";
 
 import city1 from "../../assets/city4.jpeg";
 import city2 from "../../assets/city5.jpeg";
@@ -73,7 +74,7 @@ const INITIAL_STATE = {
       image_800: planet2_800,
       image2: city2,
       bgimage: city2bg,
-      thumbnails: [planet2_pt1, planet2_pt2, planet2_pt3, planet2_pt4],
+      thumbnails: [planet2_intro, planet2_pt1, planet2_pt2, planet2_pt3],
       presentation: [planet2_pt1, planet2_pt2, planet2_pt3],
       headline: "Planet that keeps natural beauty of universe",
       feature: [
