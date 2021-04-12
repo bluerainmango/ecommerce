@@ -16,7 +16,7 @@ const List = (props) => {
       <ListPreview />
       <div className="list__group">
         {starships.map((starship) => (
-          <ListElement key={starship.name} starship={starship} />
+          <ListElement key={starship.title} starship={starship} />
         ))}
       </div>
     </div>

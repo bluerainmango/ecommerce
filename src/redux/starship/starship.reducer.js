@@ -15,6 +15,7 @@ const INITIAL_STATE = {
     {
       id: "s1",
       title: "Ghost19",
+      slug: "ghost19",
       subtitle: "slick and modern",
       category: "starships",
       image: starship2,
@@ -26,6 +27,7 @@ const INITIAL_STATE = {
     {
       id: "s2",
       title: "AE-23",
+      slug: "ae-23",
       subtitle: "Comportable",
       category: "starships",
       image: starship1,
@@ -38,6 +40,7 @@ const INITIAL_STATE = {
     {
       id: "s3",
       title: "BT-7",
+      slug: "bt-7",
       subtitle: "Spacious",
       category: "starships",
       image: starship4,
@@ -50,6 +53,7 @@ const INITIAL_STATE = {
     {
       id: "s4",
       title: "X-wing",
+      slug: "x-wing",
       subtitle: "Auto-pilot",
       category: "starships",
       image: starship5,
@@ -62,6 +66,7 @@ const INITIAL_STATE = {
     {
       id: "s5",
       title: "Star Cruise",
+      slug: "star-cruise",
       subtitle: "fastest",
       category: "starships",
       image: starship3,

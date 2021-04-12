@@ -5,7 +5,7 @@ import Button from "../button/button.component";
 import "./box3d.styles.scss";
 
 const Box3d = ({ props }) => {
-  console.log("🍋 box3d props:", props);
+  // console.log("🍋 box3d props:", props);
 
   return (
     <div>
@@ -43,7 +43,7 @@ const Box3d = ({ props }) => {
             {/* <h2>{props.title}</h2> */}
             <ul>
               {props.feature?.map((el) => (
-                <li>{el.subject}</li>
+                <li key={`list-${el.subject}`}>{el.subject}</li>
               ))}
             </ul>
             <Button
