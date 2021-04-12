@@ -5,6 +5,7 @@
   font-size: 1.5rem;
   display: none;
   // position: absolute;
+  // z-index: 200;
 
   &--fixed {
     display: block;
@@ -16,7 +17,7 @@
       rgba(0, 0, 0, 0)
     );
     backdrop-filter: saturate(180%) blur(20px);
-    z-index: 100;
+    z-index: 200;
   }
 
   &__wrapper {

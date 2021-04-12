@@ -7,17 +7,6 @@
   background-size: cover;
   background-position: 0 50%, center center;
   animation: 50s para infinite linear;
-
-  &__star {
-    transform: scaleX(-1) translate(0, 0);
-    animation: 10s falling infinite linear;
-  }
-}
-
-@keyframes falling {
-  100% {
-    transform: scaleX(-1) translate(-400%, 200%);
-  }
 }
 
 @keyframes para {

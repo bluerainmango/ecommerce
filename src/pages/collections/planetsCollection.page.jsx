@@ -20,7 +20,6 @@ const PlanetsCollection = ({ planets }) => {
         </Route>
         {/* index page: /planets */}
         <Route exact path={match.path}>
-          <h1>here is planet index page</h1>
           <Collection props={planets} title={"Planet"} />
         </Route>
       </Switch>

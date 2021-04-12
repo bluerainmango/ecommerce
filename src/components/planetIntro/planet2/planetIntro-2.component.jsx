@@ -6,7 +6,7 @@ import "./planetIntro-2.styles.scss";
 const PlanetIntro2 = () => {
   return (
     <div className="parallel">
-      {/* <img className="parallel__star" src={star} alt="star" /> */}
+      <div className="gradient" />
     </div>
   );
 };

@@ -14,8 +14,17 @@ import planet1_pt4 from "../../assets/planet1-presentation4.jpeg";
 import planet2_pt1 from "../../assets/planet2-presentation1.jpeg";
 import planet2_pt2 from "../../assets/planet2-presentation2.jpeg";
 import planet2_pt3 from "../../assets/planet2-presentation3.jpeg";
+import planet3_pt1 from "../../assets/planet3-presentation1.jpeg";
+import planet3_pt2 from "../../assets/planet3-presentation2.jpeg";
+import planet3_pt3 from "../../assets/planet3-presentation3.jpeg";
+
+import planet1_intro from "../../assets/planet1-intro.jpeg";
 import planet2_intro from "../../assets/planet2-intro.jpeg";
-// import planet2_pt4 from "../../assets/planet2-presentation4.jpeg";
+import planet3_intro from "../../assets/planet3-intro.jpeg";
+
+import planet1_feature from "../../assets/planet1-feature.jpeg";
+import planet2_feature from "../../assets/planet2-feature.jpeg";
+import planet3_feature from "../../assets/planet3-feature.jpeg";
 
 import city1 from "../../assets/city4.jpeg";
 import city2 from "../../assets/city5.jpeg";
@@ -35,10 +44,12 @@ const INITIAL_STATE = {
       image_800: planet1_800,
       image2: city1,
       bgimage: city1bg,
-      pageIntro: planet1_pt1,
+      pageIntro: planet1_intro,
       thumbnails: [planet1, planet1_pt1, planet1_pt2, planet1_pt3, planet1_pt4],
       presentation: [planet1_pt1, planet1_pt2, planet1_pt3],
       headline: "The most technically advanced city in universe",
+      featureImage: planet1_feature,
+      featureColor: "rgb(132, 0, 158),rgb(0, 26, 73)",
       feature: [
         {
           subject: "Neon City",
@@ -69,14 +80,17 @@ const INITIAL_STATE = {
       id: 2,
       title: "Beyond Heaven",
       subtitle: "Luyten B",
-      slug: "k2",
+      slug: "luyten",
       image: planet2,
       image_800: planet2_800,
       image2: city2,
       bgimage: city2bg,
-      thumbnails: [planet2_intro, planet2_pt1, planet2_pt2, planet2_pt3],
+      pageIntro: planet2_intro,
+      thumbnails: [planet2_intro, planet2_pt1, planet2_pt2, planet2_pt3, city2],
       presentation: [planet2_pt1, planet2_pt2, planet2_pt3],
       headline: "Planet that keeps natural beauty of universe",
+      featureImage: planet2_feature,
+      featureColor: "rgb(0, 158, 40),rgb(0, 41, 131)",
       feature: [
         {
           subject: "Breath taken beauty",
@@ -101,17 +115,45 @@ const INITIAL_STATE = {
       ],
       price: 430,
       description:
-        "K2-72e is a confirmed exoplanet, likely icy, orbiting within the habitable zone of the red dwarf star K2-72, the outermost of four such planets discovered in the system by NASA's Kepler spacecraft on its 'Second Light' mission. It is located about 217.1 light-years (66.56 parsecs, or nearly 2.0538×1015 km) away from Earth in the constellation of Aquarius.",
+        "Luyten B is a confirmed exoplanet, likely icy and green, orbiting within the habitable zone of the red dwarf star K2-72, the outermost of four such planets discovered in the system by NASA's Kepler spacecraft on its 'Second Light' mission. It is located about 217.1 light-years (66.56 parsecs, or nearly 2.0538×1015 km) away from Earth in the constellation of Aquarius.",
     },
     {
       id: 3,
       title: "Sky Rocks",
       subtitle: "K2-72e",
-      slug: "luyten",
+      slug: "k2",
       image: planet3,
       image_800: planet3_800,
       image2: city3,
       bgimage: city3bg,
+      pageIntro: planet3_intro,
+      thumbnails: [planet3_intro, planet3_pt1, planet3_pt2, planet3_pt3, city3],
+      presentation: [planet3_pt1, planet3_pt2, planet3_pt3],
+      headline: "Planet that has floating land",
+      featureImage: planet3_feature,
+      featureColor: "rgb(0, 108, 158),rgb(0, 27, 85)",
+      feature: [
+        {
+          subject: "Floating land",
+          content:
+            "Do consequat eu laboris sit sint culpa. Commodo id dolor amet aute pariatur eu. Aute aliqua amet anim tempor commodo.",
+        },
+        {
+          subject: "clear air",
+          content:
+            "Anim ut consectetur commodo deserunt occaecat cillum enim excepteur duis do.",
+        },
+        {
+          subject: "Safetest city",
+          content:
+            "Ullamco mollit esse consectetur elit esse incididunt laborum commodo deserunt nostrud et eu.",
+        },
+        {
+          subject: "No crime",
+          content:
+            "Id reprehenderit amet quis proident veniam occaecat adipisicing ea occaecat et cupidatat veniam proident fugiat.",
+        },
+      ],
       price: 540,
       description:
         "Luyten b is a confirmed exoplanet, likely rocky, orbiting within the habitable zone of the nearby red dwarf Luyten's Star. It is one of the most Earth-like planets ever found and is the fifth-closest potentially habitable exoplanet known, at a distance of 12.2 light-years.",

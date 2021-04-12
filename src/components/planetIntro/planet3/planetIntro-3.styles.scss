@@ -1,0 +1,31 @@
+.fallingStar {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../../assets//planet3-intro.jpeg");
+  background-position: center center;
+  background-size: cover;
+
+  .star {
+    transform: scaleX(-1) translate(0, 0);
+    animation: 10s falling infinite linear;
+  }
+
+  @keyframes falling {
+    100% {
+      transform: scaleX(-1) translate(-400%, 200%);
+    }
+  }
+}
+
+.sky {
+  animation: glowing 2s ease-in-out infinite alternate;
+
+  @keyframes glowing {
+    from {
+      text-shadow: 0 0 20px #50c8ff;
+    }
+    to {
+      text-shadow: 0 0 30px #90e0ff, 0 0 10px #ffffff;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 import PlanetIntro1 from "./planet1/planetIntro-1.component";
 import PlanetIntro2 from "./planet2/planetIntro-2.component";
+import PlanetIntro3 from "./planet3/planetIntro-3.component";
 
 import { useLocation } from "react-router-dom";
 import "./planetIntro.styles.scss";
@@ -19,12 +20,12 @@ const PlanetIntro = ({ planet }) => {
         textEffect = "neon";
         break;
 
-      case "/planets/k2":
+      case "/planets/luyten":
         textEffect = "cloud";
         break;
 
       default:
-        textEffect = "";
+        textEffect = "sky";
     }
 
     textRef.current.classList.add(textEffect);
@@ -32,11 +33,16 @@ const PlanetIntro = ({ planet }) => {
 
   return (
     <section className="planetIntro">
-      {/* <PlanetIntro1 /> */}
-      <PlanetIntro2 />
+      {planet.id === 1 ? (
+        <PlanetIntro1 />
+      ) : planet.id === 2 ? (
+        <PlanetIntro2 />
+      ) : (
+        <PlanetIntro3 />
+      )}
 
       <div className="planetIntro__content">
-        <h1 ref={textRef} className={`planetIntro__title`}>
+        <h1 ref={textRef} className="planetIntro__title">
           {planet?.title}
         </h1>
       </div>

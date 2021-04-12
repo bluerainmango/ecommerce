@@ -6,11 +6,12 @@
   height: 300vh;
   //   background-color: black;
 
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(132, 0, 158),
-    rgb(0, 26, 73)
-  );
+  background-image: linear-gradient(to bottom right, var(--featureColor));
+  // background-image: linear-gradient(
+  //   to bottom right,
+  //   rgb(3, 88, 0),
+  //   rgb(0, 63, 16)
+  // );
 
   &__img {
     position: absolute;

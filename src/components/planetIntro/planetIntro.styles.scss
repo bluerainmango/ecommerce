@@ -1,5 +1,9 @@
 @import "../../global.style.scss";
 
+.planetIntro {
+  background-color: black;
+}
+
 .planetIntro__content {
   @include abCenter;
   text-align: center;

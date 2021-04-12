@@ -283,8 +283,3 @@ $neon-color: rgb(225, 0, 255);
     0 0 80px $neon-color, 0 0 90px $neon-color, 0 0 100px $neon-color,
     0 0 150px $neon-color;
 }
-
-.gradient {
-  @include gradient;
-  z-index: 100;
-}
