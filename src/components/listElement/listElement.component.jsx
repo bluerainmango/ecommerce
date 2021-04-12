@@ -18,7 +18,7 @@ const ListElement = (props) => {
 
   return (
     <div className="listElement">
-      <img src={starship.image} alt={starship.name} onClick={handleClick} />
+      <img src={starship.title} alt={starship.title} onClick={handleClick} />
       <div className="listElement__frame" />
     </div>
   );

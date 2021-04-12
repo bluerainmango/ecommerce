@@ -1,7 +1,27 @@
 import React from "react";
 
-const StarshipsCollection = () => {
-  return <div>this is starships</div>;
+import Collection from "../../components/collection/collection.component";
+
+import { connect } from "react-redux";
+
+import { useRouteMatch, Switch, Route } from "react-router-dom";
+
+const StarshipsCollection = ({ starships }) => {
+  const match = useRouteMatch();
+  console.log("🍑 starship:", starships);
+  return (
+    <div>
+      <Switch>
+        <Route path={`${match.path}`}>
+          <Collection props={starships} title={"Starship"} />
+        </Route>
+      </Switch>
+    </div>
+  );
 };
 
-export default StarshipsCollection;
+const mapStateToProps = (state) => ({
+  starships: state.starships.starships,
+});
+
+export default connect(mapStateToProps)(StarshipsCollection);

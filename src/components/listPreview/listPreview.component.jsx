@@ -14,11 +14,11 @@ const ListPreview = (props) => {
       <div className="preview__frame" />
       <img
         src={activeStarship?.image}
-        alt={activeStarship?.name}
+        alt={activeStarship?.title}
         style={{ tranasform: "translate3d(10px, 20px, 40px)" }}
       />
       <div className="preview__info">
-        <h4 className="preview__title">{activeStarship?.name}</h4>
+        <h4 className="preview__title">{activeStarship?.title}</h4>
         <h5 className="preview__description">{activeStarship?.description}</h5>
         <Button text={["Add to journey", "Learn more"]} />
         {/* <button>Add to journey</button>

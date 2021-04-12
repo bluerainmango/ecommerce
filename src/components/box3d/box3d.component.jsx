@@ -10,7 +10,11 @@ const Box3d = ({ props }) => {
   return (
     <div>
       <div className="box3d__wrapper">
-        <div className="box3d__card">
+        <div
+          className={`box3d__card ${
+            props.category === "starships" ? "card__starship" : ""
+          }`}
+        >
           <div className="front">
             <h1>{props.title}</h1>
             <p>
@@ -38,7 +42,7 @@ const Box3d = ({ props }) => {
           >
             {/* <h2>{props.title}</h2> */}
             <ul>
-              {props.feature.map((el) => (
+              {props.feature?.map((el) => (
                 <li>{el.subject}</li>
               ))}
             </ul>
