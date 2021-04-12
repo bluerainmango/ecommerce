@@ -18,8 +18,24 @@ const Box3d = ({ props }) => {
               {/* <span>2018</span> */}
             </p>
             <p className="price">${props.price}</p>
+            <div className="img-wrapper">
+              <img
+                src={props.collectionThumb}
+                alt={`${props.title}-collection-thumb`}
+              />
+            </div>
           </div>
-          <div className="right">
+
+          <div
+            className="right"
+            style={{
+              backgroundImage: `linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.219) 0%,
+                rgba(0, 0, 0, 0) 100%
+              ),url(${props.featureImage})`,
+            }}
+          >
             {/* <h2>{props.title}</h2> */}
             <ul>
               {props.feature.map((el) => (
@@ -35,12 +51,12 @@ const Box3d = ({ props }) => {
             />
           </div>
         </div>
-        <div className="img-wrapper">
+        {/* <div className="img-wrapper">
           <img
             src={props.collectionThumb}
             alt={`${props.title}-collection-thumb`}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

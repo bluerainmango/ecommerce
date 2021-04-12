@@ -5,25 +5,25 @@
   perspective: 80rem;
   position: relative;
 
-  .img-wrapper {
-    animation: float 4s cubic-bezier(0.39, 0.575, 0.565, 1) infinite alternate;
-    position: absolute;
-    bottom: 20%;
-    right: 0%;
-    //   transform: translate(-50%, -50%);
-    pointer-events: none;
-    backface-visibility: hidden;
-    //   width: 50px;
+  //   .img-wrapper {
+  //     animation: float 4s cubic-bezier(0.39, 0.575, 0.565, 1) infinite alternate;
+  //     position: absolute;
+  //     bottom: 20%;
+  //     right: 0%;
+  //     //   transform: translate(-50%, -50%);
+  //     pointer-events: none;
+  //     backface-visibility: hidden;
+  //     //   width: 50px;
 
-    img {
-      transform-origin: top right;
-      transition: transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
-      transition-delay: 100ms;
-      transform: translateX(35%) rotateZ(13deg);
-      pointer-events: none;
-      width: 60%;
-    }
-  }
+  //     img {
+  //       transform-origin: top right;
+  //       transition: transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  //       transition-delay: 100ms;
+  //       transform: translateX(35%) rotateZ(13deg);
+  //       pointer-events: none;
+  //       width: 60%;
+  //     }
+  //   }
 }
 
 .box3d__card {
@@ -44,6 +44,26 @@
     transform: rotateY(0deg) translateZ(16rem);
     border-radius: 1rem 0.2rem 0 0;
     text-align: center;
+
+    .img-wrapper {
+      animation: float 4s cubic-bezier(0.39, 0.575, 0.565, 1) infinite alternate;
+      position: absolute;
+      bottom: 20%;
+      right: 0%;
+      //   transform: translate(-50%, -50%);
+      pointer-events: none;
+      backface-visibility: hidden;
+      //   width: 50px;
+
+      img {
+        transform-origin: top right;
+        transition: transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition-delay: 100ms;
+        transform: translateX(10%) rotateZ(13deg);
+        pointer-events: none;
+        width: 60%;
+      }
+    }
 
     .price {
       position: absolute;
@@ -76,38 +96,63 @@
       font-weight: 400;
       font-size: 16px;
     }
+
+    @keyframes float {
+      0% {
+        transform: translateZ(20px);
+      }
+      100% {
+        transform: translateY(-21px) translateZ(30px);
+      }
+    }
   }
 
   .right {
-    background-image: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.438) 0%,
-      rgba(92, 91, 94, 0) 100%
-    );
-    opacity: 0.08;
+    // background-image: linear-gradient(
+    //     0deg,
+    //     rgba(255, 255, 255, 0.438) 0%,
+    //     rgba(92, 91, 94, 0) 100%
+    //   ),
+    //   url(var(--right-img));
+
+    // background-image: linear-gradient(
+    //     0deg,
+    //     rgba(0, 0, 0, 0.219) 0%,
+    //     rgba(0, 0, 0, 0) 100%
+    //   ),
+    //   url("../../assets/planet1-feature.jpeg");
+
+    background-size: cover;
+    // background-blend-mode: darken;
+    // background-color: black;
+    opacity: 0.05;
     transform: rotateY(90deg) translateZ(16rem);
-    border-radius: 0 0 1rem 0.2rem;
+    border-radius: 0 1rem 1rem 0.2rem;
 
     display: flex;
     flex-direction: column;
-
     // justify-content: center;
     align-items: center;
 
-    div:nth-child(2) {
-      //   margin-top: 20%;
-      justify-self: flex-end;
-      //   align-items: center;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background-color: rgba(0, 0, 0, 0.315);
     }
 
     ul {
-      //   margin-left: 21px;
-      //   padding: 0;
       text-align: center;
       font-size: 2.1rem;
-      font-weight: 200;
+      font-weight: 400;
+      color: #fff;
       list-style: none;
-      margin-bottom: 24rem;
+      margin: 10rem 0 10rem 0;
+      background-color: rgba(0, 0, 0, 0.459);
+      width: 90%;
     }
 
     li {
@@ -137,22 +182,8 @@
   opacity: 1;
 }
 
-@keyframes float {
-  0% {
-    transform: translateZ(20px);
-  }
-  100% {
-    transform: translateY(-21px) translateZ(30px);
-  }
-}
-
-.box3d__card:hover ~ .img-wrapper img {
-  transform: scale(0.9) translateX(40%) translateY(90%) rotateZ(80deg);
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0.33;
-    transform: scale(0.89);
-  }
-}
+// .box3d__card:hover ~ .img-wrapper img {
+//   //   transform: scale(0.9) translateX(-40%) rotateZ(20deg);
+//   // transform: scale(0.9) translateX(40%) translateY(90%) rotateZ(80deg);
+//   opacity: 0;
+// }

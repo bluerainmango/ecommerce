@@ -28,3 +28,10 @@
 .u-margin-top-small {
   margin-top: 3rem !important;
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.33;
+    transform: scale(0.89);
+  }
+}
