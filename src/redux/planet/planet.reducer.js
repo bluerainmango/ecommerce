@@ -6,6 +6,9 @@ import planet3 from "../../assets/planet-3.jpeg";
 import planet1_800 from "../../assets/planet-1_800.jpg";
 import planet2_800 from "../../assets/planet-2_800.jpg";
 import planet3_800 from "../../assets/planet-3_800.jpg";
+import planet1_800_trans from "../../assets/planet-1_800_trans.png";
+import planet2_800_trans from "../../assets/planet-2_800_trans.png";
+import planet3_800_trans from "../../assets/planet-3_800_trans.png";
 
 import planet1_pt1 from "../../assets/planet1-presentation1.jpeg";
 import planet1_pt2 from "../../assets/planet1-presentation2.jpeg";
@@ -46,6 +49,7 @@ const INITIAL_STATE = {
       bgimage: city1bg,
       pageIntro: planet1_intro,
       thumbnails: [planet1, planet1_pt1, planet1_pt2, planet1_pt3, planet1_pt4],
+      collectionThumb: planet1_800_trans,
       presentation: [planet1_pt1, planet1_pt2, planet1_pt3],
       headline: "The most technically advanced city in universe",
       featureImage: planet1_feature,
@@ -87,6 +91,7 @@ const INITIAL_STATE = {
       bgimage: city2bg,
       pageIntro: planet2_intro,
       thumbnails: [planet2_intro, planet2_pt1, planet2_pt2, planet2_pt3, city2],
+      collectionThumb: planet2_800_trans,
       presentation: [planet2_pt1, planet2_pt2, planet2_pt3],
       headline: "Planet that keeps natural beauty of universe",
       featureImage: planet2_feature,
@@ -128,6 +133,7 @@ const INITIAL_STATE = {
       bgimage: city3bg,
       pageIntro: planet3_intro,
       thumbnails: [planet3_intro, planet3_pt1, planet3_pt2, planet3_pt3, city3],
+      collectionThumb: planet3_800_trans,
       presentation: [planet3_pt1, planet3_pt2, planet3_pt3],
       headline: "Planet that has floating land",
       featureImage: planet3_feature,

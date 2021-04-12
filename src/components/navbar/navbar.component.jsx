@@ -30,7 +30,9 @@ const NavBar = (props) => {
   return (
     <div ref={navRef} className="navbar">
       <div className="navbar__wrapper">
-        <div className="navbar__logo"> SPACE Y</div>
+        <div className="navbar__logo">
+          <Link to="/">SPACE Y</Link>
+        </div>
         <ul className="navbar__links">
           <li className="link--moon">
             <Link to="/planets">planets</Link>

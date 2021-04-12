@@ -1,11 +1,13 @@
 @import "../../global.style.scss";
 
 .collection {
-  //   background-color: black;
+  // background-color: black;
   width: 100vw;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr minmax(min-content, 60rem) 1fr;
   grid-template-rows: 1fr, min-content;
+  background-color: rgb(0, 0, 0);
 
   &__title {
     @include subTitle;
@@ -18,7 +20,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min-content, 15rem));
     justify-content: center;
-    column-gap: 1rem;
+    column-gap: 5rem;
     // backface-visibility: hidden;
   }
 }
