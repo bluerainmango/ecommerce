@@ -1,6 +1,6 @@
 import React from "react";
 
-import Planet from "../products/planets.page";
+import Planet from "../products/planet.page";
 import Collection from "../../components/collection/collection.component";
 
 import { connect } from "react-redux";

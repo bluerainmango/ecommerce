@@ -1,0 +1,11 @@
+.starshipIntro {
+  height: 100vh;
+
+  &__bg {
+    height: 100%;
+    background-image: url(../../assets/starshipIntroBg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}

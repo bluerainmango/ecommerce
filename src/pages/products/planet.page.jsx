@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 
 import Presentation from "../../components/presentation/presentation.component";
 
-import "./planets.styles.scss";
+import "./planet.styles.scss";
 
 const Planet = ({ planets }) => {
   let { planetSlug } = useParams();

@@ -40,9 +40,6 @@ const NavBar = (props) => {
           <li className="link--mars">
             <Link to="/starships">starships</Link>
           </li>
-          <li className="link--vinus">
-            <a href="/vinus">VINUS</a>
-          </li>
         </ul>
         <ul className="navbar__user">
           <li className="link--login">LOGIN</li>

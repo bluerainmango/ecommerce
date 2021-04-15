@@ -67,7 +67,7 @@ const INITIAL_STATE = {
       id: "s5",
       title: "Star Cruise",
       slug: "star-cruise",
-      subtitle: "fastest",
+      subtitle: "Fastest",
       category: "starships",
       image: starship3,
       featureImage: starship3,

@@ -1,6 +1,7 @@
 import React from "react";
 
 import Collection from "../../components/collection/collection.component";
+import Starship from "../products/starship.page";
 
 import { connect } from "react-redux";
 
@@ -8,10 +9,13 @@ import { useRouteMatch, Switch, Route } from "react-router-dom";
 
 const StarshipsCollection = ({ starships }) => {
   const match = useRouteMatch();
-  console.log("🍑 starship:", starships);
+  // console.log("🍑 starship:", starships);
   return (
     <div>
       <Switch>
+        <Route path={`${match.path}/:starshipSlug`}>
+          <Starship props={starships} />
+        </Route>
         <Route path={`${match.path}`}>
           <Collection props={starships} title={"Starship"} />
         </Route>
