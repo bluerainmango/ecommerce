@@ -23,6 +23,11 @@ const INITIAL_STATE = {
       collectionThumb: starship2,
       price: 335,
       description: "Magna laboris et sit sit.",
+      benefit: [
+        "Do nisi non ex occaecat quis culpa qui qui voluptate veniam esse. Do nisi non ex occaecat quis culpa qui qui voluptate veniam esse.",
+        "Eu deserunt laborum quis excepteur reprehenderit ipsum sunt veniam incididunt qui commodo laborum dolor.",
+        "Aliqua do dolor incididunt eiusmod nisi enim sint sint quis duis. Do nisi non ex occaecat quis culpa qui qui voluptate veniam esse.",
+      ],
     },
     {
       id: "s2",
@@ -36,6 +41,11 @@ const INITIAL_STATE = {
       price: 232,
       description:
         "Qui duis ut amet aliqua in ut incididunt velit elit in duis.",
+      benefit: [
+        "Sit id nisi cupidatat qui cillum ullamco. Do nisi non ex occaecat quis culpa qui qui voluptate veniam esse.",
+        "Duis reprehenderit velit ut veniam non labore sit occaecat. Do nisi non ex occaecat quis culpa qui qui voluptate veniam esse.",
+        "Est excepteur commodo sunt ea. Do nisi non ex occaecat quis culpa qui qui voluptate veniam esse.",
+      ],
     },
     {
       id: "s3",
@@ -49,6 +59,11 @@ const INITIAL_STATE = {
       price: 413,
       description:
         "Sit est reprehenderit consequat minim aliquip deserunt id aliqua nisi adipisicing quis amet anim.",
+      benefit: [
+        "Do sunt id ullamco eu non et ea quis cillum excepteur in exercitation.",
+        "Nulla et velit magna laborum consectetur. Do nisi non ex occaecat quis culpa qui qui voluptate veniam esse.",
+        "Ea Lorem adipisicing amet est deserunt reprehenderit sunt duis adipisicing proident ipsum.",
+      ],
     },
     {
       id: "s4",
@@ -62,6 +77,11 @@ const INITIAL_STATE = {
       price: 580,
       description:
         "Sunt quis ea aute ullamco veniam proident eu qui do fugiat qui.",
+      benefit: [
+        "Do sunt id ullamco eu non et ea quis cillum excepteur in exercitation.",
+        "Nulla et velit magna laborum consectetur. Do nisi non ex occaecat quis culpa qui qui voluptate veniam esse.",
+        "Ea Lorem adipisicing amet est deserunt reprehenderit sunt duis adipisicing proident ipsum.",
+      ],
     },
     {
       id: "s5",
@@ -75,6 +95,11 @@ const INITIAL_STATE = {
       price: 421,
       description:
         "Sint tempor nisi ad dolore eu fugiat enim nulla enim quis amet.",
+      benefit: [
+        "Do sunt id ullamco eu non et ea quis cillum excepteur in exercitation.",
+        "Nulla et velit magna laborum consectetur. Do nisi non ex occaecat quis culpa qui qui voluptate veniam esse.",
+        "Ea Lorem adipisicing amet est deserunt reprehenderit sunt duis adipisicing proident ipsum.",
+      ],
     },
   ],
 };
