@@ -18,6 +18,7 @@ const Starship = ({ starships }) => {
   return (
     <div>
       <StarshipContainer starship={starship} />
+      <div className="order"></div>
     </div>
   );
 };
