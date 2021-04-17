@@ -7,44 +7,32 @@ import Highlight from "../highlight/highlight.component";
 import "./starshipContainer.styles.scss";
 
 const StarshipContainer = ({ starship }) => {
-  //   const highlightRef = useRef();
   const starshipRef = useRef();
   const highlightRef = createRef();
   const containerRef = useRef();
 
+  //* When starship hits highlight comp, it goes back to header(remove fixed).
   useEffect(() => {
-    console.log(
-      "🧄 starshipRef",
-      starshipRef.current,
-      "🥝 highlightRef",
-      highlightRef.current
-    );
-
     const backToTop = (entries, observer) => {
       const [entry] = entries;
+      const starshipDOM = starshipRef.current;
 
-      //   if (!entry.isIntersecting) return;
-      console.log("🍒", entry);
+      if (!entry.isIntersecting) return;
+      //   console.log("🍒", entry);
 
-      //   observer.unobserve()
+      starshipDOM.style.setProperty("position", "absolute");
 
-      const topToEl = entry.boundingClientRect.top;
-      const bottomToEl =
-        entry.rootBounds.height - entry.boundingClientRect.bottom;
-
-      console.log("🧄 top", topToEl, "🍠 bottom", bottomToEl);
-      //   if (topHeight === bottomHeight) console.log("🥕 center");
+      observer.unobserve(entry.target);
     };
 
     const starshipObserver = new IntersectionObserver(backToTop, {
-      root: highlightRef.current,
-      threshold: 0,
+      root: null,
+      threshold: 0.6,
+      rootMargin: "-250px 0px -250px 0px",
     });
 
-    console.log("🍇 observer", starshipObserver);
-
-    starshipObserver.observe(starshipRef.current);
-  }, [highlightRef]);
+    starshipObserver.observe(highlightRef.current);
+  }, [highlightRef, starshipRef]);
 
   return (
     <div ref={containerRef} className="starshipContainer">
@@ -64,28 +52,3 @@ const StarshipContainer = ({ starship }) => {
 };
 
 export default StarshipContainer;
-
-//   useEffect(() => {
-//     const backToTop = (entries, observer) => {
-//       const [entry] = entries;
-
-//       //   if (!entry.isIntersecting) return;
-//       console.log(entry);
-
-//       //   observer.unobserve()
-
-//       const topToEl = entry.boundingClientRect.top;
-//       const bottomToEl =
-//         entry.rootBounds.height - entry.boundingClientRect.bottom;
-
-//       console.log("🧄 top", topToEl, "🍠 bottom", bottomToEl);
-//       //   if (topHeight === bottomHeight) console.log("🥕 center");
-//     };
-
-//     const options = { root: null, threshold: 1 };
-
-//     const starshipObserver = new IntersectionObserver(backToTop, options);
-//     console.log("🍇 observer", starshipObserver);
-
-//     starshipObserver.observe(highlightRef.current);
-//   }, []);

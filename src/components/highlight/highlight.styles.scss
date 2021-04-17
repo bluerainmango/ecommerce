@@ -2,9 +2,9 @@
   max-width: 140rem;
   border: 1px white solid;
   margin: 0 auto;
-  height: 50rem;
+  height: 500px;
 
-  //   position: absolute;
+  position: absolute;
   left: 50%;
   transform: translateX(-50%);
 
@@ -39,10 +39,12 @@
       //   font-weight: 400;
       margin-bottom: 3rem;
       font-style: italic;
+      color: rgb(0, 204, 255);
     }
 
     p {
       font-size: 1.8rem;
+      line-height: 1.5;
     }
   }
 }

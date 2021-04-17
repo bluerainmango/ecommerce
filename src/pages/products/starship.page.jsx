@@ -11,8 +11,6 @@ import "./starship.styles.scss";
 const Starship = ({ starships }) => {
   const param = useParams();
 
-  console.log("🍥 starship", starships, param.starshipSlug);
-
   const starship = starships.find((el) => el.slug === param.starshipSlug);
 
   return (
