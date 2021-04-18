@@ -63,11 +63,13 @@ const StarshipContainer = ({ starship }) => {
   const handleNavigation = useCallback(
     (e) => {
       const window = e.currentTarget;
+
       if (y > window.scrollY) {
         setScrollDir("scroll up");
       } else if (y < window.scrollY) {
         setScrollDir("scroll down");
       }
+
       setY(window.scrollY);
     },
     [y]
@@ -113,6 +115,13 @@ const StarshipContainer = ({ starship }) => {
     starshipObserver.observe(highlightRef.current);
   }, [highlightRef, starshipRef, scrollDir]);
 
+  //! Only when refresh page in the top of the page, show starship
+  useEffect(() => {
+    // console.log("🍍", window.scrollY);
+    if (window.scrollY === 0)
+      starshipRef.current.style.setProperty("position", "fixed");
+  }, []);
+
   return (
     <div ref={containerRef} className="starshipContainer">
       <div className="starship__imgbox">
@@ -121,7 +130,7 @@ const StarshipContainer = ({ starship }) => {
           className="starship__img"
           src={starship.image}
           alt="starship"
-          style={{ position: "fixed" }}
+          style={{ position: "absolute" }}
         />
       </div>
       <StarshipIntro starship={starship} />

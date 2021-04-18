@@ -6,7 +6,7 @@ import { nextThumbnail, defaultThumbnail } from "../../redux/page/page.action";
 import "./thumbnailSlider.styles.scss";
 
 const ThumbnailSlider = (props) => {
-  const { planet, nextThumbnail, defaultThumbnail, thumbnailIndex } = props;
+  const { product, nextThumbnail, defaultThumbnail, thumbnailIndex } = props;
 
   //* Default thumbnail index
   useEffect(() => {
@@ -18,7 +18,7 @@ const ThumbnailSlider = (props) => {
     e.preventDefault();
 
     // Set thumbnail number to next one
-    nextThumbnail(planet.thumbnails.length);
+    nextThumbnail(product.thumbnails.length);
   };
 
   return (
@@ -27,7 +27,7 @@ const ThumbnailSlider = (props) => {
         &lang;
       </button>
       <div className="thumbnails">
-        {planet?.thumbnails.map((thumbnail, i, arr) => {
+        {product?.thumbnails.map((thumbnail, i, arr) => {
           let transformX = 0;
           let opacity = 1;
           let zIndex = 1;
@@ -59,7 +59,7 @@ const ThumbnailSlider = (props) => {
             <div className="thumbnail" key={i}>
               <img
                 className="thumbnail__img"
-                alt={`${planet.title} thumbnail`}
+                alt={`${product.title} thumbnail`}
                 src={thumbnail}
                 style={{
                   "--x": transformX,

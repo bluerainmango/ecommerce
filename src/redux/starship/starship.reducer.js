@@ -9,6 +9,31 @@ import starship3Cockpit from "../../assets/starship4-cockpit.jpeg";
 import starship4Cockpit from "../../assets/starship3-cockpit.png";
 import starship5Cockpit from "../../assets/starship5-cockpit.jpeg";
 
+import starship1Thumb1 from "../../assets/starship1-thumb1.jpeg";
+import starship1Thumb2 from "../../assets/starship1-thumb2.jpeg";
+import starship1Thumb3 from "../../assets/starship1-thumb3.jpeg";
+import starship1Thumb4 from "../../assets/starship1-thumb4.jpeg";
+
+import starship2Thumb1 from "../../assets/starship2-thumb1.jpeg";
+import starship2Thumb2 from "../../assets/starship2-thumb2.jpeg";
+import starship2Thumb3 from "../../assets/starship2-thumb3.jpeg";
+import starship2Thumb4 from "../../assets/starship2-thumb4.jpeg";
+
+import starship3Thumb1 from "../../assets/starship3-thumb1.jpeg";
+import starship3Thumb2 from "../../assets/starship3-thumb2.jpeg";
+import starship3Thumb3 from "../../assets/starship3-thumb3.jpeg";
+import starship3Thumb4 from "../../assets/starship3-thumb4.jpeg";
+
+import starship4Thumb1 from "../../assets/starship4-thumb1.jpeg";
+import starship4Thumb2 from "../../assets/starship4-thumb2.jpeg";
+import starship4Thumb3 from "../../assets/starship4-thumb3.jpeg";
+import starship4Thumb4 from "../../assets/starship4-thumb4.jpeg";
+
+import starship5Thumb1 from "../../assets/starship5-thumb1.jpeg";
+import starship5Thumb2 from "../../assets/starship5-thumb2.jpeg";
+import starship5Thumb3 from "../../assets/starship5-thumb3.jpeg";
+import starship5Thumb4 from "../../assets/starship5-thumb4.jpeg";
+
 const INITIAL_STATE = {
   activeStarship: {
     title: "Ghost19",
@@ -28,6 +53,13 @@ const INITIAL_STATE = {
       collectionThumb: starship2,
       cockpitImage: starship1Cockpit,
       price: 335,
+      thumbnails: [
+        starship2,
+        starship1Thumb1,
+        starship1Thumb2,
+        starship1Thumb3,
+        starship1Thumb4,
+      ],
       description: "Magna laboris et sit sit.",
       descriptionLong:
         "Deserunt esse nostrud nostrud nulla aliqua irure dolore nisi aliquip. Cupidatat minim occaecat aliquip officia tempor adipisicing tempor quis anim voluptate eiusmod duis excepteur.",
@@ -48,6 +80,13 @@ const INITIAL_STATE = {
       collectionThumb: starship1,
       cockpitImage: starship2Cockpit,
       price: 232,
+      thumbnails: [
+        starship1,
+        starship2Thumb1,
+        starship2Thumb2,
+        starship2Thumb3,
+        starship2Thumb4,
+      ],
       description:
         "Qui duis ut amet aliqua in ut incididunt velit elit in duis.",
       descriptionLong:
@@ -69,6 +108,13 @@ const INITIAL_STATE = {
       collectionThumb: starship4,
       cockpitImage: starship3Cockpit,
       price: 413,
+      thumbnails: [
+        starship4,
+        starship4Thumb1,
+        starship4Thumb2,
+        starship4Thumb3,
+        starship4Thumb4,
+      ],
       description:
         "Sit est reprehenderit consequat minim aliquip deserunt id aliqua nisi adipisicing quis amet anim.",
       descriptionLong:
@@ -90,6 +136,13 @@ const INITIAL_STATE = {
       collectionThumb: starship5,
       cockpitImage: starship4Cockpit,
       price: 580,
+      thumbnails: [
+        starship5,
+        starship5Thumb1,
+        starship5Thumb2,
+        starship5Thumb3,
+        starship5Thumb4,
+      ],
       description:
         "Sunt quis ea aute ullamco veniam proident eu qui do fugiat qui.",
       descriptionLong:
@@ -111,6 +164,13 @@ const INITIAL_STATE = {
       collectionThumb: starship3,
       cockpitImage: starship5Cockpit,
       price: 421,
+      thumbnails: [
+        starship3,
+        starship3Thumb1,
+        starship3Thumb2,
+        starship3Thumb3,
+        starship3Thumb4,
+      ],
       description:
         "Sint tempor nisi ad dolore eu fugiat enim nulla enim quis amet.",
       descriptionLong:

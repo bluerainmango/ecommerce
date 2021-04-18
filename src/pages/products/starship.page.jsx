@@ -1,6 +1,7 @@
 import React from "react";
 
 import StarshipContainer from "../../components/starshipContainer/starshipContainer.component";
+import ProductOrder from "../../components/productOrder/productOrder.component";
 
 import { connect } from "react-redux";
 
@@ -16,7 +17,7 @@ const Starship = ({ starships }) => {
   return (
     <div>
       <StarshipContainer starship={starship} />
-      <div className="order"></div>
+      <ProductOrder product={starship} />
     </div>
   );
 };

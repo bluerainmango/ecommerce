@@ -8,15 +8,15 @@ import { connect } from "react-redux";
 
 import "./productOrder.styles.scss";
 
-const ProductOrder = ({ planet, thumbnailIndex }) => {
-  console.log(thumbnailIndex);
+const ProductOrder = ({ product, thumbnailIndex }) => {
+  // console.log(thumbnailIndex);
 
   const imageRef = useRef();
 
   useEffect(() => {
     const imageDOM = imageRef.current;
-    imageDOM.src = planet.thumbnails[thumbnailIndex];
-  }, [thumbnailIndex, planet.thumbnails]);
+    imageDOM.src = product.thumbnails[thumbnailIndex];
+  }, [thumbnailIndex, product.thumbnails]);
 
   return (
     <section className="productOrder">
@@ -25,16 +25,16 @@ const ProductOrder = ({ planet, thumbnailIndex }) => {
           <img
             ref={imageRef}
             alt="product thumbnail"
-            src={planet.thumbnails[0]}
+            src={product.thumbnails[0]}
           />
         </div>
       </div>
       <div className="product__info">
-        <h1>{planet.subtitle}</h1>
-        <h2>{planet.title}</h2>
-        <h3>Entrance Fee: ${planet.price}</h3>
-        <p>{planet.description}</p>
-        <ThumbnailSlider planet={planet} />
+        <h1>{product.subtitle}</h1>
+        <h2>{product.title}</h2>
+        <h3>${product.price}</h3>
+        <p>{product.description}</p>
+        <ThumbnailSlider product={product} />
         <Button
           text={["add to cart"]}
           style={{

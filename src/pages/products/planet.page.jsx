@@ -29,7 +29,7 @@ const Planet = ({ planets }) => {
       <Headline planet={planet} />
       <Presentation planet={planet} />
       <Feature planet={planet} />
-      <ProductOrder planet={planet} />
+      <ProductOrder product={planet} />
     </div>
   );
 };
