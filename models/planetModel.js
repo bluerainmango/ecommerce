@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const StarshipSchema = new mongoose.Schema(
+const PlanetSchema = new mongoose.Schema(
   {
     id: String,
     title: {
@@ -62,7 +62,7 @@ const StarshipSchema = new mongoose.Schema(
     presentation: [String],
     featureImage: String,
     featureColor: String,
-    feature: [String],
+    feature: [Object],
   },
   {
     toJSON: { virtuals: true },
@@ -70,6 +70,6 @@ const StarshipSchema = new mongoose.Schema(
   }
 );
 
-const Starship = mongoose.model("Starship", StarshipSchema);
+const Planet = mongoose.model("Planet", PlanetSchema);
 
-module.exports = Starship;
+module.exports = Planet;

@@ -1,6 +1,6 @@
 [
     {
-        "id": "s1",
+        "_id": "609072f11142df7e8ec5a0f4",
         "title": "Ghost19",
         "slug": "ghost19",
         "subtitle": "slick and modern",
@@ -26,7 +26,7 @@
         ]
     },
     {
-        "id": "s2",
+        "_id": "609072f11142df7e8ec5a0f0",
         "title": "AE-23",
         "slug": "ae-23",
         "subtitle": "Comportable",
@@ -52,7 +52,7 @@
         ]
     },
     {
-        "id": "s3",
+        "_id": "609072f11142df7e8ec5a0f2",
         "title": "BT-7",
         "slug": "bt-7",
         "subtitle": "Spacious",
@@ -78,7 +78,7 @@
         ]
     },
     {
-        "id": "s4",
+        "_id": "609072f11142df7e8ec5a0f1",
         "title": "X-wing",
         "slug": "x-wing",
         "subtitle": "Auto-pilot",
@@ -104,7 +104,7 @@
         ]
     },
     {
-        "id": "s5",
+        "_id": "609072f11142df7e8ec5a0f3",
         "title": "Star Cruise",
         "slug": "star-cruise",
         "subtitle": "Fastest",

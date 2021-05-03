@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "_id": "609071772c9b257e13277a7a",
         "title": "Meteor City",
         "subtitle": "Kepler-1649c",
         "slug": "kepler",
@@ -48,7 +48,7 @@
         "description": "Kepler-1649c is an exoplanet orbiting the M-type main sequence red dwarf star Kepler-1649, about 300 light-years from Earth, in the constellation of Cygnus. In 2020, Jeff Coughlin, the director of SETI's K2 Science Office, described it as the most 'similar planet to Earth' found so far by the Kepler Space Telescope."
     },
     {
-        "id": 2,
+        "_id": "609071772c9b257e13277a7b",
         "title": "Beyond Heaven",
         "subtitle": "Luyten B",
         "slug": "luyten",
@@ -96,7 +96,7 @@
         "description": "Luyten B is a confirmed exoplanet, likely icy and green, orbiting within the habitable zone of the red dwarf star K2-72, the outermost of four such planets discovered in the system by NASA's Kepler spacecraft on its 'Second Light' mission. It is located about 217.1 light-years (66.56 parsecs, or nearly 2.0538×1015 km) away from Earth in the constellation of Aquarius."
     },
     {
-        "id": 3,
+        "_id": "609071772c9b257e13277a7c",
         "title": "Sky Rocks",
         "subtitle": "K2-72e",
         "slug": "k2",
