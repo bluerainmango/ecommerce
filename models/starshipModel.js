@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 const StarshipSchema = new mongoose.Schema({
-  name: String,
+  id: String,
+  title: String,
 });
 
 const Starship = mongoose.model("Starship", StarshipSchema);
