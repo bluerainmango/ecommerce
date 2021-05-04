@@ -2,11 +2,7 @@ import axios from "axios";
 import { takeLatest, call, all, put } from "redux-saga/effects";
 
 import PlanetTypes from "./planet.types";
-import {
-  // fetchPlanetsStart,
-  fetchPlanetsSuccess,
-  fetchPlanetsFail,
-} from "./planet.actions";
+import { fetchPlanetsSuccess, fetchPlanetsFail } from "./planet.actions";
 
 import { getSlides } from "../slide/slide.actions";
 

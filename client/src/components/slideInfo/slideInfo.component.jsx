@@ -20,7 +20,11 @@ const SlideInfo = (props) => {
       <img
         className="slideInfo__img"
         alt={activeSlideInfo?.title}
-        src={`${process.env.REACT_APP_API_BASE_URL}/${activeSlideInfo?.bgimage}`}
+        src={
+          activeSlideInfo
+            ? `${process.env.REACT_APP_API_BASE_URL}/${activeSlideInfo.bgimage}`
+            : ""
+        }
         style={{
           opacity: 1,
         }}
