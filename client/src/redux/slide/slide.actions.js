@@ -1,7 +1,8 @@
 import slideTypes from "./slide.types";
 
-export const getSlides = () => ({
+export const getSlides = (slidesArr) => ({
   type: slideTypes.GET_SLIDES,
+  payload: slidesArr,
 });
 
 export const nextSlide = () => ({

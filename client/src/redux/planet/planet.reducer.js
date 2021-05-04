@@ -1,4 +1,4 @@
-// import { PlanetTypes } from "./planet.types";
+import { PlanetTypes } from "./planet.types";
 
 import planet1 from "../../assets/planet-1.jpeg";
 import planet2 from "../../assets/planet-2.jpeg";
@@ -172,6 +172,12 @@ const INITIAL_STATE = {
 
 const planetReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case PlanetTypes.FETCH_PLANETS_SUCCESS:
+      return {
+        ...state,
+        planets: action.payload,
+      };
+
     default:
       return state;
   }

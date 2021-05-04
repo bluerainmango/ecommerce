@@ -101,7 +101,7 @@ const Slide = (props) => {
         "--tiltDirection":
           updatedSlideOrder === 0 ? 0 : updatedSlideOrder > 0 ? 1 : -1,
         "--zIndex": (updatedSlideOrder + 10) * 10,
-        backgroundImage: `url(${slide.image})`,
+        backgroundImage: `url(${process.env.REACT_APP_API_BASE_URL}/${slide.image2})`,
       }}
       onClick={toggleSlideInfoAndScroll(
         updatedSlideOrder,

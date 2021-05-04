@@ -3,19 +3,25 @@ import { takeLatest, call, all, put } from "redux-saga/effects";
 
 import PlanetTypes from "./planet.types";
 import {
-  fetchPlanetsStart,
+  // fetchPlanetsStart,
   fetchPlanetsSuccess,
   fetchPlanetsFail,
 } from "./planet.actions";
+
+import { getSlides } from "../slide/slide.actions";
 
 function* fetchPlanetsAsync() {
   try {
     yield console.log("🔥 fetch planets async is fired!");
 
-    const planets = yield axios(`http://localhost:4000/api/v1/planets`);
+    const planets = yield axios(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/planets`
+    );
+
     console.log("🧚🏼‍♀️ planets:", planets);
 
-    // yield put(fetchPlanetsSuccess(planets));
+    yield put(fetchPlanetsSuccess(planets.data.data));
+    yield put(getSlides(planets.data.data));
   } catch (err) {
     console.log("🥸 fetch planets fail...:", err);
     yield put(fetchPlanetsFail());

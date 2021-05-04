@@ -12,7 +12,7 @@ const SlideInfo = (props) => {
     <div
       className="slideInfo"
       style={{
-        // backgroundImage: `linear-gradient(#000000, rgba(255, 255, 255, 0.515)), url(${activeSlideInfo?.bgimage})`,
+        //backgroundImage: `linear-gradient(#000000, rgba(255, 255, 255, 0.515)), url(${process.env.REACT_APP_API_BASE_URL}/${activeSlideInfo?.bgimage})`,
         display: `${toggleSlideInfo ? "grid" : "none"}`,
       }}
     >
@@ -20,7 +20,7 @@ const SlideInfo = (props) => {
       <img
         className="slideInfo__img"
         alt={activeSlideInfo?.title}
-        src={activeSlideInfo?.bgimage}
+        src={`${process.env.REACT_APP_API_BASE_URL}/${activeSlideInfo?.bgimage}`}
         style={{
           opacity: 1,
         }}

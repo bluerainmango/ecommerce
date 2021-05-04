@@ -18,18 +18,19 @@ const Slider = (props) => {
     moveToPreviousSlide,
     selectedSlideIndex,
     fetchPlanetsStart,
+    // planets,
   } = props;
 
   const sliderRef = useRef();
 
   useEffect(() => {
     fetchPlanetsStart();
-    return () => {};
   }, [fetchPlanetsStart]);
 
   return (
     <div ref={sliderRef} className="slider">
       <h2 className="slider__title">Explore your next destination</h2>
+      {/* {console.log("🤑 planets from redux-saga: ", planets)} */}
       {slides.map((slide, i, arr) => {
         //! 1. Slide order # that each slide will have
         let slideOrder = i - selectedSlideIndex;
@@ -80,6 +81,7 @@ const Slider = (props) => {
 const mapStateToProps = (state) => ({
   slides: state.slides.slides,
   selectedSlideIndex: state.slides.slideIndex,
+  // planets: state.planets.planets,
 });
 
 const mapDispatchToProps = (dispatch) => ({
