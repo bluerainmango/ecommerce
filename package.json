@@ -6,6 +6,8 @@
   "scripts": {
     "start:dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
+    "start": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm start",
     "debug": "ndb server.js"
   },
   "repository": {
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/bluerainmango/ecommerce#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^6.0.2",
     "dotenv": "^8.2.0",

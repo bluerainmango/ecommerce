@@ -1,13 +1,13 @@
-import React, { useRef } from "react";
-
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
+
 import {
   nextSlide,
   previousSlide,
   updateActiveSlideInfo,
 } from "../../redux/slide/slide.actions";
-
 import Slide from "../slide/slide.component";
+import { fetchPlanetsStart } from "../../redux/planet/planet.actions";
 
 import "./slider.styles.scss";
 
@@ -17,9 +17,15 @@ const Slider = (props) => {
     moveToNextSlide,
     moveToPreviousSlide,
     selectedSlideIndex,
+    fetchPlanetsStart,
   } = props;
 
   const sliderRef = useRef();
+
+  useEffect(() => {
+    fetchPlanetsStart();
+    return () => {};
+  }, [fetchPlanetsStart]);
 
   return (
     <div ref={sliderRef} className="slider">
@@ -84,6 +90,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(previousSlide());
     dispatch(updateActiveSlideInfo(info));
   },
+  fetchPlanetsStart: () => dispatch(fetchPlanetsStart()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Slider);
