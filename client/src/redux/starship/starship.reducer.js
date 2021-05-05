@@ -1,3 +1,5 @@
+import starshipTypes from "./starship.types";
+
 import starship1 from "../../assets/starship1.png";
 import starship2 from "../../assets/starship2.png";
 import starship3 from "../../assets/starship3.png";
@@ -35,6 +37,7 @@ import starship5Thumb3 from "../../assets/starship5-thumb3.jpeg";
 import starship5Thumb4 from "../../assets/starship5-thumb4.jpeg";
 
 const INITIAL_STATE = {
+  error: null,
   activeStarship: {
     title: "Ghost19",
     image: starship2,
@@ -186,11 +189,23 @@ const INITIAL_STATE = {
 
 const starshipReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "GET_STARSHIPS":
+    case starshipTypes.GET_STARSHIPS:
       return state;
 
-    case "UPDATE_ACTIVE_STARSHIP":
+    case starshipTypes.UPDATE_ACTIVE_STARSHIP:
       return { ...state, activeStarship: action.payload };
+
+    case starshipTypes.FETCH_STARSHIPS_SUCCESS:
+      return {
+        ...state,
+        starships: action.payload,
+      };
+
+    case starshipTypes.FETCH_STARSHIPS_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      };
 
     default:
       return state;

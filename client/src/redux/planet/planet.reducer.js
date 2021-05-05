@@ -37,6 +37,7 @@ import city2bg from "../../assets/city2-bg.jpeg";
 import city3bg from "../../assets/city3-bg.jpeg";
 
 const INITIAL_STATE = {
+  error: null,
   planets: [
     {
       id: 1,
@@ -176,6 +177,12 @@ const planetReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         planets: action.payload,
+      };
+
+    case PlanetTypes.FETCH_PLANETS_FAIL:
+      return {
+        ...state,
+        error: action.payload,
       };
 
     default:

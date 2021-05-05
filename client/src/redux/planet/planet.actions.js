@@ -14,6 +14,7 @@ export const fetchPlanetsSuccess = (planetsArr) => ({
   payload: planetsArr,
 });
 
-export const fetchPlanetsFail = () => ({
+export const fetchPlanetsFail = (error) => ({
   type: PlanetTypes.FETCH_PLANETS_FAIL,
+  payload: error,
 });
