@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ListElement from "../listElement/listElement.component";
 import ListPreview from "../../components/listPreview/listPreview.component";
 
 import { connect } from "react-redux";
-// import { getStarships } from "../../redux/starship/starship.actions";
+import { fetchStarshipsStart } from "../../redux/starship/starship.actions";
 
 import "./list.styles.scss";
 
-const List = (props) => {
-  const { starships } = props;
+const List = ({ fetchStarshipsStart, starships }) => {
+  useEffect(() => {
+    fetchStarshipsStart();
+  }, [fetchStarshipsStart]);
 
   return (
     <div className="list">
@@ -27,4 +29,8 @@ const mapStateToProps = (state) => ({
   starships: state.starships.starships,
 });
 
-export default connect(mapStateToProps)(List);
+const mapDispatchToProps = (dispatch) => ({
+  fetchStarshipsStart: () => dispatch(fetchStarshipsStart()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);

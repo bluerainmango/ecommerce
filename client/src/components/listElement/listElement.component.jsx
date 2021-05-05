@@ -18,7 +18,11 @@ const ListElement = (props) => {
 
   return (
     <div className="listElement">
-      <img src={starship.image} alt={starship.title} onClick={handleClick} />
+      <img
+        src={`${process.env.REACT_APP_API_BASE_URL}/${starship.image}`}
+        alt={starship.title}
+        onClick={handleClick}
+      />
       <div className="listElement__frame" />
     </div>
   );

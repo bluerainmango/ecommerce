@@ -12,11 +12,13 @@ const ListPreview = (props) => {
   return (
     <div className="preview">
       <div className="preview__frame" />
-      <img
-        src={activeStarship?.image}
-        alt={activeStarship?.title}
-        style={{ tranasform: "translate3d(10px, 20px, 40px)" }}
-      />
+      {activeStarship && (
+        <img
+          src={`${process.env.REACT_APP_API_BASE_URL}/${activeStarship.image}`}
+          alt={activeStarship?.title}
+          style={{ tranasform: "translate3d(10px, 20px, 40px)" }}
+        />
+      )}
       <div className="preview__info">
         <h4 className="preview__title">{activeStarship?.title}</h4>
         <h5 className="preview__description">{activeStarship?.description}</h5>

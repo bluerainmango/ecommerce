@@ -28,6 +28,6 @@ function* onFetchPlanetsStart() {
   yield takeLatest(PlanetTypes.FETCH_PLANETS_START, fetchPlanetsAsync);
 }
 
-export function* planetSaga() {
+export default function* planetSaga() {
   yield all([call(onFetchPlanetsStart)]);
 }

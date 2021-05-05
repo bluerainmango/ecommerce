@@ -2,7 +2,11 @@ import axios from "axios";
 import { takeLatest, call, all, put } from "redux-saga/effects";
 
 import StarshipTypes from "./starship.types";
-import { fetchStarshipsSuccess, fetchStarshipsFail } from "./starship.actions";
+import {
+  fetchStarshipsSuccess,
+  fetchStarshipsFail,
+  loadDefaultActiveStarship,
+} from "./starship.actions";
 
 function* fetchStarshipsAsync() {
   try {
@@ -14,6 +18,7 @@ function* fetchStarshipsAsync() {
     console.log("👻 starships:", starships);
 
     yield put(fetchStarshipsSuccess(starships));
+    yield put(loadDefaultActiveStarship(starships[0]));
   } catch (err) {
     yield put(fetchStarshipsFail(err));
   }

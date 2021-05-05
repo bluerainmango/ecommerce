@@ -22,3 +22,8 @@ export const fetchStarshipsFail = (error) => ({
   type: starshipTypes.FETCH_STARSHIPS_FAIL,
   payload: error,
 });
+
+export const loadDefaultActiveStarship = (starship) => ({
+  type: starshipTypes.LOAD_DEFAULT_ACTIVE_STARSHIP,
+  payload: starship,
+});
