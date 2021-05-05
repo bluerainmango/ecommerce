@@ -9,7 +9,7 @@ import { useRouteMatch, Switch, Route } from "react-router-dom";
 
 const PlanetsCollection = ({ planets }) => {
   let match = useRouteMatch();
-  console.log("🍉 match:", match, match.url);
+  // console.log("🍉 match:", match, match.url);
 
   return (
     <div>

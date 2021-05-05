@@ -10,6 +10,7 @@ import { useRouteMatch, Switch, Route } from "react-router-dom";
 const StarshipsCollection = ({ starships }) => {
   const match = useRouteMatch();
   // console.log("🍑 starship:", starships);
+
   return (
     <div>
       <Switch>

@@ -15,7 +15,7 @@ function* fetchStarshipsAsync() {
     );
 
     const starships = res.data.data;
-    console.log("👻 starships:", starships);
+    // console.log("👻 starships:", starships);
 
     yield put(fetchStarshipsSuccess(starships));
     yield put(loadDefaultActiveStarship(starships[0]));

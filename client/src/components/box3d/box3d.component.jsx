@@ -24,7 +24,7 @@ const Box3d = ({ props }) => {
             <p className="price">${props.price}</p>
             <div className="img-wrapper">
               <img
-                src={props.collectionThumb}
+                src={`${process.env.REACT_APP_API_BASE_URL}/${props.collectionThumb}`}
                 alt={`${props.title}-collection-thumb`}
               />
             </div>
