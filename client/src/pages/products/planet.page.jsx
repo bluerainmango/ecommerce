@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import ProductOrder from "../../components/productOrder/productOrder.component";
 import PlanetIntro from "../../components/planetIntro/planetIntro.component";
 import Headline from "../../components/headline/headline.component";
 import Feature from "../../components/feature/feature.component";
-
-import { connect } from "react-redux";
-
-import { useParams } from "react-router-dom";
-
 import Presentation from "../../components/presentation/presentation.component";
+
+import { fetchPlanetsStart } from "../../redux/planet/planet.actions";
 
 import "./planet.styles.scss";
 
-const Planet = ({ planets }) => {
+const Planet = ({ planets, fetchPlanetsStart }) => {
   let { planetSlug } = useParams();
 
   // console.log("useParam", planetSlug);
@@ -22,14 +22,24 @@ const Planet = ({ planets }) => {
     return planet.slug === planetSlug;
   });
 
-  console.log(planet);
+  useEffect(() => {
+    if (!planet) fetchPlanetsStart();
+  }, [planet, fetchPlanetsStart]);
+
+  // console.log(planet);
+
   return (
     <div>
-      <PlanetIntro planet={planet} />
-      <Headline planet={planet} />
-      <Presentation planet={planet} />
-      <Feature planet={planet} />
-      <ProductOrder product={planet} />
+      {/* {console.log("planet:", planet)} */}
+      {planet && (
+        <div>
+          <PlanetIntro planet={planet} />
+          <Headline planet={planet} />
+          <Presentation planet={planet} />
+          <Feature planet={planet} />
+          <ProductOrder product={planet} />
+        </div>
+      )}
     </div>
   );
 };
@@ -38,4 +48,8 @@ const mapStateToProps = (state) => ({
   planets: state.planets.planets,
 });
 
-export default connect(mapStateToProps)(Planet);
+const mapDispatchToProps = (dispatch) => ({
+  fetchPlanetsStart: () => dispatch(fetchPlanetsStart()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Planet);

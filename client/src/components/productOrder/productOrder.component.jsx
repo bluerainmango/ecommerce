@@ -15,7 +15,7 @@ const ProductOrder = ({ product, thumbnailIndex }) => {
 
   useEffect(() => {
     const imageDOM = imageRef.current;
-    imageDOM.src = product.thumbnails[thumbnailIndex];
+    imageDOM.src = `${process.env.REACT_APP_API_BASE_URL}/${product.thumbnails[thumbnailIndex]}`;
   }, [thumbnailIndex, product.thumbnails]);
 
   return (
@@ -25,7 +25,7 @@ const ProductOrder = ({ product, thumbnailIndex }) => {
           <img
             ref={imageRef}
             alt="product thumbnail"
-            src={product.thumbnails[0]}
+            src={`${process.env.REACT_APP_API_BASE_URL}/${product.thumbnails[0]}`}
           />
         </div>
       </div>

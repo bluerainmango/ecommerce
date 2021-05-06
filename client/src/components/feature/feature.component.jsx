@@ -12,7 +12,7 @@ const Feature = ({ planet }) => {
     const contentDOM = contentRef.current;
     const featureTextArr = contentDOM.querySelectorAll(".feature__context");
 
-    console.log("🍧", contentDOM.querySelectorAll(".feature__context"));
+    // console.log("🍧", contentDOM.querySelectorAll(".feature__context"));
 
     const option = {
       root: null,
@@ -31,7 +31,7 @@ const Feature = ({ planet }) => {
 
       //   if (entry.target.classList.contains("feature-anim")) return;
 
-      console.log("🍝", entry.target.querySelector("h3"));
+      // console.log("🍝", entry.target.querySelector("h3"));
       entry.target.classList.add("feature-anim");
       observer.unobserve(entry.target);
     };
@@ -52,7 +52,9 @@ const Feature = ({ planet }) => {
     >
       <div
         className="feature__img"
-        style={{ backgroundImage: `url(${planet.featureImage})` }}
+        style={{
+          backgroundImage: `url(${process.env.REACT_APP_API_BASE_URL}/${planet.featureImage})`,
+        }}
       >
         {/* <img src={featureImg} /> */}
       </div>

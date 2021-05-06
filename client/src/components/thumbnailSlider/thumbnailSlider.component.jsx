@@ -60,7 +60,7 @@ const ThumbnailSlider = (props) => {
               <img
                 className="thumbnail__img"
                 alt={`${product.title} thumbnail`}
-                src={thumbnail}
+                src={`${process.env.REACT_APP_API_BASE_URL}/${thumbnail}`}
                 style={{
                   "--x": transformX,
                   "--opacity": opacity,

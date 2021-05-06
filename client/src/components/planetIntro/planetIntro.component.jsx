@@ -33,9 +33,9 @@ const PlanetIntro = ({ planet }) => {
 
   return (
     <section className="planetIntro">
-      {planet.id === 1 ? (
+      {pathname === "/planets/kepler" ? (
         <PlanetIntro1 />
-      ) : planet.id === 2 ? (
+      ) : pathname === "/planets/luyten" ? (
         <PlanetIntro2 />
       ) : (
         <PlanetIntro3 />

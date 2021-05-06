@@ -37,7 +37,7 @@ const Box3d = ({ props }) => {
                 0deg,
                 rgba(0, 0, 0, 0.219) 0%,
                 rgba(0, 0, 0, 0) 100%
-              ),url(${props.featureImage})`,
+              ),url(${process.env.REACT_APP_API_BASE_URL}/${props.featureImage})`,
             }}
           >
             {/* <h2>{props.title}</h2> */}
