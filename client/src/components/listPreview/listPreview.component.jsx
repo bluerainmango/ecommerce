@@ -22,7 +22,10 @@ const ListPreview = (props) => {
       <div className="preview__info">
         <h4 className="preview__title">{activeStarship?.title}</h4>
         <h5 className="preview__description">{activeStarship?.description}</h5>
-        <Button text={["Add to journey", "Learn more"]} />
+        <Button
+          text={["Add to journey", "Learn more"]}
+          linkTo={`/starships/${activeStarship?.slug}`}
+        />
         {/* <button>Add to journey</button>
         <button>Learn More</button> */}
       </div>
