@@ -6,6 +6,7 @@ const cors = require("cors");
 
 const planetRouter = require("./routes/planetRoutes");
 const starshipRouter = require("./routes/starshipRoutes");
+const userRouter = require("./routes/userRoutes");
 
 const app = express();
 
@@ -22,5 +23,6 @@ app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
 app.use("/api/v1/planets", planetRouter);
 app.use("/api/v1/starships", starshipRouter);
+app.use("/api/v1/users", userRouter);
 
 module.exports = app;

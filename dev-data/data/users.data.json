@@ -1,0 +1,11 @@
+[
+    {
+        "role": "admin",
+        "active": true,
+        "_id": "60986e06be5dd53d88b26834",
+        "username": "admin",
+        "email": "test@test.com",
+        "password": "12341234",
+        "passwordConfirm": "12341234"
+    }
+]

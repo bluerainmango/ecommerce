@@ -75,6 +75,8 @@ const Signup = () => {
           type="password"
           className="form-input"
           // required
+          minLength="3"
+          maxLength="10"
           onChange={handleChange}
         />
 
@@ -86,6 +88,8 @@ const Signup = () => {
           type="password"
           className="form-input"
           // required
+          minLength="3"
+          maxLength="10"
           onChange={handleChange}
         />
 
