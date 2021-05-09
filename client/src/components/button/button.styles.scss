@@ -10,8 +10,13 @@
   position: relative;
   text-transform: uppercase;
   display: inline-block;
-  margin-right: 1rem;
+  // margin-right: 1rem;
   margin-top: 1rem;
+  border: 1px rgba(255, 255, 255, 0.534) solid;
+
+  &:nth-child(2) {
+    margin-left: 1rem;
+  }
 
   &-anim {
     width: 100%;
@@ -21,9 +26,10 @@
   span {
     width: 100%;
     // z-index: 200;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
     line-height: 4rem;
+    z-index: 1;
     @include abCenter;
   }
 }
@@ -31,6 +37,7 @@
 .btn:hover {
   span {
     color: var(--font-color-hover, #fff);
+    z-index: 1;
   }
   border: 1px black solid;
 }
@@ -42,7 +49,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  // z-index: -1;
+  z-index: 0;
   background-color: var(--bg-color, rgba(255, 255, 255, 0.185));
   transition: all 0.3s;
 }
