@@ -14,7 +14,8 @@ function App() {
       <Switch>
         <Route path="/planets" component={Planets} />
         <Route path="/starships" component={Starships} />
-        <Route path="/login" component={Login} />
+        <Route path="/users/signup" component={Login} />
+        <Route path="/users" component={Login} />
         <Route exact path="/" component={Homepage} />
         {/* <Route path="/planets" component={}/> */}
       </Switch>

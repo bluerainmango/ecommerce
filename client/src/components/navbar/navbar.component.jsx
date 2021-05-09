@@ -43,7 +43,7 @@ const NavBar = (props) => {
         </ul>
         <ul className="navbar__user">
           <li className="link--login">
-            <Link to="/login">LOGIN</Link>
+            <Link to="/users">LOGIN</Link>
           </li>
           {/* <svg className="icon--shopping"><use xlink:href="#"></use></svg> */}
         </ul>

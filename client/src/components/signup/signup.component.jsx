@@ -37,7 +37,7 @@ const Signup = () => {
       <span className="form__sub">Sign up with your email and password.</span>
       <h3 className="form__redirect">
         Already have an account?{" "}
-        <Link to="/signin">
+        <Link to="/users">
           <span>Sign in</span>
         </Link>
       </h3>
