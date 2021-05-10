@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
 
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
@@ -59,4 +60,53 @@ exports.signin = catchAsync(async (req, res, next) => {
     next(new ErrorFactory(401, "Username or password is incorrect!"));
 
   createAndSendToken(user, req, res, 200);
+});
+
+exports.logout = (req, res) => {
+  res.clearCookie("jwt");
+
+  res.status(200).json({
+    status: "success",
+  });
+};
+
+exports.protect = catchAsync(async (req, res, next) => {
+  //* 1) Check if the req has a token
+
+  const token = req.cookies.jwt;
+
+  if (!token)
+    return next(
+      new ErrorFactory(
+        401,
+        "You are not logged in! Please log in first to get access"
+      )
+    );
+
+  //* 2) Check if the token is valid
+  // decoded: {id: iat: exp:}
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  //   console.log("token:", token, decoded);
+
+  //* 3) Check if user is still existing
+  const user = await User.findOne({ _id: decoded.id });
+  if (!user) {
+    return next(new ErrorFactory(401, "The user does not longer exist."));
+  }
+
+  //* 4) Check if pwd is changed after the token is issued
+  if (
+    user.passwordChangedAt &&
+    parseInt(user.passwordChangedAt / 1000, 10) > decoded.iat
+  ) {
+    return next(
+      new ErrorFactory(
+        401,
+        "User recently changed password. Please log in again."
+      )
+    );
+  }
+
+  req.user = user;
+  next();
 });
