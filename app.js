@@ -13,6 +13,7 @@ const errorController = require("./controllers/errorController");
 
 const app = express();
 
+app.enable("trust proxy");
 app.use(cors());
 
 if (process.env.NODE_ENV === "development") {

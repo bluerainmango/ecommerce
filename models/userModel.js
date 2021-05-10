@@ -67,9 +67,10 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
-// UserSchema.pre("find", function (next) {
-//   next();
-// });
+//! Instance method : check if entered pwd is correct.
+// used for login, changing pwd...
+UserSchema.methods.isCorrectPassword = async (enteredPwd, userPwd) =>
+  await bcrypt.compare(enteredPwd, userPwd);
 
 const User = mongoose.model("User", UserSchema);
 
