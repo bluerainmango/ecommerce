@@ -67,9 +67,9 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
-UserSchema.pre("find", function (next) {
-  next();
-});
+// UserSchema.pre("find", function (next) {
+//   next();
+// });
 
 const User = mongoose.model("User", UserSchema);
 

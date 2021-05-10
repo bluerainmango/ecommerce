@@ -1,5 +1,7 @@
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
+const ErrorFactory = require("../util/ErrorFactory");
+const bcrypt = require("bcryptjs");
 
 exports.signup = catchAsync(async (req, res, next) => {
   //   console.log(req.body);
@@ -24,13 +26,14 @@ exports.signup = catchAsync(async (req, res, next) => {
 exports.signin = catchAsync(async (req, res, next) => {
   const { password, username } = req.body;
 
-  //   if (!password || !username)
+  if (!password || !username)
+    next(new ErrorFactory(400, "Please provide password and username"));
 
-  const user = await User.find({ username });
+  const user = await User.findOne({ username }).select("+password");
 
-  const isCorrect = await bcrypt.compare(password, user.password);
+  if (!user || (await bcrypt.compare(password, user.password)))
+    next(new ErrorFactory(401, "Username or password is incorrect!"));
 
-  // check if pwd is correct
   res.status(200).json({
     status: "success",
   });

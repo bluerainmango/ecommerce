@@ -8,7 +8,7 @@ const planetRouter = require("./routes/planetRoutes");
 const starshipRouter = require("./routes/starshipRoutes");
 const userRouter = require("./routes/userRoutes");
 
-const AppError = require("./util/AppError");
+const ErrorFactory = require("./util/ErrorFactory");
 const errorController = require("./controllers/errorController");
 
 const app = express();
@@ -30,7 +30,9 @@ app.use("/api/v1/users", userRouter);
 
 //! ERROR Handlers
 app.all("*", (req, res, next) => {
-  next(new AppError(404, `💥 Cannot find ${req.originalUrl} on this server!`));
+  next(
+    new ErrorFactory(404, `💥 Cannot find ${req.originalUrl} on this server!`)
+  );
 });
 app.use(errorController);
 
