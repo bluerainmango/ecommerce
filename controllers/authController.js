@@ -158,7 +158,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     .update(req.params.token)
     .digest("hex");
 
-  console.log("🎃", req.params.token, encryptedResetToken);
+  // console.log("🎃", req.params.token, encryptedResetToken);
 
   const user = await User.findOne({
     passwordResetToken: encryptedResetToken,
@@ -178,4 +178,27 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     message:
       "The password has been successfully reset to 'reset1234'. Please log in and change the password.",
   });
+});
+
+exports.updatePassword = catchAsync(async (req, res, next) => {
+  //* 1) Get user from collection
+  const user = await User.findById(req.user.id).select("+password");
+
+  //* 2) Check if all required input are posted
+  const { currentPassword, newPassword, newPasswordConfirm } = req.body;
+  if (!currentPassword || !newPassword || !newPasswordConfirm)
+    return next(new ErrorFactory(400, "Please enter all required fields."));
+
+  //* 3) Check if POSTed password is correct
+  if (!(await user.isCorrectPassword(currentPassword, user.password))) {
+    return next(new ErrorFactory(401, "The entered password is not correct!"));
+  }
+
+  //* 4) If so, update password
+  user.password = newPassword;
+  user.passwordConfirm = newPasswordConfirm;
+  await user.save();
+
+  //* 5) Log user in, send JWT
+  createAndSendToken(user, req, res, 200);
 });
