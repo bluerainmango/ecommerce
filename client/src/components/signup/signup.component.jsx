@@ -35,12 +35,7 @@ const Signup = () => {
     <div className="form__container">
       <h2 className="form__title">Sign up</h2>
       <span className="form__sub">Sign up with your email and password.</span>
-      <h3 className="form__redirect">
-        Already have an account?{" "}
-        <Link to="/users">
-          <span>Sign in</span>
-        </Link>
-      </h3>
+
       <form className="form--signup" onSubmit={handleSubmit}>
         <FormInput
           id="userName"
@@ -101,6 +96,15 @@ const Signup = () => {
             "--font-color-hover": "black",
           }}
         />
+        <h3 className="form__redirect">
+          <Link to="/users">
+            <span>Sign in</span>
+          </Link>
+          {" | "}
+          <Link to="/users/forgotpassword">
+            <span>forgot password</span>
+          </Link>
+        </h3>
       </form>
     </div>
   );

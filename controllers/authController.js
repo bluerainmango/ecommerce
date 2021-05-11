@@ -55,12 +55,12 @@ exports.signin = catchAsync(async (req, res, next) => {
   const { password, username } = req.body;
 
   if (!password || !username)
-    next(new ErrorFactory(400, "Please provide password and username"));
+    return next(new ErrorFactory(400, "Please provide password and username"));
 
   const user = await User.findOne({ username }).select("+password");
 
   if (!user || !(await user.isCorrectPassword(password, user.password)))
-    next(new ErrorFactory(401, "Username or password is incorrect!"));
+    return next(new ErrorFactory(401, "Username or password is incorrect!"));
 
   createAndSendToken(user, req, res, 200);
 });

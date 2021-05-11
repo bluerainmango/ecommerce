@@ -15,6 +15,7 @@ function App() {
         <Route path="/planets" component={Planets} />
         <Route path="/starships" component={Starships} />
         <Route path="/users/signup" component={Login} />
+        <Route path="/users/forgotpassword" component={Login} />
         <Route path="/users" component={Login} />
         <Route exact path="/" component={Homepage} />
         {/* <Route path="/planets" component={}/> */}
