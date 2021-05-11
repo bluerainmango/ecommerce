@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -68,9 +69,30 @@ UserSchema.pre("save", async function (next) {
 });
 
 //! Instance method : check if entered pwd is correct.
-// used for login, changing pwd...
+// used for login, changing pwd, resetting pwd...
 UserSchema.methods.isCorrectPassword = async (enteredPwd, userPwd) =>
   await bcrypt.compare(enteredPwd, userPwd);
+
+//! Instance method : create reset password token
+UserSchema.methods.createPasswordResetToken = async function () {
+  const resetToken = crypto.randomBytes(32).toString("hex");
+
+  const encryptedResetToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  //   console.log("🤖 reset pwd token:", encryptedResetToken);
+
+  this.passwordResetToken = encryptedResetToken;
+  this.passwordResetExpires = Date.now() + 15 * 60 * 1000; // Reset expires in 15 min
+
+  await this.save({ validateBeforeSave: false }); // Save to DB
+
+  return encryptedResetToken;
+};
+
+// UserSchema.methods.resetPassword = async function () {};
 
 const User = mongoose.model("User", UserSchema);
 

@@ -1,9 +1,11 @@
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 const { promisify } = require("util");
 
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
 const ErrorFactory = require("../util/ErrorFactory");
+const Email = require("../util/email");
 
 //! used for sign in, sign up
 const createAndSendToken = (user, req, res, statusCode) => {
@@ -27,6 +29,7 @@ const createAndSendToken = (user, req, res, statusCode) => {
 
   res.status(statusCode).json({
     status: "success",
+    message: "Successfully logged in.",
     token,
     data: {
       user,
@@ -109,4 +112,70 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   req.user = user;
   next();
+});
+
+exports.forgotPassword = catchAsync(async (req, res, next) => {
+  //* 1) Get user with email
+  const user = await User.findOne({ email: req.body.email });
+  if (!user)
+    return next(
+      new ErrorFactory(404, "There is no user with the provided email")
+    );
+
+  //* 2) Create reset token
+  const resetToken = await user.createPasswordResetToken();
+  //   console.log("🥸 reset pwd token:", resetToken);
+
+  //* 3) Send email having reset pwd api endpoint
+  const resetURL = `${req.protocol}://${req.get(
+    "host"
+  )}/api/v1/users/resetpassword/${resetToken} }`;
+
+  try {
+    await new Email(user, resetURL).sendPasswordReset();
+
+    res.status(200).json({
+      status: "success",
+      message: "Token was sent to your email.",
+    });
+  } catch (err) {
+    user.passwordResetToken = undefined;
+    user.passwordResetExpires = undefined;
+    await user.save({ validateBeforeSave: false });
+
+    return next(
+      new ErrorFactory(
+        500,
+        "There was an error sending the email. Try again later!"
+      )
+    );
+  }
+});
+
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  const encryptedResetToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+
+  console.log("🎃", req.params.token, encryptedResetToken);
+
+  const user = await User.findOne({
+    passwordResetToken: encryptedResetToken,
+    passwordResetExpires: { $gt: Date.now() },
+  });
+
+  if (!user) return next(new ErrorFactory(400, "Token is invalid or expired"));
+
+  user.password = process.env.DEFAULT_PASSWORD;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpires = undefined;
+  await User.save();
+
+  // if a change password page will be used, the following res should be changed to createSendToken() for auto login.
+  res.status(200).json({
+    status: "success",
+    message:
+      "The password has been successfully reset to 'reset1234'. Please log in and change the password.",
+  });
 });
