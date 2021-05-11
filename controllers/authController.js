@@ -170,7 +170,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   user.password = process.env.DEFAULT_PASSWORD;
   user.passwordResetToken = undefined;
   user.passwordResetExpires = undefined;
-  await User.save();
+  await user.save({ validateBeforeSave: false });
 
   // if a change password page will be used, the following res should be changed to createSendToken() for auto login.
   res.status(200).json({

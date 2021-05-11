@@ -89,7 +89,7 @@ UserSchema.methods.createPasswordResetToken = async function () {
 
   await this.save({ validateBeforeSave: false }); // Save to DB
 
-  return encryptedResetToken;
+  return resetToken;
 };
 
 // UserSchema.methods.resetPassword = async function () {};
