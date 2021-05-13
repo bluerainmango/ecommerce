@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "../button/button.component";
+import { connect } from "react-redux";
 
+import Button from "../button/button.component";
 import FormInput from "../formInput/formInput.component";
 
+import { emailSigninStart } from "../../redux/user/user.actions";
 import "./signin.styles.scss";
 
-const Signin = () => {
+const Signin = ({ emailSigninStart }) => {
   const [userSigninInfo, setUserSigninInfo] = useState({
-    userName: "",
+    username: "",
     password: "",
   });
 
-  const { userName, password } = userSigninInfo;
+  const { username, password } = userSigninInfo;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted");
+    console.log("submitted", userSigninInfo);
+
+    emailSigninStart(userSigninInfo);
   };
 
   const handleChange = (e) => {
@@ -35,12 +39,12 @@ const Signin = () => {
       <span className="form__sub">Sign in with your email and password.</span>
       <form className="form--signin" onSubmit={handleSubmit}>
         <FormInput
-          id="userName"
-          name="userName"
-          label="userName"
+          id="username"
+          name="username"
+          label="username"
           type="text"
           className="form-input"
-          value={userName}
+          value={username}
           maxLength="10"
           title="Please input less than 10 characters"
           // required
@@ -82,4 +86,9 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+const mapDispatchToProps = (dispatch) => ({
+  emailSigninStart: (usernameAndPassword) =>
+    dispatch(emailSigninStart(usernameAndPassword)),
+});
+
+export default connect(null, mapDispatchToProps)(Signin);

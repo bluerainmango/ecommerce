@@ -1,4 +1,4 @@
-const Starship_Types = {
+const StarshipTypes = {
   GET_STARSHIPS: "GET_STARSHIPS",
   UPDATE_ACTIVE_STARSHIP: "UPDATE_ACTIVE_STARSHIP",
   FETCH_STARSHIPS_START: "FETCH_STARSHIPS_START",
@@ -7,4 +7,4 @@ const Starship_Types = {
   LOAD_DEFAULT_ACTIVE_STARSHIP: "LOAD_DEFAULT_ACTIVE_STARSHIP",
 };
 
-export default Starship_Types;
+export default StarshipTypes;

@@ -8,13 +8,13 @@ import "./signup.styles.scss";
 
 const Signup = () => {
   const [userSignupInfo, setUserSignupInfo] = useState({
-    userName: "",
+    username: "",
     email: "",
     password: "",
     passwordConfirm: "",
   });
 
-  const { userName, email, password, passwordConfirm } = userSignupInfo;
+  const { username, email, password, passwordConfirm } = userSignupInfo;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,12 +38,12 @@ const Signup = () => {
 
       <form className="form--signup" onSubmit={handleSubmit}>
         <FormInput
-          id="userName"
-          name="userName"
-          label="userName"
+          id="username"
+          name="username"
+          label="username"
           type="text"
           className="form-input"
-          value={userName}
+          value={username}
           maxLength="10"
           title="Please input less than 10 characters"
           // required
