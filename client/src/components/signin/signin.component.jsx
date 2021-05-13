@@ -21,6 +21,7 @@ const Signin = ({ emailSigninStart }) => {
     console.log("submitted", userSigninInfo);
 
     emailSigninStart(userSigninInfo);
+    setUserSigninInfo({ username: "", password: "" });
   };
 
   const handleChange = (e) => {
@@ -45,7 +46,8 @@ const Signin = ({ emailSigninStart }) => {
           type="text"
           className="form-input"
           value={username}
-          maxLength="10"
+          maxLength="15"
+          placeholder=" "
           title="Please input less than 10 characters"
           // required
           // autoFocus
@@ -59,6 +61,7 @@ const Signin = ({ emailSigninStart }) => {
           value={password}
           type="password"
           className="form-input"
+          placeholder=" "
           // required
           onChange={handleChange}
         />

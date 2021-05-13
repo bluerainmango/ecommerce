@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide your username"],
     lowercase: true,
-    maxlength: "10",
+    maxlength: "15",
     trim: true,
     validate: [
       validator.isAlphanumeric,
