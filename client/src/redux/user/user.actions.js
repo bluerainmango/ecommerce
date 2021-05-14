@@ -5,6 +5,7 @@ export const setCurrentUser = (user) => ({
   payload: user,
 });
 
+//* Sign in
 export const emailSigninStart = (usernameAndPassword) => ({
   type: UserTypes.EMAIL_SIGN_IN_START,
   payload: usernameAndPassword,
@@ -17,5 +18,42 @@ export const signinSuccess = (user) => ({
 
 export const signinFail = (err) => ({
   type: UserTypes.SIGN_IN_FAIL,
+  payload: err,
+});
+
+//* Sign up
+export const signupStart = (signupInfo) => ({
+  type: UserTypes.SIGN_UP_START,
+  payload: signupInfo,
+});
+
+export const signupSuccess = (user) => ({
+  type: UserTypes.SIGN_UP_SUCCESS,
+  payload: user,
+});
+
+export const signupFail = (err) => ({
+  type: UserTypes.SIGN_UP_FAIL,
+  payload: err,
+});
+
+//* Forgot password
+export const forgotPasswordStart = (signupInfo) => ({
+  type: UserTypes.FORGOT_PASSWORD_START,
+  payload: signupInfo,
+});
+
+export const forgotPasswordSuccess = (user) => ({
+  type: UserTypes.FORGOT_PASSWORD_SUCCESS,
+  payload: user,
+});
+
+export const forgotPasswordFail = (err) => ({
+  type: UserTypes.FORGOT_PASSWORD_FAIL,
+  payload: err,
+});
+
+export const clearError = (err) => ({
+  type: UserTypes.CLEAR_ERROR,
   payload: err,
 });

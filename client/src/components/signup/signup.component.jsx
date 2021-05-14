@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "../button/button.component";
+import { connect } from "react-redux";
 
+import Button from "../button/button.component";
+import AlertBar from "../alertBar/alertBar.component";
 import FormInput from "../formInput/formInput.component";
+
+import { signupStart } from "../../redux/user/user.actions";
 
 import "./signup.styles.scss";
 
-const Signup = () => {
+const Signup = ({ signupStart }) => {
   const [userSignupInfo, setUserSignupInfo] = useState({
     username: "",
     email: "",
@@ -19,6 +23,8 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
+
+    signupStart(userSignupInfo);
   };
 
   const handleChange = (e) => {
@@ -33,6 +39,7 @@ const Signup = () => {
 
   return (
     <div className="form__container">
+      <AlertBar />
       <h2 className="form__title">Sign up</h2>
       <span className="form__sub">Sign up with your email and password.</span>
 
@@ -44,8 +51,7 @@ const Signup = () => {
           type="text"
           className="form-input"
           value={username}
-          maxLength="10"
-          title="Please input less than 10 characters"
+          maxLength="15"
           // required
           // autoFocus
           onChange={handleChange}
@@ -110,4 +116,7 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+const mapDispatchToProps = (dispatch) => ({
+  signupStart: (signupInfo) => dispatch(signupStart(signupInfo)),
+});
+export default connect(null, mapDispatchToProps)(Signup);

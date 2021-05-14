@@ -1,0 +1,16 @@
+.alert {
+  background-color: rgb(216, 0, 0);
+  //   height: 5rem;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  line-height: 1;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}

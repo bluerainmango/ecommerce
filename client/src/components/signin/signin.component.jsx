@@ -4,8 +4,10 @@ import { connect } from "react-redux";
 
 import Button from "../button/button.component";
 import FormInput from "../formInput/formInput.component";
+import AlertBar from "../alertBar/alertBar.component";
 
 import { emailSigninStart } from "../../redux/user/user.actions";
+
 import "./signin.styles.scss";
 
 const Signin = ({ emailSigninStart }) => {
@@ -36,6 +38,7 @@ const Signin = ({ emailSigninStart }) => {
 
   return (
     <div className="form__container">
+      <AlertBar />
       <h2 className="form__title">Sign in</h2>
       <span className="form__sub">Sign in with your email and password.</span>
       <form className="form--signin" onSubmit={handleSubmit}>
@@ -48,7 +51,6 @@ const Signin = ({ emailSigninStart }) => {
           value={username}
           maxLength="15"
           placeholder=" "
-          title="Please input less than 10 characters"
           // required
           // autoFocus
           onChange={handleChange}

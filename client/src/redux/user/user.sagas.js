@@ -2,7 +2,14 @@ import axios from "axios";
 import { takeLatest, call, all, put } from "redux-saga/effects";
 
 import UserTypes from "./user.types";
-import { signinSuccess, signinFail } from "./user.actions";
+import {
+  signinSuccess,
+  signinFail,
+  signupSuccess,
+  signupFail,
+  forgotPasswordSuccess,
+  forgotPasswordFail,
+} from "./user.actions";
 
 function* signInWithEmail({ payload: { username, password } }) {
   try {
@@ -23,10 +30,65 @@ function* signInWithEmail({ payload: { username, password } }) {
   }
 }
 
+function* signUpWithEmail({ payload }) {
+  try {
+    const { username, email, password, passwordConfirm } = payload;
+
+    const res = yield axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/signup`,
+      {
+        username,
+        email,
+        password,
+        passwordConfirm,
+      }
+    );
+
+    const user = res.data.data.user;
+    console.log("🤡 new user:", user);
+
+    yield put(signupSuccess(user));
+  } catch (err) {
+    yield put(signupFail(err));
+  }
+}
+
+function* forgotPassword(payload) {
+  try {
+    const { email } = payload;
+
+    const res = yield axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/forgotpassword`,
+      {
+        email,
+      }
+    );
+
+    const result = res.data.data;
+    console.log("🥶 forgot pwd:", result);
+
+    yield put(forgotPasswordSuccess(result));
+  } catch (err) {
+    yield put(forgotPasswordFail(err));
+  }
+}
+
 function* onEmailSignInStart() {
   yield takeLatest(UserTypes.EMAIL_SIGN_IN_START, signInWithEmail);
 }
 
+function* onSignUpStart() {
+  yield takeLatest(UserTypes.SIGN_UP_START, signUpWithEmail);
+}
+
+function* onForgotPasswordStart() {
+  yield takeLatest(UserTypes.FORGOT_PASSWORD_START, forgotPassword);
+}
+
 export default function* userSaga() {
-  yield all([call(onEmailSignInStart)]);
+  yield all([
+    call(onEmailSignInStart),
+    call(onSignUpStart),
+    call(onForgotPasswordStart),
+  ]);
 }
