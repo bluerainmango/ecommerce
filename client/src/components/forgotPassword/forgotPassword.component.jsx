@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "../button/button.component";
+import { connect } from "react-redux";
 
+import Button from "../button/button.component";
 import FormInput from "../formInput/formInput.component";
+import AlertBar from "../alertBar/alertBar.component";
+
+import { forgotPasswordStart } from "../../redux/user/user.actions.js";
 
 import "./forgotPassword.styles.scss";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ forgotPasswordStart }) => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
+
+    if (!email) return;
+
+    forgotPasswordStart();
+    setEmail("");
   };
 
   const handleChange = (e) => {
@@ -21,6 +30,7 @@ const ForgotPassword = () => {
 
   return (
     <div className="form__container">
+      <AlertBar />
       <h2 className="form__title">Forgot Password</h2>
       <span className="form__sub">
         Submit your email that linked to your account. <br />
@@ -34,7 +44,7 @@ const ForgotPassword = () => {
           type="email"
           className="form-input"
           value={email}
-          // required
+          required
           onChange={handleChange}
         />
 
@@ -61,4 +71,8 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+const mapDispatchToProps = (dispatch) => ({
+  forgotPasswordStart: (email) => dispatch(forgotPasswordStart(email)),
+});
+
+export default connect(null, mapDispatchToProps)(ForgotPassword);

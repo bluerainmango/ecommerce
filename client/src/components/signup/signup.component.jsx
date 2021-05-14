@@ -52,7 +52,7 @@ const Signup = ({ signupStart }) => {
           className="form-input"
           value={username}
           maxLength="15"
-          // required
+          required
           // autoFocus
           onChange={handleChange}
         />
@@ -64,7 +64,7 @@ const Signup = ({ signupStart }) => {
           type="email"
           className="form-input"
           value={email}
-          // required
+          required
           onChange={handleChange}
         />
 
@@ -75,7 +75,7 @@ const Signup = ({ signupStart }) => {
           value={password}
           type="password"
           className="form-input"
-          // required
+          required
           minLength="3"
           maxLength="10"
           onChange={handleChange}
@@ -88,7 +88,7 @@ const Signup = ({ signupStart }) => {
           value={passwordConfirm}
           type="password"
           className="form-input"
-          // required
+          required
           minLength="3"
           maxLength="10"
           onChange={handleChange}

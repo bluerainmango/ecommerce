@@ -3,8 +3,8 @@ class ErrorFactory extends Error {
     super(message);
 
     this.statusCode = statusCode;
-    this.status = `${this.statusCode}`.startsWith("4") ? "fail" : "error";
-    this.operational = true;
+    this.status = `${this.statusCode}`.startsWith("4") ? "fail" : "error"; // client error or something else
+    this.isOperational = true;
 
     if (Error.captureStackTrace)
       Error.captureStackTrace(this, this.constructor);

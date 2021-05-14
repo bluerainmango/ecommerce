@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: [true, "Please provide your username"],
+    unique: true,
     lowercase: true,
     maxlength: "15",
     trim: true,
@@ -37,7 +38,7 @@ const UserSchema = new mongoose.Schema({
   },
   passwordConfirm: {
     type: String,
-    required: [true, "Please confrim your password"],
+    required: [true, "Please confirm your password"],
     minlength: 3,
     maxlength: 15,
     validate: {

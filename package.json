@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start:dev": "nodemon server.js",
-    "start:prod": "NODE_ENV=production nodemon server.js",
+    "start:server:dev": "nodemon server.js",
+    "start:server:prod": "NODE_ENV=production nodemon server.js",
     "start": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "start:prod": "concurrently \"NODE_ENV=production nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm start",
     "debug": "ndb server.js"
   },

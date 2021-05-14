@@ -19,7 +19,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserTypes.FORGOT_PASSWORD_SUCCESS:
       return {
         ...state,
-        response: action.payload,
+        response: action.payload.response.data,
       };
 
     case UserTypes.SIGN_IN_FAIL:

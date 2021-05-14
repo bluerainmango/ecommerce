@@ -4,8 +4,8 @@ import Signup from "../../components/signup/signup.component";
 import Signin from "../../components/signin/signin.component";
 import ForgotPassword from "../../components/forgotPassword/forgotPassword.component";
 
-import Popup from "../../components/popup/popup.component";
-import AlertBar from "../../components/alertBar/alertBar.component";
+// import Popup from "../../components/popup/popup.component";
+// import AlertBar from "../../components/alertBar/alertBar.component";
 
 import "./login.styles.scss";
 
