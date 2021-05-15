@@ -1,22 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./redux/store";
 
 import { BrowserRouter } from "react-router-dom";
 
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import ScrollToTop from "./util/scrollToTop";
+
+import "./index.css";
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <ScrollToTop />
       <React.StrictMode>
-        <App />
+        <ScrollToTop />
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
       </React.StrictMode>
     </BrowserRouter>
   </Provider>,

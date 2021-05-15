@@ -1,11 +1,11 @@
+import { Switch, Route } from "react-router-dom";
+
 import Homepage from "./pages/homepage/homepage.page";
 import Planets from "./pages/collections/planetsCollection.page";
 import Starships from "./pages/collections/starshipsCollection.page";
 import Login from "./pages/login/login.page";
 import NavBar from "./components/navbar/navbar.component";
 // import AlertBar from "./components/alertBar/alertBar.component";
-
-import { Switch, Route } from "react-router-dom";
 
 import "./App.css";
 
