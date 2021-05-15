@@ -20,7 +20,8 @@ function* signInWithEmail({ payload: { username, password } }) {
       {
         username,
         password,
-      }
+      },
+      { withCredentials: true }
     );
 
     const user = res.data.data.user;
@@ -43,7 +44,8 @@ function* signUpWithEmail({ payload }) {
         email,
         password,
         passwordConfirm,
-      }
+      },
+      { withCredentials: true }
     );
 
     const user = res.data.data.user;
@@ -74,11 +76,12 @@ function* forgotPassword(payload) {
     yield put(forgotPasswordFail(err));
   }
 }
-
+//! To delete cookie, don't forget to add widthCrendentials option as well.
 function* logout() {
   try {
     const res = yield axios(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/logout`
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/logout`,
+      { withCredentials: true }
     );
 
     const result = res.data.data;

@@ -66,7 +66,13 @@ exports.signin = catchAsync(async (req, res, next) => {
 });
 
 exports.logout = (req, res) => {
-  res.clearCookie("jwt");
+  const cookieOptions = {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+    secure: req.secure || req.headers["x-forwarded-proto"] === "https",
+  };
+
+  res.clearCookie("jwt", cookieOptions);
 
   res.status(200).json({
     status: "success",

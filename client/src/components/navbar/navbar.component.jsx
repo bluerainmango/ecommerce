@@ -67,7 +67,9 @@ const NavBar = (props) => {
           )}
         </ul>
         <ul className="navbar__shop">
-          <RocketIcon />
+          <Link to="/checkout">
+            <RocketIcon />
+          </Link>
 
           {/* <svg className="icon--shopping"><use xlink:href="#"></use></svg> */}
         </ul>

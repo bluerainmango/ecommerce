@@ -11,7 +11,7 @@ import "./login.styles.scss";
 
 const Login = () => {
   const { pathname } = useLocation();
-  console.log("🎃 pathname:", pathname);
+  // console.log("🎃 pathname:", pathname);
 
   return (
     <div className="loginPage">

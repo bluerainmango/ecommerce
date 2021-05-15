@@ -14,8 +14,23 @@ const errorController = require("./controllers/errorController");
 
 const app = express();
 
+const whitelist = ["http://localhost:3000", "http://localhost:4000"];
+const corsOptionsDelegate = function (req, callback) {
+  let corsOptions;
+
+  if (whitelist.indexOf(req.header("Origin")) !== -1) {
+    corsOptions = { origin: true, credentials: true };
+  } else {
+    corsOptions = { origin: false }; // disable CORS for this request
+  }
+  callback(null, corsOptions); // callback expects two params: err and options
+};
+
 app.enable("trust proxy");
-app.use(cors());
+// Apply CORS to all responses
+app.use(cors(corsOptionsDelegate));
+// CORS pre-flight
+app.options("*", cors(corsOptionsDelegate));
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
