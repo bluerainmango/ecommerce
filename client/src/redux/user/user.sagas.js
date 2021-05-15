@@ -9,6 +9,8 @@ import {
   signupFail,
   forgotPasswordSuccess,
   forgotPasswordFail,
+  logoutSuccess,
+  logoutFail,
 } from "./user.actions";
 
 function* signInWithEmail({ payload: { username, password } }) {
@@ -73,6 +75,21 @@ function* forgotPassword(payload) {
   }
 }
 
+function* logout() {
+  try {
+    const res = yield axios(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/logout`
+    );
+
+    const result = res.data.data;
+    console.log(("🥵 logout:", result));
+
+    yield put(logoutSuccess());
+  } catch (err) {
+    yield put(logoutFail());
+  }
+}
+
 function* onEmailSignInStart() {
   yield takeLatest(UserTypes.EMAIL_SIGN_IN_START, signInWithEmail);
 }
@@ -85,10 +102,15 @@ function* onForgotPasswordStart() {
   yield takeLatest(UserTypes.FORGOT_PASSWORD_START, forgotPassword);
 }
 
+function* onLogoutStart() {
+  yield takeLatest(UserTypes.LOGOUT_START, logout);
+}
+
 export default function* userSaga() {
   yield all([
     call(onEmailSignInStart),
     call(onSignUpStart),
     call(onForgotPasswordStart),
+    call(onLogoutStart),
   ]);
 }

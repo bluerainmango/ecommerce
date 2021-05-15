@@ -51,7 +51,7 @@ const Signin = ({ emailSigninStart }) => {
           value={username}
           maxLength="15"
           placeholder=" "
-          // required
+          required
           // autoFocus
           onChange={handleChange}
         />
@@ -64,7 +64,7 @@ const Signin = ({ emailSigninStart }) => {
           type="password"
           className="form-input"
           placeholder=" "
-          // required
+          required
           onChange={handleChange}
         />
 

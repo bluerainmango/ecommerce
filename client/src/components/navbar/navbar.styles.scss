@@ -1,6 +1,6 @@
 .navbar {
   color: #fff;
-  height: 6rem;
+  height: 7rem;
   width: 100vw;
   font-size: 1.5rem;
   display: none;
@@ -51,10 +51,11 @@
   grid-column: 2/3;
   justify-self: end;
   text-transform: uppercase;
+  align-items: center;
 }
 
 .navbar__links,
-.navbar__user {
+.navbar__shop {
   display: flex;
   // justify-content: center;
   // justify-self: start;
@@ -66,4 +67,31 @@
 
 .navbar__links > * {
   margin-right: 3rem;
+}
+
+.link--login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > *:nth-child(2) {
+    margin-right: 2rem;
+  }
+  // > *:not(:last-child) {
+  //   margin-right: 1rem;
+  // }
+}
+.ionicon {
+  color: red;
+  // fill: red;
+  // font-size: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  // --ionicon-stroke-width: 32px;
+}
+
+.link--login {
+  .ionicon {
+    fill: rgba(255, 255, 255, 0.842);
+  }
 }

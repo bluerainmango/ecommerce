@@ -57,3 +57,17 @@ export const clearError = (err) => ({
   type: UserTypes.CLEAR_ERROR,
   payload: err,
 });
+
+//* Log out
+export const logoutStart = () => ({
+  type: UserTypes.LOGOUT_START,
+});
+
+export const logoutSuccess = () => ({
+  type: UserTypes.LOGOUT_SUCESS,
+});
+
+export const logoutFail = (err) => ({
+  type: UserTypes.LOGOUT_FAIL,
+  payload: err,
+});
