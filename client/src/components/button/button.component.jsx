@@ -1,23 +1,56 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 
+import {
+  addPlanet,
+  addStarship,
+  removePlanet,
+  removeStarship,
+} from "../../redux/cart/cart.action";
 import "./button.styles.scss";
 
 const Button = (props) => {
-  const { text, style, linkTo } = props;
+  const { content, style } = props;
+
   const history = useHistory();
 
-  //   console.log(text);
+  const handleClick = (el) => {
+    return () => {
+      switch (el.type) {
+        case "addPlanet":
+          return props.addPlanet(el.itemToDispatch);
+
+        case "addStarship":
+          return props.addStarship(el.itemToDispatch);
+
+        case "removePlanet":
+          return props.removePlanet();
+
+        case "removeStarship":
+          return props.removeStarship();
+
+        case "link":
+          return history.push(el.linkTo);
+
+        default:
+          return;
+      }
+    };
+  };
+
   return (
     <div className="btn-container">
-      {text.map((el) => (
+      {content?.map((el) => (
         <button
           className="btn"
           style={style}
-          key={el}
-          onClick={() => history.push(linkTo)}
+          key={`btn--${
+            el.type === "link" ? el.linkTo : el.itemToDispatch.slug
+          }`}
+          onClick={handleClick(el)}
         >
-          <span>{el}</span>
+          <span>{el.text}</span>
           <div className="btn-anim" />
         </button>
       ))}
@@ -25,4 +58,11 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+const mapDispatchToProps = (dispatch) => ({
+  addPlanet: (planet) => dispatch(addPlanet(planet)),
+  addStarship: (starship) => dispatch(addStarship(starship)),
+  removePlanet: () => dispatch(removePlanet()),
+  removeStarship: () => dispatch(removeStarship()),
+});
+
+export default connect(null, mapDispatchToProps)(Button);

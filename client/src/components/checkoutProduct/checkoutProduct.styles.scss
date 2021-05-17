@@ -1,7 +1,7 @@
 .checkout__product {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 
   .itemBox__photo {
     // border: 1px white solid;
@@ -9,7 +9,7 @@
     background-color: rgba(73, 73, 73, 0.397);
     border-radius: 2%;
 
-    img {
+    > * {
       width: 15rem;
       height: 15rem;
       margin: 2rem;
@@ -17,8 +17,10 @@
   }
 
   .itemInfo {
-    margin: auto 10rem;
+    width: 30rem;
+    margin: 0 auto;
     line-height: 2;
+    text-align: center;
 
     .itemBox__name {
       font-size: 1.9rem;

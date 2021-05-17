@@ -12,7 +12,7 @@ import CheckoutDatePerson from "../checkoutDatePerson/checkoutDatePerson.compone
 
 import "./checkoutItem.styles.scss";
 
-const CheckoutItem = ({ type }) => {
+const CheckoutItem = ({ type, product }) => {
   return (
     <div className="checkout__item">
       <div className="checkout__icon">
@@ -24,11 +24,12 @@ const CheckoutItem = ({ type }) => {
           <DateIcon />
         )}
       </div>
+
       <div className="checkout__contentBox">
         {type === "dateAndPerson" ? (
           <CheckoutDatePerson />
         ) : (
-          <CheckoutProduct />
+          <CheckoutProduct type={type} product={product} />
         )}
       </div>
     </div>

@@ -1,23 +1,14 @@
 import React, { useState } from "react";
 // import FormInput from "../formInput/formInput.component";
+import { formattedDate } from "../../util/util";
 
 import "./checkoutDatePerson.styles.scss";
 
 const CheckoutDatePerson = () => {
   // const [departureDate, setDepartureDate] = useState("");
 
-  const today = new Date();
-
-  const year = today.getFullYear();
-  const month = ("0" + (today.getMonth() + 1)).slice(-2);
-  const day = ("0" + today.getDate()).slice(-2);
-
-  const formattedToday = `${year}--${month}--${day}`;
-
-  console.log("🐞 date", formattedToday);
-
   const [reservationInfo, setReservationInfo] = useState({
-    departureDate: formattedToday,
+    departureDate: formattedDate(),
     numOfTravelers: 1,
   });
 
@@ -37,7 +28,7 @@ const CheckoutDatePerson = () => {
     <div className="checkout__date-person">
       <form className="checkout__form">
         <div className="input-group">
-          <label for="date">Departure Date</label>
+          <label htmlFor="date">Departure Date</label>
           <input
             id="date"
             name="departureDate"
@@ -49,7 +40,7 @@ const CheckoutDatePerson = () => {
         </div>
 
         <div className="input-group">
-          <label for="numOfTravelers">Number of Travelers</label>
+          <label htmlFor="numOfTravelers">Number of Travelers</label>
           <input
             id="numOfTravelers"
             name="numOfTravelers"

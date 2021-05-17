@@ -7,6 +7,7 @@ import slideReducer from "./slide/slide.reducer";
 import starshipReducer from "./starship/starship.reducer";
 import pageReducer from "./page/page.reducer";
 import userReducer from "./user/user.reducer";
+import cartReducer from "./cart/cart.reducer";
 
 const persistConfig = {
   key: "root",
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   starships: starshipReducer,
   pages: pageReducer,
   users: userReducer,
+  cart: cartReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

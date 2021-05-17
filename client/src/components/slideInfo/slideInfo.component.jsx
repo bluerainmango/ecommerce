@@ -35,8 +35,20 @@ const SlideInfo = (props) => {
         <h6 className="slideInfo__subtitle">{activeSlideInfo?.subtitle}</h6> */}
         <p className="slideInfo__description">{activeSlideInfo?.description}</p>
         <Button
-          text={["Add To Cart", "Learn More"]}
-          linkTo={`/planets/${activeSlideInfo?.slug}`}
+          content={[
+            {
+              type: "addPlanet",
+              text: "Add to journey",
+              itemToDispatch: activeSlideInfo,
+            },
+            {
+              type: "link",
+              text: "Learn more",
+              linkTo: `/planets/${activeSlideInfo?.slug}`,
+            },
+          ]}
+          // text={["Add To Cart", "Learn More"]}
+          // linkTo={`/planets/${activeSlideInfo?.slug}`}
         />
         {/* <Button text="Learn More" /> */}
       </div>

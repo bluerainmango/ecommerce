@@ -10,7 +10,7 @@ import "./productOrder.styles.scss";
 
 const ProductOrder = ({ product, thumbnailIndex }) => {
   // console.log(thumbnailIndex);
-
+  // console.log("🐽 ", product);
   const imageRef = useRef();
 
   useEffect(() => {
@@ -36,14 +36,19 @@ const ProductOrder = ({ product, thumbnailIndex }) => {
         <p>{product.description}</p>
         <ThumbnailSlider product={product} />
         <Button
-          text={["add to cart"]}
+          content={[
+            {
+              type:
+                product.category === "planets" ? "addPlanet" : "addStarship",
+              text: "add to journey",
+              itemToDispatch: product,
+            },
+          ]}
           style={{
             "--bg-color": "rgb(12, 12, 12)",
             "--font-color-hover": "black",
           }}
         />
-
-        {/* <div className="thumbnail-slider" /> */}
       </div>
     </section>
   );
