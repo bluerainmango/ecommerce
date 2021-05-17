@@ -1,0 +1,51 @@
+.checkout__price {
+  align-self: flex-start;
+
+  background-color: rgb(0, 0, 0);
+  color: #fff;
+  min-width: 30rem;
+
+  border: 1px solid rgba(105, 105, 105, 0.219);
+  box-shadow: rgba(255, 255, 255, 0.151) 2px 2px 5px;
+
+  padding: 2rem;
+  line-height: 2;
+
+  .price__detail > h2,
+  .price__travelers > h2,
+  .price__total > h2 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .price__detail h3,
+  .price__detail span,
+  .price__travelers span,
+  .price__total span {
+    font-size: 1.7rem;
+    font-weight: 400;
+  }
+
+  .price__detail--planet,
+  .price__detail--starship,
+  .price__total,
+  .price__travelers {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // .price__detail--planet,
+  // .price__detail--starship {
+  //   padding-left: 1rem;
+  // }
+
+  .price__travelers,
+  .price__total {
+    border-top: 1.5px solid rgba(105, 105, 105, 0.219);
+    padding: 2rem 0px;
+  }
+
+  .price__detail {
+    padding-bottom: 2rem;
+  }
+}

@@ -1,0 +1,36 @@
+.checkout__product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .itemBox__photo {
+    // border: 1px white solid;
+    margin: 2rem;
+    background-color: rgba(73, 73, 73, 0.397);
+    border-radius: 2%;
+
+    img {
+      width: 15rem;
+      height: 15rem;
+      margin: 2rem;
+    }
+  }
+
+  .itemInfo {
+    margin: auto 10rem;
+    line-height: 2;
+
+    .itemBox__name {
+      font-size: 1.9rem;
+    }
+
+    .itemBox__price {
+      font-size: 2rem;
+      font-weight: 400;
+    }
+  }
+
+  .itemBtns {
+    margin-right: 2rem;
+  }
+}

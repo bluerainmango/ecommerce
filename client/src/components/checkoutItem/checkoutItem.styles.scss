@@ -1,0 +1,40 @@
+$icon--color: rgb(255, 72, 0);
+// $icon--color: rgb(61, 161, 255);
+
+.checkout {
+  &__item {
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    margin: 0px 4rem 2rem 0px;
+    // width: 100%;
+    max-width: 80rem;
+    color: #fff;
+  }
+
+  &__icon {
+    .ionicon {
+      width: 2.5rem;
+      height: 2.5rem;
+      fill: $icon--color;
+      color: $icon--color;
+    }
+
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+
+    &::after {
+      content: "";
+      transform: translate(50%, 5%);
+      width: 100%;
+      height: 100%;
+      border-left: 1px solid $icon--color;
+    }
+  }
+
+  &__contentBox {
+    border: 1px solid rgba(105, 105, 105, 0.219);
+    box-shadow: rgba(255, 255, 255, 0.151) 2px 2px 5px;
+    width: 100%;
+  }
+}

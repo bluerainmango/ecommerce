@@ -10,6 +10,7 @@ const FormInput = ({ handleChange, label, ...otherProps }) => (
         className={`${
           otherProps.value?.length ? "shirink" : ""
         } form-input-label`}
+        for={label}
       >
         {label}
       </label>

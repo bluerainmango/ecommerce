@@ -5,6 +5,7 @@ import Planets from "./pages/collections/planetsCollection.page";
 import Starships from "./pages/collections/starshipsCollection.page";
 import Login from "./pages/login/login.page";
 import NavBar from "./components/navbar/navbar.component";
+import Checkout from "./pages/checkout/checkout.page";
 // import AlertBar from "./components/alertBar/alertBar.component";
 
 import "./App.css";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/users/signup" component={Login} />
         <Route path="/users/forgotpassword" component={Login} />
         <Route path="/users" component={Login} />
+        <Route path="/checkout" component={Checkout} />
         <Route exact path="/" component={Homepage} />
         {/* <Route path="/planets" component={}/> */}
       </Switch>

@@ -1,0 +1,36 @@
+.checkout__date-person {
+  .checkout__form {
+    display: flex;
+  }
+
+  .checkout__date,
+  .checkout__person {
+    margin-bottom: 2rem;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+
+    &:first-child {
+      margin-right: 7rem;
+    }
+
+    input {
+      margin-left: 2.5rem;
+      width: 18rem;
+      height: 4rem;
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  label {
+    font-size: 1.5rem;
+    margin: 3rem;
+  }
+
+  .checkout__pereson {
+    width: 10rem;
+  }
+}
