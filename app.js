@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const planetRouter = require("./routes/planetRoutes");
 const starshipRouter = require("./routes/starshipRoutes");
 const userRouter = require("./routes/userRoutes");
+const bookingRouter = require("./routes/bookingRoutes");
 
 const ErrorFactory = require("./util/ErrorFactory");
 const errorController = require("./controllers/errorController");
@@ -46,6 +47,7 @@ app.use(cookieParser());
 app.use("/api/v1/planets", planetRouter);
 app.use("/api/v1/starships", starshipRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/bookings", bookingRouter);
 
 //! ERROR Handlers
 app.all("*", (req, res, next) => {
