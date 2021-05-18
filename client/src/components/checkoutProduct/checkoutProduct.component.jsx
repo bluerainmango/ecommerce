@@ -27,8 +27,8 @@ const CheckoutProduct = ({ type, product }) => {
           {product?.title || type.toUpperCase()}
         </h2>
         <h3 className="itemBox__price">
-          <span>$</span>
-          {product?.price || "0"}
+          <span>{product?.price ? "$" : ""}</span>
+          {product?.price || "-"}
         </h3>
       </div>
       <div className="itemBtns">

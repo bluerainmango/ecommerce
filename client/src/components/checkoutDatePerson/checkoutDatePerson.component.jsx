@@ -1,16 +1,30 @@
-import React, { useState } from "react";
-// import FormInput from "../formInput/formInput.component";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+
+import {
+  updateDepartureDate,
+  updatePerson,
+} from "../../redux/cart/cart.action";
+
 import { formattedDate } from "../../util/util";
 
 import "./checkoutDatePerson.styles.scss";
 
-const CheckoutDatePerson = () => {
-  // const [departureDate, setDepartureDate] = useState("");
+const CheckoutDatePerson = (props) => {
+  const { updateDepartureDate, updatePerson } = props;
 
   const [reservationInfo, setReservationInfo] = useState({
     departureDate: formattedDate(),
-    numOfTravelers: 1,
+    numOfPerson: 1,
   });
+
+  useEffect(() => {
+    updateDepartureDate(reservationInfo.departureDate);
+  }, [reservationInfo.departureDate, updatePerson, updateDepartureDate]);
+
+  useEffect(() => {
+    updatePerson(reservationInfo.numOfPerson * 1);
+  }, [reservationInfo.numOfPerson, updatePerson, updateDepartureDate]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -24,6 +38,7 @@ const CheckoutDatePerson = () => {
       [name]: value,
     });
   };
+
   return (
     <div className="checkout__date-person">
       <form className="checkout__form">
@@ -40,15 +55,14 @@ const CheckoutDatePerson = () => {
         </div>
 
         <div className="input-group">
-          <label htmlFor="numOfTravelers">Number of Travelers</label>
+          <label htmlFor="numOfPerson">Number of Travelers</label>
           <input
-            id="numOfTravelers"
-            name="numOfTravelers"
+            id="numOfPerson"
+            name="numOfPerson"
             type="number"
-            min="0"
-            max="6"
-            size="100000"
-            value={reservationInfo.numOfTravelers}
+            min="1"
+            max="10"
+            value={reservationInfo.numOfPerson}
             onChange={handleChange}
             className="checkout__person"
           ></input>
@@ -58,4 +72,9 @@ const CheckoutDatePerson = () => {
   );
 };
 
-export default CheckoutDatePerson;
+const mapDispatchToProps = (dispatch) => ({
+  updateDepartureDate: (date) => dispatch(updateDepartureDate(date)),
+  updatePerson: (numOfPerson) => dispatch(updatePerson(numOfPerson)),
+});
+
+export default connect(null, mapDispatchToProps)(CheckoutDatePerson);
