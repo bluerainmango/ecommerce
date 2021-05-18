@@ -1,3 +1,5 @@
+@import "../../global.style.scss";
+
 .navbar {
   color: #fff;
   height: 7rem;
@@ -65,6 +67,11 @@
   }
 }
 
+.navbar__shop svg {
+  // justify-content: space-between;
+  margin: 0.5rem;
+}
+
 .navbar__links > * {
   margin-right: 3rem;
 }
@@ -82,8 +89,8 @@
   // }
 }
 .ionicon {
-  color: red;
-  // fill: red;
+  color: $color--accent;
+  fill: $color--accent;
   // font-size: 3rem;
   width: 2.5rem;
   height: 2.5rem;

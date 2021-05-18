@@ -8,6 +8,7 @@ import PlanetIntro from "../../components/planetIntro/planetIntro.component";
 import Headline from "../../components/headline/headline.component";
 import Feature from "../../components/feature/feature.component";
 import Presentation from "../../components/presentation/presentation.component";
+import AlertBar from "../../components/alertBar/alertBar.component";
 
 import { fetchPlanetsStart } from "../../redux/planet/planet.actions";
 
@@ -33,6 +34,7 @@ const Planet = ({ planets, fetchPlanetsStart }) => {
       {/* {console.log("planet:", planet)} */}
       {planet && (
         <div>
+          <AlertBar />
           <PlanetIntro planet={planet} />
           <Headline planet={planet} />
           <Presentation planet={planet} />

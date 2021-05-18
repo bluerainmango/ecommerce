@@ -5,6 +5,9 @@ import { Link, useLocation } from "react-router-dom";
 import { logoutStart } from "../../redux/user/user.actions";
 
 import { ReactComponent as RocketIcon } from "../../assets/icons/rocket-outline.svg";
+import { ReactComponent as PlanetIcon } from "../../assets/icons/planet-outline.svg";
+import { ReactComponent as PlanetIconFull } from "../../assets/icons/planet-sharp.svg";
+import { ReactComponent as DateIcon } from "../../assets/icons/calendar-outline.svg";
 import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-outline.svg";
 
 import "./navbar.styles.scss";
@@ -69,6 +72,9 @@ const NavBar = (props) => {
         <ul className="navbar__shop">
           <Link to="/checkout">
             <RocketIcon />
+            {/* <PlanetIcon /> */}
+            <PlanetIconFull />
+            <DateIcon />
           </Link>
 
           {/* <svg className="icon--shopping"><use xlink:href="#"></use></svg> */}

@@ -27,6 +27,10 @@ const CheckoutPrice = ({ cart, numOfPerson }) => {
         {/* {console.log("🐥", numOfPerson, cart)} */}
         <span>x{numOfPerson}</span>
       </div>
+      <div className="price__date">
+        <h2>Depareture Date</h2>
+        <span>{cart.departureDate.replaceAll("--", "/")}</span>
+      </div>
       <div className="price__total">
         <h2>Total</h2>
         <span>${cart.totalPrice}</span>

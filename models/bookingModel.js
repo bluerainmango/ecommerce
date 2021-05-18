@@ -25,7 +25,7 @@ const bookingSchema = new mongoose.Schema({
     required: true,
     default: 1,
     min: 1,
-    max: 6,
+    max: 10,
   },
   price: {
     type: Number,

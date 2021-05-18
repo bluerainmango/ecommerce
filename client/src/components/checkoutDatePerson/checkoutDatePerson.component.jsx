@@ -11,18 +11,25 @@ import { formattedDate } from "../../util/util";
 import "./checkoutDatePerson.styles.scss";
 
 const CheckoutDatePerson = (props) => {
-  const { updateDepartureDate, updatePerson } = props;
+  const {
+    departureDate,
+    numOfPerson,
+    updateDepartureDate,
+    updatePerson,
+  } = props;
 
   const [reservationInfo, setReservationInfo] = useState({
-    departureDate: formattedDate(),
-    numOfPerson: 1,
+    departureDate: departureDate,
+    numOfPerson: numOfPerson,
   });
 
   useEffect(() => {
+    if (!reservationInfo.departureDate) return;
     updateDepartureDate(reservationInfo.departureDate);
   }, [reservationInfo.departureDate, updatePerson, updateDepartureDate]);
 
   useEffect(() => {
+    if (!reservationInfo.numOfPerson) return;
     updatePerson(reservationInfo.numOfPerson * 1);
   }, [reservationInfo.numOfPerson, updatePerson, updateDepartureDate]);
 
@@ -48,7 +55,8 @@ const CheckoutDatePerson = (props) => {
             id="date"
             name="departureDate"
             type="date"
-            value={reservationInfo.reservedDate}
+            value={reservationInfo.departureDate}
+            min={formattedDate()}
             onChange={handleChange}
             className="checkout__date"
           />
@@ -72,9 +80,14 @@ const CheckoutDatePerson = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  departureDate: state.cart.departureDate,
+  numOfPerson: state.cart.numOfPerson,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   updateDepartureDate: (date) => dispatch(updateDepartureDate(date)),
   updatePerson: (numOfPerson) => dispatch(updatePerson(numOfPerson)),
 });
 
-export default connect(null, mapDispatchToProps)(CheckoutDatePerson);
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutDatePerson);

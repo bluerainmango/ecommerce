@@ -21,7 +21,8 @@ $btn--color: $color--accent;
 
   .price__detail > h2,
   .price__travelers > h2,
-  .price__total > h2 {
+  .price__total > h2,
+  .price__date > h2 {
     font-size: 2rem;
     font-weight: 600;
   }
@@ -29,9 +30,11 @@ $btn--color: $color--accent;
   .price__detail h3,
   .price__detail span,
   .price__travelers span,
-  .price__total span {
+  .price__total span,
+  .price__date span {
     font-size: 1.7rem;
     font-weight: 400;
+    padding-left: 1rem;
   }
 
   .price__detail--planet,
@@ -48,7 +51,8 @@ $btn--color: $color--accent;
   // }
 
   .price__travelers,
-  .price__total {
+  .price__total,
+  .price__date {
     border-top: 1.5px solid rgba(105, 105, 105, 0.219);
     padding: 2rem 0px;
   }

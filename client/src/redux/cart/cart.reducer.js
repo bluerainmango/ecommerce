@@ -7,6 +7,7 @@ const INIT_STATE = {
   departureDate: formattedDate(),
   numOfPerson: 1,
   totalPrice: 0,
+  error: null,
 };
 
 const calTotalPrice = (planetPrice, starshipPrice, numOfPerson = 1) => {
