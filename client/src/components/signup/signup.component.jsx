@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Button from "../button/button.component";
@@ -18,6 +18,8 @@ const Signup = ({ signupStart }) => {
     passwordConfirm: "",
   });
 
+  const history = useHistory();
+
   const { username, email, password, passwordConfirm } = userSignupInfo;
 
   const handleSubmit = (e) => {
@@ -25,6 +27,8 @@ const Signup = ({ signupStart }) => {
     console.log("submitted");
 
     signupStart(userSignupInfo);
+
+    history.push("/");
   };
 
   const handleChange = (e) => {
@@ -96,7 +100,13 @@ const Signup = ({ signupStart }) => {
 
         <Button
           type="submit"
-          text={["SIGN UP"]}
+          content={[
+            {
+              text: "Sign up",
+              type: "link",
+              // linkTo: "/",
+            },
+          ]}
           style={{
             "--bg-color": "rgb(12, 12, 12)",
             "--font-color-hover": "black",

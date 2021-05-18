@@ -27,8 +27,17 @@ const CheckoutPrice = () => {
         <span>$1239</span>
       </div>
       <Button
-        text={["checkout"]}
-        style={{ width: "100%", "--bg-color": "rgb(255, 72, 0)" }}
+        content={[
+          {
+            text: "Proceed to purchase",
+            type: "link",
+            linkTo: "/purchase",
+          },
+        ]}
+        style={{
+          width: "100%",
+          // "--bg-color": "rgb(255, 72, 0)",
+        }}
         // style={{ width: "100%", backgroundColor: "rgb(0, 81, 255)" }}
       />
     </div>

@@ -47,7 +47,13 @@ const Box3d = ({ props }) => {
               ))}
             </ul>
             <Button
-              text={["Learn more"]}
+              content={[
+                {
+                  text: "learn more",
+                  type: "link",
+                  // linkTo: "/purchase",
+                },
+              ]}
               // style={{
               //   "--bg-color": "rgb(12, 12, 12)",
               //   "--font-color-hover": "black",

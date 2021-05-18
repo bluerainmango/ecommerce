@@ -1,8 +1,12 @@
+@import "../../global.style.scss";
+
+$btn--color: $color--accent;
+
 .checkout__price {
   align-self: flex-start;
 
   background-color: rgb(0, 0, 0);
-  color: #fff;
+  color: rgb(255, 255, 255);
   min-width: 30rem;
 
   border: 1px solid rgba(105, 105, 105, 0.219);
@@ -10,6 +14,10 @@
 
   padding: 2rem;
   line-height: 2;
+
+  .btn {
+    background-color: $btn--color !important;
+  }
 
   .price__detail > h2,
   .price__travelers > h2,

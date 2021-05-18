@@ -51,7 +51,9 @@
   height: 100%;
   // z-index: -1;
   z-index: 0;
-  background-color: var(--bg-color, rgba(255, 255, 255, 0.185));
+  // background-color: var(--bg-color, rgba(255, 255, 255, 0.11));
+  background-color: var(--bg-color, $color--grey);
+  // background-color: var($color--accent, $color--grey);
   transition: all 0.3s;
 }
 

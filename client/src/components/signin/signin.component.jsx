@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Button from "../button/button.component";
@@ -16,6 +16,8 @@ const Signin = ({ emailSigninStart }) => {
     password: "",
   });
 
+  const history = useHistory();
+
   const { username, password } = userSigninInfo;
 
   const handleSubmit = (e) => {
@@ -24,6 +26,8 @@ const Signin = ({ emailSigninStart }) => {
 
     emailSigninStart(userSigninInfo);
     setUserSigninInfo({ username: "", password: "" });
+
+    history.push("/");
   };
 
   const handleChange = (e) => {
@@ -71,7 +75,13 @@ const Signin = ({ emailSigninStart }) => {
         <Button
           className="form__btn"
           type="submit"
-          text={["SIGN IN"]}
+          content={[
+            {
+              text: "Sign in",
+              type: "link",
+              // linkTo: "/",
+            },
+          ]}
           style={{
             "--bg-color": "rgb(12, 12, 12)",
             "--font-color-hover": "black",

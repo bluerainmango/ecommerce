@@ -43,7 +43,7 @@ const Button = (props) => {
     <div className="btn-container">
       {content?.map((el) => (
         <button
-          className="btn"
+          className={el.type === "link" ? "btn" : "btn btn--action"}
           style={style}
           key={`btn--${
             el.type === "link" ? el.linkTo : el.itemToDispatch.slug

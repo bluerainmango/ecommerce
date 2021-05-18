@@ -1,4 +1,6 @@
-$icon--color: rgb(255, 72, 0);
+@import "../../global.style.scss";
+
+$icon--color: $color--accent;
 // $icon--color: rgb(61, 161, 255);
 
 .checkout {
@@ -25,7 +27,7 @@ $icon--color: rgb(255, 72, 0);
 
     &::after {
       content: "";
-      transform: translate(50%, 5%);
+      transform: translate(50%, 3%);
       width: 100%;
       height: 100%;
       border-left: 1px solid $icon--color;

@@ -1,3 +1,5 @@
+@import "../../global.style.scss";
+
 .slideInfo {
   position: relative;
   background-color: black;
@@ -16,6 +18,10 @@
   align-content: start;
   justify-items: center;
   gap: 1rem;
+
+  .btn--action {
+    background-color: $color--accent;
+  }
 
   &__img {
     grid-column: 2 / span 1;

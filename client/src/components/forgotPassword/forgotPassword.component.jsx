@@ -51,7 +51,13 @@ const ForgotPassword = ({ forgotPasswordStart }) => {
         <Button
           className="form__btn"
           type="submit"
-          text={["Submit"]}
+          content={[
+            {
+              text: "Reset password",
+              type: "link",
+              // linkTo: "/",
+            },
+          ]}
           style={{
             "--bg-color": "rgb(12, 12, 12)",
             "--font-color-hover": "black",

@@ -1,6 +1,7 @@
 import React from "react";
 
-import starshipImg from "../../assets/starship1.png";
+// import { ReactComponent as EarthIcon } from "../../assets/icons/earth.svg";
+// import { ReactComponent as planeIcon } from "../../assets/icons/airplane-outline.svg";
 
 import Button from "../button/button.component";
 
@@ -11,12 +12,14 @@ const CheckoutProduct = ({ type, product }) => {
     <div className="checkout__product">
       <div className="itemBox__photo">
         {!product ? (
-          <div />
+          <div>Please add a {type}</div>
         ) : (
-          <img
-            src={`${process.env.REACT_APP_API_BASE_URL}/${product?.collectionThumb}`}
-            alt={`checkout`}
-          />
+          <div>
+            <img
+              src={`${process.env.REACT_APP_API_BASE_URL}/${product?.collectionThumb}`}
+              alt={`checkout`}
+            />
+          </div>
         )}
       </div>
       <div className="itemInfo">
