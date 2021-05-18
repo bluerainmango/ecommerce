@@ -3,7 +3,7 @@
 .checkout__product {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   background-color: rgb(0, 0, 0);
 
   .itemBox__photo {
@@ -38,7 +38,7 @@
     // color: black;
 
     .itemBox__name {
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       font-weight: 400;
     }
 

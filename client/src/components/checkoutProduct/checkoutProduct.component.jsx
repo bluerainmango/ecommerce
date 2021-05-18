@@ -24,9 +24,12 @@ const CheckoutProduct = ({ type, product }) => {
       </div>
       <div className="itemInfo">
         <h2 className="itemBox__name">
-          {type.toUpperCase() || `${product?.title}`}
+          {product?.title || type.toUpperCase()}
         </h2>
-        <h3 className="itemBox__price">{"-" || `${product?.price}`}</h3>
+        <h3 className="itemBox__price">
+          <span>$</span>
+          {product?.price || "0"}
+        </h3>
       </div>
       <div className="itemBtns">
         {!product ? (
