@@ -51,7 +51,7 @@ const Box3d = ({ props }) => {
                 {
                   text: "learn more",
                   type: "link",
-                  // linkTo: "/purchase",
+                  linkTo: `/${props.category}/${props.slug}`,
                 },
               ]}
               // style={{
