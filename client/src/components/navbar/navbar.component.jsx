@@ -86,8 +86,8 @@ const NavBar = (props) => {
           {/* <Link to="/checkout"> */}
           <div className="navbar__icons" onClick={handleClickIcons}>
             <span>JOURNEY</span>
-            {!cart.planet ? <RocketIcon /> : <RocketIconFill />}
-            {!cart.starship ? <PlanetIcon /> : <PlanetIconFill />}
+            {!cart.planet ? <PlanetIcon /> : <PlanetIconFill />}
+            {!cart.starship ? <RocketIcon /> : <RocketIconFill />}
             {!cart.departureDate || !cart.numOfPerson ? (
               <DateIcon />
             ) : (
@@ -99,7 +99,7 @@ const NavBar = (props) => {
           {/* <PlanetIconFill />
             <DateIcon /> */}
           {/* </Link> */}
-          {!cart.toggleCartPopup && <CartPopup />}
+          {cart.toggleCartPopup && <CartPopup />}
         </ul>
       </div>
     </div>

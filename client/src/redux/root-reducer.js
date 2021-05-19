@@ -12,7 +12,15 @@ import cartReducer from "./cart/cart.reducer";
 const persistConfig = {
   key: "root",
   storage,
-  whiteList: ["user", "cart"],
+  whitelist: ["users"],
+  // blacklist: ["cart"],
+};
+
+//! Nested persists(persisting cart except "toggleCartPopup" inside)
+const cartPersistConfig = {
+  key: "cart",
+  storage,
+  blacklist: ["toggleCartPopup"],
 };
 
 const rootReducer = combineReducers({
@@ -21,7 +29,7 @@ const rootReducer = combineReducers({
   starships: starshipReducer,
   pages: pageReducer,
   users: userReducer,
-  cart: cartReducer,
+  cart: persistReducer(cartPersistConfig, cartReducer),
 });
 
 export default persistReducer(persistConfig, rootReducer);
