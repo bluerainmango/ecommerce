@@ -6,11 +6,11 @@ import { logoutStart } from "../../redux/user/user.actions";
 import { toggleCartPopup } from "../../redux/cart/cart.action";
 
 import { ReactComponent as RocketIcon } from "../../assets/icons/rocket-outline.svg";
-import { ReactComponent as RocketIconFull } from "../../assets/icons/rocket-sharp.svg";
+import { ReactComponent as RocketIconFill } from "../../assets/icons/rocket-sharp.svg";
 import { ReactComponent as PlanetIcon } from "../../assets/icons/planet-outline.svg";
-import { ReactComponent as PlanetIconFull } from "../../assets/icons/planet-sharp.svg";
+import { ReactComponent as PlanetIconFill } from "../../assets/icons/planet-sharp.svg";
 import { ReactComponent as DateIcon } from "../../assets/icons/calendar-outline.svg";
-import { ReactComponent as DateIconFull } from "../../assets/icons/calendar-sharp.svg";
+import { ReactComponent as DateIconFill } from "../../assets/icons/calendar-sharp.svg";
 import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-outline.svg";
 
 import "./navbar.styles.scss";
@@ -86,17 +86,17 @@ const NavBar = (props) => {
           {/* <Link to="/checkout"> */}
           <div className="navbar__icons" onClick={handleClickIcons}>
             <span>JOURNEY</span>
-            {!cart.planet ? <RocketIcon /> : <RocketIconFull />}
-            {!cart.starship ? <PlanetIcon /> : <PlanetIconFull />}
+            {!cart.planet ? <RocketIcon /> : <RocketIconFill />}
+            {!cart.starship ? <PlanetIcon /> : <PlanetIconFill />}
             {!cart.departureDate || !cart.numOfPerson ? (
               <DateIcon />
             ) : (
-              <DateIconFull />
+              <DateIconFill />
             )}
           </div>
           {/* <RocketIcon /> */}
           {/* <PlanetIcon /> */}
-          {/* <PlanetIconFull />
+          {/* <PlanetIconFill />
             <DateIcon /> */}
           {/* </Link> */}
           {!cart.toggleCartPopup && <CartPopup />}

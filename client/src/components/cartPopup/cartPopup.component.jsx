@@ -70,7 +70,7 @@ const CartPopup = ({ cart, toggleCartPopup }) => {
       {/* </Link> */}
       <Button
         content={[
-          { type: "link", text: "finalize jorney", linkTo: "/checkout" },
+          { type: "link", text: "finalize journey", linkTo: "/checkout" },
         ]}
       />
     </div>

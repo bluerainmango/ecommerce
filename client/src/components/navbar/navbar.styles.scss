@@ -110,6 +110,7 @@
   //   margin-right: 1rem;
   // }
 }
+
 .ionicon {
   color: $color--accent;
   fill: $color--accent;
@@ -117,10 +118,43 @@
   width: 2.5rem;
   height: 2.5rem;
   // --ionicon-stroke-width: 32px;
+  transition: all ease-in-out 1s;
+}
+
+.ionicon.rocket--fill {
+  animation: rocketShoot 1s cubic-bezier(0.66, -0.02, 0, 0.67) 1 backwards;
+}
+
+.ionicon.planet--fill {
+  animation: planetRotate 1s cubic-bezier(0.66, -0.02, 0, 0.67) 1 backwards;
 }
 
 .link--login {
   .ionicon {
     fill: rgba(255, 255, 255, 0.842);
+  }
+}
+
+@keyframes rocketShoot {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  70% {
+    transform: translate(-2px, 5px);
+  }
+  100% {
+    transform: translate(5px, -5px);
+  }
+}
+
+@keyframes planetRotate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  70% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
   }
 }
