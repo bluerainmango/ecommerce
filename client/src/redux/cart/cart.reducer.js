@@ -8,6 +8,7 @@ const INIT_STATE = {
   numOfPerson: 1,
   totalPrice: 0,
   error: null,
+  toggleCartPopup: false,
 };
 
 const calTotalPrice = (planetPrice, starshipPrice, numOfPerson = 1) => {

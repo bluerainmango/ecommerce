@@ -27,3 +27,7 @@ export const updatePerson = (numOfPerson) => ({
   type: CART_TYPES.UPDATE_PERSON,
   payload: numOfPerson,
 });
+
+export const toggleCartPopup = () => ({
+  type: CART_TYPES.TOGGLE_CARTPOPUP,
+});

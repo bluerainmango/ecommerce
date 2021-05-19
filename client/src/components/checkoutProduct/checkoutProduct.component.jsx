@@ -17,7 +17,7 @@ const CheckoutProduct = ({ type, product }) => {
           <div>
             <img
               src={`${process.env.REACT_APP_API_BASE_URL}/${product?.collectionThumb}`}
-              alt={`checkout`}
+              alt={`checkout item ${product.title}`}
             />
           </div>
         )}

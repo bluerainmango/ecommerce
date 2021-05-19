@@ -12,10 +12,7 @@ const CheckoutPrice = ({ cart, numOfPerson }) => {
         <h2>Cost per person</h2>
         <div className="price__detail--planet">
           <h3>Planet Entrance Fee</h3>
-          <span>
-            {cart.planet?.price ? `$${cart.planet.price}` : "-"}
-            {/* {cart.planet?.price || "-"} */}
-          </span>
+          <span>{cart.planet?.price ? `$${cart.planet.price}` : "-"}</span>
         </div>
         <div className="price__detail--starship">
           <h3>Starship Rental</h3>

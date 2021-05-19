@@ -79,7 +79,6 @@ const NavBar = (props) => {
             <DateIcon />
           </Link>
           <CartPopup />
-          {/* <svg className="icon--shopping"><use xlink:href="#"></use></svg> */}
         </ul>
       </div>
     </div>

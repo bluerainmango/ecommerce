@@ -1,6 +1,7 @@
 @import "../../global.style.scss";
 
 .cartPopup {
+  cursor: default;
   width: 20rem;
   display: flex;
   flex-direction: column;
@@ -20,6 +21,7 @@
     // background-color: $color--accent;
     background-color: rgb(255, 255, 255);
     font-size: 1.4rem;
+    border-bottom: 1px solid $color--accent;
   }
 
   h4 {
@@ -28,6 +30,16 @@
 
   .item__block--start > img {
     width: 5rem;
+    margin: 0 2rem;
+  }
+
+  .item__block--middle,
+  .item__block--solo {
+    margin: 0 auto;
+  }
+
+  .item__block--empty {
+    padding: 3rem 0;
   }
 
   button {
