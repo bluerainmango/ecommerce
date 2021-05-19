@@ -46,7 +46,7 @@ const Button = (props) => {
           className={el.type === "link" ? "btn" : "btn btn--action"}
           style={style}
           key={`btn--${
-            el.type === "link" ? el.linkTo : el.itemToDispatch.slug
+            el.type === "link" ? el.linkTo : el.itemToDispatch?.slug
           }`}
           onClick={handleClick(el)}
         >

@@ -7,7 +7,7 @@
   flex-direction: column;
   position: absolute;
   top: 100%;
-  transform: translateX(-50%);
+  transform: translateX(-25%);
   background-color: rgb(255, 255, 255);
   text-align: center;
   border: 1px $color--accent solid;
@@ -24,7 +24,8 @@
     border-bottom: 1px solid $color--accent;
   }
 
-  h4 {
+  h4,
+  .item__block--empty {
     font-size: 1.2rem;
   }
 

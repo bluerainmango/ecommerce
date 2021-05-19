@@ -60,7 +60,7 @@ const CartPopup = ({ cart, toggleCartPopup }) => {
       <CartPopupItem>
         <div className="item__block--solo">
           <h4>Depareture</h4>
-          <span>{cart.departureDate}</span>
+          <span>{cart.departureDate || "-"}</span>
         </div>
         <div className="item__block--solo">
           <h4>Travlers</h4>
@@ -70,7 +70,7 @@ const CartPopup = ({ cart, toggleCartPopup }) => {
       {/* </Link> */}
       <Button
         content={[
-          { text: "finalize jorney", type: "link", linkTo: "/checkout" },
+          { type: "link", text: "finalize jorney", linkTo: "/checkout" },
         ]}
       />
     </div>

@@ -1,18 +1,20 @@
 import CART_TYPES from "./cart.types";
-import { formattedDate } from "../../util/util";
+// import { formattedDate } from "../../util/util";
 
 const INIT_STATE = {
   planet: null,
   starship: null,
-  departureDate: formattedDate(),
-  numOfPerson: 1,
+  // departureDate: formattedDate(),
+  departureDate: "",
+  // numOfPerson: 1,
+  numOfPerson: 0,
   totalPrice: 0,
   error: null,
   toggleCartPopup: false,
 };
 
 const calTotalPrice = (planetPrice, starshipPrice, numOfPerson = 1) => {
-  console.log("🐍 inside:", planetPrice, starshipPrice, numOfPerson);
+  // console.log("🐍 inside:", planetPrice, starshipPrice, numOfPerson);
 
   return ((planetPrice || 0) + (starshipPrice || 0)) * numOfPerson;
 };

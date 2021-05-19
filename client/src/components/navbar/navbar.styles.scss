@@ -69,11 +69,29 @@
 
 .navbar__shop {
   position: relative;
+  transform: translateY(20%);
+}
+
+.navbar__icons {
+  border: 1px solid $color--accent;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.navbar__icons > span {
+  color: $color--accent;
+  font-size: 1.2rem;
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  // transform: translateX(50%);
+  // @include abCenter;
 }
 
 .navbar__shop svg {
   // justify-content: space-between;
-  margin: 0.5rem;
+  margin: 3px 5px 0 5px;
 }
 
 .navbar__links > * {

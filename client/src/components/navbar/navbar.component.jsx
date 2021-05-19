@@ -5,9 +5,11 @@ import { Link, useLocation } from "react-router-dom";
 import { logoutStart } from "../../redux/user/user.actions";
 
 import { ReactComponent as RocketIcon } from "../../assets/icons/rocket-outline.svg";
+import { ReactComponent as RocketIconFull } from "../../assets/icons/rocket-sharp.svg";
 import { ReactComponent as PlanetIcon } from "../../assets/icons/planet-outline.svg";
 import { ReactComponent as PlanetIconFull } from "../../assets/icons/planet-sharp.svg";
 import { ReactComponent as DateIcon } from "../../assets/icons/calendar-outline.svg";
+import { ReactComponent as DateIconFull } from "../../assets/icons/calendar-sharp.svg";
 import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-outline.svg";
 
 import "./navbar.styles.scss";
@@ -15,7 +17,7 @@ import "./navbar.styles.scss";
 import CartPopup from "../cartPopup/cartPopup.component";
 
 const NavBar = (props) => {
-  const { hideNavbar, currentUser, logoutStart } = props;
+  const { hideNavbar, currentUser, logoutStart, cart } = props;
 
   const location = useLocation();
   const navRef = useRef();
@@ -72,12 +74,22 @@ const NavBar = (props) => {
           )}
         </ul>
         <ul className="navbar__shop">
-          <Link to="/checkout">
-            <RocketIcon />
-            {/* <PlanetIcon /> */}
-            <PlanetIconFull />
-            <DateIcon />
-          </Link>
+          {/* <Link to="/checkout"> */}
+          <div className="navbar__icons">
+            <span>JOURNEY</span>
+            {!cart.planet ? <RocketIcon /> : <RocketIconFull />}
+            {!cart.starship ? <PlanetIcon /> : <PlanetIconFull />}
+            {!cart.departureDate || !cart.numOfPerson ? (
+              <DateIcon />
+            ) : (
+              <DateIconFull />
+            )}
+          </div>
+          {/* <RocketIcon /> */}
+          {/* <PlanetIcon /> */}
+          {/* <PlanetIconFull />
+            <DateIcon /> */}
+          {/* </Link> */}
           <CartPopup />
         </ul>
       </div>
@@ -88,6 +100,7 @@ const NavBar = (props) => {
 const mapStateToProps = (state) => ({
   hideNavbar: state.pages.hideNavbar,
   currentUser: state.users.currentUser,
+  cart: state.cart,
 });
 
 const mapDispatchToProps = (dispatch) => ({
