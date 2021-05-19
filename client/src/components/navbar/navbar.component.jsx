@@ -12,6 +12,8 @@ import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-o
 
 import "./navbar.styles.scss";
 
+import CartPopup from "../cartPopup/cartPopup.component";
+
 const NavBar = (props) => {
   const { hideNavbar, currentUser, logoutStart } = props;
 
@@ -76,11 +78,10 @@ const NavBar = (props) => {
             <PlanetIconFull />
             <DateIcon />
           </Link>
-
+          <CartPopup />
           {/* <svg className="icon--shopping"><use xlink:href="#"></use></svg> */}
         </ul>
       </div>
-      {/* <div className="gradient" /> */}
     </div>
   );
 };
