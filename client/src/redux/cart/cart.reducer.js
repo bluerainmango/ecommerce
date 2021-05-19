@@ -74,6 +74,12 @@ const cartReducer = (state = INIT_STATE, action) => {
         totalPrice: calTotalPrice(state.planet?.price, 0, state.numOfPerson),
       };
 
+    case CART_TYPES.TOGGLE_CARTPOPUP:
+      return {
+        ...state,
+        toggleCartPopup: !state.toggleCartPopup,
+      };
+
     default:
       return state;
   }

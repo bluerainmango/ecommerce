@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 import { logoutStart } from "../../redux/user/user.actions";
+import { toggleCartPopup } from "../../redux/cart/cart.action";
 
 import { ReactComponent as RocketIcon } from "../../assets/icons/rocket-outline.svg";
 import { ReactComponent as RocketIconFull } from "../../assets/icons/rocket-sharp.svg";
@@ -17,7 +18,7 @@ import "./navbar.styles.scss";
 import CartPopup from "../cartPopup/cartPopup.component";
 
 const NavBar = (props) => {
-  const { hideNavbar, currentUser, logoutStart, cart } = props;
+  const { hideNavbar, currentUser, logoutStart, cart, toggleCartPopup } = props;
 
   const location = useLocation();
   const navRef = useRef();
@@ -42,6 +43,14 @@ const NavBar = (props) => {
 
     console.log("🤧 clicked");
     logoutStart();
+  };
+
+  const handleClickIcons = (e) => {
+    e.preventDefault();
+    console.log("icons clicked");
+
+    toggleCartPopup();
+    console.log("🐸 toggle", cart.toggleCartPopup);
   };
 
   return (
@@ -75,7 +84,7 @@ const NavBar = (props) => {
         </ul>
         <ul className="navbar__shop">
           {/* <Link to="/checkout"> */}
-          <div className="navbar__icons">
+          <div className="navbar__icons" onClick={handleClickIcons}>
             <span>JOURNEY</span>
             {!cart.planet ? <RocketIcon /> : <RocketIconFull />}
             {!cart.starship ? <PlanetIcon /> : <PlanetIconFull />}
@@ -90,7 +99,7 @@ const NavBar = (props) => {
           {/* <PlanetIconFull />
             <DateIcon /> */}
           {/* </Link> */}
-          <CartPopup />
+          {!cart.toggleCartPopup && <CartPopup />}
         </ul>
       </div>
     </div>
@@ -105,6 +114,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   logoutStart: () => dispatch(logoutStart()),
+  toggleCartPopup: () => dispatch(toggleCartPopup()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
