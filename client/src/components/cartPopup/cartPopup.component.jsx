@@ -72,6 +72,7 @@ const CartPopup = ({ cart, toggleCartPopup }) => {
         content={[
           { type: "link", text: "finalize journey", linkTo: "/checkout" },
         ]}
+        closeCartPopup
       />
     </div>
   );

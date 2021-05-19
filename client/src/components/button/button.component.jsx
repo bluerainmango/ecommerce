@@ -7,6 +7,7 @@ import {
   addStarship,
   removePlanet,
   removeStarship,
+  toggleCartPopup,
 } from "../../redux/cart/cart.action";
 import "./button.styles.scss";
 
@@ -15,8 +16,19 @@ const Button = (props) => {
 
   const history = useHistory();
 
+  // const { pathname } = useLocation();
+  // console.log("🦊 pathname", pathname);
+
   const handleClick = (el) => {
-    return () => {
+    return (e) => {
+      e.preventDefault();
+
+      if (props.closeCartPopup && props.popupIsOpened) {
+        // console.log("🐳", props.closeCartPopup, props.popupIsOpened);
+
+        props.toggleCartPopup();
+      }
+
       switch (el.type) {
         case "addPlanet":
           return props.addPlanet(el.itemToDispatch);
@@ -58,11 +70,16 @@ const Button = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  popupIsOpened: state.cart.toggleCartPopup,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   addPlanet: (planet) => dispatch(addPlanet(planet)),
   addStarship: (starship) => dispatch(addStarship(starship)),
   removePlanet: () => dispatch(removePlanet()),
   removeStarship: () => dispatch(removeStarship()),
+  toggleCartPopup: () => dispatch(toggleCartPopup()),
 });
 
-export default connect(null, mapDispatchToProps)(Button);
+export default connect(mapStateToProps, mapDispatchToProps)(Button);
