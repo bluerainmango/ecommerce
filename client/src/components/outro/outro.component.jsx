@@ -20,7 +20,15 @@ const Outro = () => {
       <div className="outro__context">
         <h3>About to launch</h3>
         {/* <h3>Be ready</h3> */}
-        <Button text={["Be ready now"]} />
+        <Button
+          content={[
+            {
+              type: "link",
+              text: "fly now",
+              linkTo: `/checkout`,
+            },
+          ]}
+        />
       </div>
     </div>
   );

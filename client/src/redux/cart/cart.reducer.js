@@ -33,6 +33,7 @@ const cartReducer = (state = INIT_STATE, action) => {
           state.numOfPerson
         ),
         refreshCartPopupPlanet: true,
+        toggleCartPopup: true,
       };
 
     case CART_TYPES.ADD_STARSHIP:
@@ -45,6 +46,7 @@ const cartReducer = (state = INIT_STATE, action) => {
           state.numOfPerson
         ),
         refreshCartPopupStarship: true,
+        toggleCartPopup: true,
       };
 
     case CART_TYPES.UPDATE_DEPARTURE_DATE:
@@ -69,7 +71,7 @@ const cartReducer = (state = INIT_STATE, action) => {
         ...state,
         planet: null,
         totalPrice: calTotalPrice(0, state.starship?.price, state.numOfPerson),
-        // refreshCartPopup: true,
+        // toggleCartPopup: true,
       };
 
     case CART_TYPES.REMOVE_STARSHIP:
@@ -77,7 +79,7 @@ const cartReducer = (state = INIT_STATE, action) => {
         ...state,
         starship: null,
         totalPrice: calTotalPrice(state.planet?.price, 0, state.numOfPerson),
-        // refreshCartPopup: true,
+        // toggleCartPopup: true,
       };
 
     case CART_TYPES.TOGGLE_CARTPOPUP:

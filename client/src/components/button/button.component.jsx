@@ -19,6 +19,12 @@ const Button = (props) => {
   // const { pathname } = useLocation();
   // console.log("🦊 pathname", pathname);
 
+  const delayedTogglePopup = () => {
+    setTimeout(() => {
+      props.toggleCartPopup();
+    }, 1500);
+  };
+
   const handleClick = (el) => {
     return (e) => {
       e.preventDefault();
@@ -31,10 +37,14 @@ const Button = (props) => {
 
       switch (el.type) {
         case "addPlanet":
-          return props.addPlanet(el.itemToDispatch);
+          props.addPlanet(el.itemToDispatch);
+          delayedTogglePopup();
+          return;
 
         case "addStarship":
-          return props.addStarship(el.itemToDispatch);
+          props.addStarship(el.itemToDispatch);
+          delayedTogglePopup();
+          return;
 
         case "removePlanet":
           return props.removePlanet();

@@ -26,7 +26,7 @@ const CartPopup = ({
 
   useEffect(() => {
     if (!cart.refreshCartPopupPlanet || !planetRef.current) return;
-    console.log("🐶 planet ref", planetRef.current);
+    // console.log("🐶 planet ref", planetRef.current);
 
     planetRef.current?.classList.add("anim--added");
 
@@ -38,7 +38,7 @@ const CartPopup = ({
 
   useEffect(() => {
     if (!cart.refreshCartPopupStarship || !starshipRef.current) return;
-    console.log("🐹 starship ref", starshipRef.current);
+    // console.log("🐹 starship ref", starshipRef.current);
 
     starshipRef.current?.classList.add("anim--added");
 
