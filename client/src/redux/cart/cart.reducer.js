@@ -11,6 +11,8 @@ const INIT_STATE = {
   totalPrice: 0,
   error: null,
   toggleCartPopup: false,
+  refreshCartPopupPlanet: false,
+  refreshCartPopupStarship: false,
 };
 
 const calTotalPrice = (planetPrice, starshipPrice, numOfPerson = 1) => {
@@ -30,6 +32,7 @@ const cartReducer = (state = INIT_STATE, action) => {
           state.starship?.price,
           state.numOfPerson
         ),
+        refreshCartPopupPlanet: true,
       };
 
     case CART_TYPES.ADD_STARSHIP:
@@ -41,6 +44,7 @@ const cartReducer = (state = INIT_STATE, action) => {
           action.payload.price,
           state.numOfPerson
         ),
+        refreshCartPopupStarship: true,
       };
 
     case CART_TYPES.UPDATE_DEPARTURE_DATE:
@@ -65,6 +69,7 @@ const cartReducer = (state = INIT_STATE, action) => {
         ...state,
         planet: null,
         totalPrice: calTotalPrice(0, state.starship?.price, state.numOfPerson),
+        // refreshCartPopup: true,
       };
 
     case CART_TYPES.REMOVE_STARSHIP:
@@ -72,12 +77,25 @@ const cartReducer = (state = INIT_STATE, action) => {
         ...state,
         starship: null,
         totalPrice: calTotalPrice(state.planet?.price, 0, state.numOfPerson),
+        // refreshCartPopup: true,
       };
 
     case CART_TYPES.TOGGLE_CARTPOPUP:
       return {
         ...state,
         toggleCartPopup: !state.toggleCartPopup,
+      };
+
+    case CART_TYPES.REFRESH_CARTPOPUP_PLANET:
+      return {
+        ...state,
+        refreshCartPopupPlanet: false,
+      };
+
+    case CART_TYPES.REFRESH_CARTPOPUP_STARSHIP:
+      return {
+        ...state,
+        refreshCartPopupStarship: false,
       };
 
     default:

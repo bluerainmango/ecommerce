@@ -52,6 +52,10 @@
   }
 }
 
+.anim--added {
+  background-color: $color--accent;
+}
+
 @keyframes revealIconsPopup {
   0% {
     transform: translate(-25%, -10px);

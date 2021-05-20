@@ -1,10 +1,10 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 import "./cartPopupItem.styles.scss";
 
-const CartPopup = ({ children }) => {
+const CartPopup = forwardRef(({ children }, ref) => {
   return (
-    <div className="cartPopup__item">
+    <div ref={ref} className="cartPopup__item">
       {/* <div>
         <h3>Planet</h3>
         <img />
@@ -16,6 +16,6 @@ const CartPopup = ({ children }) => {
       {children}
     </div>
   );
-};
+});
 
 export default CartPopup;

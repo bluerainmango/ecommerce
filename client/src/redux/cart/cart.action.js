@@ -31,3 +31,10 @@ export const updatePerson = (numOfPerson) => ({
 export const toggleCartPopup = () => ({
   type: CART_TYPES.TOGGLE_CARTPOPUP,
 });
+
+export const refreshCartPopupPlanet = () => ({
+  type: CART_TYPES.REFRESH_CARTPOPUP_PLANET,
+});
+export const refreshCartPopupStarship = () => ({
+  type: CART_TYPES.REFRESH_CARTPOPUP_STARSHIP,
+});

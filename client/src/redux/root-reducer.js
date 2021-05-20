@@ -20,7 +20,7 @@ const persistConfig = {
 const cartPersistConfig = {
   key: "cart",
   storage,
-  blacklist: ["toggleCartPopup"],
+  blacklist: ["toggleCartPopup", "refreshCartPopup"],
 };
 
 const rootReducer = combineReducers({
