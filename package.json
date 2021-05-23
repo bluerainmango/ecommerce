@@ -39,6 +39,7 @@
     "nodemailer": "^6.6.0",
     "redux-persist": "^6.0.0",
     "slugify": "^1.5.0",
+    "stripe": "^8.149.0",
     "validator": "^13.6.0",
     "xss-clean": "^0.1.1"
   },

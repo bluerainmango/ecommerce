@@ -33,7 +33,7 @@ const CartPopup = ({
     setTimeout(() => {
       planetRef.current?.classList.remove("anim--added");
       refreshCartPopupPlanet();
-    }, 500);
+    }, 600);
   }, [cart.refreshCartPopupPlanet, planetRef, refreshCartPopupPlanet]);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const CartPopup = ({
     setTimeout(() => {
       starshipRef.current?.classList.remove("anim--added");
       refreshCartPopupStarship();
-    }, 500);
+    }, 600);
   }, [cart.refreshCartPopupStarship, starshipRef, refreshCartPopupStarship]);
 
   return (

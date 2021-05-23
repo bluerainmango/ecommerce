@@ -1,11 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
+import { loadStripe } from "@stripe/stripe-js";
 
 import Button from "../button/button.component";
 
 import "./checkoutPrice.styles.scss";
 
+const stripePromise = loadStripe(`${process.env.STRIPE_PUBLICK_KEY}`);
+
 const CheckoutPrice = ({ cart, numOfPerson }) => {
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    console.log("🙈 clicked");
+  };
+
   return (
     <div className="checkout__price">
       <div className="price__detail">
@@ -33,11 +42,11 @@ const CheckoutPrice = ({ cart, numOfPerson }) => {
         <span>${cart.totalPrice}</span>
       </div>
       <Button
+        onClick={handleClick}
         content={[
           {
             text: "Proceed to purchase",
             type: "link",
-            linkTo: "/purchase",
           },
         ]}
         style={{

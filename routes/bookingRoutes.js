@@ -9,4 +9,6 @@ router
   .get(bookingController.getAllBookings)
   .post(bookingController.createBooking);
 
+router.post("/create-checkout-session", bookingController.createCheckout);
+
 module.exports = router;
