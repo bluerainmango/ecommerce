@@ -103,7 +103,7 @@ const Signup = ({ signupStart }) => {
           content={[
             {
               text: "Sign up",
-              type: "link",
+              type: "submit",
               // linkTo: "/",
             },
           ]}

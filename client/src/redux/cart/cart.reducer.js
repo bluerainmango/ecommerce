@@ -100,6 +100,17 @@ const cartReducer = (state = INIT_STATE, action) => {
         refreshCartPopupStarship: false,
       };
 
+    case CART_TYPES.CHECKOUT_SESSION_SUCCESS:
+      return {
+        ...state,
+      };
+
+    case CART_TYPES.CHECKOUT_SESSION_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      };
+
     default:
       return state;
   }

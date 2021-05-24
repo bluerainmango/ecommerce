@@ -54,7 +54,7 @@ const ForgotPassword = ({ forgotPasswordStart }) => {
           content={[
             {
               text: "Reset password",
-              type: "link",
+              type: "submit",
               // linkTo: "/",
             },
           ]}

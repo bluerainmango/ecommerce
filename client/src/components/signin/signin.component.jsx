@@ -22,7 +22,7 @@ const Signin = ({ emailSigninStart }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted", userSigninInfo);
+    console.log("🦄 submitted", userSigninInfo);
 
     emailSigninStart(userSigninInfo);
     setUserSigninInfo({ username: "", password: "" });
@@ -45,7 +45,7 @@ const Signin = ({ emailSigninStart }) => {
       <AlertBar />
       <h2 className="form__title">Sign in</h2>
       <span className="form__sub">Sign in with your email and password.</span>
-      <form className="form--signin" onSubmit={handleSubmit}>
+      <form id="form--signin" className="form--signin" onSubmit={handleSubmit}>
         <FormInput
           id="username"
           name="username"
@@ -74,11 +74,11 @@ const Signin = ({ emailSigninStart }) => {
 
         <Button
           className="form__btn"
-          type="submit"
+          form="form--signin"
           content={[
             {
               text: "Sign in",
-              type: "link",
+              type: "submit",
               // linkTo: "/",
             },
           ]}

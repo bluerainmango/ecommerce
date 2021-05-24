@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { loadStripe } from "@stripe/stripe-js";
 
 import Button from "../button/button.component";
 
 import "./checkoutPrice.styles.scss";
 
-const stripePromise = loadStripe(`${process.env.STRIPE_PUBLICK_KEY}`);
+// import { loadStripe } from "@stripe/stripe-js";
+// const stripePromise = loadStripe(`${process.env.STRIPE_PUBLICK_KEY}`);
 
 const CheckoutPrice = ({ cart, numOfPerson }) => {
   const handleClick = (e) => {
@@ -46,7 +46,7 @@ const CheckoutPrice = ({ cart, numOfPerson }) => {
         content={[
           {
             text: "Proceed to purchase",
-            type: "link",
+            type: "checkout",
           },
         ]}
         style={{

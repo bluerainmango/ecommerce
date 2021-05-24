@@ -38,3 +38,17 @@ export const refreshCartPopupPlanet = () => ({
 export const refreshCartPopupStarship = () => ({
   type: CART_TYPES.REFRESH_CARTPOPUP_STARSHIP,
 });
+
+export const checkoutSessionStart = (checkoutInfo) => ({
+  type: CART_TYPES.CHECKOUT_SESSION_START,
+  payload: checkoutInfo,
+});
+
+export const checkoutSessionSuccess = () => ({
+  type: CART_TYPES.CHECKOUT_SESSION_SUCCESS,
+});
+
+export const checkoutSessionFail = (err) => ({
+  type: CART_TYPES.CHECKOUT_SESSION_FAIL,
+  payload: err,
+});

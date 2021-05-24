@@ -20,6 +20,7 @@ const createAndSendToken = (user, req, res, statusCode) => {
     ),
     httpOnly: true,
     secure: req.secure || req.headers["x-forwarded-proto"] === "https",
+    // sameSite: "none",
   };
 
   user.password = undefined;
@@ -83,6 +84,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   //* 1) Check if the req has a token
 
   const token = req.cookies.jwt;
+  console.log("🦋 token:", token);
 
   if (!token)
     return next(
