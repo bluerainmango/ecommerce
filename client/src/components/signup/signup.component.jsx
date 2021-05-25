@@ -41,6 +41,8 @@ const Signup = ({ signupStart }) => {
     console.log(userSignupInfo);
   };
 
+  // throw new Error("made error");
+
   return (
     <div className="form__container">
       <AlertBar />

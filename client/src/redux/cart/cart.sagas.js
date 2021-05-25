@@ -21,7 +21,7 @@ function* checkoutSessionAsync(checkoutInfo) {
 
     yield put(checkoutSessionSuccess(session));
 
-    // Redirect customer to Stripe's checkout page
+    //* Redirect customer to Stripe's checkout page
     const result = yield stripe.redirectToCheckout({
       sessionId: session.id,
     });
