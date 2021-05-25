@@ -40,6 +40,8 @@ const Signin = ({ emailSigninStart }) => {
     console.log(userSigninInfo);
   };
 
+  // throw new Error("this is emily's error");
+
   return (
     <div className="form__container">
       <AlertBar />
