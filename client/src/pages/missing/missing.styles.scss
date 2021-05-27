@@ -1,0 +1,17 @@
+.missingPage {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  //   display: flex;
+  //   align-items: center;
+
+  &__container {
+    max-width: 80rem;
+
+    // text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    padding-top: 20rem;
+    line-height: 3;
+  }
+}

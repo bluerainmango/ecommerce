@@ -8,6 +8,7 @@ import Starships from "./pages/collections/starshipsCollection.page";
 import Login from "./pages/login/login.page";
 import NavBar from "./components/navbar/navbar.component";
 import Checkout from "./pages/checkout/checkout.page";
+import Missing from "./pages/missing/missing.page";
 import ErrorBoundary from "./components/errorBoundary/errorBoundary.component";
 
 // import AlertBar from "./components/alertBar/alertBar.component";
@@ -19,18 +20,20 @@ function App({ currentUser }) {
     <div className="app">
       {/* <AlertBar /> */}
       <NavBar />
-      <Switch>
-        <ErrorBoundary>
-          <Route path="/planets" component={Planets} />
-          <Route path="/starships" component={Starships} />
+      <ErrorBoundary>
+        <Switch>
+          <Route exact path="/planets" component={Planets} />
+          <Route exact path="/starships" component={Starships} />
           {/* <Route path="/starships">
             <Starships />
           </Route> */}
           <Route
+            exact
             path="/users/signup"
             render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
           />
           <Route
+            exact
             path="/users/forgotpassword"
             render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
           />
@@ -39,10 +42,11 @@ function App({ currentUser }) {
             path="/users"
             render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
           />
-          <Route path="/checkout" component={Checkout} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/" component={Homepage} />
-        </ErrorBoundary>
-      </Switch>
+          <Route path="*" component={Missing} />
+        </Switch>
+      </ErrorBoundary>
     </div>
   );
 }
