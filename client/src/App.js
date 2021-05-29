@@ -22,8 +22,8 @@ function App({ currentUser }) {
       <NavBar />
       <ErrorBoundary>
         <Switch>
-          <Route exact path="/planets" component={Planets} />
-          <Route exact path="/starships" component={Starships} />
+          <Route path="/planets" component={Planets} />
+          <Route path="/starships" component={Starships} />
           {/* <Route path="/starships">
             <Starships />
           </Route> */}

@@ -12,3 +12,7 @@ export const nextThumbnail = (numOfThumbnails) => ({
 export const defaultThumbnail = () => ({
   type: pageTypes.DEFAULT_THUMBNAIL,
 });
+
+export const toggleIsLoading = () => ({
+  type: pageTypes.TOGGLE_ISLOADING,
+});

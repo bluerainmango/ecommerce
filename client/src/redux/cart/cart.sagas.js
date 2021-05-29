@@ -5,7 +5,9 @@ import CartTypes from "./cart.types";
 import { checkoutSessionSuccess, checkoutSessionFail } from "./cart.action";
 
 import { loadStripe } from "@stripe/stripe-js";
+
 const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_PUBLIC_KEY}`);
+
 function* checkoutSessionAsync(checkoutInfo) {
   const stripe = yield stripePromise;
 

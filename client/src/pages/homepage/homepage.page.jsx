@@ -1,3 +1,5 @@
+import { connect } from "react-redux";
+
 // import NavBar from "../../components/navbar/navbar.component";
 import Header from "../../components/header/header.component";
 // import Collection from "../../components/collection/collection.component";
@@ -8,9 +10,9 @@ import List from "../../components/list/list.component";
 import Banner from "../../components/banner/banner.component";
 import Outro from "../../components/outro/outro.component";
 
-const Homepage = () => {
+const Homepage = ({ isLoading }) => {
   return (
-    <div>
+    <div className="homepage">
       {/* <NavBar /> */}
       <Header />
       <Banner />
@@ -25,4 +27,8 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+const mapStateToProps = (state) => ({
+  isLoading: state.pages.isLoading,
+});
+
+export default connect(mapStateToProps)(Homepage);
