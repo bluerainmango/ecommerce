@@ -16,10 +16,12 @@ const Banner = (props) => {
   const bannerImgs1 = useRef();
   const bannerImgs2 = useRef();
   const sectionBanner = useRef();
-  const img1 = useRef();
 
-  //! Banner images reveal animation
+  //! Banner images reveal animation + lazy loading
   useEffect(() => {
+    let removeClassName;
+    let imgArr = [];
+
     const revealBanner = (entries, observer) => {
       const [entry] = entries;
       // console.log("🍔 entries", entry);
@@ -27,18 +29,20 @@ const Banner = (props) => {
       if (!entry.isIntersecting) return;
 
       const imgArr = entry.target.querySelectorAll("img[data-src]");
-      console.log("🐠 ", imgArr);
 
+      //* Show banners(animation)
       entry.target.classList.remove("banner--hidden");
 
+      //* Start loading high res imgs
       imgArr.forEach((el) => {
-        console.log("🐯", el);
         el.src = el.dataset.src;
 
-        el.addEventListener("load", () => {
-          console.log("🐣 img loaded");
+        removeClassName = () => {
+          // console.log("🐣 img loaded");
           el.classList.remove("lazy-img");
-        });
+        };
+
+        el.addEventListener("load", removeClassName);
       });
 
       observer.unobserve(entry.target);
@@ -49,9 +53,18 @@ const Banner = (props) => {
       threshold: 0,
     });
 
-    [bannerImgs1, bannerImgs2].forEach((img) => {
-      bannerObserver.observe(img.current);
+    [bannerImgs1, bannerImgs2].forEach((group) => {
+      // console.log("🐰 ", group.current.querySelectorAll("img[data-src]"));
+
+      imgArr = [...imgArr, ...group.current.querySelectorAll("img[data-src]")];
+      bannerObserver.observe(group.current);
     });
+
+    return () => {
+      imgArr.forEach((el) => {
+        el.removeEventListener("load", removeClassName);
+      });
+    };
   }, []);
 
   //! Detect section and update redux state for Nav bar reveal
@@ -76,36 +89,12 @@ const Banner = (props) => {
     isPassedObserver.observe(sectionDOM);
   }, [updateHideNavbar]);
 
-  // useEffect(() => {
-  //   const loadHighResImg = (entries, observer) => {
-  //     const [entry] = entries;
-  //     console.log(entry);
-
-  //     if (!entry.isIntersecting) return;
-
-  //     entry.target.src = entry.target.dataset.src;
-
-  //     entry.target.addEventListner("load", (e) => {
-  //       entry.target.classList.remove("lazy-img");
-  //     });
-  //   };
-
-  //   const imgObserver = new IntersectionObserver(loadHighResImg, {
-  //     root: null,
-  //     threshold: 0,
-  //     rootMargin: "200px",
-  //   });
-
-  //   imgObserver.observe(img1.current);
-  // }, []);
-
   return (
     <section ref={sectionBanner} id="section-banner">
       <div className="banner banner--first ">
         <div ref={bannerImgs1} className="banner__img banner--hidden">
           <img
             // src={astronaut}
-            ref={img1}
             src={`${process.env.REACT_APP_API_BASE_URL}/astronaut_200px.png`}
             data-src={`${process.env.REACT_APP_API_BASE_URL}/astronaut.png`}
             alt="astronaut"
