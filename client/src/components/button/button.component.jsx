@@ -41,7 +41,7 @@ const Button = (props) => {
   };
 
   const handleClick = (el) => {
-    console.log("🐳");
+    // console.log("🐳");
 
     return (e) => {
       e.preventDefault();

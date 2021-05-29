@@ -19,7 +19,7 @@ const Header = ({ isLoading2 }) => {
     const scrollIndicatorDOM = scrollIndicatorRef.current;
     const scrollToDOM = scrollToRef.current;
 
-    console.log(scrollIndicatorDOM, scrollToDOM);
+    // console.log(scrollIndicatorDOM, scrollToDOM);
 
     const handleScroll = (e) => {
       e.preventDefault();
@@ -53,7 +53,7 @@ const Header = ({ isLoading2 }) => {
         //   console.log("🦑 loading start");
         // }}
         onCanPlay={() => {
-          console.log("👻 loading finished");
+          // console.log("👻 loading finished");
           setIsLoading(false);
         }}
         // playsinline

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 
-import astronaut from "../../assets/astronaut.png";
-import planets from "../../assets/planets.png";
+// import astronaut from "../../assets/astronaut.png";
+// import planets from "../../assets/planets.png";
 // import starship1 from "../../assets/starship2.png";
-import starship6 from "../../assets/starship6.png";
+// import starship6 from "../../assets/starship6.png";
 
 import { connect } from "react-redux";
 import { updateHideNavbar } from "../../redux/page/page.action";
@@ -13,9 +13,10 @@ import "./banner.styles.scss";
 const Banner = (props) => {
   const { updateHideNavbar } = props;
 
-  const bannerImg1 = useRef();
-  const bannerImg2 = useRef();
+  const bannerImgs1 = useRef();
+  const bannerImgs2 = useRef();
   const sectionBanner = useRef();
+  const img1 = useRef();
 
   //! Banner images reveal animation
   useEffect(() => {
@@ -25,7 +26,21 @@ const Banner = (props) => {
 
       if (!entry.isIntersecting) return;
 
+      const imgArr = entry.target.querySelectorAll("img[data-src]");
+      console.log("🐠 ", imgArr);
+
       entry.target.classList.remove("banner--hidden");
+
+      imgArr.forEach((el) => {
+        console.log("🐯", el);
+        el.src = el.dataset.src;
+
+        el.addEventListener("load", () => {
+          console.log("🐣 img loaded");
+          el.classList.remove("lazy-img");
+        });
+      });
+
       observer.unobserve(entry.target);
     };
 
@@ -34,7 +49,7 @@ const Banner = (props) => {
       threshold: 0,
     });
 
-    [bannerImg1, bannerImg2].forEach((img) => {
+    [bannerImgs1, bannerImgs2].forEach((img) => {
       bannerObserver.observe(img.current);
     });
   }, []);
@@ -47,6 +62,7 @@ const Banner = (props) => {
       const [entry] = entries;
 
       if (!entry.isIntersecting) return;
+
       updateHideNavbar();
       observer.unobserve(sectionDOM);
     };
@@ -60,19 +76,47 @@ const Banner = (props) => {
     isPassedObserver.observe(sectionDOM);
   }, [updateHideNavbar]);
 
+  // useEffect(() => {
+  //   const loadHighResImg = (entries, observer) => {
+  //     const [entry] = entries;
+  //     console.log(entry);
+
+  //     if (!entry.isIntersecting) return;
+
+  //     entry.target.src = entry.target.dataset.src;
+
+  //     entry.target.addEventListner("load", (e) => {
+  //       entry.target.classList.remove("lazy-img");
+  //     });
+  //   };
+
+  //   const imgObserver = new IntersectionObserver(loadHighResImg, {
+  //     root: null,
+  //     threshold: 0,
+  //     rootMargin: "200px",
+  //   });
+
+  //   imgObserver.observe(img1.current);
+  // }, []);
+
   return (
     <section ref={sectionBanner} id="section-banner">
       <div className="banner banner--first ">
-        <div ref={bannerImg1} className="banner__img banner--hidden">
+        <div ref={bannerImgs1} className="banner__img banner--hidden">
           <img
-            src={astronaut}
+            // src={astronaut}
+            ref={img1}
+            src={`${process.env.REACT_APP_API_BASE_URL}/astronaut_200px.png`}
+            data-src={`${process.env.REACT_APP_API_BASE_URL}/astronaut.png`}
             alt="astronaut"
-            className="banner__photo banner__photo--astronaut"
+            className="banner__photo banner__photo--astronaut lazy-img"
           />
           <img
-            src={planets}
+            // src={planets}
+            src={`${process.env.REACT_APP_API_BASE_URL}/planets_200px.png`}
+            data-src={`${process.env.REACT_APP_API_BASE_URL}/planets.png`}
             alt="planets"
-            className="banner__photo banner__photo--planets"
+            className="banner__photo banner__photo--planets lazy-img"
           />
         </div>
         <div className="banner__context">
@@ -84,16 +128,20 @@ const Banner = (props) => {
         </div>
       </div>
       <div className="banner banner--second">
-        <div ref={bannerImg2} className="banner__img banner--hidden">
+        <div ref={bannerImgs2} className="banner__img banner--hidden">
           <img
-            src={starship6}
-            alt="astronaut"
-            className="banner__photo banner__photo--starship--1"
+            // src={starship6}
+            src={`${process.env.REACT_APP_API_BASE_URL}/starship6_200px.png`}
+            data-src={`${process.env.REACT_APP_API_BASE_URL}/starship6.png`}
+            alt="starship--back"
+            className="banner__photo banner__photo--starship--1 lazy-img"
           />
           <img
-            src={starship6}
-            alt="planets"
-            className="banner__photo banner__photo--starship--2"
+            // src={starship6}
+            src={`${process.env.REACT_APP_API_BASE_URL}/starship6_200px.png`}
+            data-src={`${process.env.REACT_APP_API_BASE_URL}/starship6.png`}
+            alt="starship--front"
+            className="banner__photo banner__photo--starship--2 lazy-img"
           />
         </div>
         <div className="banner__context">

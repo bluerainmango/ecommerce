@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 const pageReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case pageTypes.UPDATE_HIDE_BANER:
-      console.log("hideNavbar", state.hideNavbar);
+      // console.log("hideNavbar", state.hideNavbar);
 
       return {
         ...state,

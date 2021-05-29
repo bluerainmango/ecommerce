@@ -1,7 +1,7 @@
 .loader,
 .loader:before,
 .loader:after {
-  background: #ff0000;
+  background: #ffffff;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
@@ -13,7 +13,7 @@
   transform: transform(-50%, -50%);
 }
 .loader {
-  color: #ff0000;
+  color: #ffffff;
   // text-indent: -9999em;
   // margin: 88px auto;
   // position: relative;
