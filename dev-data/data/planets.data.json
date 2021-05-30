@@ -7,7 +7,7 @@
         "category": "planets",
         "image": "planet-1.jpeg",
         "image_800": "planet-1_800.jpg",
-        "image2": "city4.jpeg",
+        "image2": "city4_100px.jpeg",
         "bgimage": "city1-bg.jpeg",
         "pageIntro": "planet1-intro.jpeg",
         "thumbnails": [
@@ -55,7 +55,7 @@
         "category": "planets",
         "image": "planet-2.jpeg",
         "image_800": "planet-2_800.jpg",
-        "image2": "city5.jpeg",
+        "image2": "city5_100px.jpeg",
         "bgimage": "city2-bg.jpeg",
         "pageIntro": "planet2-intro.jpeg",
         "thumbnails": [
@@ -103,7 +103,7 @@
         "category": "planets",
         "image": "planet-3.jpeg",
         "image_800": "planet-3_800_trans.png",
-        "image2": "city3.jpeg",
+        "image2": "city3_100px.jpeg",
         "bgimage": "city3-bg.jpeg",
         "pageIntro": "planet3-intro.jpeg",
         "thumbnails": [

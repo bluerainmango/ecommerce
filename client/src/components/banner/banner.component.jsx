@@ -19,7 +19,7 @@ const Banner = (props) => {
 
   //! Banner images reveal animation + lazy loading
   useEffect(() => {
-    let removeClassName;
+    let removeBlur;
     let imgArr = [];
 
     const revealBanner = (entries, observer) => {
@@ -37,12 +37,12 @@ const Banner = (props) => {
       imgArr.forEach((el) => {
         el.src = el.dataset.src;
 
-        removeClassName = () => {
+        removeBlur = () => {
           // console.log("🐣 img loaded");
           el.classList.remove("lazy-img");
         };
 
-        el.addEventListener("load", removeClassName);
+        el.addEventListener("load", removeBlur);
       });
 
       observer.unobserve(entry.target);
@@ -62,7 +62,7 @@ const Banner = (props) => {
 
     return () => {
       imgArr.forEach((el) => {
-        el.removeEventListener("load", removeClassName);
+        el.removeEventListener("load", removeBlur);
       });
     };
   }, []);

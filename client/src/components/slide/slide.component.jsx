@@ -66,15 +66,39 @@ const Slide = (props) => {
     updateActiveSlideInfo(slide);
   }, [updatedSlideOrder, slide, updateActiveSlideInfo]);
 
-  //! Scroll animation
+  //! Slides revealing animation on scrolling
   useEffect(() => {
     const revealSlide = (entries, observer) => {
       const [entry] = entries;
+      const entryDOM = entry.target;
 
       if (!entry.isIntersecting) return;
 
-      entry.target.classList.remove("slide--hidden");
-      observer.unobserve(entry.target);
+      // console.log("🐼 ", entry.target);
+
+      //* Reveal slide
+      entryDOM.classList.remove("slide--hidden");
+
+      //* Start loading high res img
+      //? This comp is using backgound image not <img> so will use Image()'s onload event instead of addEventListener('load',cb)
+
+      const imageLoader = new Image();
+
+      imageLoader.src = `${
+        process.env.REACT_APP_API_BASE_URL
+      }/${slide.image2.replace("_100px", "")}`;
+
+      imageLoader.onload = () => {
+        console.log("🐌 imageloader is loaded");
+
+        entryDOM.style.backgroundImage = `url(${
+          process.env.REACT_APP_API_BASE_URL
+        }/${slide.image2.replace("_100px", "")})`;
+
+        entryDOM.classList.remove("lazy-img");
+      };
+
+      observer.unobserve(entryDOM);
     };
 
     const option = {
@@ -86,15 +110,15 @@ const Slide = (props) => {
     const slideObserver = new IntersectionObserver(revealSlide, option);
 
     slideObserver.observe(activeSlideRef.current);
-  }, [updatedSlideOrder]);
+  }, [updatedSlideOrder, slide.image2]);
 
   return (
     <div
       ref={activeSlideRef}
       className={
         !updatedSlideOrder
-          ? "slide slide--hidden slide--active"
-          : "slide slide--hidden"
+          ? "slide slide--hidden lazy-img slide--active"
+          : "slide slide--hidden lazy-img"
       }
       style={{
         "--slideOrder": updatedSlideOrder,
