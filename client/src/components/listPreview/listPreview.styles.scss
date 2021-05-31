@@ -13,6 +13,9 @@
   transform-style: preserve-3d;
   perspective: 1000px;
 
+  .lazy-img {
+    filter: blur(5px);
+  }
   .btn--action {
     background-color: $color--accent;
   }

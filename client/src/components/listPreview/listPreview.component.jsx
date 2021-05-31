@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import Button from "../../components/button/button.component";
 
@@ -6,15 +6,43 @@ import { connect } from "react-redux";
 
 import "./listPreview.styles.scss";
 
-const ListPreview = (props) => {
-  const { activeStarship } = props;
+const ListPreview = ({ activeStarship }) => {
+  const [urls, setUrls] = useState({ imgLow: "", imgHigh: "" });
+  const imgRef = useRef();
+
+  //! Set urls state
+  useEffect(() => {
+    if (!activeStarship?.image) return;
+
+    setUrls({
+      imgLow: `${
+        process.env.REACT_APP_API_BASE_URL
+      }/${activeStarship.image.replace(".png", "_100px.png")}`,
+      imgHigh: `${process.env.REACT_APP_API_BASE_URL}/${activeStarship.image}`,
+    });
+  }, [activeStarship]);
+
+  //! lazy loading image
+  useEffect(() => {
+    if (!urls.imgHigh) return;
+
+    const imageLoader = new Image();
+    imageLoader.src = urls.imgHigh;
+
+    imageLoader.onload = () => {
+      imgRef.current.src = urls.imgHigh;
+      imgRef.current.classList.remove("lazy-img");
+    };
+  }, [urls.imgHigh]);
 
   return (
     <div className="preview">
       <div className="preview__frame" />
       {activeStarship && (
         <img
-          src={`${process.env.REACT_APP_API_BASE_URL}/${activeStarship.image}`}
+          ref={imgRef}
+          className="lazy-img"
+          src={urls?.imgLow}
           alt={activeStarship?.title}
           style={{ tranasform: "translate3d(10px, 20px, 40px)" }}
         />
