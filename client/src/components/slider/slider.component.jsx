@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   nextSlide,
   previousSlide,
-  updateActiveSlideInfo,
+  // updateActiveSlideInfo,
 } from "../../redux/slide/slide.actions";
 import Slide from "../slide/slide.component";
 import { fetchPlanetsStart } from "../../redux/planet/planet.actions";

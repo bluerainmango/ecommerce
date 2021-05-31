@@ -89,7 +89,7 @@ const Slide = (props) => {
 
       // finish download
       imageLoader.onload = () => {
-        console.log("🐌 imageloader is loaded");
+        // console.log("🐌 imageloader is loaded");
 
         entryDOM.style.backgroundImage = `url("${url}")`; // add bg img
         entryDOM.classList.remove("lazy-img"); // remove blur effect

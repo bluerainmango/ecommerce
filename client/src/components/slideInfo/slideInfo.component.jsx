@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 
 import Button from "../../components/button/button.component";
@@ -9,31 +9,41 @@ const SlideInfo = (props) => {
   const { activeSlideInfo, toggleSlideInfo } = props;
   const imgRef = useRef();
 
-  const imgUrl = `${
-    process.env.REACT_APP_API_BASE_URL
-  }/${activeSlideInfo?.bgimage.replace(".jpeg", "_200px.jpeg")}`;
+  const [urls, setUrls] = useState({
+    imgLow: "",
+    imgHigh: "",
+  });
 
-  const imgUrlHigh = `${process.env.REACT_APP_API_BASE_URL}/${activeSlideInfo?.bgimage}`;
-  // console.log("🐛 links: ", imgUrl, imgUrlHigh);
+  //! set urls state
+  useEffect(() => {
+    if (!activeSlideInfo?.bgimage) return;
+
+    setUrls({
+      imgLow: `${
+        process.env.REACT_APP_API_BASE_URL
+      }/${activeSlideInfo?.bgimage.replace(".jpeg", "_200px.jpeg")}`,
+      imgHigh: `${process.env.REACT_APP_API_BASE_URL}/${activeSlideInfo?.bgimage}`,
+    });
+  }, [activeSlideInfo]);
 
   //! lazy loading for image
   useEffect(() => {
     const imgDOM = imgRef.current;
-    if (!imgDOM) return;
+    if (!imgDOM || !urls.imgHigh) return;
 
     imgDOM.classList.add("lazy-img"); // add blur
 
     // console.log("🐡", imgDOM);
 
     const imageLoader = new Image();
-    imageLoader.src = imgUrlHigh;
+    imageLoader.src = urls.imgHigh;
 
     imageLoader.onload = () => {
       // console.log("🐻 high res img loaded");
-      imgDOM.src = imgUrlHigh;
+      imgDOM.src = urls.imgHigh;
       imgDOM.classList.remove("lazy-img");
     };
-  }, [imgUrlHigh]);
+  }, [urls]);
 
   return (
     <div
@@ -48,12 +58,12 @@ const SlideInfo = (props) => {
         ref={imgRef}
         className="slideInfo__img lazy-img"
         alt={activeSlideInfo?.title}
-        src={activeSlideInfo ? imgUrl : ""}
+        src={activeSlideInfo ? urls.imgLow : ""}
         style={{
           opacity: 1,
         }}
       />
-      {console.log("🐙 slide info", imgRef.current)}
+      {/* {console.log("🐙 slide info", imgRef.current)} */}
       <div className="slideInfo__content">
         {/* <h5 className="slideInfo__title">{activeSlideInfo?.title}</h5>
         <h6 className="slideInfo__subtitle">{activeSlideInfo?.subtitle}</h6> */}
