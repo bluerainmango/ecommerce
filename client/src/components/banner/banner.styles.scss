@@ -9,6 +9,10 @@
   justify-content: center;
   align-items: center;
 
+  .lazy-img {
+    filter: blur(10px);
+  }
+
   &__img {
     display: flex;
     flex-direction: column;
@@ -64,8 +68,4 @@
 .banner--hidden {
   opacity: 0;
   transform: translateY(10rem);
-}
-
-.lazy-img {
-  filter: blur(20px);
 }

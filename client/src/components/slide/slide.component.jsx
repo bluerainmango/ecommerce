@@ -73,29 +73,26 @@ const Slide = (props) => {
       const entryDOM = entry.target;
 
       if (!entry.isIntersecting) return;
-
       // console.log("🐼 ", entry.target);
 
       //* Reveal slide
       entryDOM.classList.remove("slide--hidden");
 
-      //* Start loading high res img
-      //? This comp is using backgound image not <img> so will use Image()'s onload event instead of addEventListener('load',cb)
-
+      //! Lazy loading
+      //? This comp is using backgound image not <img> tag so will use Image()'s onload event instead of addEventListener('load',cb)
       const imageLoader = new Image();
+      const url = `${process.env.REACT_APP_API_BASE_URL}/${slide.image2.replace(
+        "_100px",
+        ""
+      )}`;
+      imageLoader.src = url; // start download high res img
 
-      imageLoader.src = `${
-        process.env.REACT_APP_API_BASE_URL
-      }/${slide.image2.replace("_100px", "")}`;
-
+      // finish download
       imageLoader.onload = () => {
         console.log("🐌 imageloader is loaded");
 
-        entryDOM.style.backgroundImage = `url(${
-          process.env.REACT_APP_API_BASE_URL
-        }/${slide.image2.replace("_100px", "")})`;
-
-        entryDOM.classList.remove("lazy-img");
+        entryDOM.style.backgroundImage = `url("${url}")`; // add bg img
+        entryDOM.classList.remove("lazy-img"); // remove blur effect
       };
 
       observer.unobserve(entryDOM);

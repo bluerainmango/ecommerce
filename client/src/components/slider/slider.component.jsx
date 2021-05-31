@@ -90,7 +90,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   moveToPreviousSlide: (info) => {
     dispatch(previousSlide());
-    dispatch(updateActiveSlideInfo(info));
   },
   fetchPlanetsStart: () => dispatch(fetchPlanetsStart()),
 });

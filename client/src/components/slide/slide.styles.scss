@@ -49,6 +49,10 @@
   }
 }
 
+.slide.lazy-img {
+  filter: blur(5px);
+}
+
 //! Text Animation
 .slide__content {
   color: #fff;
@@ -86,8 +90,4 @@
 .slide--hidden {
   opacity: 0;
   transform: translateY(15rem);
-}
-
-.lazy-img {
-  filter: blur(5px);
 }

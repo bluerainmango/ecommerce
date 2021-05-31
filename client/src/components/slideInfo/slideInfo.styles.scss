@@ -19,6 +19,10 @@
   justify-items: center;
   gap: 1rem;
 
+  .lazy-img {
+    filter: blur(10px);
+  }
+
   .btn--action {
     background-color: $color--accent;
   }
