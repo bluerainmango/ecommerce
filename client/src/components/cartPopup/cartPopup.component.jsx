@@ -17,7 +17,7 @@ import "./cartPopup.styles.scss";
 
 const CartPopup = ({
   cart,
-  toggleCartPopup,
+  // toggleCartPopup,
   refreshCartPopupPlanet,
   refreshCartPopupStarship,
 }) => {

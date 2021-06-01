@@ -19,6 +19,10 @@ $color--grey: rgba(255, 255, 255, 0.068);
   transform: translate(-50%, -50%);
 }
 
+html {
+  background-color: black;
+}
+
 .gradient {
   width: 100%;
   height: 100%;

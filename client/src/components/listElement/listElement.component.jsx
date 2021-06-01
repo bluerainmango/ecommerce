@@ -13,7 +13,7 @@ const ListElement = (props) => {
     e.preventDefault();
 
     updateActiveStarship(starship);
-    console.log("clicked", starship);
+    // console.log("clicked", starship);
   };
 
   return (

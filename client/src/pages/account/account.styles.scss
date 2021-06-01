@@ -1,0 +1,40 @@
+.account {
+  width: 100vw;
+  // min-height: 100vh;
+  background-color: black;
+  color: #fff;
+
+  &__container {
+    display: flex;
+    // justify-content: center;
+    max-width: 90rem;
+    background-color: black;
+    // margin-top: 20rem;
+    margin: 10rem auto 0 auto;
+    // padding: 20rem;
+    // border: 1px #fff solid;
+  }
+
+  &__content {
+    min-width: 40rem;
+    background-color: #fff;
+  }
+
+  &__menu ul {
+    display: flex;
+    flex-direction: column;
+    // border: 1px #fff solid;
+    padding: 2rem 5rem 2rem 2rem;
+    line-height: 3;
+    font-size: 1.5rem;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: 2rem;
+      }
+    }
+  }
+}

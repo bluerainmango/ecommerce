@@ -10,7 +10,7 @@ import NavBar from "./components/navbar/navbar.component";
 import Checkout from "./pages/checkout/checkout.page";
 import Missing from "./pages/missing/missing.page";
 import ErrorBoundary from "./components/errorBoundary/errorBoundary.component";
-
+import Account from "./pages/account/account.page";
 // import AlertBar from "./components/alertBar/alertBar.component";
 
 import "./App.css";
@@ -43,6 +43,13 @@ function App({ currentUser }) {
             render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
           />
           <Route exact path="/checkout" component={Checkout} />
+          <Route
+            exact
+            path="/account"
+            render={() =>
+              currentUser ? <Account /> : <Redirect to="/users" />
+            }
+          />
           <Route exact path="/" component={Homepage} />
           <Route path="*" component={Missing} />
         </Switch>
