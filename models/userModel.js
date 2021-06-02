@@ -56,6 +56,7 @@ const UserSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
+  booking: [{ type: mongoose.Schema.ObjectId, ref: "Booking" }],
 });
 
 //! Hash password

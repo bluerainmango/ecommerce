@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-import { Link, useRouteMatch, useParams, useLocation } from "react-router-dom";
+import { Link, useRouteMatch, useLocation } from "react-router-dom";
 
 import { ReactComponent as ProfileIcon } from "../../assets/icons/person-sharp.svg";
 import { ReactComponent as BookingIcon } from "../../assets/icons/bookmark-sharp.svg";
@@ -10,12 +11,18 @@ import Profile from "../../components/profile/profile.component";
 import Booking from "../../components/booking/booking.component";
 import Setting from "../../components/setting/setting.component";
 
+import { getMeStart } from "../../redux/user/user.actions";
+
 import "./account.styles.scss";
 
-const Account = () => {
+const Account = ({ currentUser, getMeStart }) => {
   const route = useRouteMatch();
-  const params = useParams();
+  // const params = useParams();
   const { hash } = useLocation();
+
+  useEffect(() => {
+    getMeStart();
+  }, [getMeStart]);
 
   return (
     <div className="account">
@@ -29,7 +36,7 @@ const Account = () => {
               </li>
             </Link>
             {/* {console.log(route, params)} */}
-
+            {console.log("🦄 user:", currentUser)}
             <Link to={`${route.path}#booking`}>
               <li>
                 <BookingIcon />
@@ -46,9 +53,9 @@ const Account = () => {
           </ul>
         </div>
         <div className="account__content">
-          {console.log("hash", hash)}
+          {/* {console.log("hash", hash)} */}
           {hash === "#profile" ? (
-            <Profile />
+            <Profile user={currentUser} />
           ) : hash === "#booking" ? (
             <Booking />
           ) : (
@@ -60,4 +67,12 @@ const Account = () => {
   );
 };
 
-export default Account;
+const mapStateToProps = (state) => ({
+  currentUser: state.users.currentUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getMeStart: () => dispatch(getMeStart()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account);

@@ -43,6 +43,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
         error: null,
       };
 
+    case UserTypes.GET_ME_SUCCESS:
+      return {
+        ...state,
+        currentUser: action.payload,
+      };
+
     default:
       return state;
   }

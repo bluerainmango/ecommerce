@@ -7,7 +7,7 @@ const authController = require("../controllers/authController");
 
 router
   .route("/")
-  .get(bookingController.getAllBookings)
+  .get(authController.protect, bookingController.getAllBookings)
   .post(bookingController.createBooking);
 
 router.post(

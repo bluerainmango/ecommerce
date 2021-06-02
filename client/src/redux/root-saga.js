@@ -4,6 +4,7 @@ import planetSaga from "./planet/planet.sagas";
 import starshipSaga from "./starship/starship.sagas";
 import userSaga from "./user/user.sagas";
 import cartSaga from "./cart/cart.sagas";
+import bookingSaga from "./booking/booking.sagas";
 
 export default function* rootSaga() {
   yield all([
@@ -11,5 +12,6 @@ export default function* rootSaga() {
     call(starshipSaga),
     call(userSaga),
     call(cartSaga),
+    call(bookingSaga),
   ]);
 }

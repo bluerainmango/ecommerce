@@ -71,3 +71,16 @@ export const logoutFail = (err) => ({
   type: UserTypes.LOGOUT_FAIL,
   payload: err,
 });
+
+//! Get me
+export const getMeStart = () => ({
+  type: UserTypes.GET_ME_START,
+});
+export const getMeSuccess = (user) => ({
+  type: UserTypes.GET_ME_SUCCESS,
+  payload: user,
+});
+export const getMeFail = (err) => ({
+  type: UserTypes.GET_ME_FAIL,
+  payload: err,
+});

@@ -8,6 +8,7 @@ import starshipReducer from "./starship/starship.reducer";
 import pageReducer from "./page/page.reducer";
 import userReducer from "./user/user.reducer";
 import cartReducer from "./cart/cart.reducer";
+import bookingReducer from "./booking/booking.reducer";
 
 const persistConfig = {
   key: "root",
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   pages: pageReducer,
   users: userReducer,
   cart: persistReducer(cartPersistConfig, cartReducer),
+  booking: bookingReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

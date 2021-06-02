@@ -5,13 +5,14 @@ import Button from "../button/button.component";
 
 import "./profile.styles.scss";
 
-const Profile = () => {
-  const [profileInfo, setProfileInfo] = useState({
-    username: "admin",
-    email: "test@test.com",
-    password: "123123",
-    newPassword: "",
-  });
+const Profile = ({ user }) => {
+  const [profileInfo, setProfileInfo] = useState(...user);
+  //   const [profileInfo, setProfileInfo] = useState({
+  //     username: "admin",
+  //     email: "test@test.com",
+  //     password: "123123",
+  //     newPassword: "",
+  //   });
 
   const handleChange = (e) => {
     // console.log(e.target);

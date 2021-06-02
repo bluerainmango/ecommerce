@@ -11,6 +11,8 @@ import {
   forgotPasswordFail,
   logoutSuccess,
   logoutFail,
+  getMeFail,
+  getMeSuccess,
 } from "./user.actions";
 
 function* signInWithEmail({ payload: { username, password } }) {
@@ -76,6 +78,7 @@ function* forgotPassword(payload) {
     yield put(forgotPasswordFail(err));
   }
 }
+
 //! To delete cookie, don't forget to add widthCrendentials option as well.
 function* logout() {
   try {
@@ -90,6 +93,24 @@ function* logout() {
     yield put(logoutSuccess());
   } catch (err) {
     yield put(logoutFail());
+  }
+}
+
+function* getMe() {
+  try {
+    console.log("🦧 get me start triggered");
+
+    const res = yield axios(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/me`,
+      { withCredentials: true }
+    );
+
+    const user = res.data.data;
+    console.log("🥵 get me:", user);
+
+    yield put(getMeSuccess(user));
+  } catch (err) {
+    yield put(getMeFail());
   }
 }
 
@@ -109,11 +130,15 @@ function* onLogoutStart() {
   yield takeLatest(UserTypes.LOGOUT_START, logout);
 }
 
+function* onGetMeStart() {
+  yield takeLatest(UserTypes.GET_ME_START, getMe);
+}
 export default function* userSaga() {
   yield all([
     call(onEmailSignInStart),
     call(onSignUpStart),
     call(onForgotPasswordStart),
     call(onLogoutStart),
+    call(onGetMeStart),
   ]);
 }

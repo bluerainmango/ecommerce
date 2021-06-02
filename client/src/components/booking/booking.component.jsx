@@ -1,24 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
 import CartPopupItem from "../cartPopupItem/cartPopupItem.component";
 
+import { getBookingStart } from "../../redux/booking/booking.action";
+
 import "./booking.styles.scss";
 
-const Booking = () => {
+const Booking = ({ getBookingStart }) => {
   const [bookingInfo, setBookingInfo] = useState({
-    reservedDate: "2021-07-23",
-    numOfPerson: 2,
-    planet: {
-      slug: "kepler",
-      collectionThumb: "sdf",
-      title: "kese",
-      price: 123,
-    },
-    starship: "he231",
+    reservedDate: "",
+    numOfPerson: "",
+    planet: "",
+    starship: "",
   });
+
+  useEffect(() => {
+    if (bookingInfo.reservedDate) return;
+    getBookingStart();
+  }, [bookingInfo.reservedDate, getBookingStart]);
 
   const handleChange = (e) => {
     // console.log(e.target);
@@ -70,7 +73,7 @@ const Booking = () => {
               alt="booked planet"
             /> */}
           </div>
-          <CartPopupItem>
+          {/* <CartPopupItem>
             <Link to={`/starships/${bookingInfo.starship.slug}`}>
               <div className="item__block--start">
                 <img
@@ -83,7 +86,7 @@ const Booking = () => {
               <h4>{bookingInfo.starship.title}</h4>
               <span>${bookingInfo.starship.price}</span>
             </div>
-          </CartPopupItem>
+          </CartPopupItem> */}
           <Button
             className="form__btn"
             form="form--booking"
@@ -105,4 +108,8 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+const mapDispatchToProps = (dispatch) => ({
+  getBookingStart: () => dispatch(getBookingStart()),
+});
+
+export default connect(null, mapDispatchToProps)(Booking);

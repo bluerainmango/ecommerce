@@ -5,7 +5,9 @@ const Booking = require("../models/bookingModel");
 const ErrorFactory = require("../util/ErrorFactory");
 
 exports.getAllBookings = catchAsync(async (req, res, next) => {
-  const bookings = await Booking.find();
+  const bookings = await Booking.findById(req.user._id);
+
+  console.log("🦁 bookings:", req.user, bookings);
 
   if (!bookings) next(new ErrorFactory(404, "There is no existing bookings."));
 
