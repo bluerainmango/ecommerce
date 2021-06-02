@@ -47,11 +47,11 @@ const Button = (props) => {
       e.preventDefault();
 
       if (props.closeCartPopup && props.popupIsOpened) {
-        console.log("🐳", props.closeCartPopup, props.popupIsOpened);
+        // console.log("🐳", props.closeCartPopup, props.popupIsOpened);
 
         props.toggleCartPopup();
       }
-      console.log("🐳222");
+
       switch (el.type) {
         case "addPlanet":
           props.addPlanet(el.itemToDispatch);

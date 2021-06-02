@@ -10,7 +10,7 @@ import { emailSigninStart } from "../../redux/user/user.actions";
 
 import "./signin.styles.scss";
 
-const Signin = ({ emailSigninStart }) => {
+const Signin = ({ emailSigninStart, currentUser }) => {
   const [userSigninInfo, setUserSigninInfo] = useState({
     username: "",
     password: "",
@@ -22,12 +22,13 @@ const Signin = ({ emailSigninStart }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("🦄 submitted", userSigninInfo);
+    // console.log("🦄 submitted", userSigninInfo);
 
     emailSigninStart(userSigninInfo);
     setUserSigninInfo({ username: "", password: "" });
 
-    history.push("/");
+    //* if suceeded in login, redirect to homepage
+    if (currentUser) history.push("/");
   };
 
   const handleChange = (e) => {
@@ -103,9 +104,13 @@ const Signin = ({ emailSigninStart }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  currentUser: state.users.currentUser,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   emailSigninStart: (usernameAndPassword) =>
     dispatch(emailSigninStart(usernameAndPassword)),
 });
 
-export default connect(null, mapDispatchToProps)(Signin);
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
