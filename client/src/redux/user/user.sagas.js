@@ -99,7 +99,7 @@ function* logout() {
 
 function* getMe() {
   try {
-    console.log("🦧 get me start triggered");
+    // console.log("🦧 get me start triggered");
 
     const res = yield axios(
       `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/me`,
@@ -107,7 +107,7 @@ function* getMe() {
     );
 
     const user = res.data.data;
-    console.log("🥵 get me:", user);
+    // console.log("🥵 get me:", user);
 
     yield put(getMeSuccess(user));
   } catch (err) {
@@ -115,18 +115,20 @@ function* getMe() {
   }
 }
 
-function* updateMe(usernameAndEmail) {
+function* updateMe({ payload }) {
+  console.log("🐙 payload:", payload);
+
   try {
-    const res = yield axios.post(
+    const res = yield axios.patch(
       `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/me`,
-      { ...usernameAndEmail },
+      payload,
       { withCredentials: true }
     );
 
-    const user = res.data.data;
-    console.log("🐙 update me:", usernameAndEmail, user);
+    const messageAndUserObj = res.data.data;
+    console.log("🤐 update me:", messageAndUserObj);
 
-    yield put(updateMeSuccess(user));
+    yield put(updateMeSuccess(messageAndUserObj));
   } catch (err) {
     yield put(updateMeFail(err));
   }

@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 
+import { connect } from "react-redux";
+
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
+import AlertBar from "../alertBar/alertBar.component";
 
 import {
   updateMeStart,
+  updateMeSuccess,
+  updateMeFail,
   updatePasswordStart,
+  updatePasswordSuccess,
+  updatePasswordFail,
 } from "../../redux/user/user.actions";
 
 import "./profile.styles.scss";
 
-const Profile = ({ user }) => {
+const Profile = ({ user, updateMeStart, updateMeFail }) => {
   const [profileInfo, setProfileInfo] = useState({
     username: user.username,
     email: user.email,
@@ -37,7 +44,21 @@ const Profile = ({ user }) => {
     // console.log(("🐈 e", e.target));
 
     if (e.target.id === "form--profile") {
-      updateMeStart(profileInfo);
+      const { username, email } = profileInfo;
+      const currentUsername = user.username;
+      const currentEmail = user.email;
+
+      const infoToUpdate = {};
+
+      if (currentUsername !== username) infoToUpdate.username = username;
+      if (currentEmail !== email) infoToUpdate.email = email;
+
+      console.log(("😍 submitted", infoToUpdate));
+
+      if (Object.keys(infoToUpdate).length === 0)
+        return updateMeFail("Please provide new username or email to update.");
+
+      updateMeStart(infoToUpdate);
     } else {
       updatePasswordStart(passwordInfo);
     }
@@ -45,6 +66,7 @@ const Profile = ({ user }) => {
 
   return (
     <div className="profile">
+      <AlertBar />
       <div className="profile__container">
         <form
           id="form--profile"
@@ -160,4 +182,14 @@ const Profile = ({ user }) => {
   );
 };
 
-export default Profile;
+const mapStateToProps = (state) => ({
+  currentUser: state.users.currentUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  updateMeStart: (profileInfo) => dispatch(updateMeStart(profileInfo)),
+  updateMeFail: (errMessage) => dispatch(updateMeFail(errMessage)),
+  updatePasswordStart: (passwordInfo) =>
+    dispatch(updatePasswordStart(passwordInfo)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

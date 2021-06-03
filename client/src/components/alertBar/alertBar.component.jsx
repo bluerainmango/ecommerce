@@ -5,26 +5,29 @@ import { clearError } from "../../redux/user/user.actions.js";
 
 import "./alertBar.styles.scss";
 
-const AlertBar = ({ errorFromUser, clearError }) => {
+const AlertBar = ({ errorMessage, successMessage, clearError }) => {
   const barRef = useRef();
 
   useEffect(() => {
-    if (!errorFromUser) return;
+    if (!errorMessage && !successMessage) return;
 
     const barDOM = barRef.current;
-    // console.log("👾 ", errorFromUser?.message, barDOM);
+    console.log("👾 message:", errorMessage, successMessage);
 
+    barDOM.innerText = "";
     barDOM.classList.remove("hidden");
+    barDOM.innerText = errorMessage || successMessage;
 
     setTimeout(() => {
       barDOM.classList.add("hidden");
       clearError();
     }, 5000);
-  }, [errorFromUser, clearError]);
+  }, [errorMessage, clearError, successMessage]);
 
   return (
     <div ref={barRef} className={`alert hidden`}>
-      {errorFromUser?.message}
+      {/* {errorMessage}
+      {successMessage} */}
       {/* "Password and username are not correct. Please try again." */}
     </div>
   );
@@ -37,7 +40,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  errorFromUser: state.users.error,
+  errorMessage: state.users.errorMessage,
+  successMessage: state.users.successMessage,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlertBar);

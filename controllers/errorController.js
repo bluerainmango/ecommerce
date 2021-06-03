@@ -3,6 +3,10 @@ const ErrorFactory = require("../util/ErrorFactory");
 const resErrorDev = (err, req, res) => {
   //! 1) Development
   //* 1.1) API
+
+  console.log(("🚨 error", err.name));
+  console.log(("🚨 error", err));
+
   if (req.originalUrl.startsWith("/api")) {
     return res.status(err.statusCode).json({
       status: err.status,

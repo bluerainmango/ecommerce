@@ -36,7 +36,7 @@ const Account = ({ currentUser, getMeStart }) => {
               </li>
             </Link>
             {/* {console.log(route, params)} */}
-            {console.log("🦄 user:", currentUser)}
+            {/* {console.log("🦄 user:", currentUser)} */}
             <Link to={`${route.path}#booking`}>
               <li>
                 <BookingIcon />

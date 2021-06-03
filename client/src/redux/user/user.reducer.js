@@ -2,8 +2,8 @@ import UserTypes from "./user.types";
 
 const INITIAL_STATE = {
   currentUser: null,
-  error: null,
-  response: null,
+  errorMessage: null, // errorMessage message
+  successMessage: null, // success message
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -14,15 +14,21 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentUser: action.payload,
-        error: null,
+        errorMessage: null,
       };
 
     case UserTypes.FORGOT_PASSWORD_SUCCESS:
     case UserTypes.UPDATE_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        successMessage: action.payload.response.data,
+      };
+
     case UserTypes.UPDATE_ME_SUCCESS:
       return {
         ...state,
-        response: action.payload.response.data,
+        successMessage: action.payload.message,
+        currentUser: action.payload.user,
       };
 
     case UserTypes.SIGN_IN_FAIL:
@@ -33,7 +39,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserTypes.UPDATE_PASSWORD_FAIL:
       return {
         ...state,
-        error: action.payload.response.data,
+        errorMessage: action.payload.response?.data.message || action.payload,
       };
 
     case UserTypes.LOGOUT_SUCESS:
@@ -45,7 +51,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserTypes.CLEAR_ERROR:
       return {
         ...state,
-        error: null,
+        errorMessage: null,
+        successMessage: null,
       };
 
     default:

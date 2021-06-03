@@ -90,9 +90,9 @@ export const updateMeStart = (usernameAndEmail) => ({
   type: UserTypes.UPDATE_ME_START,
   payload: usernameAndEmail,
 });
-export const updateMeSuccess = (result) => ({
+export const updateMeSuccess = (userAndResult) => ({
   type: UserTypes.UPDATE_ME_SUCCESS,
-  payload: result,
+  payload: userAndResult,
 });
 export const updateMeFail = (err) => ({
   type: UserTypes.UPDATE_ME_FAIL,

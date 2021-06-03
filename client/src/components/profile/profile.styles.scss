@@ -1,8 +1,13 @@
 .profile {
   width: 100%;
   margin: 0 auto;
-  padding: 5rem;
+
   color: rgb(85, 85, 85);
+  position: relative;
+
+  &__container {
+    padding: 5rem;
+  }
 
   h2 {
     padding-bottom: 2rem;
