@@ -1,4 +1,4 @@
-const { validate } = require("../models/userModel");
+// const { validate } = require("../models/userModel");
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
 

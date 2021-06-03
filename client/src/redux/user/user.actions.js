@@ -100,13 +100,13 @@ export const updateMeFail = (err) => ({
 });
 
 //! Update password
-export const updatePasswordStart = (currentPasswordAndNewPassword) => ({
+export const updatePasswordStart = (newPasswordInfo) => ({
   type: UserTypes.UPDATE_PASSWORD_START,
-  payload: currentPasswordAndNewPassword,
+  payload: newPasswordInfo,
 });
-export const updatePasswordSuccess = (result) => ({
+export const updatePasswordSuccess = (message) => ({
   type: UserTypes.UPDATE_PASSWORD_SUCCESS,
-  payload: result,
+  payload: message,
 });
 export const updatePasswordFail = (err) => ({
   type: UserTypes.UPDATE_PASSWORD_FAIL,

@@ -15,6 +15,8 @@ import {
   getMeSuccess,
   updateMeSuccess,
   updateMeFail,
+  updatePasswordSuccess,
+  updatePasswordFail,
 } from "./user.actions";
 
 function* signInWithEmail({ payload: { username, password } }) {
@@ -116,7 +118,7 @@ function* getMe() {
 }
 
 function* updateMe({ payload }) {
-  console.log("🐙 payload:", payload);
+  // console.log("🐙 payload:", payload);
 
   try {
     const res = yield axios.patch(
@@ -126,11 +128,27 @@ function* updateMe({ payload }) {
     );
 
     const messageAndUserObj = res.data.data;
-    console.log("🤐 update me:", messageAndUserObj);
+    // console.log("🤐 update me:", messageAndUserObj);
 
     yield put(updateMeSuccess(messageAndUserObj));
   } catch (err) {
     yield put(updateMeFail(err));
+  }
+}
+
+function* updatePassword({ payload }) {
+  try {
+    yield axios.patch(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/updatepassword`,
+      payload,
+      { withCredentials: true }
+    );
+
+    // console.log("🤠 updated. message:", res.data.message);
+
+    yield put(updatePasswordSuccess("Successfully changed your password."));
+  } catch (err) {
+    yield put(updatePasswordFail(err));
   }
 }
 
@@ -157,6 +175,11 @@ function* onGetMeStart() {
 function* onUpdateMeStart() {
   yield takeLatest(UserTypes.UPDATE_ME_START, updateMe);
 }
+
+function* onUpdatePasswordStart() {
+  yield takeLatest(UserTypes.UPDATE_PASSWORD_START, updatePassword);
+}
+
 export default function* userSaga() {
   yield all([
     call(onEmailSignInStart),
@@ -165,5 +188,6 @@ export default function* userSaga() {
     call(onLogoutStart),
     call(onGetMeStart),
     call(onUpdateMeStart),
+    call(onUpdatePasswordStart),
   ]);
 }

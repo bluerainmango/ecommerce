@@ -8,24 +8,31 @@ import AlertBar from "../alertBar/alertBar.component";
 
 import {
   updateMeStart,
-  updateMeSuccess,
   updateMeFail,
   updatePasswordStart,
-  updatePasswordSuccess,
   updatePasswordFail,
 } from "../../redux/user/user.actions";
 
 import "./profile.styles.scss";
 
-const Profile = ({ user, updateMeStart, updateMeFail }) => {
+const Profile = (props) => {
+  const {
+    user,
+    updateMeStart,
+    updateMeFail,
+    updatePasswordFail,
+    updatePasswordStart,
+  } = props;
+
   const [profileInfo, setProfileInfo] = useState({
     username: user.username,
     email: user.email,
   });
 
   const [passwordInfo, setPasswordInfo] = useState({
-    confirmCurrentPassword: "",
+    currentPassword: "",
     newPassword: "",
+    newPasswordConfirm: "",
   });
 
   const handleChange = (e) => {
@@ -41,7 +48,7 @@ const Profile = ({ user, updateMeStart, updateMeFail }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(("🐈 e", e.target));
+    // console.log("🐈 e", e.target);
 
     if (e.target.id === "form--profile") {
       const { username, email } = profileInfo;
@@ -53,13 +60,25 @@ const Profile = ({ user, updateMeStart, updateMeFail }) => {
       if (currentUsername !== username) infoToUpdate.username = username;
       if (currentEmail !== email) infoToUpdate.email = email;
 
-      console.log(("😍 submitted", infoToUpdate));
+      console.log("😍 submitted", infoToUpdate);
 
       if (Object.keys(infoToUpdate).length === 0)
         return updateMeFail("Please provide new username or email to update.");
 
       updateMeStart(infoToUpdate);
     } else {
+      const { currentPassword, newPassword, newPasswordConfirm } = passwordInfo;
+
+      console.log("🐈 passwordInfo", passwordInfo);
+
+      if (currentPassword === newPassword)
+        return updatePasswordFail(
+          "The typed new password is the same as current password."
+        );
+
+      if (newPassword !== newPasswordConfirm)
+        return updatePasswordFail("Please confirm the correct new password.");
+
       updatePasswordStart(passwordInfo);
     }
   };
@@ -124,43 +143,45 @@ const Profile = ({ user, updateMeStart, updateMeFail }) => {
           onSubmit={handleSubmit}
         >
           <h2>Change Password</h2>
-          {/* <FormInput
-            id="password"
-            name="password"
-            label="current password"
-            value={passwordInfo.currentPassword}
-            type="password"
-            className="form-input"
-            placeholder=" "
-            required
-            readOnly
-            onChange={handleChange}
-          /> */}
           <FormInput
-            id="confirmPassword"
-            name="confirmPassword"
-            label="confirm current password"
+            id="confirmCurrentPassword"
+            name="currentPassword"
+            label="current password"
             value={passwordInfo.confirmCurrentPassword}
             type="password"
             className="form-input"
             placeholder=" "
+            minLength="3"
+            maxLength="15"
             required
-            readOnly
             onChange={handleChange}
           />
           <FormInput
-            id="newpassword"
-            name="newpassword"
+            id="newPassword"
+            name="newPassword"
             label="new password"
-            value={profileInfo.newPassword}
+            value={passwordInfo.newPassword}
             type="password"
             className="form-input"
             placeholder=" "
+            minLength="3"
+            maxLength="15"
             required
-            readOnly
             onChange={handleChange}
           />
-
+          <FormInput
+            id="confirmNewPassword"
+            name="newPasswordConfirm"
+            label="confirm new password"
+            value={passwordInfo.confirmNewPassword}
+            type="password"
+            className="form-input"
+            placeholder=" "
+            minLength="3"
+            maxLength="15"
+            required
+            onChange={handleChange}
+          />
           <Button
             className="form__btn"
             form="form--profile"
@@ -191,5 +212,6 @@ const mapDispatchToProps = (dispatch) => ({
   updateMeFail: (errMessage) => dispatch(updateMeFail(errMessage)),
   updatePasswordStart: (passwordInfo) =>
     dispatch(updatePasswordStart(passwordInfo)),
+  updatePasswordFail: (errMessage) => dispatch(updatePasswordFail(errMessage)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
