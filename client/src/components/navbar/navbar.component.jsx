@@ -41,7 +41,7 @@ const NavBar = (props) => {
   const handleClickLogout = (e) => {
     e.preventDefault();
 
-    console.log("🤧 clicked");
+    // console.log("🤧 clicked");
     logoutStart();
   };
 
@@ -50,7 +50,7 @@ const NavBar = (props) => {
     console.log("icons clicked");
 
     toggleCartPopup();
-    console.log("🐸 toggle", cart.toggleCartPopup);
+    // console.log("🐸 toggle", cart.toggleCartPopup);
   };
 
   return (
@@ -69,7 +69,7 @@ const NavBar = (props) => {
           {currentUser ? (
             <li className="link--login">
               <PersonIcon />
-              <Link to="/account">{currentUser.username}</Link>
+              <Link to="/account#profile">{currentUser.username}</Link>
               <Link to="/users" onClick={handleClickLogout}>
                 logout
               </Link>

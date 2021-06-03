@@ -10,6 +10,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case UserTypes.SIGN_IN_SUCCESS:
     case UserTypes.SIGN_UP_SUCCESS:
+    case UserTypes.GET_ME_SUCCESS:
       return {
         ...state,
         currentUser: action.payload,
@@ -17,6 +18,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
       };
 
     case UserTypes.FORGOT_PASSWORD_SUCCESS:
+    case UserTypes.UPDATE_PASSWORD_SUCCESS:
+    case UserTypes.UPDATE_ME_SUCCESS:
       return {
         ...state,
         response: action.payload.response.data,
@@ -26,6 +29,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserTypes.SIGN_UP_FAIL:
     case UserTypes.FORGOT_PASSWORD_FAIL:
     case UserTypes.LOGOUT_FAIL:
+    case UserTypes.UPDATE_ME_FAIL:
+    case UserTypes.UPDATE_PASSWORD_FAIL:
       return {
         ...state,
         error: action.payload.response.data,
@@ -41,12 +46,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         error: null,
-      };
-
-    case UserTypes.GET_ME_SUCCESS:
-      return {
-        ...state,
-        currentUser: action.payload,
       };
 
     default:

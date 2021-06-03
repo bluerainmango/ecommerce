@@ -13,6 +13,8 @@ import {
   logoutFail,
   getMeFail,
   getMeSuccess,
+  updateMeSuccess,
+  updateMeFail,
 } from "./user.actions";
 
 function* signInWithEmail({ payload: { username, password } }) {
@@ -27,7 +29,7 @@ function* signInWithEmail({ payload: { username, password } }) {
     );
 
     const user = res.data.data.user;
-    console.log("🤠 user:", user);
+    // console.log("🤠 user:", user);
 
     yield put(signinSuccess(user));
   } catch (err) {
@@ -51,7 +53,7 @@ function* signUpWithEmail({ payload }) {
     );
 
     const user = res.data.data.user;
-    console.log("🤡 new user:", user);
+    // console.log("🤡 new user:", user);
 
     yield put(signupSuccess(user));
   } catch (err) {
@@ -71,7 +73,7 @@ function* forgotPassword(payload) {
     );
 
     const result = res.data.data;
-    console.log("🥶 forgot pwd:", result);
+    // console.log("🥶 forgot pwd:", result);
 
     yield put(forgotPasswordSuccess(result));
   } catch (err) {
@@ -82,13 +84,12 @@ function* forgotPassword(payload) {
 //! To delete cookie, don't forget to add widthCrendentials option as well.
 function* logout() {
   try {
-    const res = yield axios(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/logout`,
-      { withCredentials: true }
-    );
+    yield axios(`${process.env.REACT_APP_API_BASE_URL}/api/v1/users/logout`, {
+      withCredentials: true,
+    });
 
-    const result = res.data.data;
-    console.log(("🥵 logout:", result));
+    // const result = res.data.data;
+    // console.log(("🥵 logout:", result));
 
     yield put(logoutSuccess());
   } catch (err) {
@@ -114,6 +115,23 @@ function* getMe() {
   }
 }
 
+function* updateMe(usernameAndEmail) {
+  try {
+    const res = yield axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/me`,
+      { ...usernameAndEmail },
+      { withCredentials: true }
+    );
+
+    const user = res.data.data;
+    console.log("🐙 update me:", usernameAndEmail, user);
+
+    yield put(updateMeSuccess(user));
+  } catch (err) {
+    yield put(updateMeFail(err));
+  }
+}
+
 function* onEmailSignInStart() {
   yield takeLatest(UserTypes.EMAIL_SIGN_IN_START, signInWithEmail);
 }
@@ -133,6 +151,10 @@ function* onLogoutStart() {
 function* onGetMeStart() {
   yield takeLatest(UserTypes.GET_ME_START, getMe);
 }
+
+function* onUpdateMeStart() {
+  yield takeLatest(UserTypes.UPDATE_ME_START, updateMe);
+}
 export default function* userSaga() {
   yield all([
     call(onEmailSignInStart),
@@ -140,5 +162,6 @@ export default function* userSaga() {
     call(onForgotPasswordStart),
     call(onLogoutStart),
     call(onGetMeStart),
+    call(onUpdateMeStart),
   ]);
 }

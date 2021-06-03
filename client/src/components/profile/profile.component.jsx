@@ -3,13 +3,21 @@ import React, { useState } from "react";
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
 
+import {
+  updateMeStart,
+  updatePasswordStart,
+} from "../../redux/user/user.actions";
+
 import "./profile.styles.scss";
 
 const Profile = ({ user }) => {
   const [profileInfo, setProfileInfo] = useState({
     username: user.username,
     email: user.email,
-    password: user.password,
+  });
+
+  const [passwordInfo, setPasswordInfo] = useState({
+    confirmCurrentPassword: "",
     newPassword: "",
   });
 
@@ -17,10 +25,23 @@ const Profile = ({ user }) => {
     // console.log(e.target);
     const { name, value } = e.target;
 
-    setProfileInfo({ ...profileInfo, [name]: value });
+    if (name === "username" || name === "email") {
+      setProfileInfo({ ...profileInfo, [name]: value });
+    } else {
+      setPasswordInfo({ ...passwordInfo, [name]: value });
+    }
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(("🐈 e", e.target));
+
+    if (e.target.id === "form--profile") {
+      updateMeStart(profileInfo);
+    } else {
+      updatePasswordStart(passwordInfo);
+    }
+  };
 
   return (
     <div className="profile">
@@ -81,23 +102,23 @@ const Profile = ({ user }) => {
           onSubmit={handleSubmit}
         >
           <h2>Change Password</h2>
-          <FormInput
+          {/* <FormInput
             id="password"
             name="password"
             label="current password"
-            value={profileInfo.password}
+            value={passwordInfo.currentPassword}
             type="password"
             className="form-input"
             placeholder=" "
             required
             readOnly
             onChange={handleChange}
-          />
+          /> */}
           <FormInput
             id="confirmPassword"
             name="confirmPassword"
             label="confirm current password"
-            value={profileInfo.newPassword}
+            value={passwordInfo.confirmCurrentPassword}
             type="password"
             className="form-input"
             placeholder=" "

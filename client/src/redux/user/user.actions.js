@@ -27,9 +27,9 @@ export const signupStart = (signupInfo) => ({
   payload: signupInfo,
 });
 
-export const signupSuccess = (user) => ({
+export const signupSuccess = (result) => ({
   type: UserTypes.SIGN_UP_SUCCESS,
-  payload: user,
+  payload: result,
 });
 
 export const signupFail = (err) => ({
@@ -82,5 +82,33 @@ export const getMeSuccess = (user) => ({
 });
 export const getMeFail = (err) => ({
   type: UserTypes.GET_ME_FAIL,
+  payload: err,
+});
+
+//! Update me
+export const updateMeStart = (usernameAndEmail) => ({
+  type: UserTypes.UPDATE_ME_START,
+  payload: usernameAndEmail,
+});
+export const updateMeSuccess = (result) => ({
+  type: UserTypes.UPDATE_ME_SUCCESS,
+  payload: result,
+});
+export const updateMeFail = (err) => ({
+  type: UserTypes.UPDATE_ME_FAIL,
+  payload: err,
+});
+
+//! Update password
+export const updatePasswordStart = (currentPasswordAndNewPassword) => ({
+  type: UserTypes.UPDATE_PASSWORD_START,
+  payload: currentPasswordAndNewPassword,
+});
+export const updatePasswordSuccess = (result) => ({
+  type: UserTypes.UPDATE_PASSWORD_SUCCESS,
+  payload: result,
+});
+export const updatePasswordFail = (err) => ({
+  type: UserTypes.UPDATE_PASSWORD_FAIL,
   payload: err,
 });
