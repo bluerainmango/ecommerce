@@ -35,7 +35,8 @@ function* signInWithEmail({ payload: { username, password } }) {
 
     yield put(signinSuccess(user));
   } catch (err) {
-    yield put(signinFail(err));
+    console.log("🚨 err", err, err.response.data.message);
+    yield put(signinFail(err.response.data.message));
   }
 }
 
@@ -59,7 +60,8 @@ function* signUpWithEmail({ payload }) {
 
     yield put(signupSuccess(user));
   } catch (err) {
-    yield put(signupFail(err));
+    console.log("🚨 err", err, err.response.data.message);
+    yield put(signupFail(err.response.data.message));
   }
 }
 
@@ -74,12 +76,12 @@ function* forgotPassword(payload) {
       }
     );
 
-    const result = res.data.data;
     // console.log("🥶 forgot pwd:", result);
 
-    yield put(forgotPasswordSuccess(result));
+    yield put(forgotPasswordSuccess(res.data.message));
   } catch (err) {
-    yield put(forgotPasswordFail(err));
+    console.log("🚨 err", err, err.response.data.message);
+    yield put(forgotPasswordFail(err.response.data.message));
   }
 }
 
@@ -95,6 +97,7 @@ function* logout() {
 
     yield put(logoutSuccess());
   } catch (err) {
+    console.log("🚨 err", err, err.response.data.message);
     yield put(logoutFail());
   }
 }
@@ -113,6 +116,7 @@ function* getMe() {
 
     yield put(getMeSuccess(user));
   } catch (err) {
+    console.log("🚨 err", err, err.response.data.message);
     yield put(getMeFail());
   }
 }
@@ -127,12 +131,14 @@ function* updateMe({ payload }) {
       { withCredentials: true }
     );
 
+    //* Need success message and updated user info
     const messageAndUserObj = res.data.data;
     // console.log("🤐 update me:", messageAndUserObj);
 
     yield put(updateMeSuccess(messageAndUserObj));
   } catch (err) {
-    yield put(updateMeFail(err));
+    console.log("🚨 err", err, err.response.data.message);
+    yield put(updateMeFail(err.response.data.message));
   }
 }
 
@@ -148,7 +154,8 @@ function* updatePassword({ payload }) {
 
     yield put(updatePasswordSuccess("Successfully changed your password."));
   } catch (err) {
-    yield put(updatePasswordFail(err));
+    console.log("🚨 err", err);
+    yield put(updatePasswordFail(err.response.data.message));
   }
 }
 

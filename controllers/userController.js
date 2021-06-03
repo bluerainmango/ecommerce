@@ -23,7 +23,7 @@ exports.getMe = catchAsync(async (req, res, next) => {
 exports.updateMe = catchAsync(async (req, res, next) => {
   // const { username, email } = req.body;
 
-  console.log("🐷 req.body: ", req.body);
+  // console.log("🐷 req.body: ", req.body);
 
   const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, {
     new: true,
@@ -34,6 +34,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: "success",
-    data: { user: updatedUser, message: "Successfully updated profile." },
+    message: "Successfully updated profile.",
+    data: { user: updatedUser },
   });
 });

@@ -10,7 +10,7 @@ import { signupStart } from "../../redux/user/user.actions";
 
 import "./signup.styles.scss";
 
-const Signup = ({ signupStart }) => {
+const Signup = ({ signupStart, currentUser }) => {
   const [userSignupInfo, setUserSignupInfo] = useState({
     username: "",
     email: "",
@@ -28,7 +28,8 @@ const Signup = ({ signupStart }) => {
 
     signupStart(userSignupInfo);
 
-    history.push("/");
+    //* if suceeded in login, redirect to homepage
+    if (currentUser) history.push("/");
   };
 
   const handleChange = (e) => {
@@ -38,7 +39,6 @@ const Signup = ({ signupStart }) => {
       ...userSignupInfo,
       [name]: value,
     });
-    console.log(userSignupInfo);
   };
 
   // throw new Error("made error");
@@ -128,7 +128,11 @@ const Signup = ({ signupStart }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  currentUser: state.users.currentUser,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   signupStart: (signupInfo) => dispatch(signupStart(signupInfo)),
 });
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

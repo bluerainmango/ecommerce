@@ -21,7 +21,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserTypes.UPDATE_PASSWORD_SUCCESS:
       return {
         ...state,
-        successMessage: action.payload.message || action.payload,
+        successMessage: action.payload,
       };
 
     case UserTypes.UPDATE_ME_SUCCESS:
@@ -39,7 +39,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserTypes.UPDATE_PASSWORD_FAIL:
       return {
         ...state,
-        errorMessage: action.payload.response?.data.message || action.payload,
+        // errorMessage: action.payload.response?.data.message || action.payload,
+        errorMessage: action.payload,
       };
 
     case UserTypes.LOGOUT_SUCESS:

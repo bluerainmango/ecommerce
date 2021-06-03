@@ -84,7 +84,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   //* 1) Check if the req has a token
 
   const token = req.cookies.jwt;
-  console.log("🦋 token:", token);
+  // console.log("🦋 token:", token);
 
   if (!token)
     return next(
@@ -199,7 +199,9 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
   //* 3) Check if POSTed password is correct
   if (!(await user.isCorrectPassword(currentPassword, user.password))) {
-    return next(new ErrorFactory(401, "The entered password is not correct!"));
+    return next(
+      new ErrorFactory(401, "The entered current password is not correct!")
+    );
   }
 
   //* 4) If so, update password

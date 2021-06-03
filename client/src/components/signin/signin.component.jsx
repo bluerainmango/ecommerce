@@ -38,7 +38,7 @@ const Signin = ({ emailSigninStart, currentUser }) => {
       ...userSigninInfo,
       [name]: value,
     });
-    console.log(userSigninInfo);
+    // console.log(userSigninInfo);
   };
 
   // throw new Error("this is emily's error");

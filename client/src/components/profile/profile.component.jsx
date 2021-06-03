@@ -80,6 +80,11 @@ const Profile = (props) => {
         return updatePasswordFail("Please confirm the correct new password.");
 
       updatePasswordStart(passwordInfo);
+      setPasswordInfo({
+        currentPassword: "",
+        newPassword: "",
+        newPasswordConfirm: "",
+      });
     }
   };
 
@@ -147,7 +152,7 @@ const Profile = (props) => {
             id="confirmCurrentPassword"
             name="currentPassword"
             label="current password"
-            value={passwordInfo.confirmCurrentPassword}
+            value={passwordInfo.currentPassword}
             type="password"
             className="form-input"
             placeholder=" "
@@ -173,7 +178,7 @@ const Profile = (props) => {
             id="confirmNewPassword"
             name="newPasswordConfirm"
             label="confirm new password"
-            value={passwordInfo.confirmNewPassword}
+            value={passwordInfo.newPasswordConfirm}
             type="password"
             className="form-input"
             placeholder=" "
