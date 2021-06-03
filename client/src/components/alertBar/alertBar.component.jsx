@@ -15,8 +15,12 @@ const AlertBar = ({ errorMessage, successMessage, clearError }) => {
     console.log("👾 message:", errorMessage, successMessage);
 
     barDOM.innerText = "";
-    barDOM.classList.remove("hidden");
     barDOM.innerText = errorMessage || successMessage;
+
+    barDOM.classList.remove("hidden", "alert--error", "alert--success");
+
+    if (errorMessage) barDOM.classList.add("alert--error");
+    if (successMessage) barDOM.classList.add("alert--success");
 
     setTimeout(() => {
       barDOM.classList.add("hidden");
