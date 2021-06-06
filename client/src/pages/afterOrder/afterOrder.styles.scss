@@ -1,0 +1,20 @@
+@import "../../global.style.scss";
+
+.afterOrder {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+
+  &__container {
+    max-width: 80rem;
+
+    margin: 0 auto;
+    color: #fff;
+    padding-top: 20rem;
+    line-height: 3;
+
+    h2 a {
+      color: $color--accent;
+    }
+  }
+}

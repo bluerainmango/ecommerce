@@ -59,6 +59,10 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
     payment_method_types: ["card"],
     customer_email: req.user.email,
     mode: "payment",
+    metadata: {
+      reservedDate: departureDate,
+    },
+    description: `Departs on ${departureDate}`,
     line_items: [
       {
         price_data: {
@@ -89,7 +93,7 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
         quantity: numOfPerson,
       },
     ],
-    success_url: `http://localhost:3000/checkout/?planet=${planet._id}&starship=${starship._id}&user=${req.user._id}&price=${totalPrice}&success=true`,
+    success_url: `http://localhost:3000/checkout/success?planet=${planet._id}&starship=${starship._id}&user=${req.user._id}&price=${totalPrice}&success=true`,
     cancel_url: `http://localhost:3000?canceled=true`,
     // success_url: `${req.protocol}://${req.get("host")}/checkout/?planet=${
     //   planet._id

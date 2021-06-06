@@ -1,14 +1,17 @@
 .productOrder {
   display: flex;
-  max-width: 120rem;
-  margin: 5rem auto;
+  // max-width: 120rem;
+  width: 100%;
+  margin: 0 auto;
   z-index: 500;
+  background-color: #fff;
 
   .product__thumbnail {
-    width: 50%;
+    width: 50rem;
     align-self: center;
     display: flex;
     padding: 0 2rem;
+    margin: 5rem 0 5rem auto;
 
     img {
       object-fit: cover;
@@ -30,11 +33,12 @@
   }
 
   .product__info {
-    width: 50%;
+    // width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 5rem auto 5rem 0;
 
     h1 {
       font-size: 2rem;

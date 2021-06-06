@@ -11,6 +11,8 @@ import Checkout from "./pages/checkout/checkout.page";
 import Missing from "./pages/missing/missing.page";
 import ErrorBoundary from "./components/errorBoundary/errorBoundary.component";
 import Account from "./pages/account/account.page";
+import AfterOrder from "./pages/afterOrder/afterOrder.component";
+
 // import AlertBar from "./components/alertBar/alertBar.component";
 
 import "./App.css";
@@ -42,6 +44,7 @@ function App({ currentUser }) {
             path="/users"
             render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
           />
+          <Route exact path="/checkout/success" component={AfterOrder} />
           <Route exact path="/checkout" component={Checkout} />
           <Route
             exact
