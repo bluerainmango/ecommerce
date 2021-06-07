@@ -16,3 +16,17 @@ export const getBookingFail = () => ({
 export const deleteBooking = () => ({
   type: BOOKING_TYPES.DELETE_BOOKING,
 });
+
+export const createBookingStart = (queryLink) => ({
+  type: BOOKING_TYPES.CREATE_BOOKING_START,
+  payload: queryLink,
+});
+
+export const createBookingSuccess = (bookingObj) => ({
+  type: BOOKING_TYPES.CREATE_BOOKING_SUCCESS,
+  payload: bookingObj,
+});
+
+export const createBookingFail = () => ({
+  type: BOOKING_TYPES.CREATE_BOOKING_FAIL,
+});

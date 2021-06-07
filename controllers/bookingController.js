@@ -26,9 +26,11 @@ exports.createBooking = catchAsync(async (req, res, next) => {
     departureDate,
     numOfPerson,
     price,
-  } = req.body;
+  } = req.query;
 
-  const newBooking = await Booking.createOne({
+  console.log("🥳 query:", req.query);
+
+  const newBooking = await Booking.create({
     planet,
     starship,
     user,
@@ -62,7 +64,6 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
     metadata: {
       reservedDate: departureDate,
     },
-    description: `Departs on ${departureDate}`,
     line_items: [
       {
         price_data: {
@@ -76,6 +77,7 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
           unit_amount: planet.price * 100,
         },
         quantity: numOfPerson,
+        description: `Departs on ${departureDate}`,
       },
       {
         price_data: {
@@ -91,9 +93,10 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
           unit_amount: starship.price * 100,
         },
         quantity: numOfPerson,
+        description: `Departs on ${departureDate}`,
       },
     ],
-    success_url: `http://localhost:3000/checkout/success?planet=${planet._id}&starship=${starship._id}&user=${req.user._id}&price=${totalPrice}&success=true`,
+    success_url: `${process.env.FRONTEND_BASE_URL}/checkout/success?planet=${planet._id}&starship=${starship._id}&user=${req.user._id}&price=${totalPrice}&departureDate=${departureDate}&numOfPerson=${numOfPerson}`,
     cancel_url: `http://localhost:3000?canceled=true`,
     // success_url: `${req.protocol}://${req.get("host")}/checkout/?planet=${
     //   planet._id

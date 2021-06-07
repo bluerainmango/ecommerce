@@ -8,9 +8,11 @@ const INIT_STATE = {
 const bookingReducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case BOOKING_TYPES.GET_BOOKING_SUCCESS:
+    case BOOKING_TYPES.CREATE_BOOKING_SUCCESS:
       return { ...state, booking: action.payload };
 
     case BOOKING_TYPES.GET_BOOKING_FAIL:
+    case BOOKING_TYPES.CREATE_BOOKING_FAIL:
       return { ...state, error: action.paylod };
 
     case BOOKING_TYPES.DELETE_BOOKING:

@@ -1,5 +1,4 @@
 import React from "react";
-import { Route } from "react-router-dom";
 
 import CheckoutItems from "../../components/checkoutItems/checkoutItems.component";
 import CheckoutPrice from "../../components/checkoutPrice/checkoutPrice.component";
@@ -12,7 +11,6 @@ const Checkout = () => {
       <div className="checkout__container">
         <CheckoutItems />
         <CheckoutPrice />
-        {/* <Route path="/success"></Route> */}
       </div>
     </div>
   );

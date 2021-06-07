@@ -8,7 +8,7 @@ const authController = require("../controllers/authController");
 router
   .route("/")
   .get(authController.protect, bookingController.getAllBookings)
-  .post(bookingController.createBooking);
+  .post(authController.protect, bookingController.createBooking);
 
 router.post(
   "/create-checkout-session",
