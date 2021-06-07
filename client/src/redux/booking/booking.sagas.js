@@ -14,24 +14,26 @@ import {
 function* getBooking() {
   try {
     const res = yield axios(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/bookings`,
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/bookings/me`,
       { withCredentials: true }
     );
-    console.log("🐤 res: ", res);
+    console.log("🐤 my booking arr: ", res.data.data);
   } catch (err) {
     yield put(getBookingFail(err));
   }
 }
 
-function* createBooking(queryLink) {
+function* createBooking({ payload }) {
   try {
+    // console.log("🤓 querylink: ", payload);
+
     const res = yield axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/bookings${queryLink}`,
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/bookings${payload}`,
       null,
       { withCredentials: true }
     );
 
-    console.log("🤓 res: ", res);
+    console.log("🤓 res from creatingBooking: ", res);
 
     yield put(createBookingSuccess());
   } catch (err) {

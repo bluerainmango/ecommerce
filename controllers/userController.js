@@ -1,6 +1,7 @@
 // const { validate } = require("../models/userModel");
 const User = require("../models/userModel");
 const catchAsync = require("../util/catchAsync");
+const ErrorFactory = require("../util/ErrorFactory");
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await User.find();
@@ -36,5 +37,24 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     status: "success",
     message: "Successfully updated profile.",
     data: { user: updatedUser },
+  });
+});
+
+//* Add new given booking Id to user
+exports.addOneToMyBooking = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
+
+  if (!req.body.booking)
+    return new ErrorFactory(400, "There is no booking to add.");
+
+  user.booking.push(req.body.booking);
+  await user.save({ validateBeforeSave: false });
+
+  console.log("🐴 new booking added!", user);
+
+  res.status(200).json({
+    status: "success",
+    message: "Successfully added new booking to your profile.",
+    data: { user },
   });
 });

@@ -2,19 +2,51 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const catchAsync = require("../util/catchAsync");
 const Booking = require("../models/bookingModel");
+const User = require("../models/userModel");
+
 const ErrorFactory = require("../util/ErrorFactory");
 
 exports.getAllBookings = catchAsync(async (req, res, next) => {
-  const bookings = await Booking.findById(req.user._id);
+  const bookings = await Booking.find();
 
-  console.log("🦁 bookings:", req.user, bookings);
+  // console.log("🦁 bookings:", req.user, bookings);
 
-  if (!bookings) next(new ErrorFactory(404, "There is no existing bookings."));
+  if (!bookings)
+    return next(new ErrorFactory(404, "There is no existing bookings."));
 
   res.status(200).json({
     status: "success",
     result: bookings.length,
     data: bookings,
+  });
+});
+
+exports.getOneBooking = catchAsync(async (req, res, next) => {
+  const booking = await Booking.findById(req.params.bookingId);
+
+  console.log("🦊 booking Id:", req.params.bookingId);
+
+  if (!booking)
+    return next(new ErrorFactory(404, "There is no existing booking."));
+
+  res.status(200).json({
+    status: "success",
+    data: booking,
+  });
+});
+
+exports.getMyBooking = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.user._id).populate("booking");
+  const { booking } = user;
+
+  console.log("🐔 user, booking:", req.user, booking);
+
+  if (!booking)
+    return next(new ErrorFactory(404, "There is no existing booking."));
+
+  res.status(200).json({
+    status: "success",
+    data: booking,
   });
 });
 

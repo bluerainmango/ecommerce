@@ -6,16 +6,16 @@ import { createBookingStart } from "../../redux/booking/booking.action";
 
 import "./afterOrder.styles.scss";
 
-const AfterOder = () => {
+const AfterOder = ({ createBookingStart }) => {
   const location = useLocation();
 
   useEffect(() => {
-    const { search } = location;
-    console.log("😝 search", search);
+    const queryLink = location.search;
+    console.log("😝 queryLink", queryLink);
 
-    if (!search) return;
-    createBookingStart(search);
-  }, [location]);
+    if (!queryLink) return;
+    createBookingStart(queryLink);
+  }, [location, createBookingStart]);
 
   return (
     <div className="afterOrder">

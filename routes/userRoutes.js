@@ -21,6 +21,10 @@ router
   .get(authController.protect, userController.getMe)
   .patch(authController.protect, userController.updateMe);
 
+router
+  .route("/mybooking")
+  .patch(authController.protect, userController.addOneToMyBooking);
+
 router.route("/").get(userController.getAllUsers);
 
 module.exports = router;
