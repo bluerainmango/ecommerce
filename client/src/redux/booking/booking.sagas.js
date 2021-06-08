@@ -6,9 +6,11 @@ import { takeLatest, call, all, put } from "redux-saga/effects";
 import {
   getBookingSuccess,
   getBookingFail,
-  deleteBooking,
+  // deleteBooking,
   createBookingFail,
   createBookingSuccess,
+  addBookingSuccess,
+  addBookingFail,
 } from "./booking.action";
 
 function* getBooking() {
@@ -17,12 +19,16 @@ function* getBooking() {
       `${process.env.REACT_APP_API_BASE_URL}/api/v1/bookings/me`,
       { withCredentials: true }
     );
+
     console.log("🐤 my booking arr: ", res.data.data);
+    yield put(getBookingSuccess(res.data.data));
   } catch (err) {
+    console.log("👹 err: ", err);
     yield put(getBookingFail(err));
   }
 }
 
+//* 1. Create new booking
 function* createBooking({ payload }) {
   try {
     // console.log("🤓 querylink: ", payload);
@@ -33,12 +39,35 @@ function* createBooking({ payload }) {
       { withCredentials: true }
     );
 
-    console.log("🤓 res from creatingBooking: ", res);
+    const newBooking = res.data.data;
+    console.log("🤓 new booking: ", newBooking);
 
-    yield put(createBookingSuccess());
+    yield put(createBookingSuccess(newBooking));
+    yield addNewBooking(newBooking._id);
   } catch (err) {
     console.log("👹 err: ", err);
     yield put(createBookingFail(err));
+  }
+}
+
+//* 2. Add new booking to user DB & redux bookings
+function* addNewBooking(newBookingId) {
+  try {
+    // a. Add new booking to user DB
+    const res = yield axios.patch(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/mybooking`,
+      { booking: newBookingId },
+      { withCredentials: true }
+    );
+
+    console.log("🐥 updated my booking list:", res);
+    const updatedBookingArr = res.data.data.user.booking;
+
+    // b. Update new booking list in Redux bookings
+    yield put(addBookingSuccess(updatedBookingArr));
+  } catch (err) {
+    console.log("👹 err: ", err);
+    yield put(addBookingFail(err));
   }
 }
 

@@ -28,9 +28,21 @@
     margin-bottom: 1px;
   }
 
+  button {
+    background-color: $color--accent;
+    // background-color: black;
+    margin-bottom: 2rem;
+  }
+}
+
+.cartPopup__item {
   h4,
   .item__block--empty {
     font-size: 1.2rem;
+  }
+
+  .item__block--empty {
+    padding: 3rem 0;
   }
 
   .item__block--start > img {
@@ -41,16 +53,6 @@
   .item__block--middle,
   .item__block--solo {
     margin: 0 auto;
-  }
-
-  .item__block--empty {
-    padding: 3rem 0;
-  }
-
-  button {
-    background-color: $color--accent;
-    // background-color: black;
-    margin-bottom: 2rem;
   }
 }
 

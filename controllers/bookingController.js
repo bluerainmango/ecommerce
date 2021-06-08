@@ -24,7 +24,7 @@ exports.getAllBookings = catchAsync(async (req, res, next) => {
 exports.getOneBooking = catchAsync(async (req, res, next) => {
   const booking = await Booking.findById(req.params.bookingId);
 
-  console.log("🦊 booking Id:", req.params.bookingId);
+  // console.log("🦊 booking Id:", req.params.bookingId);
 
   if (!booking)
     return next(new ErrorFactory(404, "There is no existing booking."));
@@ -35,11 +35,20 @@ exports.getOneBooking = catchAsync(async (req, res, next) => {
   });
 });
 
+// Get my bookings(populated)
 exports.getMyBooking = catchAsync(async (req, res, next) => {
-  const user = await User.findById(req.user._id).populate("booking");
+  //! user > booking(populate) > starship, planet(nested populate)
+  const user = await User.findById(req.user._id)
+    .populate({
+      path: "booking",
+      populate: { path: "starship" },
+    })
+    .populate({ path: "booking", populate: { path: "planet" } });
+
   const { booking } = user;
 
-  console.log("🐔 user, booking:", req.user, booking);
+  // console.log("🐔 user, booking:", req.user, booking);
+  // console.log("🐔 planet:", booking);
 
   if (!booking)
     return next(new ErrorFactory(404, "There is no existing booking."));
@@ -60,7 +69,7 @@ exports.createBooking = catchAsync(async (req, res, next) => {
     price,
   } = req.query;
 
-  console.log("🥳 query:", req.query);
+  // console.log("🥳 query:", req.query);
 
   const newBooking = await Booking.create({
     planet,

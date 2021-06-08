@@ -30,3 +30,18 @@ export const createBookingSuccess = (bookingObj) => ({
 export const createBookingFail = () => ({
   type: BOOKING_TYPES.CREATE_BOOKING_FAIL,
 });
+
+// export const addBookingStart = (newBookingId) => ({
+//   type: BOOKING_TYPES.ADD_NEW_BOOKING_TO_LIST_START,
+//   payload: newBookingId,
+// });
+
+export const addBookingSuccess = (updatedBookingArr) => ({
+  type: BOOKING_TYPES.ADD_NEW_BOOKING_TO_LIST_SUCCESS,
+  payload: updatedBookingArr,
+});
+
+export const addBookingFail = (errMessage) => ({
+  type: BOOKING_TYPES.ADD_NEW_BOOKING_TO_LIST_FAIL,
+  payload: errMessage,
+});

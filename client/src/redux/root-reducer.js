@@ -31,7 +31,7 @@ const rootReducer = combineReducers({
   pages: pageReducer,
   users: userReducer,
   cart: persistReducer(cartPersistConfig, cartReducer),
-  booking: bookingReducer,
+  bookings: bookingReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);
