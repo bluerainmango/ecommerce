@@ -10,11 +10,10 @@
 }
 
 #form--booking {
-  margin-bottom: 5rem;
-
   button {
     // margin: 0 auto;
     width: 100%;
+    // display: none;
   }
 
   .booking__title {
@@ -38,10 +37,14 @@
     font-size: 1.2rem;
     color: $color--accent;
     // color: rgb(131, 131, 131);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     display: flex;
     // margin: 0 0 2rem auto;
     justify-content: flex-end;
     justify-self: flex-end;
   }
+}
+
+.form--booking:not(:last-child) {
+  margin-bottom: 5rem;
 }

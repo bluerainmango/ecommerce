@@ -131,7 +131,7 @@ const Profile = (props) => {
             form="form--profile"
             content={[
               {
-                text: "Update",
+                text: "Update Profile",
                 type: "submit",
                 // linkTo: "/",
               },
@@ -192,7 +192,7 @@ const Profile = (props) => {
             form="form--profile"
             content={[
               {
-                text: "Update",
+                text: "Change Password",
                 type: "submit",
                 // linkTo: "/",
               },

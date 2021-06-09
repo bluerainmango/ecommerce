@@ -16,9 +16,16 @@ const Booking = ({ getBookingStart, bookingList }) => {
     <div className="profile">
       <div className="profile__container">
         {console.log("bookingList:", bookingList)}
-        {bookingList.map((booking) => (
-          <BookingEl booking={booking} key={booking._id} />
-        ))}
+        {/* Render once getBookingStart() is completed and bookingList is updated with populated data */}
+        {bookingList.length === 0 ? (
+          <h2 className="profile__empty">"There is no booking."</h2>
+        ) : (
+          ""
+        )}
+        {bookingList[0]?._id &&
+          bookingList.map((booking) => (
+            <BookingEl booking={booking} key={booking._id} />
+          ))}
       </div>
     </div>
   );

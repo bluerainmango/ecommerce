@@ -13,6 +13,7 @@ import {
   addBookingFail,
 } from "./booking.action";
 
+//* Get populdated booking arr
 function* getBooking() {
   try {
     const res = yield axios(
