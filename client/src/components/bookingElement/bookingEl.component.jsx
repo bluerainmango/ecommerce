@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
 import CartPopupItem from "../cartPopupItem/cartPopupItem.component";
+import CartPopupItemContent from "../CartPopupItemContent/CartPopupItemContent.component";
 
 import "./bookingEl.styles.scss";
 
@@ -25,68 +26,43 @@ const BookingEl = ({ booking }) => {
   const handleSubmit = () => {};
 
   return (
-    <form id="form--profile" className="form--profile" onSubmit={handleSubmit}>
+    <form id="form--booking" className="form--booking" onSubmit={handleSubmit}>
       <h2>Booking</h2>
-      <FormInput
-        id="departureDate"
-        name="departureDate"
-        label="Departure Date"
-        type="date"
-        className="form-input"
-        value={bookingInfo.departureDate}
-        placeholder=" "
-        required
-        readOnly
-        onChange={handleChange}
-      />
-
-      <FormInput
-        id="numOfPerson"
-        name="numOfPerson"
-        label="Number of Person"
-        type="number"
-        className="form-input"
-        value={bookingInfo.numOfPerson}
-        placeholder=" "
-        required
-        readOnly
-        onChange={handleChange}
-      />
-
-      {/* <div className="booking__planet">
-        <img
-          src={`${process.env.REACT_APP_API_BASE_URL}/`}
-          alt="booked planet"
+      <div className="booking__group">
+        <FormInput
+          id="departureDate"
+          name="departureDate"
+          label="Departure Date"
+          type="date"
+          className="form-input"
+          value={bookingInfo.departureDate}
+          placeholder=" "
+          required
+          readOnly
+          onChange={handleChange}
         />
-      </div> */}
-      <CartPopupItem>
-        <Link to={`/starships/${bookingInfo.starship.slug}`}>
-          <div className="item__block--start">
-            <img
-              src={`${process.env.REACT_APP_API_BASE_URL}/${bookingInfo.starship.collectionThumb}`}
-              alt={`bookingInfo item ${bookingInfo.starship.title}`}
-            />
-          </div>
-        </Link>
-        <div className="item__block--middle">
-          <h4>{bookingInfo.starship.title}</h4>
-          <span>${bookingInfo.starship.price}</span>
-        </div>
-      </CartPopupItem>
-      <CartPopupItem>
-        <Link to={`/starships/${bookingInfo.planet.slug}`}>
-          <div className="item__block--start">
-            <img
-              src={`${process.env.REACT_APP_API_BASE_URL}/${bookingInfo.planet.collectionThumb}`}
-              alt={`bookingInfo item ${bookingInfo.planet.title}`}
-            />
-          </div>
-        </Link>
-        <div className="item__block--middle">
-          <h4>{bookingInfo.planet.title}</h4>
-          <span>${bookingInfo.planet.price}</span>
-        </div>
-      </CartPopupItem>
+
+        <FormInput
+          id="numOfPerson"
+          name="numOfPerson"
+          label="Number of Person"
+          type="number"
+          className="form-input"
+          value={bookingInfo.numOfPerson}
+          placeholder=" "
+          required
+          readOnly
+          onChange={handleChange}
+        />
+      </div>
+      <div className="booking__group">
+        <CartPopupItem>
+          <CartPopupItemContent props={bookingInfo.starship} />
+        </CartPopupItem>
+        <CartPopupItem>
+          <CartPopupItemContent props={bookingInfo.planet} />
+        </CartPopupItem>
+      </div>
       <Button
         className="form__btn"
         form="form--booking"
