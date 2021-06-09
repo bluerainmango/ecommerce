@@ -97,7 +97,7 @@ const Profile = (props) => {
           className="form--profile"
           onSubmit={handleSubmit}
         >
-          <h2>Change Profile</h2>
+          <h2 className="account__title">Change Profile</h2>
           <FormInput
             id="username"
             name="username"
@@ -147,7 +147,7 @@ const Profile = (props) => {
           className="form--password"
           onSubmit={handleSubmit}
         >
-          <h2>Change Password</h2>
+          <h2 className="account__title">Change Password</h2>
           <FormInput
             id="confirmCurrentPassword"
             name="currentPassword"

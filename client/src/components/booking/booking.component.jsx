@@ -15,6 +15,7 @@ const Booking = ({ getBookingStart, bookingList }) => {
   return (
     <div className="profile">
       <div className="profile__container">
+        {console.log("bookingList:", bookingList)}
         {bookingList.map((booking) => (
           <BookingEl booking={booking} key={booking._id} />
         ))}

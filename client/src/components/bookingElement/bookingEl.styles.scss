@@ -1,15 +1,47 @@
+@import "../../global.style.scss";
+
 .booking__group {
   display: flex;
 
-  .group > input {
+  .group > * {
     font-size: 1.4rem !important;
-    border-bottom: none;
+    border-bottom: none !important;
   }
 }
 
 #form--booking {
   margin-bottom: 5rem;
-}
-// .booking__group > * {
 
-// }
+  button {
+    // margin: 0 auto;
+    width: 100%;
+  }
+
+  .booking__title {
+    // color: $color--accent;
+  }
+
+  .booking__title::after {
+    content: "";
+    display: block;
+    border-bottom: 1px rgb(185, 185, 185) solid;
+  }
+
+  .booking__subtitle {
+    margin-left: 5px;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: black;
+  }
+
+  .booking__createdDate {
+    font-size: 1.2rem;
+    color: $color--accent;
+    // color: rgb(131, 131, 131);
+    margin-bottom: 2rem;
+    display: flex;
+    // margin: 0 0 2rem auto;
+    justify-content: flex-end;
+    justify-self: flex-end;
+  }
+}

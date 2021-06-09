@@ -9,25 +9,31 @@ import CartPopupItemContent from "../CartPopupItemContent/CartPopupItemContent.c
 import "./bookingEl.styles.scss";
 
 const BookingEl = ({ booking }) => {
-  const [bookingInfo, setBookingInfo] = useState({
-    departureDate: booking.departureDate.slice(0, 10),
-    numOfPerson: booking.numOfPerson,
-    planet: booking.planet,
-    starship: booking.starship,
-  });
+  //   const [bookingInfo, setBookingInfo] = useState({
+  //     departureDate: booking.departureDate.slice(0, 10),
+  //     numOfPerson: booking.numOfPerson,
+  //     planet: booking.planet,
+  //     starship: booking.starship,
+  //   });
 
-  const handleChange = (e) => {
-    // console.log(e.target);
-    const { name, value } = e.target;
+  //   const handleChange = (e) => {
+  //     // console.log(e.target);
+  //     const { name, value } = e.target;
 
-    setBookingInfo({ ...bookingInfo, [name]: value });
-  };
+  //     setBookingInfo({ ...bookingInfo, [name]: value });
+  //   };
 
   const handleSubmit = () => {};
 
+  const date = booking.createdAt;
+
   return (
     <form id="form--booking" className="form--booking" onSubmit={handleSubmit}>
-      <h2>Booking</h2>
+      <h2 className="booking__title">Booking</h2>
+      <h3 className="booking__createdDate">{`${date.slice(5, 7)}/${date.slice(
+        8,
+        10
+      )}/${date.slice(0, 4)}`}</h3>
       <div className="booking__group">
         <FormInput
           id="departureDate"
@@ -35,11 +41,11 @@ const BookingEl = ({ booking }) => {
           label="Departure Date"
           type="date"
           className="form-input"
-          value={bookingInfo.departureDate}
+          value={booking.departureDate.slice(0, 10)}
           placeholder=" "
           required
           readOnly
-          onChange={handleChange}
+          //   onChange={handleChange}
         />
 
         <FormInput
@@ -48,19 +54,20 @@ const BookingEl = ({ booking }) => {
           label="Number of Person"
           type="number"
           className="form-input"
-          value={bookingInfo.numOfPerson}
+          value={booking.numOfPerson}
           placeholder=" "
           required
           readOnly
-          onChange={handleChange}
+          //   onChange={handleChange}
         />
       </div>
+      <h3 className="booking__subtitle">Planet & Starship</h3>
       <div className="booking__group">
         <CartPopupItem>
-          <CartPopupItemContent props={bookingInfo.starship} />
+          <CartPopupItemContent props={booking.planet} />
         </CartPopupItem>
         <CartPopupItem>
-          <CartPopupItemContent props={bookingInfo.planet} />
+          <CartPopupItemContent props={booking.starship} />
         </CartPopupItem>
       </div>
       <Button
