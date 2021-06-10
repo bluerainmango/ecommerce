@@ -68,8 +68,10 @@ const NavBar = (props) => {
           </li>
           {currentUser ? (
             <li className="link--login">
-              <PersonIcon />
-              <Link to="/account#profile">{currentUser.username}</Link>
+              <Link to="/account#profile">
+                <PersonIcon />
+                <span>{currentUser.username}</span>
+              </Link>
               <Link to="/users" onClick={handleClickLogout}>
                 logout
               </Link>
