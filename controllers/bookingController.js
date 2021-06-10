@@ -155,3 +155,31 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
     session: session,
   });
 });
+
+exports.deleteOneBooking = catchAsync(async (req, res, next) => {
+  const { bookingId } = req.params;
+  console.log("🐽 booking Id: ", bookingId);
+
+  //* 1. remove one booking from all bookings
+  const removedBooking = await Booking.findByIdAndRemove(bookingId);
+
+  if (!removedBooking)
+    return next(new ErrorFactory(404, "No coresponding booking is found."));
+
+  console.log("🐷 removed booking: ", removedBooking);
+
+  //* 2. remove one booking from user's booking list
+  const user = await User.findById(req.user._id);
+
+  user.booking.pull(bookingId);
+  const updatedUser = await user.save({ validateBeforeSave: false });
+  // const updatedBookingArr = user.booking.filter((el) => el._id !== bookingId);
+  // user.booking = updatedBookingArr;
+
+  console.log("🦧 user's booking list: ", updatedUser.booking);
+
+  res.status(200).json({
+    status: "success",
+    message: "Successfully deleted booking.",
+  });
+});

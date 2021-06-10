@@ -10,13 +10,16 @@ router
   .get(bookingController.getAllBookings)
   .post(authController.protect, bookingController.createBooking);
 
-router.route("/me").get(authController.protect, bookingController.getMyBooking);
-router.route("/:bookingId").get(bookingController.getOneBooking);
+//! Protect the following routers(logged in users only accessible)
+router.use(authController.protect);
 
-router.post(
-  "/create-checkout-session",
-  authController.protect,
-  bookingController.createCheckout
-);
+router.route("/me").get(bookingController.getMyBooking);
+
+router.post("/create-checkout-session", bookingController.createCheckout);
+
+router
+  .route("/:bookingId")
+  .get(bookingController.getOneBooking)
+  .delete(bookingController.deleteOneBooking);
 
 module.exports = router;

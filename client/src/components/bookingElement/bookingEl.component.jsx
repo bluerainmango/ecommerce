@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { connect } from "react-redux";
+
+import { deleteBookingStart } from "../../redux/booking/booking.actions";
 
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
@@ -8,7 +10,7 @@ import CartPopupItemContent from "../CartPopupItemContent/CartPopupItemContent.c
 
 import "./bookingEl.styles.scss";
 
-const BookingEl = ({ booking }) => {
+const BookingEl = ({ booking, deleteBookingStart }) => {
   //   const [bookingInfo, setBookingInfo] = useState({
   //     departureDate: booking.departureDate.slice(0, 10),
   //     numOfPerson: booking.numOfPerson,
@@ -25,7 +27,11 @@ const BookingEl = ({ booking }) => {
 
   //   const [date, setDate] = useState(booking.createdAt);
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    console.log("🐼 submitted with booking ID: ", booking._id);
+    e.preventDefault();
+    deleteBookingStart(booking._id);
+  };
 
   const date = booking.createdAt;
 
@@ -97,4 +103,8 @@ const BookingEl = ({ booking }) => {
   );
 };
 
-export default BookingEl;
+const mapDispatchToProps = (dispatch) => ({
+  deleteBookingStart: (bookingId) => dispatch(deleteBookingStart(bookingId)),
+});
+
+export default connect(null, mapDispatchToProps)(BookingEl);

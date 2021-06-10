@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { createBookingStart } from "../../redux/booking/booking.action";
+import { createBookingStart } from "../../redux/booking/booking.actions";
 
 import "./afterOrder.styles.scss";
 

@@ -13,10 +13,6 @@ export const getBookingFail = () => ({
   type: BOOKING_TYPES.GET_BOOKING_FAIL,
 });
 
-export const deleteBooking = () => ({
-  type: BOOKING_TYPES.DELETE_BOOKING,
-});
-
 export const createBookingStart = (queryLink) => ({
   type: BOOKING_TYPES.CREATE_BOOKING_START,
   payload: queryLink,
@@ -44,4 +40,23 @@ export const addBookingSuccess = (updatedBookingArr) => ({
 export const addBookingFail = (errMessage) => ({
   type: BOOKING_TYPES.ADD_NEW_BOOKING_TO_LIST_FAIL,
   payload: errMessage,
+});
+
+export const deleteBookingStart = (bookingId) => ({
+  type: BOOKING_TYPES.DELETE_BOOKING_START,
+  payload: bookingId,
+});
+
+export const deleteBookingSuccess = (successMessage) => ({
+  type: BOOKING_TYPES.DELETE_BOOKING_SUCCESS,
+  payload: successMessage,
+});
+
+export const deleteBookingFail = (errMessage) => ({
+  type: BOOKING_TYPES.DELETE_BOOKING_FAIL,
+  payload: errMessage,
+});
+
+export const clearError = () => ({
+  type: BOOKING_TYPES.CLEAR_ERROR,
 });

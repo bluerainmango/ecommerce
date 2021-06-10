@@ -1,32 +1,66 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
 
-import { clearError } from "../../redux/user/user.actions.js";
+import { clearError as userClearError } from "../../redux/user/user.actions.js";
+import { clearError as bookingClearError } from "../../redux/booking/booking.actions";
 
 import "./alertBar.styles.scss";
 
-const AlertBar = ({ errorMessage, successMessage, clearError }) => {
+const AlertBar = ({
+  userErrorMessage,
+  userSuccessMessage,
+  bookingErrorMessage,
+  bookingSuccessMessage,
+  userClearError,
+  bookingClearError,
+}) => {
   const barRef = useRef();
 
   useEffect(() => {
-    if (!errorMessage && !successMessage) return;
+    if (
+      !userErrorMessage &&
+      !userSuccessMessage &&
+      !bookingErrorMessage &&
+      !bookingSuccessMessage
+    )
+      return;
 
     const barDOM = barRef.current;
-    console.log("👾 message:", errorMessage, successMessage);
+    console.log(
+      "👾 message:",
+      userErrorMessage,
+      userSuccessMessage,
+      bookingErrorMessage,
+      bookingSuccessMessage
+    );
 
     barDOM.innerText = "";
-    barDOM.innerText = errorMessage || successMessage;
+    barDOM.innerText =
+      userErrorMessage ||
+      userSuccessMessage ||
+      bookingErrorMessage ||
+      bookingSuccessMessage;
 
     barDOM.classList.remove("hidden", "alert--error", "alert--success");
 
-    if (errorMessage) barDOM.classList.add("alert--error");
-    if (successMessage) barDOM.classList.add("alert--success");
+    if (userErrorMessage || bookingErrorMessage)
+      barDOM.classList.add("alert--error");
+    if (userSuccessMessage || bookingSuccessMessage)
+      barDOM.classList.add("alert--success");
 
     setTimeout(() => {
       barDOM.classList.add("hidden");
-      clearError();
+      userClearError();
+      bookingClearError();
     }, 5000);
-  }, [errorMessage, clearError, successMessage]);
+  }, [
+    userErrorMessage,
+    bookingErrorMessage,
+    bookingSuccessMessage,
+    userClearError,
+    userSuccessMessage,
+    bookingClearError,
+  ]);
 
   return (
     <div ref={barRef} className={`alert hidden`}>
@@ -38,14 +72,15 @@ const AlertBar = ({ errorMessage, successMessage, clearError }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  clearError: () => {
-    dispatch(clearError());
-  },
+  userClearError: () => dispatch(userClearError()),
+  bookingClearError: () => dispatch(bookingClearError()),
 });
 
 const mapStateToProps = (state) => ({
-  errorMessage: state.users.errorMessage,
-  successMessage: state.users.successMessage,
+  userErrorMessage: state.users.errorMessage,
+  userSuccessMessage: state.users.successMessage,
+  bookingErrorMessage: state.bookings.errorMessage,
+  bookingSuccessMessage: state.bookings.successMessage,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlertBar);

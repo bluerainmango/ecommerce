@@ -6,12 +6,13 @@ import { takeLatest, call, all, put } from "redux-saga/effects";
 import {
   getBookingSuccess,
   getBookingFail,
-  // deleteBooking,
   createBookingFail,
   createBookingSuccess,
   addBookingSuccess,
   addBookingFail,
-} from "./booking.action";
+  deleteBookingSuccess,
+  deleteBookingFail,
+} from "./booking.actions";
 
 //* Get populdated booking arr
 function* getBooking() {
@@ -25,7 +26,7 @@ function* getBooking() {
     yield put(getBookingSuccess(res.data.data));
   } catch (err) {
     console.log("👹 err: ", err);
-    yield put(getBookingFail(err));
+    yield put(getBookingFail(err.response.data.message));
   }
 }
 
@@ -47,7 +48,7 @@ function* createBooking({ payload }) {
     yield addNewBooking(newBooking._id);
   } catch (err) {
     console.log("👹 err: ", err);
-    yield put(createBookingFail(err));
+    yield put(createBookingFail(err.response.data.message));
   }
 }
 
@@ -68,7 +69,25 @@ function* addNewBooking(newBookingId) {
     yield put(addBookingSuccess(updatedBookingArr));
   } catch (err) {
     console.log("👹 err: ", err);
-    yield put(addBookingFail(err));
+    yield put(addBookingFail(err.response.data.message));
+  }
+}
+
+function* deleteBooking({ payload }) {
+  try {
+    const res = yield axios.delete(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/bookings/${payload}`,
+      { withCredentials: true }
+    );
+
+    //* 1. Delete one booking
+    yield put(deleteBookingSuccess(res.data.message));
+
+    //* 2. Get updated booking list again
+    yield getBooking();
+  } catch (err) {
+    console.log("👹 err: ", err);
+    yield put(deleteBookingFail(err.response.data.message));
   }
 }
 
@@ -80,6 +99,13 @@ function* onGetBookingStart() {
   yield takeLatest(BOOKING_TYPES.GET_BOOKING_START, getBooking);
 }
 
+function* onDeleteBookingStart() {
+  yield takeLatest(BOOKING_TYPES.DELETE_BOOKING_START, deleteBooking);
+}
 export default function* bookingSaga() {
-  yield all([call(onGetBookingStart), call(onCreateBookingStart)]);
+  yield all([
+    call(onGetBookingStart),
+    call(onCreateBookingStart),
+    call(onDeleteBookingStart),
+  ]);
 }

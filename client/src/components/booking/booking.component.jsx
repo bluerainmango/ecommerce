@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
 import BookingEl from "../bookingElement/bookingEl.component";
-import { getBookingStart } from "../../redux/booking/booking.action";
+import { getBookingStart } from "../../redux/booking/booking.actions";
+import AlertBar from "../alertBar/alertBar.component";
 
 import "./booking.styles.scss";
 
@@ -14,6 +15,7 @@ const Booking = ({ getBookingStart, bookingList }) => {
 
   return (
     <div className="profile">
+      <AlertBar />
       <div className="profile__container">
         {console.log("bookingList:", bookingList)}
         {/* Render once getBookingStart() is completed and bookingList is updated with populated data */}
