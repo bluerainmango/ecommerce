@@ -7,7 +7,7 @@ import "./setting.styles.scss";
 
 const Setting = () => {
   const [settingInfo, setSettingInfo] = useState({
-    password: "123123",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -17,7 +17,9 @@ const Setting = () => {
     setSettingInfo({ ...settingInfo, [name]: value });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="setting">

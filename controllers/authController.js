@@ -212,3 +212,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   //* 5) Log user in, send JWT
   createAndSendToken(user, req, res, 200);
 });
+
+exports.deleteOneUser = catchAsync(async (req, res, next) => {});
