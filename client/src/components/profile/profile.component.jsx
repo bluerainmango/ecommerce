@@ -101,7 +101,7 @@ const Profile = (props) => {
           <FormInput
             id="username"
             name="username"
-            label="username"
+            label="Username"
             type="text"
             className="form-input"
             value={profileInfo.username}
@@ -115,7 +115,7 @@ const Profile = (props) => {
           <FormInput
             id="email"
             name="email"
-            label="email"
+            label="Email"
             type="text"
             className="form-input"
             value={profileInfo.email}
@@ -151,7 +151,7 @@ const Profile = (props) => {
           <FormInput
             id="confirmCurrentPassword"
             name="currentPassword"
-            label="current password"
+            label="Current Password"
             value={passwordInfo.currentPassword}
             type="password"
             className="form-input"
@@ -164,7 +164,7 @@ const Profile = (props) => {
           <FormInput
             id="newPassword"
             name="newPassword"
-            label="new password"
+            label="New Password"
             value={passwordInfo.newPassword}
             type="password"
             className="form-input"
@@ -177,7 +177,7 @@ const Profile = (props) => {
           <FormInput
             id="confirmNewPassword"
             name="newPasswordConfirm"
-            label="confirm new password"
+            label="Confirm New Password"
             value={passwordInfo.newPasswordConfirm}
             type="password"
             className="form-input"
