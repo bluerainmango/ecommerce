@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
-import { useLocation, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { clearError as userClearError } from "../../redux/user/user.actions.js";
 import { clearError as bookingClearError } from "../../redux/booking/booking.actions";
@@ -16,19 +16,26 @@ const AlertBar = ({
   bookingClearError,
 }) => {
   const barRef = useRef();
-  const location = useLocation();
   const history = useHistory();
 
   //* Clear messages when changing page
   useEffect(() => {
     let unlisten = history.listen((location, action) => {
       console.log("🐞 history listen: ", action, location);
-      userClearError();
-      bookingClearError();
+
+      //* If it's redirected from /account#setting to /user after deleting user, don't clear messages.
+      if (
+        action !== "REPLACE" &&
+        location.pathname !== "/users" &&
+        !userSuccessMessage
+      ) {
+        userClearError();
+        bookingClearError();
+      }
     });
 
     return unlisten;
-  }, [history, userClearError, bookingClearError]);
+  }, [history, userClearError, bookingClearError, userSuccessMessage]);
 
   //* Display alert
   useEffect(() => {
@@ -83,7 +90,7 @@ const AlertBar = ({
       {/* {errorMessage}
       {successMessage} */}
       {/* "Password and username are not correct. Please try again." */}
-      {console.log("🐳 location:", location, history)}
+      {/* {console.log("🐳 location:", location, history)} */}
     </div>
   );
 };

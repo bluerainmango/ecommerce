@@ -19,6 +19,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 
     case UserTypes.FORGOT_PASSWORD_SUCCESS:
     case UserTypes.UPDATE_PASSWORD_SUCCESS:
+    case UserTypes.DELETE_USER_SUCCESS:
       return {
         ...state,
         successMessage: action.payload,
@@ -37,6 +38,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserTypes.LOGOUT_FAIL:
     case UserTypes.UPDATE_ME_FAIL:
     case UserTypes.UPDATE_PASSWORD_FAIL:
+    case UserTypes.DELETE_USER_FAIL:
       return {
         ...state,
         // errorMessage: action.payload.response?.data.message || action.payload,

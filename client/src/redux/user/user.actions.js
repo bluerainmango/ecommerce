@@ -53,9 +53,8 @@ export const forgotPasswordFail = (err) => ({
   payload: err,
 });
 
-export const clearError = (err) => ({
+export const clearError = () => ({
   type: UserTypes.CLEAR_ERROR,
-  payload: err,
 });
 
 //* Log out
@@ -111,4 +110,18 @@ export const updatePasswordSuccess = (message) => ({
 export const updatePasswordFail = (err) => ({
   type: UserTypes.UPDATE_PASSWORD_FAIL,
   payload: err,
+});
+
+//! Delete user
+export const deleteUserStart = (password) => ({
+  type: UserTypes.DELETE_USER_START,
+  payload: password,
+});
+export const deleteUserSuccess = (successMessage) => ({
+  type: UserTypes.DELETE_USER_SUCCESS,
+  payload: successMessage,
+});
+export const deleteUserFail = (errorMessage) => ({
+  type: UserTypes.DELETE_USER_FAIL,
+  payload: errorMessage,
 });

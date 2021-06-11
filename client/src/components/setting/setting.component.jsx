@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
 import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
+import AlertBar from "../alertBar/alertBar.component";
+
+import { deleteUserStart } from "../../redux/user/user.actions";
 
 import "./setting.styles.scss";
 
-const Setting = () => {
+const Setting = ({ deleteUserStart }) => {
   const [settingInfo, setSettingInfo] = useState({
-    password: "",
+    currentPassword: "",
   });
 
   const handleChange = (e) => {
@@ -19,10 +23,14 @@ const Setting = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log("🐦 sumitted pwd: ", settingInfo.currentPassword);
+    deleteUserStart(settingInfo.currentPassword);
   };
 
   return (
     <div className="setting">
+      <AlertBar />
       <div className="setting__container">
         <form
           id="form--setting"
@@ -69,4 +77,8 @@ const Setting = () => {
   );
 };
 
-export default Setting;
+const mapDispatchToProps = (dispatch) => ({
+  deleteUserStart: (password) => dispatch(deleteUserStart(password)),
+});
+
+export default connect(null, mapDispatchToProps)(Setting);

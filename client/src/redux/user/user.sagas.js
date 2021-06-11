@@ -17,6 +17,8 @@ import {
   updateMeFail,
   updatePasswordSuccess,
   updatePasswordFail,
+  deleteUserSuccess,
+  deleteUserFail,
 } from "./user.actions";
 
 function* signInWithEmail({ payload: { username, password } }) {
@@ -159,6 +161,34 @@ function* updatePassword({ payload }) {
   }
 }
 
+function* deleteUser({ payload }) {
+  try {
+    //* 1. Check the entered password is correct
+    yield axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users`,
+      { password: payload },
+      { withCredentials: true }
+    );
+
+    // if (res.data.status !== "success")
+    //   yield put(deleteUserFail("The entered password is incorrect."));
+
+    //* 2. Delete user
+    const res2 = yield axios.delete(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users`,
+      { withCredentials: true }
+    );
+
+    console.log("🤠 deleted. message:", res2.data.message);
+
+    yield put(deleteUserSuccess(res2.data.message));
+    yield logout();
+  } catch (err) {
+    console.log("🚨 err", err);
+    yield put(deleteUserFail(err.response.data.message));
+  }
+}
+
 function* onEmailSignInStart() {
   yield takeLatest(UserTypes.EMAIL_SIGN_IN_START, signInWithEmail);
 }
@@ -187,6 +217,10 @@ function* onUpdatePasswordStart() {
   yield takeLatest(UserTypes.UPDATE_PASSWORD_START, updatePassword);
 }
 
+function* onDeleteUserStart() {
+  yield takeLatest(UserTypes.DELETE_USER_START, deleteUser);
+}
+
 export default function* userSaga() {
   yield all([
     call(onEmailSignInStart),
@@ -196,5 +230,6 @@ export default function* userSaga() {
     call(onGetMeStart),
     call(onUpdateMeStart),
     call(onUpdatePasswordStart),
+    call(onDeleteUserStart),
   ]);
 }

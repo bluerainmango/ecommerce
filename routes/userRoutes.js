@@ -28,6 +28,7 @@ router
 router
   .route("/")
   .get(userController.getAllUsers)
-  .delete(authController.deleteOneUser);
+  .post(authController.protect, authController.checkPassword)
+  .delete(authController.protect, authController.deleteOneUser);
 
 module.exports = router;

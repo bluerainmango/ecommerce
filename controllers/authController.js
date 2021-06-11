@@ -3,6 +3,7 @@ const crypto = require("crypto");
 const { promisify } = require("util");
 
 const User = require("../models/userModel");
+const Booking = require("../models/bookingModel");
 const catchAsync = require("../util/catchAsync");
 const ErrorFactory = require("../util/ErrorFactory");
 const Email = require("../util/email");
@@ -213,4 +214,31 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   createAndSendToken(user, req, res, 200);
 });
 
-exports.deleteOneUser = catchAsync(async (req, res, next) => {});
+//! Used before deleting user
+exports.checkPassword = catchAsync(async (req, res, next) => {
+  const { password } = req.body;
+  const user = await User.findById(req.user._id).select("+password");
+
+  if (!password || !(await user.isCorrectPassword(password, user.password)))
+    return next(new ErrorFactory(401, "Please provide the correct password!"));
+
+  res.status(200).json({
+    status: "success",
+    message: "Password is matching",
+  });
+});
+
+exports.deleteOneUser = catchAsync(async (req, res, next) => {
+  //* 1. remove user
+  const removedUser = await User.findByIdAndRemove(req.user._id);
+  console.log("🦁 removed user: ", removedUser);
+
+  //* 2. remove booking
+  const removedBooking = await Booking.deleteMany({ user: req.user._id });
+  console.log("🐯 removed booking: ", removedBooking);
+
+  res.status(200).json({
+    status: "success",
+    message: "Successfully deleted the user",
+  });
+});
