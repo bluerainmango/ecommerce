@@ -26,6 +26,7 @@ const Booking = ({ getBookingStart, bookingList, isLoading }) => {
       {/* <BookingContent /> */}
       <BookingContentWithSpinner
         isLoading={isLoading}
+        style={{ "--colorSpinner": "#008cff", "--colorText": "#008cff" }}
         // bookingList={bookingList}
       />
     </div>
