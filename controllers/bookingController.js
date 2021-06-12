@@ -138,7 +138,7 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
       },
     ],
     success_url: `${process.env.FRONTEND_BASE_URL}/checkout/success?planet=${planet._id}&starship=${starship._id}&user=${req.user._id}&price=${totalPrice}&departureDate=${departureDate}&numOfPerson=${numOfPerson}`,
-    cancel_url: `http://localhost:3000?canceled=true`,
+    cancel_url: `${process.env.FRONTEND_BASE_URL}?canceled=true`,
     // success_url: `${req.protocol}://${req.get("host")}/checkout/?planet=${
     //   planet._id
     // }&starship=${starship._id}&user=${

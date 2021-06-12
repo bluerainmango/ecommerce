@@ -64,10 +64,22 @@ const BookingEl = ({ booking, deleteBookingStart }) => {
           <FormInput
             id="numOfPerson"
             name="numOfPerson"
-            label="Number of Person"
+            label="Travelers"
             type="number"
             className="form-input"
             value={booking.numOfPerson}
+            placeholder=" "
+            required
+            readOnly
+            //   onChange={handleChange}
+          />
+          <FormInput
+            id="totalPrice"
+            name="totalPrice"
+            label="Total Price"
+            type="text"
+            className="form-input"
+            value={`$${booking.price}`}
             placeholder=" "
             required
             readOnly
