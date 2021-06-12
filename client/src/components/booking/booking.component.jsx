@@ -1,40 +1,40 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import BookingEl from "../bookingElement/bookingEl.component";
-import { getBookingStart } from "../../redux/booking/booking.actions";
 import AlertBar from "../alertBar/alertBar.component";
+import BookingContent from "../bookingContent/bookingContent.component";
+import WithSpinner from "../withSpinner/withSpinner.component";
+
+import { getBookingStart } from "../../redux/booking/booking.actions";
 
 import "./booking.styles.scss";
 
-const Booking = ({ getBookingStart, bookingList }) => {
+const BookingContentWithSpinner = WithSpinner(BookingContent);
+
+const Booking = ({ getBookingStart, bookingList, isLoading }) => {
   useEffect(() => {
     // if (bookingInfo.departureDate) return;
     getBookingStart();
   }, [getBookingStart]);
 
   return (
-    <div className="profile">
+    <div className="booking">
       <AlertBar />
-      <div className="profile__container">
-        {console.log("bookingList:", bookingList)}
-        {/* Render once getBookingStart() is completed and bookingList is updated with populated data */}
-        {bookingList.length === 0 ? (
-          <h2 className="profile__empty">"There is no booking."</h2>
-        ) : (
-          ""
-        )}
-        {bookingList[0]?._id &&
-          bookingList.map((booking) => (
-            <BookingEl booking={booking} key={booking._id} />
-          ))}
-      </div>
+      {console.log("bookingList:", bookingList)}
+      {/* Render once getBookingStart() is completed and bookingList is updated with populated data */}
+      {/* isFetching ===true : spiner, isFetch===false && length===0 : no booking, rendering bookings */}
+      {/* <BookingContent /> */}
+      <BookingContentWithSpinner
+        isLoading={isLoading}
+        // bookingList={bookingList}
+      />
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   bookingList: state.bookings.bookingList,
+  isLoading: state.bookings.isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

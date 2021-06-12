@@ -47,7 +47,7 @@ exports.addOneToMyBooking = catchAsync(async (req, res, next) => {
   if (!req.body.booking)
     return new ErrorFactory(400, "There is no booking to add.");
 
-  user.booking.push(req.body.booking); // push(): mongoose's method
+  user.booking.unshift(req.body.booking); // push(): mongoose's method
   await user.save({ validateBeforeSave: false });
 
   console.log("🐴 new booking added!", user);

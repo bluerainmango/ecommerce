@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
 
-import { connect } from "react-redux";
-import { toggleIsLoading } from "../../redux/page/page.action";
+// import { connect } from "react-redux";
+// import { toggleIsLoading } from "../../redux/page/page.action";
 
 import Spinner from "../spinner/spinner.component";
 
 import "./header.styles.scss";
 
-const Header = ({ isLoading2 }) => {
+const Header = () => {
   const scrollIndicatorRef = useRef();
   const scrollToRef = useRef();
   // const videoRef = useRef();
@@ -44,6 +44,7 @@ const Header = ({ isLoading2 }) => {
       <div className="header__wrapper" />
       {/* <div ref={videoRef} className="loader" />*/}
       {isLoading && <Spinner />}
+      {/* {true && <Spinner />} */}
       <video
         className="header__video"
         autoPlay="autoplay"
@@ -75,12 +76,13 @@ const Header = ({ isLoading2 }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  isLoading2: state.pages.isLoading,
-});
+// const mapStateToProps = (state) => ({
+//   isLoading2: state.pages.isLoading,
+// });
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleIsLoading: () => dispatch(toggleIsLoading()),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   toggleIsLoading: () => dispatch(toggleIsLoading()),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+// export default connect(null, mapDispatchToProps)(Header);
+export default Header;

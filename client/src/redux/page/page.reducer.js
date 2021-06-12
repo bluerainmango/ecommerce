@@ -3,7 +3,7 @@ import pageTypes from "./page.types";
 const INITIAL_STATE = {
   hideNavbar: false,
   thumbnailIndex: 0,
-  isLoading: false,
+  // isLoading: false,
 };
 
 const pageReducer = (state = INITIAL_STATE, action) => {
@@ -29,11 +29,11 @@ const pageReducer = (state = INITIAL_STATE, action) => {
         thumbnailIndex: 0,
       };
 
-    case pageTypes.TOGGLE_ISLOADING:
-      return {
-        ...state,
-        isLoading: !state.isLoading,
-      };
+    // case pageTypes.TOGGLE_ISLOADING:
+    //   return {
+    //     ...state,
+    //     isLoading: !state.isLoading,
+    //   };
 
     default:
       return state;

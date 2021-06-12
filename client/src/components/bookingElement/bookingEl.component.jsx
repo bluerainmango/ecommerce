@@ -33,7 +33,9 @@ const BookingEl = ({ booking, deleteBookingStart }) => {
     deleteBookingStart(booking._id);
   };
 
-  const date = booking.createdAt;
+  const createdDateInLocal = new Date(booking.createdAt).toLocaleDateString();
+
+  // console.log("🐡", booking.createdAt);
 
   return (
     booking && (
@@ -43,10 +45,7 @@ const BookingEl = ({ booking, deleteBookingStart }) => {
         onSubmit={handleSubmit}
       >
         <h2 className="booking__title">Booking</h2>
-        <h3 className="booking__createdDate">{`${date?.slice(
-          5,
-          7
-        )}/${date?.slice(8, 10)}/${date?.slice(0, 4)}`}</h3>
+        <h3 className="booking__createdDate">{createdDateInLocal}</h3>
         <div className="booking__group">
           <FormInput
             id="departureDate"
