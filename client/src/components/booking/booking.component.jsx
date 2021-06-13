@@ -20,14 +20,10 @@ const Booking = ({ getBookingStart, bookingList, isLoading }) => {
   return (
     <div className="booking">
       <AlertBar />
-      {console.log("bookingList:", bookingList)}
       {/* Render once getBookingStart() is completed and bookingList is updated with populated data */}
-      {/* isFetching ===true : spiner, isFetch===false && length===0 : no booking, rendering bookings */}
-      {/* <BookingContent /> */}
       <BookingContentWithSpinner
         isLoading={isLoading}
         style={{ "--colorSpinner": "#008cff", "--colorText": "#008cff" }}
-        // bookingList={bookingList}
       />
     </div>
   );

@@ -56,7 +56,9 @@ const CheckoutDatePerson = (props) => {
             name="departureDate"
             type="date"
             value={reservationInfo.departureDate}
-            min={formattedDate()}
+            // min={formattedDate()}
+            min={formattedDate(new Date(Date.now() + 3600 * 1000 * 24))}
+            max={formattedDate(new Date(Date.now() + 3600 * 1000 * 24 * 60))}
             onChange={handleChange}
             className="checkout__date"
           />

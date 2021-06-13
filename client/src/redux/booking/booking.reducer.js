@@ -14,7 +14,7 @@ const bookingReducer = (state = INIT_STATE, action) => {
       return { ...state, bookingList: action.payload };
 
     case BOOKING_TYPES.GET_BOOKING_SUCCESS:
-      return { ...state, bookingList: action.payload, isLoading: true };
+      return { ...state, bookingList: action.payload, isLoading: false };
 
     case BOOKING_TYPES.DELETE_BOOKING_SUCCESS:
       return { ...state, successMessage: action.payload };

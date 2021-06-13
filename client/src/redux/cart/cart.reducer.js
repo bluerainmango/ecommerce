@@ -1,12 +1,9 @@
 import CART_TYPES from "./cart.types";
-// import { formattedDate } from "../../util/util";
 
 const INIT_STATE = {
   planet: null,
   starship: null,
-  // departureDate: formattedDate(),
   departureDate: "",
-  // numOfPerson: 1,
   numOfPerson: 0,
   totalPrice: 0,
   error: null,

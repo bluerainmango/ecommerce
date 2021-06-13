@@ -10,41 +10,28 @@ import CartPopupItemContent from "../CartPopupItemContent/CartPopupItemContent.c
 
 import "./bookingEl.styles.scss";
 
-const BookingEl = ({ booking, deleteBookingStart }) => {
-  //   const [bookingInfo, setBookingInfo] = useState({
-  //     departureDate: booking.departureDate.slice(0, 10),
-  //     numOfPerson: booking.numOfPerson,
-  //     planet: booking.planet,
-  //     starship: booking.starship,
-  //   });
-
-  //   const handleChange = (e) => {
-  //     // console.log(e.target);
-  //     const { name, value } = e.target;
-
-  //     setBookingInfo({ ...bookingInfo, [name]: value });
-  //   };
-
-  //   const [date, setDate] = useState(booking.createdAt);
-
+const BookingEl = ({ booking, deleteBookingStart, isExpired }) => {
   const handleSubmit = (e) => {
-    console.log("🐼 submitted with booking ID: ", booking._id);
+    // console.log("🐼 submitted with booking ID: ", booking._id);
     e.preventDefault();
     deleteBookingStart(booking._id);
   };
 
   const createdDateInLocal = new Date(booking.createdAt).toLocaleDateString();
 
-  // console.log("🐡", booking.createdAt);
+  // console.log("🐡", booking.createdAt, createdDateInLocal);
 
   return (
     booking && (
       <form
         id="form--booking"
-        className="form--booking"
+        className={
+          isExpired ? "form--booking booking--expired" : "form--booking"
+        }
         onSubmit={handleSubmit}
       >
         <h2 className="booking__title">Booking</h2>
+        <div className="title__line" />
         <h3 className="booking__createdDate">{createdDateInLocal}</h3>
         <div className="booking__group">
           <FormInput
@@ -57,7 +44,6 @@ const BookingEl = ({ booking, deleteBookingStart }) => {
             placeholder=" "
             required
             readOnly
-            //   onChange={handleChange}
           />
 
           <FormInput
@@ -70,7 +56,6 @@ const BookingEl = ({ booking, deleteBookingStart }) => {
             placeholder=" "
             required
             readOnly
-            //   onChange={handleChange}
           />
           <FormInput
             id="totalPrice"
@@ -82,7 +67,6 @@ const BookingEl = ({ booking, deleteBookingStart }) => {
             placeholder=" "
             required
             readOnly
-            //   onChange={handleChange}
           />
         </div>
         <h3 className="booking__subtitle">Planet & Starship</h3>
@@ -99,7 +83,7 @@ const BookingEl = ({ booking, deleteBookingStart }) => {
           form="form--booking"
           content={[
             {
-              text: "Cancel",
+              text: isExpired ? "Delete Record" : "Cancel",
               type: "submit",
               // linkTo: "/",
             },

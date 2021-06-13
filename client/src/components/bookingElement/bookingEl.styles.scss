@@ -1,4 +1,28 @@
+// @import url("../../assets/icons/alert-circle-outline.svg");
 @import "../../global.style.scss";
+
+//! Expired booking
+.booking--expired {
+  .booking__title::after {
+    content: " - Expired" !important;
+    color: orangered !important;
+    font-size: 1.4rem;
+    margin: 0 0 0 auto;
+    text-align: center;
+  }
+
+  #departureDate {
+    color: orangered;
+  }
+  button {
+    // background-color: rgb(197, 197, 197);
+    background-color: orangered;
+  }
+  .btn-anim::before {
+    // background-color: rgb(126, 126, 126) !important;
+    background-color: rgba(202, 54, 0, 0.726);
+  }
+}
 
 .booking__group {
   display: flex;
@@ -28,7 +52,7 @@
     // color: $color--accent;
   }
 
-  .booking__title::after {
+  .title__line {
     content: "";
     display: block;
     border-bottom: 1px rgb(185, 185, 185) solid;
