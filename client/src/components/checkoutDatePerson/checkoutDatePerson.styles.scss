@@ -3,12 +3,13 @@
 .checkout__date-person {
   .checkout__form {
     display: flex;
-  }
-
-  .checkout__date,
-  .checkout__person {
     margin-bottom: 2rem;
   }
+
+  // .checkout__date,
+  // .checkout__person {
+  //   margin-bottom: 2rem;
+  // }
 
   .input-group {
     display: flex;
@@ -38,5 +39,25 @@
 
   .checkout__pereson {
     width: 10rem;
+  }
+
+  .checkout__date-validity {
+    padding-left: 2.5rem;
+    padding-top: 3px;
+    font-size: 1.4rem;
+  }
+
+  #date:out-of-range + .checkout__date-validity::after {
+    content: "✖ Invalid Date";
+    color: orangered;
+  }
+
+  #date:in-range + .checkout__date-validity::after {
+    content: "✓ Valid Date";
+    color: green;
+  }
+
+  #date[value=""] + .checkout__date-validity::after {
+    color: rgba(235, 235, 235, 0);
   }
 }

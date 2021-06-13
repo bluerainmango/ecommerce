@@ -51,6 +51,11 @@ const CheckoutDatePerson = (props) => {
       <form className="checkout__form">
         <div className="input-group">
           <label htmlFor="date">Departure Date</label>
+          {console.log(
+            "🏳️",
+            reservationInfo.departureDate,
+            reservationInfo.numOfPerson
+          )}
           <input
             id="date"
             name="departureDate"
@@ -61,6 +66,12 @@ const CheckoutDatePerson = (props) => {
             max={formattedDate(new Date(Date.now() + 3600 * 1000 * 24 * 60))}
             onChange={handleChange}
             className="checkout__date"
+          />
+          <span
+            className="checkout__date-validity"
+            style={{
+              color: reservationInfo.departureDate === "" ? "black" : "white",
+            }}
           />
         </div>
 

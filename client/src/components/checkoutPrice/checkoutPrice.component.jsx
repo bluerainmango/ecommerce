@@ -35,7 +35,7 @@ const CheckoutPrice = ({ cart, numOfPerson }) => {
       </div>
       <div className="price__date">
         <h2>Depareture Date</h2>
-        <span>{cart.departureDate.replaceAll("--", "/")}</span>
+        <span>{cart.departureDate?.replaceAll("--", "/")}</span>
       </div>
       <div className="price__total">
         <h2>Total</h2>
