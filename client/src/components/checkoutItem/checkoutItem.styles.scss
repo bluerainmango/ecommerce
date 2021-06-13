@@ -36,7 +36,9 @@ $icon--color: $color--accent;
 
   &__contentBox {
     border: 1px solid rgba(105, 105, 105, 0.219);
+    border-radius: 4px;
     box-shadow: rgba(255, 255, 255, 0.151) 2px 2px 5px;
     width: 100%;
+    background-color: $color--grey;
   }
 }
