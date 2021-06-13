@@ -12,7 +12,7 @@ const CheckoutPrice = ({ cart, numOfPerson }) => {
   const handleClick = (e) => {
     e.preventDefault();
 
-    console.log("🙈 clicked");
+    // console.log("🙈 clicked");
   };
 
   return (

@@ -4,7 +4,7 @@ const INIT_STATE = {
   planet: null,
   starship: null,
   departureDate: "",
-  numOfPerson: 0,
+  numOfPerson: 1,
   totalPrice: 0,
   error: null,
   toggleCartPopup: false,

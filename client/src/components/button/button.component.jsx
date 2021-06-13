@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -14,6 +14,7 @@ import "./button.styles.scss";
 
 const Button = (props) => {
   const { content, style, cart } = props;
+  const [alert, setAlert] = useState("");
 
   const history = useHistory();
 
@@ -30,6 +31,28 @@ const Button = (props) => {
     e.preventDefault();
 
     const { planet, starship, totalPrice, numOfPerson, departureDate } = cart;
+    const DepartureTimeStamp = new Date(departureDate).getTime();
+    const maxDateTimeStamp = Date.now() + 3600 * 1000 * 24 * 60; // 60 days
+
+    //! Validate input
+    if (!planet || !starship) {
+      return setAlert("Please add planet and starship.");
+    }
+
+    // console.log(
+    //   "departuredate is valid?: ",
+    //   Date.now() < DepartureTimeStamp,
+    //   DepartureTimeStamp <= maxDateTimeStamp
+    // );
+
+    if (
+      DepartureTimeStamp <= Date.now() ||
+      DepartureTimeStamp > maxDateTimeStamp
+    )
+      return setAlert("Please select valid departure date.");
+
+    if (numOfPerson < 1) return setAlert("Please add one travler at least.");
+
     // param with cart checkout info needed
     props.checkoutSessionStart({
       planet,
@@ -101,6 +124,7 @@ const Button = (props) => {
           <div className="btn-anim" />
         </button>
       ))}
+      {alert && <div className="btn__alert">❗️ {alert}</div>}
     </div>
   );
 };
