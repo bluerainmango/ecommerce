@@ -53,7 +53,7 @@ const CheckoutProduct = ({ type, product }) => {
             {
               type: "link",
               text: `${!product ? "add" : "change"}`,
-              linkTo: "/change",
+              linkTo: `/${type}s`,
             },
           ]}
         />

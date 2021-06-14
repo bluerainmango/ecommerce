@@ -93,7 +93,7 @@
             }
         ],
         "price": 430,
-        "description": "Luyten B is a confirmed exoplanet, likely icy and green, orbiting within the habitable zone of the red dwarf star K2-72, the outermost of four such planets discovered in the system by NASA's Kepler spacecraft on its 'Second Light' mission. It is located about 217.1 light-years (66.56 parsecs, or nearly 2.0538×1015 km) away from Earth in the constellation of Aquarius."
+        "description": "Luyten B is a confirmed exoplanet, likely icy and green, orbiting within the habitable zone of the red dwarf star K2-72, the outermost of four such planets discovered in the system by NASA's Kepler spacecraft on its 'Second Light' mission. It is located about 217.1 light-years away from Earth."
     },
     {
         "_id": "609071772c9b257e13277a7c",
@@ -141,6 +141,6 @@
             }
         ],
         "price": 540,
-        "description": "Luyten b is a confirmed exoplanet, likely rocky, orbiting within the habitable zone of the nearby red dwarf Luyten's Star. It is one of the most Earth-like planets ever found and is the fifth-closest potentially habitable exoplanet known, at a distance of 12.2 light-years."
+        "description": "Luyten b is a terrestrial planet with a thin atmosphere, with surface features reminiscent of the impact craters of the Moon. The days and seasons are comparable to those of Earth, because the rotational period as well as the tilt of the rotational axis relative to the ecliptic plane are similar."
     }
 ]

@@ -22,8 +22,8 @@
     // @include subTitle;
     // text-transform: uppercase;
     margin-bottom: 3rem;
-    font-weight: 400;
-    font-size: 3rem;
+    font-weight: 200;
+    font-size: 3.5rem;
   }
 
   &__btn--prev,
@@ -44,12 +44,14 @@
 
   &__btn--prev {
     left: 0;
-    margin-left: 20%;
+    margin-left: 15%;
+    // margin-left: 20%;
   }
 
   &__btn--next {
     right: 0;
-    margin-right: 20%;
+    margin-right: 15%;
+    // margin-right: 20%;
   }
 }
 
