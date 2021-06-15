@@ -8,6 +8,10 @@
   display: none;
   // position: absolute;
   // z-index: 200;
+  .logo {
+    // width: 5rem;
+    height: 5rem;
+  }
 
   &__user-photo {
     width: 2.5rem;
@@ -75,7 +79,9 @@
 
 .navbar__shop {
   position: relative;
-  transform: translateY(20%);
+  // transform: translateY(20%);
+  // height: 5rem;
+  align-items: center;
 }
 
 .navbar__icons {

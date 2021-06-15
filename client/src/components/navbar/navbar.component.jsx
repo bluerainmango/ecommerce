@@ -12,6 +12,7 @@ import { ReactComponent as PlanetIconFill } from "../../assets/icons/planet-shar
 import { ReactComponent as DateIcon } from "../../assets/icons/calendar-outline.svg";
 import { ReactComponent as DateIconFill } from "../../assets/icons/calendar-sharp.svg";
 import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-outline.svg";
+import logo from "../../assets/logo-3d.png";
 
 import "./navbar.styles.scss";
 
@@ -57,7 +58,9 @@ const NavBar = (props) => {
     <div ref={navRef} className="navbar">
       <div className="navbar__wrapper">
         <div className="navbar__logo">
-          <Link to="/">SPACE Y</Link>
+          <Link to="/">
+            <img src={logo} alt="logo" className="logo" />
+          </Link>
         </div>
         <ul className="navbar__links">
           <li className="link--planets">
@@ -95,7 +98,7 @@ const NavBar = (props) => {
         <ul className="navbar__shop">
           {/* <Link to="/checkout"> */}
           <div className="navbar__icons" onClick={handleClickIcons}>
-            <span>JOURNEY</span>
+            {/* <span>JOURNEY</span> */}
             {!cart.planet ? <PlanetIcon /> : <PlanetIconFill />}
             {!cart.starship ? <RocketIcon /> : <RocketIconFill />}
             {!cart.departureDate || !cart.numOfPerson ? (
