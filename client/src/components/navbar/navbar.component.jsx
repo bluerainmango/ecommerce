@@ -69,7 +69,15 @@ const NavBar = (props) => {
           {currentUser ? (
             <li className="link--login">
               <Link to="/account#profile">
-                <PersonIcon />
+                {currentUser.photo ? (
+                  <img
+                    className="navbar__user-photo"
+                    src={`${process.env.REACT_APP_API_BASE_URL}/users/${currentUser.photo}`}
+                    alt="user profile"
+                  />
+                ) : (
+                  <PersonIcon />
+                )}
                 <span>{currentUser.username}</span>
               </Link>
               <Link to="/users" onClick={handleClickLogout}>

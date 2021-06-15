@@ -134,10 +134,11 @@ function* updateMe({ payload }) {
     );
 
     //* Need success message and updated user info
-    const messageAndUserObj = res.data.data;
+    const { user } = res.data.data;
+    const { message } = res.data;
     // console.log("🤐 update me:", messageAndUserObj);
 
-    yield put(updateMeSuccess(messageAndUserObj));
+    yield put(updateMeSuccess({ user, message }));
   } catch (err) {
     console.log("🚨 err", err, err.response.data.message);
     yield put(updateMeFail(err.response.data.message));

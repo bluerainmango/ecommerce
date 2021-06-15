@@ -57,6 +57,7 @@ const UserSchema = new mongoose.Schema({
     select: false,
   },
   booking: [{ type: mongoose.Schema.ObjectId, ref: "Booking" }],
+  photo: { type: String },
 });
 
 //! Hash password

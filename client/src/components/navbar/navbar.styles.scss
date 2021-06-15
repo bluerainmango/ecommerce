@@ -9,6 +9,12 @@
   // position: absolute;
   // z-index: 200;
 
+  &__user-photo {
+    width: 2.5rem;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
   &--fixed {
     display: block;
     position: fixed;

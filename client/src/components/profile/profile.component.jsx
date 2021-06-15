@@ -6,6 +6,8 @@ import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
 import AlertBar from "../alertBar/alertBar.component";
 
+import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-outline.svg";
+
 import {
   updateMeStart,
   updateMeFail,
@@ -18,6 +20,7 @@ import "./profile.styles.scss";
 const Profile = (props) => {
   const {
     user,
+    photo,
     updateMeStart,
     updateMeFail,
     updatePasswordFail,
@@ -27,6 +30,7 @@ const Profile = (props) => {
   const [profileInfo, setProfileInfo] = useState({
     username: user.username,
     email: user.email,
+    // photo: photo,
   });
 
   const [passwordInfo, setPasswordInfo] = useState({
@@ -48,28 +52,38 @@ const Profile = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("🐈 e", e.target);
+    console.log("🐈 e", e.target.elements);
 
     if (e.target.id === "form--profile") {
+      //* Get current info
       const { username, email } = profileInfo;
       const currentUsername = user.username;
       const currentEmail = user.email;
+      const newPhoto = e.target.elements.photo.files[0];
+      console.log("🐈 new photo", newPhoto);
 
-      const infoToUpdate = {};
+      //* Create form data to send
+      const form = new FormData();
+      if (currentUsername !== username) form.append("username", username);
+      if (currentEmail !== email) form.append("email", email);
+      if (newPhoto) {
+        form.append("photo", newPhoto);
+      }
 
-      if (currentUsername !== username) infoToUpdate.username = username;
-      if (currentEmail !== email) infoToUpdate.email = email;
+      if (form.values().length === 0)
+        return updateMeFail(
+          "Please provide new username or email or photo to update."
+        );
 
-      console.log("😍 submitted", infoToUpdate);
+      // for (let val of form.values()) {
+      //   console.log("💢 form data:", val);
+      // }
 
-      if (Object.keys(infoToUpdate).length === 0)
-        return updateMeFail("Please provide new username or email to update.");
-
-      updateMeStart(infoToUpdate);
+      updateMeStart(form);
     } else {
       const { currentPassword, newPassword, newPasswordConfirm } = passwordInfo;
 
-      console.log("🐈 passwordInfo", passwordInfo);
+      // console.log("🐈 passwordInfo", passwordInfo);
 
       if (currentPassword === newPassword)
         return updatePasswordFail(
@@ -98,6 +112,26 @@ const Profile = (props) => {
           onSubmit={handleSubmit}
         >
           <h2 className="account__title">Change Profile</h2>
+          <div className="profile__photo">
+            {photo ? (
+              <img
+                className="profile__photo-preview"
+                src={`${process.env.REACT_APP_API_BASE_URL}/users/${photo}`}
+                alt="user profile"
+              />
+            ) : (
+              <PersonIcon />
+            )}
+
+            <input
+              type="file"
+              id="photo"
+              name="photo"
+              className="photoUploader"
+              accept="image/*"
+            />
+          </div>
+
           <FormInput
             id="username"
             name="username"
@@ -210,6 +244,7 @@ const Profile = (props) => {
 
 const mapStateToProps = (state) => ({
   currentUser: state.users.currentUser,
+  photo: state.users.currentUser.photo,
 });
 
 const mapDispatchToProps = (dispatch) => ({
