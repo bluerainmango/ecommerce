@@ -1,7 +1,7 @@
 @import "../../global.style.scss";
 
-$color--spinner: var(--colorSpinner, #fff);
-$color--text: var(--colorText, #fff);
+$color--spinner: var(--colorSpinner, $color--purple);
+$color--text: var(--colorText, $color--purple);
 
 .loader__box {
   width: 100%;
@@ -30,9 +30,9 @@ $color--text: var(--colorText, #fff);
 .loader,
 .loader:before,
 .loader:after {
-  // background: #ffffff;
   background: $color--spinner;
   color: $color--spinner;
+
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
@@ -47,6 +47,7 @@ $color--text: var(--colorText, #fff);
 }
 .loader {
   background: $color--spinner;
+
   // text-indent: -9999em;
   // margin: 88px auto;
   // position: relative;

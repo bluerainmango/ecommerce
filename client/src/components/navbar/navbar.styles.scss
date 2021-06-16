@@ -85,13 +85,13 @@
 }
 
 .navbar__icons {
-  border: 1px solid $color--accent;
+  border: 1px solid $color--purple;
   border-radius: 1rem;
   position: relative;
 }
 
 .navbar__icons > span {
-  color: $color--accent;
+  // color: $color--purple;
   font-size: 1.2rem;
   position: absolute;
   top: -50%;
@@ -131,52 +131,4 @@
   // > *:not(:last-child) {
   //   margin-right: 1rem;
   // }
-}
-
-.ionicon {
-  color: $color--accent;
-  fill: $color--accent;
-  // font-size: 3rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  // --ionicon-stroke-width: 32px;
-  transition: all ease-in-out 1s;
-}
-
-.ionicon.rocket--fill {
-  animation: rocketShoot 1s cubic-bezier(0.66, -0.02, 0, 0.67) 1 backwards;
-}
-
-.ionicon.planet--fill {
-  animation: planetRotate 1s cubic-bezier(0.66, -0.02, 0, 0.67) 1 backwards;
-}
-
-.link--login {
-  .ionicon {
-    fill: rgba(255, 255, 255, 0.842);
-  }
-}
-
-@keyframes rocketShoot {
-  0% {
-    transform: translate(0px, 0px);
-  }
-  70% {
-    transform: translate(-2px, 5px);
-  }
-  100% {
-    transform: translate(5px, -5px);
-  }
-}
-
-@keyframes planetRotate {
-  0% {
-    transform: rotateY(0deg);
-  }
-  70% {
-    transform: rotateY(180deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
 }

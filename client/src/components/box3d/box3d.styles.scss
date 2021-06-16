@@ -1,3 +1,5 @@
+@import "../../global.style.scss";
+
 .box3d__wrapper {
   color: #fff;
   width: 100%;
@@ -36,11 +38,20 @@
   cursor: pointer;
 
   .front {
-    background-image: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.253) 0%,
-      rgba(92, 91, 94, 0) 100%
-    );
+    background-color: black;
+
+    // background-image: linear-gradient(
+    //   180deg,
+    //   rgba(255, 255, 255, 0.253) 0%,
+    //   rgba(92, 91, 94, 0) 100%
+    // );
+
+    // background-image: linear-gradient(
+    //   to right bottom,
+    //   rgba(0, 60, 139, 0.479),
+    //   rgba(105, 0, 175, 0.493),
+    //   rgba(95, 95, 95, 0.315)
+    // );
     transform: rotateY(0deg) translateZ(16rem);
     border-radius: 1rem 0.2rem 0 0;
     text-align: center;
@@ -73,12 +84,6 @@
       font-size: 34px;
       opacity: 0.34;
     }
-
-    // h1,
-    // p,
-    // .price {
-    //   color: black;
-    // }
 
     h1 {
       padding-top: 2rem;

@@ -21,10 +21,7 @@ const Booking = ({ getBookingStart, bookingList, isLoading }) => {
     <div className="booking">
       <AlertBar />
       {/* Render once getBookingStart() is completed and bookingList is updated with populated data */}
-      <BookingContentWithSpinner
-        isLoading={isLoading}
-        style={{ "--colorSpinner": "#008cff", "--colorText": "#008cff" }}
-      />
+      <BookingContentWithSpinner isLoading={isLoading} />
     </div>
   );
 };

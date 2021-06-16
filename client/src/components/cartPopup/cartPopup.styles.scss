@@ -10,7 +10,7 @@
   transform: translateX(-25%);
   background-color: rgb(255, 255, 255);
   text-align: center;
-  border: 1px $color--accent solid;
+  border: 1px $color--purple solid;
   color: rgb(0, 0, 0);
   //   border: 1px solid #fff;
 
@@ -19,18 +19,17 @@
   h3 {
     // color: black;
     color: rgb(0, 0, 0);
-    color: $color--accent;
+    color: $color--purple;
     // background-color: $color--accent;
     background-color: rgb(255, 255, 255);
     font-size: 1.4rem;
     // border-bottom: 1px solid $color--accent;
-    border-bottom: 1px solid rgba(0, 140, 255, 0.336);
+    border-bottom: 1px solid $color--purple--dark;
     margin-bottom: 1px;
   }
 
   button {
-    background-color: $color--accent;
-    // background-color: black;
+    @include gradientBg;
     margin-bottom: 2rem;
   }
 
@@ -56,10 +55,9 @@
   }
 }
 
+// animation bg color of popup cart when adding product
 .anim--added {
-  // background-color: $color--accent;
-  background-color: rgba(0, 119, 255, 0.521);
-  // border: 1px solid $color--accent;
+  background-color: rgba(153, 11, 248, 0.507);
 }
 
 @keyframes revealIconsPopup {

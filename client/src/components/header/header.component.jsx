@@ -43,7 +43,9 @@ const Header = () => {
     <section className="header">
       <div className="header__wrapper" />
       {/* <div ref={videoRef} className="loader" />*/}
-      {isLoading && <Spinner />}
+      {isLoading && (
+        <Spinner style={{ "--colorSpinner": "#fff", "--colorText": "#fff" }} />
+      )}
       {/* {true && <Spinner />} */}
       <video
         className="header__video"

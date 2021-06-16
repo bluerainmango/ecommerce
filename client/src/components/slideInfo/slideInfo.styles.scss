@@ -24,7 +24,8 @@
   }
 
   .btn--action {
-    background-color: $color--accent;
+    // background-color: @include
+    @include gradientBg;
   }
 
   &__img {

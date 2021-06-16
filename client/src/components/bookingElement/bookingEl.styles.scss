@@ -5,22 +5,23 @@
 .booking--expired {
   .booking__title::after {
     content: " - Expired" !important;
-    color: orangered !important;
+    color: $color--purple !important;
     font-size: 1.4rem;
     margin: 0 0 0 auto;
     text-align: center;
   }
 
   #departureDate {
-    color: orangered;
+    color: $color--purple;
   }
   button {
     // background-color: rgb(197, 197, 197);
-    background-color: orangered;
+    // background-color: $color--purple--dark;
   }
   .btn-anim::before {
     // background-color: rgb(126, 126, 126) !important;
-    background-color: rgba(202, 54, 0, 0.726);
+    // background-color: rgba(202, 54, 0, 0.726);
+    background-color: rgba(37, 37, 37, 0.747);
   }
 }
 
@@ -67,7 +68,7 @@
 
   .booking__createdDate {
     font-size: 1.2rem;
-    color: $color--accent;
+    color: $color--purple;
     // color: rgb(131, 131, 131);
     margin-bottom: 1rem;
     display: flex;

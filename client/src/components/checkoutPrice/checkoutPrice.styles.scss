@@ -1,7 +1,5 @@
 @import "../../global.style.scss";
 
-$btn--color: $color--accent;
-
 .checkout__price {
   align-self: flex-start;
 
@@ -18,7 +16,8 @@ $btn--color: $color--accent;
   line-height: 2;
 
   .btn {
-    background-color: $btn--color !important;
+    // background-color: $btn--color !important;
+    @include gradientBg;
   }
 
   .price__detail > h2,

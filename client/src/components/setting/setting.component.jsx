@@ -67,7 +67,7 @@ const Setting = ({ deleteUserStart }) => {
               },
             ]}
             style={{
-              "--bg-color": "red",
+              // "--bg-color": "red",
               "--font-color-hover": "black",
             }}
           />
