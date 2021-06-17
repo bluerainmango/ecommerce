@@ -7,25 +7,13 @@
   perspective: 80rem;
   position: relative;
 
-  //   .img-wrapper {
-  //     animation: float 4s cubic-bezier(0.39, 0.575, 0.565, 1) infinite alternate;
-  //     position: absolute;
-  //     bottom: 20%;
-  //     right: 0%;
-  //     //   transform: translate(-50%, -50%);
-  //     pointer-events: none;
-  //     backface-visibility: hidden;
-  //     //   width: 50px;
+  .lazy-img {
+    filter: blur(10px);
+  }
 
-  //     img {
-  //       transform-origin: top right;
-  //       transition: transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
-  //       transition-delay: 100ms;
-  //       transform: translateX(35%) rotateZ(13deg);
-  //       pointer-events: none;
-  //       width: 60%;
-  //     }
-  //   }
+  .img-wrapper {
+    width: 100%;
+  }
 }
 
 .box3d__card {
@@ -113,20 +101,6 @@
   }
 
   .right {
-    // background-image: linear-gradient(
-    //     0deg,
-    //     rgba(255, 255, 255, 0.438) 0%,
-    //     rgba(92, 91, 94, 0) 100%
-    //   ),
-    //   url(var(--right-img));
-
-    // background-image: linear-gradient(
-    //     0deg,
-    //     rgba(0, 0, 0, 0.219) 0%,
-    //     rgba(0, 0, 0, 0) 100%
-    //   ),
-    //   url("../../assets/planet1-feature.jpeg");
-
     background-size: cover;
     // background-blend-mode: darken;
     // background-color: black;

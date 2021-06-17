@@ -43,3 +43,40 @@
     // background-color: blue;
   }
 }
+
+.photoUploader {
+  // color: transparent;
+}
+.custom-file-input {
+  color: transparent;
+}
+.photoUploader::-webkit-file-upload-button {
+  // visibility: hidden;
+  display: none;
+}
+.photoUploader::before {
+  content: "Select Image";
+  color: rgb(63, 63, 63);
+  display: inline-block;
+  // background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid rgb(199, 199, 199);
+  border-radius: 2px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-size: 1.3rem;
+  margin-right: 1rem;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active {
+  outline: 0;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
