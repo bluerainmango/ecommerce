@@ -35,7 +35,7 @@ const Collection = ({
 
   return (
     <div className="collection">
-      <h2 className="collection__title">{title}</h2>
+      {/* <h2 className="collection__title">{title}</h2> */}
       <div className="collection__content">
         {props.map((product) => (
           <CollectionThumbnail key={product._id} props={product} />

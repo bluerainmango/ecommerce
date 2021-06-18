@@ -1,7 +1,9 @@
+@import "../../global.style.scss";
+
 .slider {
   backface-visibility: hidden;
   // z-index: 1;
-  height: 70vh;
+  // height: 70vh;
   background-color: black;
   position: relative;
   // padding-bottom: 1rem;
@@ -58,4 +60,43 @@
 .scrollTo--slider {
   position: absolute;
   top: -13rem;
+}
+
+@include respond(tab-port) {
+  .slider {
+    &__btn--prev {
+      margin-left: 2.5%;
+    }
+    &__btn--next {
+      margin-right: 2.5%;
+    }
+  }
+}
+@include respond(phone-sm) {
+  .slider {
+    height: none !important;
+
+    &__title {
+      margin: 0 3rem;
+      text-align: center;
+    }
+
+    &__btn--prev {
+      margin-left: 3%;
+    }
+    &__btn--next {
+      margin-right: 3%;
+    }
+  }
+}
+
+@include respond(phone-xsm) {
+  .slider {
+    &__btn--prev {
+      margin-left: 1%;
+    }
+    &__btn--next {
+      margin-right: 1%;
+    }
+  }
 }

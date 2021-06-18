@@ -1,3 +1,5 @@
+@import "../../global.style.scss";
+
 .slide {
   backface-visibility: hidden;
   // grid-area: 1/-1;
@@ -92,4 +94,25 @@
 .slide--hidden {
   opacity: 0;
   transform: translateY(15rem);
+}
+
+//! Media query
+@include respond(tab-port) {
+  .slide {
+    width: 16rem;
+    height: 30rem;
+  }
+}
+
+@include respond(phone) {
+  .slide {
+    width: 20rem;
+    height: 30rem;
+  }
+}
+
+@include respond(phone-xsm) {
+  .slide {
+    // height: 25rem;
+  }
 }

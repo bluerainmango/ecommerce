@@ -4,8 +4,8 @@
   position: relative;
   background-color: black;
   color: #fff;
-  width: 100vw;
-  padding-bottom: 10rem;
+  // width: 100vw;
+  // padding-bottom: 10rem;
   // height: 70vh;
   font-size: 1.7rem;
   background-position: top;
@@ -18,6 +18,8 @@
   align-content: start;
   justify-items: center;
   gap: 1rem;
+
+  margin-top: 3rem;
 
   .lazy-img {
     filter: blur(10px);
@@ -104,5 +106,38 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@include respond(tab-port) {
+  .slideInfo {
+    margin-top: 7rem;
+  }
+}
+
+@include respond(phone-sm) {
+  .slideInfo {
+    padding-bottom: 0 !important;
+  }
+}
+
+@include respond(phone-xsm) {
+  .slideInfo {
+    margin-top: 2rem;
+
+    &__content {
+      .btn-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .btn {
+          width: 100%;
+        }
+        .btn:nth-child(2) {
+          margin-left: 0;
+        }
+      }
+    }
   }
 }

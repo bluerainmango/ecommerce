@@ -4,21 +4,25 @@
   backface-visibility: hidden;
   background-color: black;
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
+
   color: #fff;
   display: flex;
   //   flex-direction: row-reverse;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
+  margin: 20rem auto;
 
-  .lazy-img {
-    filter: blur(10px);
+  &--first {
+    height: 90rem;
+  }
+  &--second {
+    height: 50rem;
   }
 
   &__img {
     display: flex;
     flex-direction: column;
-
     transition: all 1s cubic-bezier(0.27, -0.49, 0, 2.02);
 
     .banner__photo {
@@ -30,16 +34,24 @@
 
       &--astronaut,
       &--starship--2 {
-        width: 47rem;
+        // width: 47rem;
         transform: scaleX(-1);
         position: absolute;
         // z-index: 110;
+      }
+      &--astronaut {
+        // width: 47rem;
+        height: 97rem;
+      }
+      &--starship--2 {
+        // width: 40rem;
+        height: 44rem;
       }
     }
   }
 
   &__context {
-    margin: 0 2rem;
+    margin: 0 5rem;
 
     @include textBg;
   }
@@ -58,6 +70,10 @@
     font-size: 2.5rem;
     font-weight: 200;
   }
+
+  .lazy-img {
+    filter: blur(10px);
+  }
 }
 
 //! Second banner
@@ -73,3 +89,106 @@
   opacity: 0;
   transform: translateY(10rem);
 }
+
+@include respond(tab-land) {
+  .banner {
+    flex-direction: column-reverse !important;
+    margin-top: 15rem;
+    justify-content: flex-end;
+    align-items: center;
+
+    &--first {
+      max-height: 100rem;
+      max-width: 90rem;
+    }
+
+    &--second {
+      // max-height: 60rem;
+      height: 60rem;
+    }
+
+    &__img {
+      margin-top: 5rem;
+      // max-width: 40rem;
+    }
+  }
+}
+
+@include respond(phone) {
+  .banner {
+    &--first {
+      height: 70rem;
+    }
+
+    &--second {
+      height: 60rem;
+    }
+
+    &__img {
+      .banner__photo--astronaut {
+        // width: 40rem;
+        height: 70rem;
+      }
+    }
+  }
+}
+
+@include respond(phone-sm) {
+  .banner {
+    &--first {
+      margin-top: 10rem;
+    }
+
+    &--second {
+      margin-top: 0;
+    }
+
+    &__context {
+      text-align: center;
+    }
+    &__img {
+      align-items: center;
+      margin-top: 1rem;
+    }
+  }
+}
+
+@include respond(phone-xsm) {
+  .banner {
+    &__title {
+      font-size: 4rem;
+    }
+    &__img {
+      .banner__photo--astronaut {
+        height: 50rem;
+      }
+      .banner__photo--starship--2 {
+        // height: 30rem;
+        display: none;
+      }
+    }
+
+    &--first {
+      height: 50rem;
+    }
+
+    &--second {
+      margin-top: 0;
+      height: 37rem;
+    }
+
+    &__context {
+      text-align: center;
+    }
+    &__img {
+      align-items: center;
+    }
+  }
+}
+
+// @media only screen and (orientation: landscape) {
+//   .banner--second {
+//     height: 73rem;
+//     max-height: none;
+//   }
+// }

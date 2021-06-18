@@ -77,3 +77,26 @@
     // transform: translate(-50%, -50%);
   }
 }
+
+@include respond(tab-port) {
+  .preview {
+    &__info {
+      margin-top: 3.5rem;
+    }
+    &__frame {
+      height: 60%;
+    }
+  }
+}
+
+@include respond(phone) {
+  .preview {
+    &__info {
+      margin-top: 0;
+    }
+    .img {
+      top: 8%;
+    }
+    // height: 60%;
+  }
+}
