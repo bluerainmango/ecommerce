@@ -11,6 +11,10 @@
   .logo {
     // width: 5rem;
     height: 5rem;
+    // width: 5rem;
+    // background-color: blue;
+    // background-image: url("../../assets/logo-3d2.png");
+    // background-size: cover;
   }
 
   &__user-photo {
@@ -131,4 +135,20 @@
   // > *:not(:last-child) {
   //   margin-right: 1rem;
   // }
+}
+
+@include respond(phone) {
+  .navbar {
+    .logo {
+      display: none;
+    }
+
+    .logo--sm {
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      background-image: url("../../assets/logo-icon.png");
+      background-size: cover;
+    }
+  }
 }

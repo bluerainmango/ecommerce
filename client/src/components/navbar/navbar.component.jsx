@@ -60,6 +60,7 @@ const NavBar = (props) => {
         <div className="navbar__logo">
           <Link to="/">
             <img src={logo} alt="logo" className="logo" />
+            <div className="logo--sm" />
           </Link>
         </div>
         <ul className="navbar__links">
