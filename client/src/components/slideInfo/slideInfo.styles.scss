@@ -115,9 +115,17 @@
   }
 }
 
+@include respond(phone) {
+  .slideInfo {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+}
 @include respond(phone-sm) {
   .slideInfo {
     padding-bottom: 0 !important;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 }
 

@@ -6,7 +6,8 @@
   margin: 15rem auto;
   display: grid;
   grid-template-columns: 1fr minmax(10rem, 40rem) minmax(10rem, 35rem) 1fr;
-  grid-template-rows: min-content minmax(10rem, 40rem);
+  grid-template-rows: min-content 40rem;
+  // grid-template-rows: min-content minmax(10rem, 40rem);
   align-content: center;
   justify-items: center;
 
@@ -16,6 +17,7 @@
     grid-row: 1 / span 1;
     grid-column: 2 / span 2;
 
+    text-align: center;
     color: #fff;
     font-weight: 200;
     font-size: 3.5rem;
@@ -40,7 +42,15 @@
 
 @include respond(tab-port) {
   .list {
-    margin: 15rem 3rem;
+    margin: 15rem 5rem 25rem 5rem;
+    grid-template-rows: min-content 36rem;
+  }
+}
+
+//600px - 730px
+@media only screen and (min-width: 37.5em) and (max-width: 45.6em) {
+  .list {
+    grid-template-rows: min-content 28rem;
   }
 }
 
@@ -48,26 +58,40 @@
   .list {
     grid-template-columns: 1fr;
     // grid-template-columns: minmax(10rem, 40rem);
-    grid-template-rows: min-content minmax(10rem, 40rem) min-content;
+    grid-template-rows: min-content min-content 30rem;
+
+    margin: 15rem 2rem 25rem 2rem;
 
     &__title {
+      grid-column: 1 / span 1;
+      margin-bottom: 3rem;
+    }
+
+    &__group {
+      grid-row: 2 / span 1;
       grid-column: 1 / span 1;
     }
 
     .preview {
-      grid-column: 1 / span 1;
-
-      &__frame {
-        display: none;
-      }
-      img {
-        left: 0%;
-        border: 2px solid #fff;
-      }
-    }
-    &__group {
       grid-row: 3 / span 1;
       grid-column: 1 / span 1;
+
+      width: 100%;
+      height: 100%;
+
+      margin: 5rem auto;
+      &__frame {
+        // display: none;
+        width: 100%;
+        height: 100%;
+      }
+
+      img {
+        // margin: 0 auto;
+        @include abCenter;
+        // left: 0%;
+        // border: 2px solid #fff;
+      }
     }
   }
 
@@ -75,4 +99,19 @@
   //   display: flex;
   //   flex-direction: column;
   // }
+}
+
+@include respond(phone-xsm) {
+  .list__group {
+    // grid-template-columns: repeat(auto-fit, minmax(3rem, 5rem));
+    grid-template-columns:
+      minmax(3rem, 5rem) minmax(3rem, 5rem) minmax(3rem, 5rem)
+      minmax(3rem, 5rem) minmax(3rem, 5rem);
+  }
+
+  .listElement {
+    img {
+      width: 4rem;
+    }
+  }
 }

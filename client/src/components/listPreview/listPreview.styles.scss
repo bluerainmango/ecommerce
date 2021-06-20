@@ -83,14 +83,13 @@
     &__info {
       margin-top: 3.5rem;
     }
-    &__frame {
-      height: 60%;
-    }
   }
 }
 
 @include respond(phone) {
   .preview {
+    margin: 1rem auto !important;
+
     &__info {
       margin-top: 0;
     }
@@ -98,5 +97,39 @@
       top: 8%;
     }
     // height: 60%;
+  }
+}
+
+//600px - 730px
+@media only screen and (min-width: 37.5em) and (max-width: 45.6em) {
+  .preview__info {
+    .btn-container {
+      .btn {
+        width: 80%;
+      }
+      .btn:nth-child(2) {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@include respond(phone-xsm) {
+  .preview {
+    margin: 1rem auto;
+  }
+  .preview__info {
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .btn {
+        width: 100%;
+      }
+      .btn:nth-child(2) {
+        margin-left: 0;
+      }
+    }
   }
 }

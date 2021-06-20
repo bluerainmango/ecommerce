@@ -1,3 +1,5 @@
+@import "../../global.style.scss";
+
 .outro {
   width: 100vw;
   //   background-color: black;
@@ -28,5 +30,19 @@
     height: 100%;
     position: absolute;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0) 60%, rgb(0, 0, 0));
+  }
+}
+
+@include respond(phone) {
+  .outro__context {
+    position: relative;
+    top: 0%;
+    left: 0%;
+    margin: 3rem 2rem;
+    text-align: center;
+
+    h3 {
+      font-size: 3rem;
+    }
   }
 }
