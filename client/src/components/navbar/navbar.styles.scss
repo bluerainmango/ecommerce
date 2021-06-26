@@ -166,6 +166,9 @@
 
   &__checkbox:checked ~ &__links .link--login {
     order: 1;
+    > * {
+      margin-left: 2rem;
+    }
   }
   &__checkbox:checked ~ &__links .link--planets {
     order: 2;

@@ -4,10 +4,12 @@
   // background-color: black;
   width: 100vw;
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr minmax(min-content, 60rem) 1fr;
-  grid-template-rows: 1fr, min-content;
   background-color: rgb(0, 0, 0);
+
+  display: grid;
+  grid-template-columns: 1fr minmax(min-content, 120rem) 1fr;
+  grid-template-rows: min-content;
+  align-content: center;
 
   &__title {
     @include subTitle;
@@ -15,11 +17,11 @@
 
   &__content {
     margin-top: 10rem;
-    grid-row: 2/2;
-    grid-column: 2/2;
+    grid-column: 2 / span 1;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min-content, 15rem));
+    grid-template-columns: repeat(auto-fit, 35rem);
+    grid-template-rows: min-content;
     justify-content: center;
     column-gap: 5rem;
     // backface-visibility: hidden;

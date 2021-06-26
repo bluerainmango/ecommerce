@@ -58,7 +58,7 @@ const NavBar = (props) => {
   // When menu is clicked, close hamburger menu background
   const handleClickLinks = (e) => {
     e.preventDefault();
-    console.log("hamburger menu is clicked", burgerRef.current.checked);
+    // console.log("hamburger menu clicked", burgerRef.current.checked);
 
     if (burgerRef.current.checked) {
       burgerRef.current.checked = false;
