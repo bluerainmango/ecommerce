@@ -23,6 +23,7 @@ const NavBar = (props) => {
 
   const location = useLocation();
   const navRef = useRef();
+  const burgerRef = useRef();
 
   //* Dynamically revealing navbar according to pages
   useEffect(() => {
@@ -54,6 +55,16 @@ const NavBar = (props) => {
     // console.log("🐸 toggle", cart.toggleCartPopup);
   };
 
+  // When menu is clicked, close hamburger menu background
+  const handleClickLinks = (e) => {
+    e.preventDefault();
+    console.log("hamburger menu is clicked", burgerRef.current.checked);
+
+    if (burgerRef.current.checked) {
+      burgerRef.current.checked = false;
+    }
+  };
+
   return (
     <div ref={navRef} className="navbar">
       <div className="navbar__wrapper">
@@ -63,7 +74,19 @@ const NavBar = (props) => {
             <div className="logo--sm" />
           </Link>
         </div>
-        <ul className="navbar__links">
+
+        <input
+          ref={burgerRef}
+          type="checkbox"
+          className="navbar__checkbox"
+          id="navbar-toggle"
+        />
+        <label for="navbar-toggle" className="navbar__button">
+          <span className="navbar__icon">&nbsp;</span>
+        </label>
+        <div className="navbar__background">&nbsp;</div>
+
+        <ul onClick={handleClickLinks} className="navbar__links">
           <li className="link--planets">
             <Link to="/planets">planets</Link>
           </li>

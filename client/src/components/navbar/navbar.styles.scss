@@ -6,15 +6,16 @@
   width: 100vw;
   font-size: 1.5rem;
   display: none;
-  // position: absolute;
-  // z-index: 200;
+
+  &__logo {
+    grid-column: 1/2;
+    justify-self: end;
+    margin: auto 0;
+    // z-index: 1500;
+  }
+
   .logo {
-    // width: 5rem;
     height: 5rem;
-    // width: 5rem;
-    // background-color: blue;
-    // background-image: url("../../assets/logo-3d2.png");
-    // background-size: cover;
   }
 
   &__user-photo {
@@ -26,7 +27,6 @@
   &--fixed {
     display: block;
     position: fixed;
-    // background-color: rgba(0, 0, 0, 0.575);
     background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.438) 50%,
@@ -42,8 +42,9 @@
     // position: fixed;
 
     display: grid;
-    grid-template-columns: minmax(max-content, 1fr) minmax(min-content, 75rem) 1fr;
-    align-content: center;
+    grid-template-columns: max-content 1fr max-content;
+    // align-content: center;
+    align-content: start;
     // justify-items: center;
 
     background-color: rgba(0, 0, 0, 0);
@@ -52,66 +53,183 @@
       rgba(0, 0, 0, 0.438) 40%,
       rgba(0, 0, 0, 0)
     );
-    padding: 1.5rem;
+    padding: 1rem;
     top: 0;
     left: 0;
   }
-}
 
-.navbar__logo {
-  grid-column: 1/2;
-  justify-self: end;
-}
+  &__links {
+    grid-column: 2/3;
+    justify-self: end;
+    text-transform: uppercase;
+    align-items: center;
+    z-index: 1500;
 
-.navbar__links {
-  grid-column: 2/3;
-  justify-self: end;
-  text-transform: uppercase;
-  align-items: center;
-}
-
-.navbar__links,
-.navbar__shop {
-  display: flex;
-  // justify-content: center;
-  // justify-self: start;
-
-  > * {
-    cursor: pointer;
+    // transition: all 0.8s cubic-bezier(0, 1.36, 0.57, 1.46);
   }
-}
 
-.navbar__shop {
-  position: relative;
-  // transform: translateY(20%);
-  // height: 5rem;
-  align-items: center;
-}
+  &__links,
+  &__shop {
+    display: flex;
+    margin-right: 5rem;
+    // justify-content: center;
+    // justify-self: start;
 
-.navbar__icons {
-  border: 1px solid $color--purple;
-  border-radius: 1rem;
-  position: relative;
-}
+    > * {
+      cursor: pointer;
+    }
+  }
 
-.navbar__icons > span {
-  // color: $color--purple;
-  font-size: 1.2rem;
-  position: absolute;
-  top: -50%;
-  left: 50%;
-  transform: translateX(-50%);
-  // transform: translateX(50%);
-  // @include abCenter;
-}
+  &__links > * {
+    margin-right: 3rem;
+  }
 
-.navbar__shop svg {
-  // justify-content: space-between;
-  margin: 3px 5px 0 5px;
-}
+  &__shop {
+    position: relative;
+    // transform: translateY(20%);
+    // height: 5rem;
+    align-items: center;
+  }
 
-.navbar__links > * {
-  margin-right: 3rem;
+  &__shop svg {
+    // justify-content: space-between;
+    margin: 3px 5px 0 5px;
+  }
+
+  &__icons {
+    border: 1px solid $color--purple;
+    border-radius: 1rem;
+    position: relative;
+  }
+
+  &__icons > span {
+    // color: $color--purple;
+    font-size: 1.2rem;
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    // transform: translateX(50%);
+    // @include abCenter;
+  }
+
+  //! Mobile hamburger menu
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    display: none;
+    cursor: pointer;
+    margin: 0 2rem;
+    z-index: 1500;
+  }
+
+  &__background {
+    // display: none;
+    opacity: 0;
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 0%;
+    left: 100%;
+    background-image: radial-gradient(
+      $color--purple--dark,
+      $color--purple--light
+    );
+    z-index: 1000;
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  // FUNCTIONALITY
+  // ~ 는 sibling 중에서 선택
+  &__checkbox:checked ~ &__background {
+    // display: block;
+    opacity: 1;
+    transform: scale(50);
+  }
+
+  &__checkbox:checked .navbar__wrapper {
+    height: 100vh;
+  }
+
+  &__checkbox:checked ~ &__links {
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    // transform: translateX(0%);
+    // transition: all 0.8s cubic-bezier(0, 1.36, 0.57, 1.46);
+    animation: reveal-from-right 1s cubic-bezier(0.66, -0.02, 0, 0.67) 1
+      backwards;
+  }
+
+  &__checkbox:checked ~ &__links .link--login {
+    order: 1;
+  }
+  &__checkbox:checked ~ &__links .link--planets {
+    order: 2;
+  }
+  &__checkbox:checked ~ &__links .link--starships {
+    order: 3;
+  }
+
+  // ICON (직접 만드는 석삼메뉴 아이콘)
+  &__icon {
+    position: relative;
+    margin-top: 1.5rem;
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color--purple;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    &::before {
+      top: -0.8rem;
+    }
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  // 석삼메뉴 아이콘 hover했을 때, 석삼 작대기 위에것을 잡아라.
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  // 클릭할때 석삼메뉴를 엑스 모양으로 바꾸기
+  // checkbox가 클릭되어있을때, sibling인 button의 자식인 icon 석삼을 잡아라.
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon:before {
+    top: 0;
+    transform: rotate(135deg);
+    //[참고] transform-origin: left 는 회전축의 중심을 어디로 할것이냐 셋팅. default는 가운데.
+  }
+
+  &__checkbox:checked + &__button &__icon:after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
 }
 
 .link--login {
@@ -137,8 +255,10 @@
   // }
 }
 
-@include respond(phone) {
+@include respond(tab-port) {
   .navbar {
+    font-size: 2rem;
+
     .logo {
       display: none;
     }
@@ -150,5 +270,70 @@
       background-image: url("../../assets/logo-icon.png");
       background-size: cover;
     }
+
+    &__wrapper {
+      grid-template-columns: min-content 1fr min-content;
+      grid-template-rows: min-content;
+      // gap: 2rem;
+      // align-items: center;
+      // justify-items: center;
+      // grid-template-rows: min-content min-content min-content;
+
+      .navbar__logo {
+        grid-column: 1 / span 1;
+        //  grid-row: 1/span 2;
+      }
+
+      .navbar__button {
+        display: block;
+        grid-column: 3 / span 1;
+        grid-row: 1 / span 1;
+        align-self: center;
+        // transform: translateY(10rem);
+        // grid-row: 1/span 2;
+      }
+
+      .navbar__links {
+        display: none;
+        opacity: 0;
+        margin: 0 auto;
+        // transform: translateX(100%);
+        // transition: all 0.8s cubic-bezier(0, 1.36, 0.57, 1.46);
+      }
+
+      .navbar__links > * {
+        margin: 1rem;
+        // margin-right: 0;
+      }
+
+      .link--login {
+        // margin-right: 0rem;
+        justify-content: unset;
+        margin-right: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px #fff solid;
+      }
+
+      .navbar__shop {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+        justify-self: center;
+        margin-right: 0rem;
+        // text-transform: uppercase;
+        // align-items: center;
+        // margin-bottom: 1rem;
+      }
+      // justify-items: center;
+    }
+  }
+}
+
+@keyframes reveal-from-right {
+  0% {
+    transform: translateX(200%);
+  }
+
+  100% {
+    transform: translateX(0%);
   }
 }
