@@ -17,3 +17,19 @@
     position: relative;
   }
 }
+
+@include respond(tab-port) {
+  .planetIntro__content {
+    h1 {
+      font-size: 6rem;
+    }
+  }
+}
+
+@include respond(phone-xsm) {
+  .planetIntro__content {
+    h1 {
+      font-size: 4rem;
+    }
+  }
+}

@@ -66,14 +66,64 @@
       //   border-bottom: 1px solid rgb(211, 211, 211);
     }
   }
-
-  //   .thumbnail-slider {
-  //     border: 1px solid black;
-  //     height: 10rem;
-  //   }
 }
 
-// .product__info {
-//   margin-top: 10rem;
-//   color: red;
-// }
+@include respond(tab-land) {
+  .productOrder {
+    .product {
+      &__thumbnail {
+        width: 38rem;
+      }
+
+      &__info {
+        width: 38rem;
+      }
+    }
+  }
+}
+
+@include respond(tab-port) {
+  .productOrder {
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    align-content: center;
+
+    .product {
+      &__thumbnail {
+        margin: 0 0 5rem 0;
+        padding: 0;
+      }
+
+      &__info {
+        margin: 5rem 0 2rem 0;
+
+        .btn {
+          margin: 0 auto;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@include respond(phone-xsm) {
+  .productOrder {
+    .product {
+      &__thumbnail {
+        width: 27rem;
+      }
+
+      &__info {
+        width: 27rem;
+        margin-top: 3rem;
+
+        text-align: center;
+
+        .btn {
+          margin: 0 auto;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -91,3 +91,63 @@
     }
   }
 }
+
+@include respond(tab-port) {
+  .feature {
+    height: unset;
+    display: flex;
+
+    &__img {
+      position: relative;
+      // height: 100%;
+      background-attachment: unset;
+      background-size: cover;
+      height: unset;
+    }
+
+    &__content {
+      position: relative;
+      left: 0;
+      width: unset;
+      padding: 5rem 3rem;
+    }
+
+    &__context {
+      align-items: center;
+
+      svg {
+        // width: 3rem !important;
+        // height: 3rem !important;
+        // width: 15% !important;
+        display: none;
+      }
+
+      h3 {
+        font-size: 2.5rem;
+        font-weight: 200;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+
+    &__context:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+@include respond(phone-xsm) {
+  .feature {
+    &__content {
+      padding: 3rem 1rem;
+    }
+
+    &__context {
+      h3 {
+        font-size: 2rem;
+      }
+    }
+  }
+}

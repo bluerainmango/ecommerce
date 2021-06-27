@@ -2,7 +2,7 @@ import React from "react";
 
 import CheckoutItems from "../../components/checkoutItems/checkoutItems.component";
 import CheckoutPrice from "../../components/checkoutPrice/checkoutPrice.component";
-import Popup from "../../components/popup/popup.component";
+// import Popup from "../../components/popup/popup.component";
 
 import "./checkout.styles.scss";
 

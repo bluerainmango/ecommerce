@@ -1,0 +1,22 @@
+@import "../../global.style.scss";
+
+@include respond(tab-port) {
+  .headline__content h2 {
+    font-size: 3rem;
+  }
+
+  .presentation {
+    flex-direction: row;
+  }
+
+  .presentation__img {
+    background-attachment: unset;
+    height: 30rem;
+  }
+}
+
+@include respond(phone-xsm) {
+  .headline__content h2 {
+    font-size: 2rem;
+  }
+}

@@ -1,3 +1,5 @@
+@import "../../global.style.scss";
+
 .thumbnailSlider {
   width: 100%;
   height: 10rem;
@@ -41,5 +43,24 @@
     //   content: "&lang;";
     //   // position: inherit;
     // }
+  }
+}
+
+@include respond(tab-land) {
+  .thumbnailSlider {
+    .thumbnail__img {
+      width: 7.5rem;
+      // height: 8rem;
+    }
+  }
+}
+@include respond(phone-xsm) {
+  .thumbnailSlider {
+    height: 5rem;
+
+    .thumbnail__img {
+      width: 5rem;
+      height: 5rem;
+    }
   }
 }

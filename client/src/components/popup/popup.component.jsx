@@ -1,7 +1,7 @@
 import React from "react";
 
 import Button from "../button/button.component";
-import Slider from "../slider/slider.component";
+// import Slider from "../slider/slider.component";
 
 import "./popup.styles.scss";
 
