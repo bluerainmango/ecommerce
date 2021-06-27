@@ -2,7 +2,7 @@
 
 .navbar {
   color: #fff;
-  height: 7rem;
+  // height: 7rem;
   width: 100vw;
   font-size: 1.5rem;
   display: none;
@@ -16,6 +16,10 @@
 
   .logo {
     height: 5rem;
+  }
+
+  .logo--sm {
+    margin-left: 1.5rem;
   }
 
   &__user-photo {
@@ -121,7 +125,7 @@
   &__button {
     display: none;
     cursor: pointer;
-    margin: 0 2rem;
+    margin-right: 2rem;
     z-index: 1500;
   }
 
@@ -281,6 +285,7 @@
       // align-items: center;
       // justify-items: center;
       // grid-template-rows: min-content min-content min-content;
+      padding: 0;
 
       .navbar__logo {
         grid-column: 1 / span 1;
@@ -292,6 +297,7 @@
         grid-column: 3 / span 1;
         grid-row: 1 / span 1;
         align-self: center;
+        // transform: translateX(-50%);
         // transform: translateY(10rem);
         // grid-row: 1/span 2;
       }
@@ -331,6 +337,37 @@
   }
 }
 
+@include respond(phone-sm) {
+  .navbar {
+    .logo--sm {
+    }
+
+    &__wrapper {
+      .navbar__logo {
+      }
+
+      .navbar__button {
+        // transform: translateX(-50%);
+      }
+
+      .navbar__links {
+      }
+
+      .navbar__links > * {
+      }
+
+      .link--login {
+        flex-direction: column;
+        height: 8rem;
+        justify-content: space-evenly;
+      }
+
+      .navbar__shop {
+      }
+      // justify-items: center;
+    }
+  }
+}
 @keyframes reveal-from-right {
   0% {
     transform: translateX(200%);
