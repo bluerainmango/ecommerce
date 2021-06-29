@@ -13,7 +13,10 @@
     align-self: center;
     display: flex;
     padding: 0 2rem;
-    margin: 5rem 0 5rem auto;
+    margin: 0rem 0 0rem auto;
+    padding: 5rem 2rem;
+    z-index: 500;
+    background-color: #fff;
 
     img {
       object-fit: cover;
@@ -40,7 +43,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 5rem auto 5rem 0;
+    margin: 0rem auto 0rem 0;
+    padding: 5rem 0;
+    z-index: 500;
+    background-color: #fff;
 
     h1 {
       font-size: 2rem;
@@ -95,7 +101,8 @@
       }
 
       &__info {
-        margin: 5rem 0 2rem 0;
+        // margin: 0;
+        padding: 2rem 0;
 
         .btn {
           margin: 0 auto;
@@ -115,7 +122,7 @@
 
       &__info {
         width: 27rem;
-        margin-top: 3rem;
+        padding-top: 3rem;
 
         text-align: center;
 

@@ -2,7 +2,7 @@
 
 .starshipContainer {
   width: 100vw;
-  height: 300vh;
+  // height: 300vh;
   background-color: black;
 
   .starship__img {
@@ -14,7 +14,7 @@
     opacity: 0;
     animation: reveal 0.5s ease-in-out forwards;
     transform-origin: center -20px;
-    // z-index: -100;
+    z-index: 1;
   }
 }
 
@@ -22,5 +22,17 @@
   100% {
     opacity: 1;
     padding-bottom: 10px;
+  }
+}
+
+@include respond(phone) {
+  .starship__img {
+    max-width: 28rem;
+  }
+}
+
+@include respond(phone-xsm) {
+  .starship__img {
+    max-width: 25rem;
   }
 }

@@ -1,3 +1,5 @@
+@import "../../global.style.scss";
+
 .starshipIntro {
   width: 100vw;
   height: 100vh;
@@ -33,6 +35,23 @@
     h2 {
       font-size: 2.5rem;
       font-weight: 200;
+    }
+  }
+}
+
+@include respond(tab-land) {
+  .starshipIntro {
+    &__textbox {
+      width: 30rem;
+    }
+  }
+}
+
+@include respond(tab-port) {
+  .starshipIntro {
+    &__textbox {
+      transform: translate(0%, 200%);
+      text-align: center;
     }
   }
 }
