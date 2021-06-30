@@ -27,3 +27,11 @@
     // backface-visibility: hidden;
   }
 }
+
+@include respond(phone-xsm) {
+  .collection {
+    &__content {
+      grid-template-columns: repeat(auto-fit, 24rem);
+    }
+  }
+}

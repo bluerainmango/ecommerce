@@ -61,3 +61,27 @@
     color: rgba(235, 235, 235, 0);
   }
 }
+
+@include respond(tab-land) {
+  .checkout__date-person {
+    width: 50rem;
+
+    .input-group {
+      margin-right: 2rem !important;
+    }
+
+    .checkout__form {
+      justify-content: space-between;
+    }
+  }
+}
+
+@include respond(phone) {
+  .checkout__date-person {
+    width: unset;
+    .checkout__form {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}

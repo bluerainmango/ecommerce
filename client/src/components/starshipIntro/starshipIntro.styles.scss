@@ -55,3 +55,12 @@
     }
   }
 }
+
+@media only screen and (max-width: 56.25em) and (orientation: landscape) {
+  .starshipIntro {
+    &__textbox {
+      transform: translate(-66%, 100%);
+      text-align: center;
+    }
+  }
+}

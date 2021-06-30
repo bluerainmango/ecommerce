@@ -62,3 +62,32 @@
     padding-bottom: 2rem;
   }
 }
+
+@include respond(tab-land) {
+  .checkout__price {
+    align-self: unset;
+    width: 50rem;
+    transform: translate(0.5rem, 0);
+  }
+}
+
+@include respond(phone) {
+  .checkout__price {
+    width: 90%;
+  }
+}
+
+@include respond(phone-xsm) {
+  .checkout__price {
+    text-align: center;
+    width: unset;
+    min-width: unset;
+    transform: unset;
+  }
+
+  .price__detail > *,
+  .price__travelers,
+  .price__total {
+    flex-direction: column;
+  }
+}

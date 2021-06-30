@@ -42,3 +42,32 @@ $icon--color: $color--purple;
     background-color: $color--grey;
   }
 }
+
+@include respond(tab-land) {
+  .checkout {
+    &__item {
+      width: 50rem;
+    }
+  }
+}
+
+@include respond(phone) {
+  .checkout {
+    &__contentBox {
+      width: 30rem;
+    }
+
+    &__item {
+      justify-content: center;
+      margin: 2rem 0;
+    }
+  }
+}
+
+@include respond(phone-xsm) {
+  .checkout {
+    &__contentBox {
+      width: 20rem;
+    }
+  }
+}

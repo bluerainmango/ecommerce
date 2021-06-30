@@ -1,13 +1,37 @@
+@import "../../global.style.scss";
+
 .checkout {
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
   background-color: black;
-  display: flex;
+  // display: flex;
+  margin-top: 8rem;
 
   &__container {
     display: flex;
     max-width: 110rem;
     margin: 0 auto;
-    align-self: center;
+    // align-self: center;
+  }
+}
+
+@include respond(tab-land) {
+  .checkout {
+    &__container {
+      justify-content: center;
+      align-items: center;
+      margin: 0 2rem;
+    }
+    &__items {
+      margin-right: 2rem;
+    }
+  }
+}
+
+@include respond(tab-port) {
+  .checkout {
+    &__container {
+      flex-direction: column;
+    }
   }
 }

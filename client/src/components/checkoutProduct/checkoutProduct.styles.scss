@@ -53,3 +53,34 @@
     margin-right: 2rem;
   }
 }
+
+@include respond(tab-land) {
+  .checkout__product {
+    .itemBox__photo > * {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+}
+
+@include respond(phone) {
+  .checkout__product {
+    flex-direction: column;
+
+    .itemBtns {
+      margin-right: 0;
+    }
+  }
+}
+
+@include respond(phone-xsm) {
+  .checkout__product {
+    .itemInfo {
+      width: unset;
+    }
+
+    .itemBtns {
+      margin-bottom: 2rem;
+    }
+  }
+}

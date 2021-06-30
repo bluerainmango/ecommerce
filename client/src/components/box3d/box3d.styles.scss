@@ -174,3 +174,18 @@
 //   // transform: scale(0.9) translateX(40%) translateY(90%) rotateZ(80deg);
 //   opacity: 0;
 // }
+
+@include respond(phone-xsm) {
+  .box3d__card {
+    width: 100%;
+    margin: 0 auto;
+
+    .front {
+      width: 100%;
+    }
+
+    > div {
+      height: 42rem;
+    }
+  }
+}
