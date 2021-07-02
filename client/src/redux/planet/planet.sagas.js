@@ -9,9 +9,7 @@ function* fetchPlanetsAsync() {
   try {
     // yield console.log("🔥 fetch planets async is fired!");
 
-    const res = yield axios(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/planets`
-    );
+    const res = yield axios(`/api/v1/planets`);
 
     const planets = res.data.data;
     // console.log("🧚🏼‍♀️ planets:", planets);

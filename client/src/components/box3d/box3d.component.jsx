@@ -19,10 +19,8 @@ const Box3d = ({ props }) => {
     // const imgExtension = props.category === "planets" ? ".jpeg" : ".png";
 
     setFrontImgUrls({
-      imgLow: `${
-        process.env.REACT_APP_API_BASE_URL
-      }/${props.collectionThumb.replace(".png", "_100px.png")}`,
-      imgHigh: `${process.env.REACT_APP_API_BASE_URL}/${props.collectionThumb}`,
+      imgLow: `/${props.collectionThumb.replace(".png", "_100px.png")}`,
+      imgHigh: `/${props.collectionThumb}`,
     });
 
     // setbgImgUrls({
@@ -86,7 +84,7 @@ const Box3d = ({ props }) => {
                    0deg,
                    rgba(0, 0, 0, 0.9) 0%,
                    rgba(0, 0, 0, 0) 100%
-                 ),url(${process.env.REACT_APP_API_BASE_URL}/${props.featureImage})`,
+                 ),url(/${props.featureImage})`,
             }}
             // style={{
             //   backgroundImage: `linear-gradient(

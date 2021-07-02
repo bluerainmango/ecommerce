@@ -37,6 +37,11 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+// Direct to client's build folder for frontend
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 app.use(express.static(path.join(__dirname, "public", "assets")));
 
 app.use(express.json({ limit: "10kb" }));
@@ -49,12 +54,18 @@ app.use("/api/v1/starships", starshipRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/bookings", bookingRouter);
 
+// Send all req to React app(except API req)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
 //! ERROR Handlers
 app.all("*", (req, res, next) => {
   next(
     new ErrorFactory(404, `💥 Cannot find ${req.originalUrl} on this server!`)
   );
 });
+
 app.use(errorController);
 
 module.exports = app;

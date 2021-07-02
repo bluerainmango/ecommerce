@@ -99,7 +99,7 @@ const NavBar = (props) => {
                 {currentUser.photo ? (
                   <img
                     className="navbar__user-photo"
-                    src={`${process.env.REACT_APP_API_BASE_URL}/users/${currentUser.photo}`}
+                    src={`/users/${currentUser.photo}`}
                     alt="user profile"
                   />
                 ) : (

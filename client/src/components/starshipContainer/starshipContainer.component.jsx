@@ -129,7 +129,7 @@ const StarshipContainer = ({ starship }) => {
         <img
           ref={starshipRef}
           className="starship__img"
-          src={`${process.env.REACT_APP_API_BASE_URL}/${starship.image}`}
+          src={`/${starship.image}`}
           alt="starship"
           style={{ position: "absolute" }}
         />

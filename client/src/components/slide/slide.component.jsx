@@ -81,10 +81,7 @@ const Slide = (props) => {
       //! Lazy loading
       //? This comp is using backgound image not <img> tag so will use Image()'s onload event instead of addEventListener('load',cb)
       const imageLoader = new Image();
-      const url = `${process.env.REACT_APP_API_BASE_URL}/${slide.image2.replace(
-        "_100px",
-        ""
-      )}`;
+      const url = `/${slide.image2.replace("_100px", "")}`;
       imageLoader.src = url; // start download high res img
 
       // finish download
@@ -122,7 +119,7 @@ const Slide = (props) => {
         "--tiltDirection":
           updatedSlideOrder === 0 ? 0 : updatedSlideOrder > 0 ? 1 : -1,
         "--zIndex": (updatedSlideOrder + 10) * 10,
-        backgroundImage: `url(${process.env.REACT_APP_API_BASE_URL}/${slide.image2})`,
+        backgroundImage: `url(/${slide.image2})`,
       }}
       onClick={toggleSlideInfoAndScroll(
         updatedSlideOrder,

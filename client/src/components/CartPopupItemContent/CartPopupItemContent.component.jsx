@@ -7,9 +7,7 @@ const CartPopupItemContent = ({ props }) => {
       <Link to={`/${props.category}/${props.slug}`}>
         <div className="item__block--start">
           <img
-            src={`${
-              process.env.REACT_APP_API_BASE_URL
-            }/${props.collectionThumb.replace(".png", "_100px.png")}`}
+            src={`/${props.collectionThumb.replace(".png", "_100px.png")}`}
             alt={`cart item ${props.title}`}
           />
         </div>

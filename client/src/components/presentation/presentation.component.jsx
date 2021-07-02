@@ -12,7 +12,7 @@ const Presentation = ({ planet }) => {
             key={`presentation-${i}`}
             className={`presentation__img`}
             style={{
-              backgroundImage: `url(${process.env.REACT_APP_API_BASE_URL}/${img})`,
+              backgroundImage: `url(/${img})`,
             }}
           />
         );

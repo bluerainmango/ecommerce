@@ -19,10 +19,8 @@ const SlideInfo = (props) => {
     if (!activeSlideInfo?.bgimage) return;
 
     setUrls({
-      imgLow: `${
-        process.env.REACT_APP_API_BASE_URL
-      }/${activeSlideInfo?.bgimage.replace(".jpeg", "_200px.jpeg")}`,
-      imgHigh: `${process.env.REACT_APP_API_BASE_URL}/${activeSlideInfo?.bgimage}`,
+      imgLow: `/${activeSlideInfo?.bgimage.replace(".jpeg", "_200px.jpeg")}`,
+      imgHigh: `/${activeSlideInfo?.bgimage}`,
     });
   }, [activeSlideInfo]);
 
@@ -49,7 +47,7 @@ const SlideInfo = (props) => {
     <div
       className="slideInfo"
       style={{
-        // backgroundImage: `linear-gradient(#000000, rgba(255, 255, 255, 0.515)), url(${process.env.REACT_APP_API_BASE_URL}/${activeSlideInfo?.bgimage})`,
+        // backgroundImage: `linear-gradient(#000000, rgba(255, 255, 255, 0.515)), url(/${activeSlideInfo?.bgimage})`,
         display: `${toggleSlideInfo ? "grid" : "none"}`,
       }}
     >

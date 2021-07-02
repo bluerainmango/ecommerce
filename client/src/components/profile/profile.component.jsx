@@ -116,7 +116,7 @@ const Profile = (props) => {
             {photo ? (
               <img
                 className="profile__photo-preview"
-                src={`${process.env.REACT_APP_API_BASE_URL}/users/${photo}`}
+                src={`/users/${photo}`}
                 alt="user profile"
               />
             ) : (

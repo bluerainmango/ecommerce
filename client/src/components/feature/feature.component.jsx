@@ -53,7 +53,7 @@ const Feature = ({ planet }) => {
       <div
         className="feature__img"
         style={{
-          backgroundImage: `url(${process.env.REACT_APP_API_BASE_URL}/${planet.featureImage})`,
+          backgroundImage: `url(/${planet.featureImage})`,
         }}
       >
         {/* <img src={featureImg} /> */}

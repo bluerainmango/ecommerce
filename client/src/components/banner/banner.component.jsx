@@ -95,15 +95,15 @@ const Banner = (props) => {
         <div ref={bannerImgs1} className="banner__img banner--hidden">
           <img
             // src={astronaut}
-            src={`${process.env.REACT_APP_API_BASE_URL}/astronaut_200px.png`}
-            data-src={`${process.env.REACT_APP_API_BASE_URL}/astronaut.png`}
+            src="/astronaut_200px.png"
+            data-src="/astronaut.png"
             alt="astronaut"
             className="banner__photo banner__photo--astronaut lazy-img"
           />
           <img
             // src={planets}
-            src={`${process.env.REACT_APP_API_BASE_URL}/planets_200px.png`}
-            data-src={`${process.env.REACT_APP_API_BASE_URL}/planets.png`}
+            src="/planets_200px.png"
+            data-src="/planets.png"
             alt="planets"
             className="banner__photo banner__photo--planets lazy-img"
           />
@@ -120,15 +120,15 @@ const Banner = (props) => {
         <div ref={bannerImgs2} className="banner__img banner--hidden">
           <img
             // src={starship6}
-            src={`${process.env.REACT_APP_API_BASE_URL}/starship6_200px.png`}
-            data-src={`${process.env.REACT_APP_API_BASE_URL}/starship6.png`}
+            src="/starship6_200px.png"
+            data-src="/starship6.png"
             alt="starship--back"
             className="banner__photo banner__photo--starship--1 lazy-img"
           />
           <img
             // src={starship6}
-            src={`${process.env.REACT_APP_API_BASE_URL}/starship6_200px.png`}
-            data-src={`${process.env.REACT_APP_API_BASE_URL}/starship6.png`}
+            src="/starship6_200px.png"
+            data-src="/starship6.png"
             alt="starship--front"
             className="banner__photo banner__photo--starship--2 lazy-img"
           />

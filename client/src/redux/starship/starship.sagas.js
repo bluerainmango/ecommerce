@@ -10,9 +10,7 @@ import {
 
 function* fetchStarshipsAsync() {
   try {
-    const res = yield axios(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/starships`
-    );
+    const res = yield axios(`/api/v1/starships`);
 
     const starships = res.data.data;
     // console.log("👻 starships:", starships);

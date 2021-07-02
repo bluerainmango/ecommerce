@@ -13,7 +13,7 @@ function* checkoutSessionAsync(checkoutInfo) {
 
   try {
     const res = yield axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/bookings/create-checkout-session`,
+      `/api/v1/bookings/create-checkout-session`,
       checkoutInfo,
       { withCredentials: true }
     );

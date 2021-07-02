@@ -24,7 +24,7 @@ import {
 function* signInWithEmail({ payload: { username, password } }) {
   try {
     const res = yield axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/signin`,
+      `/api/v1/users/signin`,
       {
         username,
         password,
@@ -47,7 +47,7 @@ function* signUpWithEmail({ payload }) {
     const { username, email, password, passwordConfirm } = payload;
 
     const res = yield axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/signup`,
+      `/api/v1/users/signup`,
       {
         username,
         email,
@@ -71,12 +71,9 @@ function* forgotPassword(payload) {
   try {
     const { email } = payload;
 
-    const res = yield axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/forgotpassword`,
-      {
-        email,
-      }
-    );
+    const res = yield axios.post(`/api/v1/users/forgotpassword`, {
+      email,
+    });
 
     // console.log("🥶 forgot pwd:", result);
 
@@ -90,7 +87,7 @@ function* forgotPassword(payload) {
 //! To delete cookie, don't forget to add widthCrendentials option as well.
 function* logout() {
   try {
-    yield axios(`${process.env.REACT_APP_API_BASE_URL}/api/v1/users/logout`, {
+    yield axios(`/api/v1/users/logout`, {
       withCredentials: true,
     });
 
@@ -108,10 +105,7 @@ function* getMe() {
   try {
     // console.log("🦧 get me start triggered");
 
-    const res = yield axios(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/me`,
-      { withCredentials: true }
-    );
+    const res = yield axios(`/api/v1/users/me`, { withCredentials: true });
 
     const user = res.data.data;
     // console.log("🥵 get me:", user);
@@ -127,11 +121,9 @@ function* updateMe({ payload }) {
   // console.log("🐙 payload:", payload);
 
   try {
-    const res = yield axios.patch(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/me`,
-      payload,
-      { withCredentials: true }
-    );
+    const res = yield axios.patch(`/api/v1/users/me`, payload, {
+      withCredentials: true,
+    });
 
     //* Need success message and updated user info
     const { user } = res.data.data;
@@ -147,11 +139,9 @@ function* updateMe({ payload }) {
 
 function* updatePassword({ payload }) {
   try {
-    yield axios.patch(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/updatepassword`,
-      payload,
-      { withCredentials: true }
-    );
+    yield axios.patch(`/api/v1/users/updatepassword`, payload, {
+      withCredentials: true,
+    });
 
     // console.log("🤠 updated. message:", res.data.message);
 
@@ -166,7 +156,7 @@ function* deleteUser({ payload }) {
   try {
     //* 1. Check the entered password is correct
     yield axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users`,
+      `/api/v1/users`,
       { password: payload },
       { withCredentials: true }
     );
@@ -175,10 +165,7 @@ function* deleteUser({ payload }) {
     //   yield put(deleteUserFail("The entered password is incorrect."));
 
     //* 2. Delete user
-    const res2 = yield axios.delete(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users`,
-      { withCredentials: true }
-    );
+    const res2 = yield axios.delete(`/api/v1/users`, { withCredentials: true });
 
     console.log("🤠 deleted. message:", res2.data.message);
 

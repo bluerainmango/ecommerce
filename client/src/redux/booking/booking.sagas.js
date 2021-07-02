@@ -17,10 +17,7 @@ import {
 //* Get populdated booking arr
 function* getBooking() {
   try {
-    const res = yield axios(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/bookings/me`,
-      { withCredentials: true }
-    );
+    const res = yield axios(`/api/v1/bookings/me`, { withCredentials: true });
 
     console.log("🐤 my booking arr: ", res.data.data);
     yield put(getBookingSuccess(res.data.data));
@@ -35,11 +32,9 @@ function* createBooking({ payload }) {
   try {
     // console.log("🤓 querylink: ", payload);
 
-    const res = yield axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/bookings${payload}`,
-      null,
-      { withCredentials: true }
-    );
+    const res = yield axios.post(`/api/v1/bookings${payload}`, null, {
+      withCredentials: true,
+    });
 
     const newBooking = res.data.data;
     console.log("🤓 new booking: ", newBooking);
@@ -57,7 +52,7 @@ function* addNewBooking(newBookingId) {
   try {
     // a. Add new booking to user DB
     const res = yield axios.patch(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/users/mybooking`,
+      `/api/v1/users/mybooking`,
       { booking: newBookingId },
       { withCredentials: true }
     );
@@ -75,10 +70,9 @@ function* addNewBooking(newBookingId) {
 
 function* deleteBooking({ payload }) {
   try {
-    const res = yield axios.delete(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/bookings/${payload}`,
-      { withCredentials: true }
-    );
+    const res = yield axios.delete(`/api/v1/bookings/${payload}`, {
+      withCredentials: true,
+    });
 
     //* 1. Delete one booking
     yield put(deleteBookingSuccess(res.data.message));

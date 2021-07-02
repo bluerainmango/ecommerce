@@ -19,10 +19,7 @@ const ListElement = (props) => {
   return (
     <div className="listElement">
       <img
-        src={`${process.env.REACT_APP_API_BASE_URL}/${starship.image.replace(
-          ".png",
-          "_100px.png"
-        )}`}
+        src={`/${starship.image.replace(".png", "_100px.png")}`}
         alt={starship.title}
         onClick={handleClick}
       />

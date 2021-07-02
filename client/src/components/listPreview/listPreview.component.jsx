@@ -15,10 +15,8 @@ const ListPreview = ({ activeStarship }) => {
     if (!activeStarship?.image) return;
 
     setUrls({
-      imgLow: `${
-        process.env.REACT_APP_API_BASE_URL
-      }/${activeStarship.image.replace(".png", "_100px.png")}`,
-      imgHigh: `${process.env.REACT_APP_API_BASE_URL}/${activeStarship.image}`,
+      imgLow: `/${activeStarship.image.replace(".png", "_100px.png")}`,
+      imgHigh: `/${activeStarship.image}`,
     });
   }, [activeStarship]);
 
