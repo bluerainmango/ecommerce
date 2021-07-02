@@ -12,7 +12,11 @@ const CheckoutProduct = ({ type, product }) => {
     <div className="checkout__product">
       <div className="itemBox__photo">
         {!product ? (
-          <div>Please add a {type}</div>
+          <div>
+            <p>
+              Please add a <span>{type}</span>
+            </p>
+          </div>
         ) : (
           <div>
             <img
