@@ -24,7 +24,7 @@ const BookingEl = ({ booking, deleteBookingStart, isExpired }) => {
   return (
     booking && (
       <form
-        id="form--booking"
+        id={`form--booking--${booking._id}`}
         className={
           isExpired ? "form--booking booking--expired" : "form--booking"
         }
