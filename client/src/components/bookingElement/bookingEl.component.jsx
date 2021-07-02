@@ -35,11 +35,11 @@ const BookingEl = ({ booking, deleteBookingStart, isExpired }) => {
         <h3 className="booking__createdDate">{createdDateInLocal}</h3>
         <div className="booking__group">
           <FormInput
-            id="departureDate"
+            id={`departureDate--${booking._id}`}
             name="departureDate"
             label="Departure Date"
             type="date"
-            className="form-input"
+            className="form-input departureDate"
             value={booking.departureDate?.slice(0, 10)}
             placeholder=" "
             required
@@ -47,22 +47,22 @@ const BookingEl = ({ booking, deleteBookingStart, isExpired }) => {
           />
 
           <FormInput
-            id="numOfPerson"
+            id={`numOfPerson--${booking._id}`}
             name="numOfPerson"
             label="Travelers"
             type="number"
-            className="form-input"
+            className="form-input numOfPerson"
             value={booking.numOfPerson}
             placeholder=" "
             required
             readOnly
           />
           <FormInput
-            id="totalPrice"
+            id={`totalPrice--${booking._id}`}
             name="totalPrice"
             label="Total Price"
             type="text"
-            className="form-input"
+            className="form-input totalPrice"
             value={`$${booking.price}`}
             placeholder=" "
             required

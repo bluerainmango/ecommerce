@@ -15,7 +15,12 @@ const errorController = require("./controllers/errorController");
 
 const app = express();
 
-const whitelist = ["http://localhost:3000", "http://localhost:4000"];
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:4000",
+  "https://spacey-ecommerce.herokuapp.com",
+];
+
 const corsOptionsDelegate = function (req, callback) {
   let corsOptions;
 

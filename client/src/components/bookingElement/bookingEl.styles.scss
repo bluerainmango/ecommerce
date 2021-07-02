@@ -11,7 +11,7 @@
     text-align: center;
   }
 
-  #departureDate {
+  .departureDate {
     color: $color--purple;
   }
 
@@ -30,7 +30,7 @@
     border-bottom: none !important;
   }
 
-  .group #departureDate {
+  .group .departureDate {
     width: 15rem;
   }
 
