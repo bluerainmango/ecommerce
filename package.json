@@ -10,7 +10,8 @@
     "start:prod": "concurrently \"NODE_ENV=production nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm start",
     "debug": "ndb server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
