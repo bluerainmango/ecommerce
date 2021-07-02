@@ -10,8 +10,7 @@
     "start:prod": "concurrently \"NODE_ENV=production nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm start",
     "debug": "ndb server.js",
-    "start": "node server.js",
-    "build": "cd client && npm run build"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
