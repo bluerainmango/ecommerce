@@ -67,6 +67,15 @@
       div {
         width: 10rem;
         height: 10rem;
+
+        p {
+          height: 10rem;
+          line-height: 2rem;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
       }
     }
   }
