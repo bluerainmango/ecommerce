@@ -98,6 +98,8 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
     departureDate,
   } = req.body.payload;
 
+  const url = `${req.protocol}://${req.get("host")}`;
+
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     customer_email: req.user.email,
@@ -137,8 +139,8 @@ exports.createCheckout = catchAsync(async (req, res, next) => {
         description: `Departs on ${departureDate}`,
       },
     ],
-    success_url: `/checkout/success?planet=${planet._id}&starship=${starship._id}&user=${req.user._id}&price=${totalPrice}&departureDate=${departureDate}&numOfPerson=${numOfPerson}`,
-    cancel_url: `/?canceled=true`,
+    success_url: `${url}/checkout/success?planet=${planet._id}&starship=${starship._id}&user=${req.user._id}&price=${totalPrice}&departureDate=${departureDate}&numOfPerson=${numOfPerson}`,
+    cancel_url: `${url}/?canceled=true`,
     // success_url: `${req.protocol}://${req.get("host")}/checkout/?planet=${
     //   planet._id
     // }&starship=${starship._id}&user=${
