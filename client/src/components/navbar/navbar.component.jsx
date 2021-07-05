@@ -81,7 +81,7 @@ const NavBar = (props) => {
           className="navbar__checkbox"
           id="navbar-toggle"
         />
-        <label for="navbar-toggle" className="navbar__button">
+        <label htmlFor="navbar-toggle" className="navbar__button">
           <span className="navbar__icon">&nbsp;</span>
         </label>
         <div className="navbar__background">&nbsp;</div>

@@ -52,7 +52,7 @@ const Profile = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("🐈 e", e.target.elements);
+    // console.log("🐈 e", e.target.elements);
 
     if (e.target.id === "form--profile") {
       //* Get current info
@@ -62,21 +62,21 @@ const Profile = (props) => {
       const newPhoto = e.target.elements.photo.files[0];
       console.log("🐈 new photo", newPhoto);
 
-      //* Create form data to send
-      const form = new FormData();
-      if (currentUsername !== username) form.append("username", username);
-      if (currentEmail !== email) form.append("email", email);
-      if (newPhoto) {
-        form.append("photo", newPhoto);
-      }
-
-      if (form.values().length === 0)
+      if (currentUsername === username && currentEmail === email && !newPhoto)
         return updateMeFail(
           "Please provide new username or email or photo to update."
         );
 
-      // for (let val of form.values()) {
-      //   console.log("💢 form data:", val);
+      //* Create form data to send
+      const form = new FormData();
+      if (currentUsername !== username) form.set("username", username);
+      if (currentEmail !== email) form.set("email", email);
+      if (newPhoto) {
+        form.set("photo", newPhoto);
+      }
+
+      // for (let [name, value] of form) {
+      //   console.log(`${name} = ${value}`); // key1 = value1, then key2 = value2
       // }
 
       updateMeStart(form);

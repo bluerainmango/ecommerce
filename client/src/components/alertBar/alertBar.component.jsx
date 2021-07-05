@@ -24,11 +24,7 @@ const AlertBar = ({
       console.log("🐞 history listen: ", action, location);
 
       //* If it's redirected from /account#setting to /user after deleting user, don't clear messages.
-      if (
-        action !== "REPLACE" &&
-        location.pathname !== "/users" &&
-        !userSuccessMessage
-      ) {
+      if (action !== "REPLACE" && location.pathname !== "/users") {
         userClearError();
         bookingClearError();
       }
