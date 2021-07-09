@@ -1,4 +1,6 @@
 // const { validate } = require("../models/userModel");
+const aws = require("aws-sdk");
+const multerS3 = require("multer-s3");
 const multer = require("multer");
 const sharp = require("sharp");
 
@@ -7,6 +9,19 @@ const catchAsync = require("../util/catchAsync");
 const ErrorFactory = require("../util/ErrorFactory");
 
 const multerStorage = multer.memoryStorage();
+
+//! aws S3
+const s3 = new aws.S3();
+const s3Storage = multerS3({
+  s3: s3,
+  bucket: "ecommerce-spacey",
+  metadata: function (req, file, cb) {
+    cb(null, { fieldName: file.fieldname });
+  },
+  key: function (req, file, cb) {
+    cb(null, Date.now().toString());
+  },
+});
 
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image")) {
