@@ -99,7 +99,8 @@ const NavBar = (props) => {
                 {currentUser.photo ? (
                   <img
                     className="navbar__user-photo"
-                    src={`/users/${currentUser.photo}`}
+                    // src={`/users/${currentUser.photo}`}
+                    src={currentUser.photo}
                     alt="user profile"
                   />
                 ) : (
