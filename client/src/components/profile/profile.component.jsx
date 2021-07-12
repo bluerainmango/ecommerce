@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import { connect } from "react-redux";
 
@@ -38,6 +38,8 @@ const Profile = (props) => {
     newPassword: "",
     newPasswordConfirm: "",
   });
+
+  const [fileName, setFileName] = useState("");
 
   const handleChange = (e) => {
     // console.log(e.target);
@@ -104,6 +106,14 @@ const Profile = (props) => {
 
   const handleError = () => {};
 
+  useEffect(() => {
+    const userPhotoName = photo.slice(photo.indexOf("user"));
+
+    setFileName(userPhotoName);
+
+    console.log("😡", fileName);
+  }, [photo, fileName]);
+
   return (
     <div className="profile">
       <AlertBar />
@@ -119,12 +129,7 @@ const Profile = (props) => {
               <img
                 className="profile__photo-preview"
                 // src={`/users/${photo}`}
-                src={
-                  `${photo.replace(
-                    `https://${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_S3_REGION}.amazonaws.com/`,
-                    ""
-                  )}` || photo
-                }
+                src={`/users/${fileName}` || photo}
                 onError={handleError}
                 alt="user profile"
               />
