@@ -43,20 +43,29 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   // req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
   // req.file.filename = `user-${req.user.id}.jpeg`;
 
-  const resizedImg = await sharp(req.file.buffer)
+  const resizedImgBuffer = await sharp(req.file.buffer)
     .resize(300, 300)
     .toFormat("jpeg")
-    .jpeg({ quality: 90 })
+    .jpeg({ quality: 70 })
     .toBuffer();
-  // .toFile(`public/assets/users/${req.file.filename}`);
+
+  await sharp(req.file.buffer)
+    .resize(300, 300)
+    .toFormat("jpeg")
+    .jpeg({ quality: 70 })
+    .toFile(`public/assets/users/${filename}`);
+
+  // const resizedImg = rawImg.toBuffer();
+
+  // rawImg.toFile(`public/assets/users/${filename}`);
 
   const params = {
     Bucket: "ecommerce-spacey", // s3 bucket name
     Key: filename, // key: file name
     //Body: fs.createReadStream(`public/assets/users/${req.file.filename}`),
-    Body: resizedImg, // image to upload
+    Body: resizedImgBuffer, // image to upload
     ACL: "public-read", // to allow to be publicly readable
-    ContentType: "image/jpeg", // url starts download as file without it
+    // ContentType: "image/jpeg", // url starts download as file without it
   };
 
   //! Save photo to AWS S3

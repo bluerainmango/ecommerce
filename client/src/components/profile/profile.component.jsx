@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { connect } from "react-redux";
 
@@ -51,7 +51,7 @@ const Profile = (props) => {
   };
 
   const handleSubmit = (e) => {
-    // e.preventDefault(); // Reload to prevent 403 err from S3
+    e.preventDefault(); // Reload to prevent 403 err from S3
     // console.log("🐈 e", e.target.elements);
 
     if (e.target.id === "form--profile") {
@@ -102,6 +102,8 @@ const Profile = (props) => {
     }
   };
 
+  const handleError = () => {};
+
   return (
     <div className="profile">
       <AlertBar />
@@ -117,7 +119,13 @@ const Profile = (props) => {
               <img
                 className="profile__photo-preview"
                 // src={`/users/${photo}`}
-                src={photo}
+                src={
+                  `${photo.replace(
+                    `https://${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_S3_REGION}.amazonaws.com/`,
+                    ""
+                  )}` || photo
+                }
+                onError={handleError}
                 alt="user profile"
               />
             ) : (
