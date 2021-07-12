@@ -51,7 +51,7 @@ const Profile = (props) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault(); // Reload to prevent 403 err from S3
     // console.log("🐈 e", e.target.elements);
 
     if (e.target.id === "form--profile") {
