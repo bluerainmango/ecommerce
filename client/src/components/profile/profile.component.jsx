@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { connect } from "react-redux";
 
@@ -7,6 +7,7 @@ import Button from "../button/button.component";
 import AlertBar from "../alertBar/alertBar.component";
 
 import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-outline.svg";
+import personIcon from "../../assets/icons/person-circle-outline.svg";
 
 import {
   updateMeStart,
@@ -40,6 +41,8 @@ const Profile = (props) => {
   });
 
   const [fileName, setFileName] = useState("");
+
+  const profileRef = useRef();
 
   const handleChange = (e) => {
     // console.log(e.target);
@@ -104,7 +107,15 @@ const Profile = (props) => {
     }
   };
 
-  const handleError = () => {};
+  const handleError = () => {
+    const profileDOM = profileRef.current;
+    profileDOM.firstChild.src = personIcon;
+
+    profileDOM.insertAdjacentHTML(
+      "afterend",
+      "<p class=profile__error_message>Temporary error on our image server. Please refresh the page or try later.</p>"
+    );
+  };
 
   useEffect(() => {
     const userPhotoName = photo.slice(photo.indexOf("user"));
@@ -124,7 +135,7 @@ const Profile = (props) => {
           onSubmit={handleSubmit}
         >
           <h2 className="account__title">Change Profile</h2>
-          <div className="profile__photo">
+          <div className="profile__photo" ref={profileRef}>
             {photo ? (
               <img
                 className="profile__photo-preview"
