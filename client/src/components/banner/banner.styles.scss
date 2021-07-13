@@ -50,9 +50,8 @@
     }
   }
 
-  &__context {
+  &__context > * {
     margin: 0 5rem;
-
     @include textBg;
   }
 
