@@ -68,6 +68,8 @@ const NavBar = (props) => {
   };
 
   useEffect(() => {
+    if (!currentUser) return;
+
     const userPhotoName = currentUser.photo.slice(
       currentUser.photo.indexOf("user")
     );
@@ -75,7 +77,7 @@ const NavBar = (props) => {
     setFileName(userPhotoName);
 
     // console.log("😡", fileName);
-  }, [currentUser.photo, fileName]);
+  }, [currentUser]);
 
   return (
     <div ref={navRef} className="navbar">
