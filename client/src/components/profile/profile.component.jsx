@@ -120,6 +120,8 @@ const Profile = (props) => {
   // Sometimes S3 image path is access denied when requesting righ away after uploading.
   // So try using tempararly saved image in our backend first then try to use S3 image later.
   useEffect(() => {
+    if (!photo) return;
+
     const userPhotoName = photo.slice(photo.indexOf("user"));
 
     setFileName(userPhotoName);
