@@ -72,6 +72,7 @@
   // animation: reveal 3000ms ease-in-out forwards 200ms;
   // animation: reveal 3000ms ease-in-out forwards 200ms,
   //   glow 2500ms linear infinite 2000ms;
+  -webkit-animation: glow 2500ms linear 2000ms forwards;
   animation: glow 2500ms linear 2000ms forwards;
 
   // @keyframes reveal {
@@ -82,6 +83,14 @@
   //     background-size: 300% 300%;
   //   }
   // }
+  @-webkit-keyframes glow {
+    40% {
+      text-shadow: 0 0 8px #fff;
+    }
+    100% {
+      text-shadow: 0 0 0px #fff;
+    }
+  }
   @keyframes glow {
     40% {
       text-shadow: 0 0 8px #fff;

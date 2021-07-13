@@ -50,6 +50,7 @@ $color--grey: rgba(255, 255, 255, 0.068);
 }
 
 @mixin textBg {
+  display: inline;
   background-image: linear-gradient(
     to right bottom,
     $color--blue,
