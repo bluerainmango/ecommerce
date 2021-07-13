@@ -34,6 +34,7 @@ const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
 
 exports.uploadUserPhoto = upload.single("photo");
 
+//! Save resized image in our backend server and upload it to S3 with buffer
 exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
 
@@ -43,17 +44,29 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   // req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
   // req.file.filename = `user-${req.user.id}.jpeg`;
 
-  const resizedImgBuffer = await sharp(req.file.buffer)
+  //* Resize
+  const resizedImg = sharp(req.file.buffer)
     .resize(300, 300)
     .toFormat("jpeg")
-    .jpeg({ quality: 70 })
-    .toBuffer();
+    .jpeg({ quality: 70 });
 
-  await sharp(req.file.buffer)
-    .resize(300, 300)
-    .toFormat("jpeg")
-    .jpeg({ quality: 70 })
-    .toFile(`public/assets/users/${filename}`);
+  //* Save as buffer to upload S3
+  const resizedImgBuffer = await resizedImg.toBuffer();
+
+  //* Save as file to use right away for DOM re-rendering
+  await resizedImg.toFile(`public/assets/users/${filename}`);
+
+  // const resizedImgBuffer = await sharp(req.file.buffer)
+  //   .resize(300, 300)
+  //   .toFormat("jpeg")
+  //   .jpeg({ quality: 70 })
+  //   .toBuffer();
+
+  // await sharp(req.file.buffer)
+  //   .resize(300, 300)
+  //   .toFormat("jpeg")
+  //   .jpeg({ quality: 70 })
+  //   .toFile(`public/assets/users/${filename}`);
 
   // const resizedImg = rawImg.toBuffer();
 
@@ -62,7 +75,7 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   const params = {
     Bucket: "ecommerce-spacey", // s3 bucket name
     Key: filename, // key: file name
-    //Body: fs.createReadStream(`public/assets/users/${req.file.filename}`),
+    //Body: fs.createReadStream(`public/assets/users/${req.file.filename}`), // for file format, not buffer
     Body: resizedImgBuffer, // image to upload
     ACL: "public-read", // to allow to be publicly readable
     // ContentType: "image/jpeg", // url starts download as file without it
@@ -83,20 +96,6 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
 
   next();
 });
-
-// exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
-//   if (!req.file) return next();
-
-//   req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
-
-//   await sharp(req.file.buffer)
-//     .resize(300, 300)
-//     .toFormat("jpeg")
-//     .jpeg({ quality: 90 })
-//     .toFile(`public/assets/users/${req.file.filename}`);
-
-//   next();
-// });
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await User.find();

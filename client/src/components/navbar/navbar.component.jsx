@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
@@ -24,6 +24,8 @@ const NavBar = (props) => {
   const location = useLocation();
   const navRef = useRef();
   const burgerRef = useRef();
+
+  const [fileName, setFileName] = useState("");
 
   //* Dynamically revealing navbar according to pages
   useEffect(() => {
@@ -65,6 +67,16 @@ const NavBar = (props) => {
     }
   };
 
+  useEffect(() => {
+    const userPhotoName = currentUser.photo.slice(
+      currentUser.photo.indexOf("user")
+    );
+
+    setFileName(userPhotoName);
+
+    // console.log("😡", fileName);
+  }, [currentUser.photo, fileName]);
+
   return (
     <div ref={navRef} className="navbar">
       <div className="navbar__wrapper">
@@ -100,7 +112,8 @@ const NavBar = (props) => {
                   <img
                     className="navbar__user-photo"
                     // src={`/users/${currentUser.photo}`}
-                    src={currentUser.photo}
+                    // src={currentUser.photo}
+                    src={`/users/${fileName}` || currentUser.photo}
                     alt="user profile"
                   />
                 ) : (
