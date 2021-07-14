@@ -24,6 +24,7 @@
   // z-index: var(--slideOrder);
 
   //! X: slide order, Y: tilting degree(left || right)
+  // transform: translateX(calc(110% * var(--slideOrder)));
   transform: translateX(calc(110% * var(--slideOrder)))
     rotateY(calc(-30deg * var(--tiltDirection))) scale(0.95);
 
@@ -100,6 +101,14 @@
 }
 
 //! Media query
+// mobile devices(including tablets, smartphones)
+@media only screen and (hover: none) and (pointer: coarse) {
+  .slide {
+    // make animation simple
+    transform: translateX(calc(110% * var(--slideOrder)));
+  }
+}
+
 @include respond(tab-port) {
   .slide {
     width: 16rem;
