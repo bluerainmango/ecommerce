@@ -7,7 +7,7 @@ const PlanetIntro3 = () => {
   return (
     <div className="fallingStar">
       <img className="star" src={star} alt="star" />
-      <div className="gradient" />
+      {/* <div className="gradient" /> */}
     </div>
   );
 };
