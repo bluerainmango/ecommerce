@@ -38,6 +38,7 @@
     );
     backdrop-filter: saturate(180%) blur(20px);
     z-index: 2000;
+    // height: 100%;
   }
 
   &__wrapper {
@@ -181,7 +182,7 @@
     order: 3;
   }
 
-  // ICON (직접 만드는 석삼메뉴 아이콘)
+  // ICON (burger icon)
   &__icon {
     position: relative;
     margin-top: 1.5rem;
@@ -211,7 +212,7 @@
     }
   }
 
-  // 석삼메뉴 아이콘 hover했을 때, 석삼 작대기 위에것을 잡아라.
+  // Get top bar of burger icon
   &__button:hover &__icon::before {
     top: -1rem;
   }
@@ -220,9 +221,8 @@
     top: 1rem;
   }
 
-  // 클릭할때 석삼메뉴를 엑스 모양으로 바꾸기
-  // checkbox가 클릭되어있을때, sibling인 button의 자식인 icon 석삼을 잡아라.
-
+  // When clicked, make burger icon 'X' shape
+  // Get sibling button's child(burger icon)
   &__checkbox:checked + &__button &__icon {
     background-color: transparent;
   }
@@ -230,7 +230,6 @@
   &__checkbox:checked + &__button &__icon:before {
     top: 0;
     transform: rotate(135deg);
-    //[참고] transform-origin: left 는 회전축의 중심을 어디로 할것이냐 셋팅. default는 가운데.
   }
 
   &__checkbox:checked + &__button &__icon:after {

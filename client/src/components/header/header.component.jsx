@@ -40,17 +40,17 @@ const Header = () => {
   // }, [isLoading]);
 
   useEffect(() => {
-    // const videoRefDOM = videoRef.current
-    if (!videoRef.current) return;
+    const videoRefDOM = videoRef.current;
+    if (!videoRefDOM) return;
 
     // console.log("😲 muted:", videoRef.current.getAttribute("muted"));
 
-    if (!videoRef.current.getAttribute("muted")) {
-      videoRef.current.setAttribute("muted", true);
-      videoRef.current.setAttribute("defaultMuted", true);
+    if (!videoRefDOM.getAttribute("muted")) {
+      videoRefDOM.setAttribute("muted", true);
+      videoRefDOM.setAttribute("defaultMuted", true);
     }
 
-    // console.log("😲 muted2:", videoRef.current.getAttribute("muted"));
+    console.log("😲 muted2:", videoRef.current.getAttribute("muted"));
   });
 
   return (

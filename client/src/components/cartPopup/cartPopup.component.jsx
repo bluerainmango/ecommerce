@@ -71,7 +71,9 @@ const CartPopup = ({
       <CartPopupItem>
         <div className="item__block--solo">
           <h4>Depareture</h4>
-          <span>{cart.departureDate || "-"}</span>
+          <span className="cartPopup__depareture">
+            {cart.departureDate || "-"}
+          </span>
         </div>
         <div className="item__block--solo">
           <h4>Travlers</h4>

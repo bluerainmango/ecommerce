@@ -16,6 +16,10 @@
 
   animation: revealIconsPopup 1s cubic-bezier(0, 0.55, 0.56, 0.95) 1 forwards;
 
+  &__depareture {
+    font-size: 1.4rem;
+  }
+
   h3 {
     // color: black;
     color: rgb(0, 0, 0);

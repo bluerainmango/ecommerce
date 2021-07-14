@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import Button from "../../components/button/button.component";
 
 import "./outro.styles.scss";
 
 const Outro = () => {
+  const videoRef = useRef();
+
+  useEffect(() => {
+    const videoRefDOM = videoRef.current;
+    if (!videoRefDOM) return;
+
+    if (!videoRefDOM.getAttribute("muted")) {
+      videoRefDOM.setAttribute("muted", true);
+      videoRefDOM.setAttribute("defaultMuted", true);
+    }
+  });
+
   return (
     <div className="outro">
       <div className="outro__wrapper" />
@@ -13,7 +25,8 @@ const Outro = () => {
         autoPlay="autoplay"
         muted
         loop
-        // playsinline
+        playsInline
+        ref={videoRef}
       >
         <source src="./media/outro.mp4" type="video/mp4" />
       </video>

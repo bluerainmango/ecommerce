@@ -24,6 +24,7 @@ const NavBar = (props) => {
   const location = useLocation();
   const navRef = useRef();
   const burgerRef = useRef();
+  const wrapperRef = useRef();
 
   const [fileName, setFileName] = useState("");
 
@@ -57,7 +58,7 @@ const NavBar = (props) => {
     // console.log("🐸 toggle", cart.toggleCartPopup);
   };
 
-  // When menu is clicked, close hamburger menu background
+  //* When menu is clicked, close hamburger menu background
   const handleClickLinks = (e) => {
     e.preventDefault();
     // console.log("hamburger menu clicked", burgerRef.current.checked);
@@ -67,6 +68,7 @@ const NavBar = (props) => {
     }
   };
 
+  //* To bring user's photo from backend server not S3
   useEffect(() => {
     if (!currentUser) return;
 
@@ -79,9 +81,25 @@ const NavBar = (props) => {
     // console.log("😡", fileName);
   }, [currentUser]);
 
+  // useEffect(() => {
+  //   console.log("👻 checked:", burgerRef.current.checked);
+  //   if (burgerRef.current.checked === undefined) return;
+
+  //   if (burgerRef.current.checked) wrapperRef.current.styles.height = "100%";
+  // }, [burgerRef.current.checked]);
+
+  //* When hamburger menu is unfold, cover screen with blurred bg
+  const handleCheckboxChange = () => {
+    // console.log("👽", navRef.current.style.height);
+
+    burgerRef.current.checked
+      ? (navRef.current.style.height = "100%")
+      : (navRef.current.style.height = "");
+  };
+
   return (
     <div ref={navRef} className="navbar">
-      <div className="navbar__wrapper">
+      <div ref={wrapperRef} className="navbar__wrapper">
         <div className="navbar__logo">
           <Link to="/">
             <img src={logo} alt="logo" className="logo" />
@@ -94,6 +112,7 @@ const NavBar = (props) => {
           type="checkbox"
           className="navbar__checkbox"
           id="navbar-toggle"
+          onChange={handleCheckboxChange}
         />
         <label htmlFor="navbar-toggle" className="navbar__button">
           <span className="navbar__icon">&nbsp;</span>
