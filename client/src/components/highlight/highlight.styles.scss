@@ -15,7 +15,7 @@
 
   &__imgbox {
     width: 50%;
-    height: 100%;
+    // height: 100%;
     z-index: 500;
 
     img {
@@ -55,7 +55,7 @@
 @include respond(phone) {
   .highlight {
     flex-direction: column;
-    height: unset;
+    // height: unset;
 
     &__imgbox,
     &__textbox {
@@ -64,6 +64,10 @@
 
     &__textbox {
       text-align: center;
+
+      p {
+        font-size: 1.5rem;
+      }
     }
   }
 }

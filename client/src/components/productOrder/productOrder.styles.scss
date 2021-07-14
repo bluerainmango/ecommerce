@@ -115,6 +115,9 @@
 
 @include respond(phone-xsm) {
   .productOrder {
+    // transform: translateY(-1px);
+    border: 1px #fff solid;
+
     .product {
       &__thumbnail {
         width: 27rem;
