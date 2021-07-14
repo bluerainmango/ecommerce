@@ -10,7 +10,7 @@ import "./header.styles.scss";
 const Header = () => {
   const scrollIndicatorRef = useRef();
   const scrollToRef = useRef();
-  // const videoRef = useRef();
+  const videoRef = useRef();
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -39,6 +39,20 @@ const Header = () => {
   //   }
   // }, [isLoading]);
 
+  useEffect(() => {
+    // const videoRefDOM = videoRef.current
+    if (!videoRef.current) return;
+
+    // console.log("😲 muted:", videoRef.current.getAttribute("muted"));
+
+    if (!videoRef.current.getAttribute("muted")) {
+      videoRef.current.setAttribute("muted", true);
+      videoRef.current.setAttribute("defaultMuted", true);
+    }
+
+    // console.log("😲 muted2:", videoRef.current.getAttribute("muted"));
+  });
+
   return (
     <section className="header">
       <div className="header__wrapper" />
@@ -50,8 +64,10 @@ const Header = () => {
       <video
         className="header__video"
         autoPlay="autoplay"
-        muted
+        muted // muted is not automatically applied to browser(React's unsolved problem). So will use useEffect to set attribute manually.
+        playsInline
         loop
+        ref={videoRef}
         // onLoadStart={() => {
         //   console.log("🦑 loading start");
         // }}
@@ -59,7 +75,6 @@ const Header = () => {
           // console.log("👻 loading finished");
           setIsLoading(false);
         }}
-        // playsinline
       >
         <source src="./media/2.mp4" type="video/mp4" />
         Your browser does not support HTML5 video.

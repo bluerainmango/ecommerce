@@ -106,6 +106,10 @@
   .slide {
     // make animation simple
     transform: translateX(calc(110% * var(--slideOrder)));
+
+    &--active:hover {
+      transform: none;
+    }
   }
 }
 
