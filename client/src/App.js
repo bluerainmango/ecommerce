@@ -44,8 +44,17 @@ function App({ currentUser }) {
             path="/users"
             render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
           />
-          <Route exact path="/checkout/success" component={AfterOrder} />
-          <Route exact path="/checkout" component={Checkout} />
+          <Route
+            exact
+            path="/checkout/success"
+            render={() => (currentUser ? <AfterOrder /> : <Login />)}
+          />
+          {/* <Route exact path="/checkout" component={Checkout} /> */}
+          <Route
+            exact
+            path="/checkout"
+            render={() => (currentUser ? <Checkout /> : <Login />)}
+          />
           <Route
             exact
             path="/account"
