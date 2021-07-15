@@ -24,7 +24,6 @@ const NavBar = (props) => {
   const location = useLocation();
   const navRef = useRef();
   const burgerRef = useRef();
-  const wrapperRef = useRef();
 
   const [fileName, setFileName] = useState("");
 
@@ -64,7 +63,8 @@ const NavBar = (props) => {
     // console.log("hamburger menu clicked", burgerRef.current.checked);
 
     if (burgerRef.current.checked) {
-      burgerRef.current.checked = false;
+      burgerRef.current.checked = false; // purple bg
+      navRef.current.style.height = ""; // blur bg
     }
   };
 
@@ -99,7 +99,7 @@ const NavBar = (props) => {
 
   return (
     <div ref={navRef} className="navbar">
-      <div ref={wrapperRef} className="navbar__wrapper">
+      <div className="navbar__wrapper">
         <div className="navbar__logo">
           <Link to="/">
             <img src={logo} alt="logo" className="logo" />

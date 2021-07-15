@@ -31,7 +31,12 @@ const Button = (props) => {
     e.preventDefault();
 
     const { planet, starship, totalPrice, numOfPerson, departureDate } = cart;
-    const DepartureTimeStamp = new Date(departureDate).getTime();
+
+    const dDateArr = departureDate?.split("-");
+    const DepartureTimeStamp = new Date(
+      `${dDateArr[1]}-${dDateArr[2]}-${dDateArr[0]}`
+    ).getTime(); // yyyy-mm-dd => mm-dd-yyyy, then get timestamp of it
+
     const maxDateTimeStamp = Date.now() + 3600 * 1000 * 24 * 60; // 60 days
 
     //! Validate input
@@ -40,10 +45,14 @@ const Button = (props) => {
     }
 
     // console.log(
-    //   "departuredate is valid?: ",
-    //   Date.now() < DepartureTimeStamp,
-    //   DepartureTimeStamp <= maxDateTimeStamp
+    //   "deparetureTimeStamp:",
+    //   DepartureTimeStamp,
+    //   new Date(departureDate),
+    //   departureDate
+    //   // departureDate.getTime()
     // );
+    // console.log("date.now():", Date.now());
+    // console.log("reserved - now:", DepartureTimeStamp <= Date.now());
 
     if (
       DepartureTimeStamp <= Date.now() ||

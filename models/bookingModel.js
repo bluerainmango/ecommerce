@@ -17,7 +17,7 @@ const bookingSchema = new mongoose.Schema({
     required: [true, "Booking must belong to a user."],
   },
   departureDate: {
-    type: Date,
+    type: Date, // yyyy-mm-dd inserted
     required: true,
   },
   numOfPerson: {

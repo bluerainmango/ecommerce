@@ -25,6 +25,7 @@ const CheckoutDatePerson = (props) => {
 
   useEffect(() => {
     if (!reservationInfo.departureDate) return;
+
     updateDepartureDate(reservationInfo.departureDate);
   }, [reservationInfo.departureDate, updatePerson, updateDepartureDate]);
 
@@ -38,8 +39,16 @@ const CheckoutDatePerson = (props) => {
 
     const { name, value } = e.target;
 
-    console.log("🐱", name, value);
+    // console.log(
+    //   "🐱 2",
+    //   name,
+    //   value,
+    //   valueAsNumber,
+    //   new Date(valueAsNumber),
+    //   formattedDate(new Date(valueAsNumber))
+    // );
 
+    // date: yyyy-mm-dd
     setReservationInfo({
       ...reservationInfo,
       [name]: value,
@@ -51,11 +60,7 @@ const CheckoutDatePerson = (props) => {
       <form className="checkout__form">
         <div className="input-group">
           <label htmlFor="date">Departure Date</label>
-          {console.log(
-            "🏳️",
-            reservationInfo.departureDate,
-            reservationInfo.numOfPerson
-          )}
+
           <input
             id="date"
             name="departureDate"
@@ -66,6 +71,7 @@ const CheckoutDatePerson = (props) => {
             max={formattedDate(new Date(Date.now() + 3600 * 1000 * 24 * 60))}
             onChange={handleChange}
             className="checkout__date"
+            placeholder="mm/dd/yyyy"
           />
           <span
             className="checkout__date-validity"

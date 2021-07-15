@@ -85,6 +85,10 @@
   .checkout__product {
     flex-direction: column;
 
+    .itemBox__photo {
+      margin: 2rem auto 0 auto;
+    }
+
     .itemBtns {
       margin-right: 0;
     }
