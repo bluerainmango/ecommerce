@@ -135,7 +135,7 @@ const NavBar = (props) => {
                     // src={`/users/${currentUser.photo}`}
                     // src={currentUser.photo}
                     src={`/users/${fileName}` || currentUser.photo}
-                    alt="user profile"
+                    alt="user"
                   />
                 ) : (
                   <PersonIcon />

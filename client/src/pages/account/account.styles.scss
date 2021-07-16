@@ -83,3 +83,13 @@
     }
   }
 }
+
+@include respond(phone-sm) {
+  .account__menu {
+    width: 27rem;
+
+    .ionicon {
+      margin-right: 0.5rem;
+    }
+  }
+}

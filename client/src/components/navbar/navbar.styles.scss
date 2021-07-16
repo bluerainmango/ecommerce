@@ -338,32 +338,12 @@
 
 @include respond(phone-sm) {
   .navbar {
-    .logo--sm {
-    }
-
     &__wrapper {
-      .navbar__logo {
-      }
-
-      .navbar__button {
-        // transform: translateX(-50%);
-      }
-
-      .navbar__links {
-      }
-
-      .navbar__links > * {
-      }
-
       .link--login {
         flex-direction: column;
         height: 8rem;
         justify-content: space-evenly;
       }
-
-      .navbar__shop {
-      }
-      // justify-items: center;
     }
   }
 }

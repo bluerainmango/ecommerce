@@ -1,3 +1,5 @@
+@import "../../global.style.scss";
+
 .booking {
   padding: 5rem;
   color: rgb(85, 85, 85);
@@ -9,11 +11,15 @@
   text-align: center;
 }
 
-// .booking__group {
-//   > .group {
-//     margin-right: 1rem;
-//     #deparetureDate {
-//       width: 10rem;
-//     }
-//   }
-// }
+@include respond(phone) {
+  .booking__group {
+    flex-direction: column;
+    .group {
+      margin: 1rem 0 !important;
+    }
+  }
+
+  .booking {
+    padding-top: 3rem;
+  }
+}
