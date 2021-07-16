@@ -10,11 +10,22 @@ import userReducer from "./user/user.reducer";
 import cartReducer from "./cart/cart.reducer";
 import bookingReducer from "./booking/booking.reducer";
 
+const expireReducer = require("redux-persist-expire");
+
+//! Persist users data when starting but expire in 7 days starting from last login
 const persistConfig = {
   key: "root",
   storage,
   whitelist: ["users"],
   // blacklist: ["cart"],
+  transforms: [
+    expireReducer("users", {
+      persistedAtKey: "lastLoginAt", // Since this key(data field) is updated last time
+      expireSeconds: 60 * 60 * 24 * 7, // After * seconds passed(7 days) : jwt & cookie's expire date is the same as 7 days in backend.
+      expiredState: null, // Make users data null
+      autoExpire: true, // Automatically execute
+    }),
+  ],
 };
 
 //! Nested persists(persisting cart except "toggleCartPopup" inside)

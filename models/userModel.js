@@ -58,6 +58,9 @@ const UserSchema = new mongoose.Schema({
   },
   booking: [{ type: mongoose.Schema.ObjectId, ref: "Booking" }],
   photo: { type: String },
+  userCreatedAt: { type: Date, default: Date.now() },
+  lastLoginAt: Date,
+  jwtExpiresAt: Date,
 });
 
 //! Hash password

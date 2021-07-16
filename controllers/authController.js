@@ -9,7 +9,7 @@ const ErrorFactory = require("../util/ErrorFactory");
 const Email = require("../util/email");
 
 //! used for sign in, sign up
-const createAndSendToken = (user, req, res, statusCode) => {
+const createAndSendToken = async (user, req, res, statusCode) => {
   // 1) create token
   const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
@@ -25,6 +25,21 @@ const createAndSendToken = (user, req, res, statusCode) => {
   };
 
   user.password = undefined;
+
+  const updatedUser = await User.findByIdAndUpdate(
+    user.id,
+    {
+      lastLoginAt: Date.now(),
+      jwtExpiresAt: new Date(
+        Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+      ),
+    },
+    {
+      new: true,
+    }
+  );
+
+  console.log("🎃 updated User with jwtCreatedAt: ", updatedUser);
 
   // 2) send token via cookie
   res.cookie("jwt", token, cookieOptions);
@@ -126,6 +141,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   //* 1) Get user with email
   const user = await User.findOne({ email: req.body.email });
+
   if (!user)
     return next(
       new ErrorFactory(404, "There is no user with the provided email")
