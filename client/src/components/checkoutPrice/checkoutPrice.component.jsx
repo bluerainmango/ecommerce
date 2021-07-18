@@ -55,6 +55,16 @@ const CheckoutPrice = ({ cart, numOfPerson }) => {
         }}
         // style={{ width: "100%", backgroundColor: "rgb(0, 81, 255)" }}
       />
+
+      <div className="cardInfo">
+        For your test of payment, please input the following card info on the
+        next page.
+        <ul>
+          <li>Number:4242 4242 4242 4242</li>
+          <li>CVC: any 3 digits</li>
+          <li>Date: Any future date</li>
+        </ul>
+      </div>
     </div>
   );
 };

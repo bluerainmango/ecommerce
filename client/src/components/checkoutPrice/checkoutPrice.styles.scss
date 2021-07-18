@@ -15,6 +15,15 @@
   padding: 2rem;
   line-height: 2;
 
+  .cardInfo {
+    font-size: 1.5rem;
+
+    ul {
+      list-style: square;
+      list-style-position: inside;
+    }
+  }
+
   .btn {
     // background-color: $btn--color !important;
     @include gradientBg;
