@@ -70,7 +70,7 @@ const NavBar = (props) => {
 
   //* To bring user's photo from backend server not S3
   useEffect(() => {
-    if (!currentUser) return;
+    if (!currentUser || !currentUser.photo) return;
 
     const userPhotoName = currentUser.photo.slice(
       currentUser.photo.indexOf("user")

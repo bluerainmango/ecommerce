@@ -90,6 +90,13 @@ const Signin = ({ emailSigninStart, currentUser }) => {
             "--font-color-hover": "black",
           }}
         />
+        <div className="form--signin__testUser">
+          <p>Test User</p>
+          <ul>
+            <li>Username: emily</li>
+            <li>Password: 4321</li>
+          </ul>
+        </div>
         <h3 className="form__redirect">
           <Link to="/users/signup">
             <span>Sign up</span>
