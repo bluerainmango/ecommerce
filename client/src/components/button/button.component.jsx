@@ -55,6 +55,7 @@ const Button = (props) => {
     // console.log("reserved - now:", DepartureTimeStamp <= Date.now());
 
     if (
+      !departureDate ||
       DepartureTimeStamp <= Date.now() ||
       DepartureTimeStamp > maxDateTimeStamp
     )
