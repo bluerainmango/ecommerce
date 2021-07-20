@@ -33,8 +33,8 @@ const ForgotPassword = ({ forgotPasswordStart }) => {
       <AlertBar />
       <h2 className="form__title">Forgot Password</h2>
       <span className="form__sub">
-        Submit your email that linked to your account. <br />
-        Email to reset password will be sent.
+        Submit your email linked to your account. <br />
+        Email will be sent to reset password.
       </span>
       <form className="form--signin" onSubmit={handleSubmit}>
         <FormInput

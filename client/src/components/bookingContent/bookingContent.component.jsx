@@ -8,8 +8,8 @@ const BookingContent = ({ bookingList }) => {
   return (
     <div className="booking__container">
       <h3 className="booking__description">
-        You can manage bookings here. Once the departure date is passed, it's
-        categorized as expired.
+        You can manage your bookings here. Once the departure date has passed,
+        your booking will expires.
       </h3>
 
       {console.log("📕 bookingList:", bookingList)}

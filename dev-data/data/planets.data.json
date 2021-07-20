@@ -23,7 +23,7 @@
             "planet1-presentation2.jpeg",
             "planet1-presentation3.jpeg"
         ],
-        "headline": "The most technically advanced city in universe",
+        "headline": "The most technically advanced city in the universe",
         "featureImage": "city4.jpeg",
         "featureColor": "rgb(132, 0, 158),rgb(0, 26, 73)",
         "feature": [
@@ -36,7 +36,7 @@
                 "content": "Anim ut consectetur commodo deserunt occaecat cillum enim excepteur duis do."
             },
             {
-                "subject": "Experience new future",
+                "subject": "Experience the future",
                 "content": "Ullamco mollit esse consectetur elit esse incididunt laborum commodo deserunt nostrud et eu."
             },
             {
@@ -71,12 +71,12 @@
             "planet2-presentation2.jpeg",
             "planet2-presentation3.jpeg"
         ],
-        "headline": "Planet that keeps natural beauty of universe",
+        "headline": "Planet that keeps the natural beauty of the universe",
         "featureImage": "planet2-feature.jpeg",
         "featureColor": "rgb(0, 158, 40),rgb(0, 41, 131)",
         "feature": [
             {
-                "subject": "Breath taken beauty",
+                "subject": "Breath taking beauty",
                 "content": "Do consequat eu laboris sit sint culpa. Commodo id dolor amet aute pariatur eu. Aute aliqua amet anim tempor commodo."
             },
             {
@@ -141,6 +141,6 @@
             }
         ],
         "price": 540,
-        "description": "Luyten b is a terrestrial planet with a thin atmosphere, with surface features reminiscent of the impact craters of the Moon. The days and seasons are comparable to those of Earth, because the rotational period as well as the tilt of the rotational axis relative to the ecliptic plane are similar."
+        "description": "K2-72e is a terrestrial planet with a thin atmosphere, with surface features reminiscent of the impact craters of the Moon. The days and seasons are comparable to those of Earth, because the rotational period as well as the tilt of the rotational axis relative to the ecliptic plane are similar."
     }
 ]

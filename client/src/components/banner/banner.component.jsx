@@ -137,7 +137,7 @@ const Banner = (props) => {
           <h2 className="banner__pretitle">High-tech</h2>
           <h3 className="banner__title">Starships</h3>
           <p className="banner__paragraph">
-            Comfort yourself in universe with ease-mind.
+            Comfort yourself in the universe with ease of mind
           </p>
         </div>
       </div>

@@ -20,7 +20,7 @@ const AfterOder = ({ createBookingStart }) => {
   return (
     <div className="afterOrder">
       <div className="afterOrder__container">
-        <h1>Successfully completed your booking!</h1>
+        <h1>Completed your booking successfully!</h1>
         <h2>
           Thank you for your reservation. You can check your booking anytime{" "}
           <Link to="/account#booking">here</Link>
