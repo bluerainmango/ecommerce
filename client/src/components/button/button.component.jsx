@@ -34,8 +34,14 @@ const Button = (props) => {
 
     const dDateArr = departureDate?.split("-");
     const DepartureTimeStamp = new Date(
-      `${dDateArr[1]}-${dDateArr[2]}-${dDateArr[0]}`
-    ).getTime(); // yyyy-mm-dd => mm-dd-yyyy, then get timestamp of it
+      dDateArr[0] * 1,
+      dDateArr[1] * 1 - 1, // month starts from 0
+      dDateArr[2] * 1
+    ).getTime(); // yyyy-mm-dd => new Date(yyyy,mm,dd), then get a timestamp of it
+
+    // const DepartureTimeStamp = new Date(
+    //   `${dDateArr[1]}-${dDateArr[2]}-${dDateArr[0]}`
+    // ).getTime(); // yyyy-mm-dd => mm-dd-yyyy, then get timestamp of it
 
     const maxDateTimeStamp = Date.now() + 3600 * 1000 * 24 * 60; // 60 days
 
@@ -44,13 +50,18 @@ const Button = (props) => {
       return setAlert("Please add planet and starship.");
     }
 
-    console.log("💀 departuredate:", departureDate);
-    window.alert(
+    console.log(
+      "💀 departuredate:",
       departureDate,
       dDateArr,
-      DepartureTimeStamp,
+      "dDate:",
+      new Date(DepartureTimeStamp),
+      "max:",
       maxDateTimeStamp,
+      "now:",
+      Date.now(),
       DepartureTimeStamp > Date.now(),
+      Date.now() - DepartureTimeStamp,
       DepartureTimeStamp <= maxDateTimeStamp
     );
 
@@ -73,19 +84,10 @@ const Button = (props) => {
     if (numOfPerson < 1) return setAlert("Please add one travler at least.");
 
     if (
-      departureDate &&
-      DepartureTimeStamp > Date.now() &&
-      DepartureTimeStamp <= maxDateTimeStamp
-    ) {
-      // param with cart checkout info needed
-      props.checkoutSessionStart({
-        planet,
-        starship,
-        totalPrice,
-        numOfPerson,
-        departureDate,
-      });
-    } else {
+      !departureDate ||
+      DepartureTimeStamp <= Date.now() ||
+      DepartureTimeStamp > maxDateTimeStamp
+    )
       return setAlert(
         `Please select valid departure date.${departureDate},
           ${dDateArr},
@@ -95,7 +97,15 @@ const Button = (props) => {
           ${DepartureTimeStamp <= maxDateTimeStamp}
         `
       );
-    }
+
+    // param with cart checkout info needed
+    props.checkoutSessionStart({
+      planet,
+      starship,
+      totalPrice,
+      numOfPerson,
+      departureDate,
+    });
   };
 
   const handleClick = (el) => {
