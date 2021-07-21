@@ -57,23 +57,30 @@ const Button = (props) => {
     // console.log("date.now():", Date.now());
     // console.log("reserved - now:", DepartureTimeStamp <= Date.now());
 
-    if (
-      !departureDate ||
-      DepartureTimeStamp <= Date.now() ||
-      DepartureTimeStamp > maxDateTimeStamp
-    )
-      return setAlert("Please select valid departure date.");
+    // if (
+    //   !departureDate ||
+    //   DepartureTimeStamp <= Date.now() ||
+    //   DepartureTimeStamp > maxDateTimeStamp
+    // )
 
     if (numOfPerson < 1) return setAlert("Please add one travler at least.");
 
-    // param with cart checkout info needed
-    props.checkoutSessionStart({
-      planet,
-      starship,
-      totalPrice,
-      numOfPerson,
-      departureDate,
-    });
+    if (
+      departureDate &&
+      DepartureTimeStamp > Date.now() &&
+      DepartureTimeStamp <= maxDateTimeStamp
+    ) {
+      // param with cart checkout info needed
+      props.checkoutSessionStart({
+        planet,
+        starship,
+        totalPrice,
+        numOfPerson,
+        departureDate,
+      });
+    } else {
+      return setAlert("Please select valid departure date.");
+    }
   };
 
   const handleClick = (el) => {
