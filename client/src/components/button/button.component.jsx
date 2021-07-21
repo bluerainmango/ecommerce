@@ -44,6 +44,9 @@ const Button = (props) => {
       return setAlert("Please add planet and starship.");
     }
 
+    console.log("💀 departuredate:", departureDate);
+    window.alert(departureDate);
+
     // console.log(
     //   "deparetureTimeStamp:",
     //   DepartureTimeStamp,
