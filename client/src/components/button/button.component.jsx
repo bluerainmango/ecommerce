@@ -45,7 +45,14 @@ const Button = (props) => {
     }
 
     console.log("💀 departuredate:", departureDate);
-    window.alert(departureDate);
+    window.alert(
+      departureDate,
+      dDateArr,
+      DepartureTimeStamp,
+      maxDateTimeStamp,
+      DepartureTimeStamp > Date.now(),
+      DepartureTimeStamp <= maxDateTimeStamp
+    );
 
     // console.log(
     //   "deparetureTimeStamp:",
@@ -79,7 +86,15 @@ const Button = (props) => {
         departureDate,
       });
     } else {
-      return setAlert("Please select valid departure date.");
+      return setAlert(
+        `Please select valid departure date.${departureDate},
+          ${dDateArr},
+          ${DepartureTimeStamp},
+          ${maxDateTimeStamp},
+          ${DepartureTimeStamp > Date.now()},
+          ${DepartureTimeStamp <= maxDateTimeStamp}
+        `
+      );
     }
   };
 
