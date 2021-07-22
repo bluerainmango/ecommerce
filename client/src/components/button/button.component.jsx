@@ -89,13 +89,7 @@ const Button = (props) => {
       DepartureTimeStamp > maxDateTimeStamp
     )
       return setAlert(
-        `Please select valid departure date.${departureDate},
-          ${dDateArr},
-          ${DepartureTimeStamp},
-          ${maxDateTimeStamp},
-          ${DepartureTimeStamp > Date.now()},
-          ${DepartureTimeStamp <= maxDateTimeStamp}
-        `
+        `Please select valid departure date. It should be later than today but no more than next 60 days.`
       );
 
     // param with cart checkout info needed
