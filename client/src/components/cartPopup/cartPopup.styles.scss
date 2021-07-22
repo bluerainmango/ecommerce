@@ -13,7 +13,8 @@
   border: 1px $color--purple solid;
   color: rgb(0, 0, 0);
   //   border: 1px solid #fff;
-
+  // transform: translateX(-25%);
+  left: -50%;
   animation: revealIconsPopup 1s cubic-bezier(0, 0.55, 0.56, 0.95) 1 forwards;
 
   &__depareture {
@@ -66,12 +67,16 @@
 
 @keyframes revealIconsPopup {
   0% {
-    transform: translate(-25%, -10px);
+    transform: translateY(-10px);
   }
-  // 70% {
-  //   transform: translateY(5px);
-  // }
   100% {
-    transform: translate(-25%, 0px);
+    transform: translateY(0px);
   }
+
+  // 0% {
+  //   transform: translate(-25%, -10px);
+  // }
+  // 100% {
+  //   transform: translate(-25%, 0px);
+  // }
 }
