@@ -43,6 +43,7 @@ const Profile = (props) => {
   const [fileName, setFileName] = useState("");
 
   const profileRef = useRef();
+  const formRef = useRef();
 
   const handleChange = (e) => {
     // console.log(e.target);
@@ -109,7 +110,11 @@ const Profile = (props) => {
 
   const handleError = () => {
     const profileDOM = profileRef.current;
+
     profileDOM.firstChild.src = personIcon;
+
+    // if error message has already existed, skip.
+    if (formRef.current.querySelector(".profile__error_message")) return;
 
     profileDOM.insertAdjacentHTML(
       "afterend",
@@ -137,6 +142,7 @@ const Profile = (props) => {
           id="form--profile"
           className="form--profile"
           onSubmit={handleSubmit}
+          ref={formRef}
         >
           <h2 className="account__title">Change Profile</h2>
           <div className="profile__photo" ref={profileRef}>
