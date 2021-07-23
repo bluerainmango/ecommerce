@@ -6,7 +6,7 @@ import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
 import AlertBar from "../alertBar/alertBar.component";
 
-import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-outline.svg";
+// import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-outline.svg";
 import personIcon from "../../assets/icons/person-circle-outline.svg";
 
 import {
@@ -113,16 +113,24 @@ const Profile = (props) => {
 
     // profileDOM.firstChild.src = personIcon;
 
-    // if error message has already existed, skip.
-    if (formRef.current.querySelector(".profile__error_message")) return;
+    //* Alternative images
+    if (fileName) {
+      profileDOM.firstChild.src = `/users/${fileName}`;
+    } else {
+      profileDOM.firstChild.src = personIcon;
 
-    // if there is no fileName(newly updated photo) or photo(saved in S3), skip(=== new user)
-    if (fileName || photo) return;
+      //* Error message
+      // if error message has already existed, skip.
+      if (formRef.current.querySelector(".profile__error_message")) return;
 
-    profileDOM.insertAdjacentHTML(
-      "afterend",
-      "<p class=profile__error_message>Temporary error on our image server. Please refresh the page or try later.</p>"
-    );
+      // if there is no photo uploaded before, skip(=== new user)
+      if (!photo) return;
+
+      profileDOM.insertAdjacentHTML(
+        "afterend",
+        "<p class=profile__error_message>Temporary error on our image server. Please refresh the page or try later.</p>"
+      );
+    }
   };
 
   // Sometimes S3 image path is access denied when requesting righ away after uploading.
@@ -152,7 +160,8 @@ const Profile = (props) => {
             <img
               className="profile__photo-preview"
               // src={`/users/${photo}`}
-              src={photo || fileName ? `/users/${fileName}` : personIcon}
+              // src={photo || fileName ? `/users/${fileName}` : personIcon}
+              src={photo}
               onError={handleError}
               alt="user profile"
             />

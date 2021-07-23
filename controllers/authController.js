@@ -26,7 +26,7 @@ const createAndSendToken = async (user, req, res, statusCode) => {
 
   user.password = undefined;
 
-  const updatedUser = await User.findByIdAndUpdate(
+  await User.findByIdAndUpdate(
     user.id,
     {
       lastLoginAt: Date.now(),
@@ -39,7 +39,7 @@ const createAndSendToken = async (user, req, res, statusCode) => {
     }
   );
 
-  console.log("🎃 updated User with jwtCreatedAt: ", updatedUser);
+  // console.log("🎃 updated User with jwtCreatedAt: ", updatedUser);
 
   // 2) send token via cookie
   res.cookie("jwt", token, cookieOptions);
@@ -246,12 +246,12 @@ exports.checkPassword = catchAsync(async (req, res, next) => {
 
 exports.deleteOneUser = catchAsync(async (req, res, next) => {
   //* 1. remove user
-  const removedUser = await User.findByIdAndRemove(req.user._id);
-  console.log("🦁 removed user: ", removedUser);
+  await User.findByIdAndRemove(req.user._id);
+  // console.log("🦁 removed user: ", removedUser);
 
   //* 2. remove booking
-  const removedBooking = await Booking.deleteMany({ user: req.user._id });
-  console.log("🐯 removed booking: ", removedBooking);
+  await Booking.deleteMany({ user: req.user._id });
+  // console.log("🐯 removed booking: ", removedBooking);
 
   res.status(200).json({
     status: "success",

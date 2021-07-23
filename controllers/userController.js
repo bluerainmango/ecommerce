@@ -84,10 +84,12 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   //! Save photo to AWS S3
   const s3 = new AWS.S3();
 
-  s3.upload(params, (err, data) => {
-    if (err) console.log("😦 img upload err: ", err);
-    else console.log("🥵 img upload success: ", data);
-  });
+  s3.upload(params);
+
+  // s3.upload(params, (err, data) => {
+  //   if (err) console.log("😦 img upload err: ", err);
+  //   else console.log("🥵 img upload success: ", data);
+  // });
 
   // s3.getObject(params, (err, data) => {
   //   if (err) console.log(err, err.stack);
@@ -128,7 +130,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     runValidators: true,
   });
 
-  console.log("🐷 updated User: ", updatedUser);
+  // console.log("🐷 updated User: ", updatedUser);
 
   res.status(200).json({
     status: "success",
@@ -147,7 +149,7 @@ exports.addOneToMyBooking = catchAsync(async (req, res, next) => {
   user.booking.unshift(req.body.booking); // push(): mongoose's method
   await user.save({ validateBeforeSave: false });
 
-  console.log("🐴 new booking added!", user);
+  // console.log("🐴 new booking added!", user);
 
   res.status(200).json({
     status: "success",
