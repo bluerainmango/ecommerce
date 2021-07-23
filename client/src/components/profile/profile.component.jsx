@@ -117,7 +117,7 @@ const Profile = (props) => {
     if (formRef.current.querySelector(".profile__error_message")) return;
 
     // if there is no fileName(newly updated photo) or photo(saved in S3), skip(=== new user)
-    if (!fileName || !photo) return;
+    if (fileName || photo) return;
 
     profileDOM.insertAdjacentHTML(
       "afterend",
