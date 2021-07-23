@@ -6,7 +6,7 @@ import FormInput from "../formInput/formInput.component";
 import Button from "../button/button.component";
 import AlertBar from "../alertBar/alertBar.component";
 
-// import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-outline.svg";
+import { ReactComponent as PersonIcon } from "../../assets/icons/person-circle-outline.svg";
 import personIcon from "../../assets/icons/person-circle-outline.svg";
 
 import {
@@ -169,15 +169,19 @@ const Profile = (props) => {
         >
           <h2 className="account__title">Change Profile</h2>
           <div className="profile__photo" ref={profileRef}>
-            <img
-              className="profile__photo-preview"
-              // src={`/users/${photo}`}
-              // src={photo || fileName ? `/users/${fileName}` : personIcon}
-              // src={photo}
-              src={fileName ? `/users/${fileName}` : photo}
-              onError={handleError}
-              alt="user profile"
-            />
+            {fileName ? (
+              <img
+                className="profile__photo-preview"
+                // src={`/users/${photo}`}
+                // src={photo || fileName ? `/users/${fileName}` : personIcon}
+                // src={photo}
+                src={fileName ? `/users/${fileName}` : photo} // Try loading and handle error if it fails.
+                onError={handleError}
+                alt="user profile"
+              />
+            ) : (
+              <PersonIcon />
+            )}
 
             {/* {photo ? (
               <img
