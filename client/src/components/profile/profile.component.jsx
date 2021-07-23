@@ -111,7 +111,7 @@ const Profile = (props) => {
   const handleError = () => {
     const profileDOM = profileRef.current;
 
-    profileDOM.firstChild.src = personIcon;
+    // profileDOM.firstChild.src = personIcon;
 
     // if error message has already existed, skip.
     if (formRef.current.querySelector(".profile__error_message")) return;
@@ -146,17 +146,25 @@ const Profile = (props) => {
         >
           <h2 className="account__title">Change Profile</h2>
           <div className="profile__photo" ref={profileRef}>
-            {photo ? (
+            <img
+              className="profile__photo-preview"
+              // src={`/users/${photo}`}
+              src={photo || `/users/${fileName}` || personIcon}
+              onError={handleError}
+              alt="user profile"
+            />
+
+            {/* {photo ? (
               <img
                 className="profile__photo-preview"
                 // src={`/users/${photo}`}
-                src={`/users/${fileName}` || photo}
+                src={photo || `/users/${fileName}` || personIcon}
                 onError={handleError}
                 alt="user profile"
               />
             ) : (
               <PersonIcon />
-            )}
+            )} */}
 
             <input
               type="file"
