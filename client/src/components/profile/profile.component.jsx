@@ -111,26 +111,40 @@ const Profile = (props) => {
   const handleError = () => {
     const profileDOM = profileRef.current;
 
-    // profileDOM.firstChild.src = personIcon;
+    console.log("🤬 on img error");
 
-    //* Alternative images
-    if (fileName) {
-      profileDOM.firstChild.src = `/users/${fileName}`;
-    } else {
-      profileDOM.firstChild.src = personIcon;
+    profileDOM.firstChild.src = personIcon;
 
-      //* Error message
-      // if error message has already existed, skip.
-      if (formRef.current.querySelector(".profile__error_message")) return;
+    //* Error message
+    // if error message has already existed, skip.
+    if (formRef.current.querySelector(".profile__error_message")) return;
 
-      // if there is no photo uploaded before, skip(=== new user)
-      if (!photo) return;
+    // if there is no photo uploaded before, skip(=== new user)
+    if (!photo) return;
 
-      profileDOM.insertAdjacentHTML(
-        "afterend",
-        "<p class=profile__error_message>Temporary error on our image server. Please refresh the page or try later.</p>"
-      );
-    }
+    profileDOM.insertAdjacentHTML(
+      "afterend",
+      "<p class=profile__error_message>Temporary error on our image server. Please refresh the page or try later.</p>"
+    );
+
+    // if (fileName) {
+    //   // profileDOM.firstChild.src = personIcon;
+
+    //   //* Alternative images
+    //   profileDOM.firstChild.setAttribute("src", `/users/${fileName}`); // in case this file is not existing in server folder, it loops error hander.
+    //   console.log("☠️ 🤮 미치겟네");
+    // } else {
+    //   //   profileDOM.firstChild.src = personIcon;
+    //   //   //* Error message
+    //   //   // if error message has already existed, skip.
+    //   //   if (formRef.current.querySelector(".profile__error_message")) return;
+    //   //   // if there is no photo uploaded before, skip(=== new user)
+    //   //   if (!photo) return;
+    //   //   profileDOM.insertAdjacentHTML(
+    //   //     "afterend",
+    //   //     "<p class=profile__error_message>Temporary error on our image server. Please refresh the page or try later.</p>"
+    //   //   );
+    // }
   };
 
   // Sometimes S3 image path is access denied when requesting righ away after uploading.
@@ -141,9 +155,7 @@ const Profile = (props) => {
     const userPhotoName = photo.slice(photo.indexOf("user"));
 
     setFileName(userPhotoName);
-
-    console.log("😡", fileName);
-  }, [photo, fileName]);
+  }, [photo]);
 
   return (
     <div className="profile">
@@ -161,7 +173,8 @@ const Profile = (props) => {
               className="profile__photo-preview"
               // src={`/users/${photo}`}
               // src={photo || fileName ? `/users/${fileName}` : personIcon}
-              src={photo}
+              // src={photo}
+              src={fileName ? `/users/${fileName}` : photo}
               onError={handleError}
               alt="user profile"
             />
