@@ -116,6 +116,9 @@ const Profile = (props) => {
     // if error message has already existed, skip.
     if (formRef.current.querySelector(".profile__error_message")) return;
 
+    // if there is no fileName(newly updated photo) or photo(saved in S3), skip(=== new user)
+    if (!fileName || !photo) return;
+
     profileDOM.insertAdjacentHTML(
       "afterend",
       "<p class=profile__error_message>Temporary error on our image server. Please refresh the page or try later.</p>"
@@ -149,7 +152,7 @@ const Profile = (props) => {
             <img
               className="profile__photo-preview"
               // src={`/users/${photo}`}
-              src={photo || `/users/${fileName}` || personIcon}
+              src={photo || fileName ? `/users/${fileName}` : personIcon}
               onError={handleError}
               alt="user profile"
             />
