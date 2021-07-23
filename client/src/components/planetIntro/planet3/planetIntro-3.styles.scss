@@ -8,13 +8,13 @@
   position: relative;
 
   .star {
-    transform: scaleX(-1) translate(0, 0);
+    transform: scaleX(-1) translate(100%, 100%);
     animation: 10s falling infinite linear;
   }
 
   @keyframes falling {
     100% {
-      transform: scaleX(-1) translate(-400%, 200%);
+      transform: scaleX(-1) translate(-400%, 300%);
     }
   }
 }
