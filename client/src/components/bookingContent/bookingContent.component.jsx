@@ -19,20 +19,26 @@ const BookingContent = ({ bookingList }) => {
       ) : (
         bookingList.map((booking) => {
           const dDateArr = booking.departureDate?.split("-");
-          const DepartureTimeStamp = new Date(
+          const departureTimeStamp = new Date(
             dDateArr[0] * 1,
             dDateArr[1] * 1 - 1, // month starts from 0
-            dDateArr[2] * 1
+            dDateArr[2].slice(0, 2) * 1
           ).getTime();
 
-          const isExpired = DepartureTimeStamp < Date.now();
+          const isExpired = departureTimeStamp < Date.now();
 
           {
             /* const isExpired =
   new Date(booking.departureDate).getTime() < Date.now(); */
           }
 
-          console.log("😎 is expired: ", isExpired);
+          console.log(
+            "😎 is expired: ",
+            booking.departureDate,
+            dDateArr,
+            departureTimeStamp,
+            isExpired
+          );
 
           return (
             <BookingEl
