@@ -132,7 +132,7 @@ const Profile = (props) => {
 
     //   //* Alternative images
     //   profileDOM.firstChild.setAttribute("src", `/users/${fileName}`); // in case this file is not existing in server folder, it loops error hander.
-    //   console.log("☠️ 🤮 미치겟네");
+    //   console.log("☠️ 🤮 ");
     // } else {
     //   //   profileDOM.firstChild.src = personIcon;
     //   //   //* Error message
@@ -169,7 +169,17 @@ const Profile = (props) => {
         >
           <h2 className="account__title">Change Profile</h2>
           <div className="profile__photo" ref={profileRef}>
-            {fileName ? (
+            <img
+              className="profile__photo-preview"
+              // src={`/users/${photo}`}
+              // src={photo || fileName ? `/users/${fileName}` : personIcon}
+              // src={photo}
+              src={fileName ? `/users/${fileName}` : photo} // Try loading and handle error if it fails.
+              onError={handleError}
+              alt="user profile"
+            />
+
+            {/* {fileName ? (
               <img
                 className="profile__photo-preview"
                 // src={`/users/${photo}`}
@@ -181,7 +191,7 @@ const Profile = (props) => {
               />
             ) : (
               <PersonIcon />
-            )}
+            )} */}
 
             {/* {photo ? (
               <img

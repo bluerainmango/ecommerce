@@ -18,8 +18,19 @@ const BookingContent = ({ bookingList }) => {
         <h2 className="profile__empty">"There is no booking."</h2>
       ) : (
         bookingList.map((booking) => {
-          const isExpired =
-            new Date(booking.departureDate).getTime() < Date.now();
+          const dDateArr = booking.departureDate?.split("-");
+          const DepartureTimeStamp = new Date(
+            dDateArr[0] * 1,
+            dDateArr[1] * 1 - 1, // month starts from 0
+            dDateArr[2] * 1
+          ).getTime();
+
+          const isExpired = DepartureTimeStamp < Date.now();
+
+          {
+            /* const isExpired =
+  new Date(booking.departureDate).getTime() < Date.now(); */
+          }
 
           console.log("😎 is expired: ", isExpired);
 
